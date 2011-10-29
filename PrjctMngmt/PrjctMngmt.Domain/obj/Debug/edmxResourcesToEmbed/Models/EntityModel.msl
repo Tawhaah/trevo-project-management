@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EntityModelStoreContainer" CdmEntityContainer="EntityModelContainer">
+    <EntitySetMapping Name="Developers">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.Developer)">
+        <MappingFragment StoreEntitySet="Developers">
+          <ScalarProperty Name="DeveloperID" ColumnName="DeveloperID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teams">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.Team)">
+        <MappingFragment StoreEntitySet="Teams">
+          <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tasks">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.Task)">
+        <MappingFragment StoreEntitySet="Tasks">
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="ExpectedWorkHours" ColumnName="ExpectedWorkHours" />
+          <ScalarProperty Name="TimeSpend" ColumnName="TimeSpend" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="TaskCategoryName" ColumnName="TaskCategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaskCategories">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.TaskCategory)">
+        <MappingFragment StoreEntitySet="TaskCategories">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Messages">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.Message)">
+        <MappingFragment StoreEntitySet="Messages">
+          <ScalarProperty Name="MessageID" ColumnName="MessageID" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+          <ScalarProperty Name="DeveloperID" ColumnName="DeveloperID" />
+          <ScalarProperty Name="TopicID" ColumnName="TopicID" />
+          <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Documents">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.Document)">
+        <MappingFragment StoreEntitySet="Documents">
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+          <ScalarProperty Name="DeveloperID" ColumnName="DeveloperID" />
+          <ScalarProperty Name="MimeType" ColumnName="MimeType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaskAssignments">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.TaskAssignment)">
+        <MappingFragment StoreEntitySet="TaskAssignments">
+          <ScalarProperty Name="TaskAssignmentID" ColumnName="TaskAssignmentID" />
+          <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+          <ScalarProperty Name="DeveloperID" ColumnName="DeveloperID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notes">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.Note)">
+        <MappingFragment StoreEntitySet="Notes">
+          <ScalarProperty Name="NoteID" ColumnName="NoteID" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="DeveloperID" ColumnName="DeveloperID" />
+          <ScalarProperty Name="LocX" ColumnName="LocX" />
+          <ScalarProperty Name="LocY" ColumnName="LocY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Topics">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.Topic)">
+        <MappingFragment StoreEntitySet="Topics">
+          <ScalarProperty Name="TopicID" ColumnName="TopicID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.Client)">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Representative" ColumnName="Representative" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectCategories">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.ProjectCategory)">
+        <MappingFragment StoreEntitySet="ProjectCategories">
+          <ScalarProperty Name="ProjectCategoryID" ColumnName="ProjectCategoryID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.Project)">
+        <MappingFragment StoreEntitySet="Projects">
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+          <ScalarProperty Name="ProjectCategoryID" ColumnName="ProjectCategoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IssueCategories">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.IssueCategory)">
+        <MappingFragment StoreEntitySet="IssueCategories">
+          <ScalarProperty Name="IssueCategoryName" ColumnName="IssueCategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Issues">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.Issue)">
+        <MappingFragment StoreEntitySet="Issues">
+          <ScalarProperty Name="IssueID" ColumnName="IssueID" />
+          <ScalarProperty Name="Summary" ColumnName="Summary" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="Severity" ColumnName="Severity" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+          <ScalarProperty Name="MilestoneID" ColumnName="MilestoneID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="IssueCategoryName" ColumnName="IssueCategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectAssignments">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.ProjectAssignment)">
+        <MappingFragment StoreEntitySet="ProjectAssignments">
+          <ScalarProperty Name="ProjectAssignmentID" ColumnName="ProjectAssignmentID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="DeveloperID" ColumnName="DeveloperID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Milestones">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.Milestone)">
+        <MappingFragment StoreEntitySet="Milestones">
+          <ScalarProperty Name="MilestoneID" ColumnName="MilestoneID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Whiteboards">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.Whiteboard)">
+        <MappingFragment StoreEntitySet="Whiteboards">
+          <ScalarProperty Name="WhiteboardID" ColumnName="WhiteboardID" />
+          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IssueAttachments">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.IssueAttachment)">
+        <MappingFragment StoreEntitySet="IssueAttachments">
+          <ScalarProperty Name="IssueAttachmentID" ColumnName="IssueAttachmentID" />
+          <ScalarProperty Name="Filename" ColumnName="Filename" />
+          <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DeveloperID" ColumnName="DeveloperID" />
+          <ScalarProperty Name="IssueID" ColumnName="IssueID" />
+          <ScalarProperty Name="MimeType" ColumnName="MimeType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IssueAssignments">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.IssueAssignment)">
+        <MappingFragment StoreEntitySet="IssueAssignments">
+          <ScalarProperty Name="IssueAssignmentID" ColumnName="IssueAssignmentID" />
+          <ScalarProperty Name="IssueID" ColumnName="IssueID" />
+          <ScalarProperty Name="DeveloperID" ColumnName="DeveloperID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

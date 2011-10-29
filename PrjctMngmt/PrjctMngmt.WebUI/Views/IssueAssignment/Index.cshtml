@@ -1,0 +1,40 @@
+﻿@model IEnumerable<PrjctMngmt.Models.IssueAssignment>
+
+@{
+    ViewBag.Title = "Issue assignments";
+}
+
+<h2>Issue assignments</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Issue
+        </th>
+        <th>
+            Developer
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Issue.Summary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Developer.FirstName)
+            @Html.DisplayFor(modelItem => item.Developer.LastName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IssueAssignmentID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IssueAssignmentID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IssueAssignmentID })
+        </td>
+    </tr>
+}
+
+</table>

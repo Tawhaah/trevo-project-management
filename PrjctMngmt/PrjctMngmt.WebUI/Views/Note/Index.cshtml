@@ -1,0 +1,26 @@
+﻿@model IEnumerable<PrjctMngmt.Models.Note>
+
+@{
+    ViewBag.Title = "Notes";
+}
+
+<script type="text/javascript">
+    $(function () {
+        $("#tabs").tabs();
+    });
+</script>
+
+<div id="tabs">
+	<ul>
+        @foreach (var proj in (List<PrjctMngmt.Models.Project>)ViewData["Projects"])
+        {
+		    <li><a href="#@proj.Name">@proj.Name</a></li>
+        }
+	</ul>
+    @foreach (var proj in (List<PrjctMngmt.Models.Project>)ViewData["Projects"])
+    {
+	    <div id="@proj.Name">
+        <!-- List project's notes here -->
+	    </div>
+    }
+</div>

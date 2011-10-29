@@ -1,0 +1,33 @@
+﻿@model PrjctMngmt.Models.Milestone
+
+@{
+    ViewBag.Title = "Delete milestone";
+}
+
+<h2>Delete milestone</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Milestone</legend>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">Due date</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DueDate)
+    </div>
+
+    <div class="display-label">Project</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Project.Name)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

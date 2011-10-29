@@ -1,0 +1,29 @@
+﻿@model PrjctMngmt.Models.TaskAssignment
+
+@{
+    ViewBag.Title = "Delete task assignment";
+}
+
+<h2>Delete task assingment</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Task assignment</legend>
+
+    <div class="display-label">Task</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Task.Name)
+    </div>
+
+    <div class="display-label">Developer</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Developer.FirstName)
+        @Html.DisplayFor(model => model.Developer.LastName)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

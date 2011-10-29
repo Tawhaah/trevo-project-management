@@ -1,0 +1,628 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="EntityModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+  <EntityContainer Name="EntityModelContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Developers" EntityType="EntityModel.Developer" />
+    <EntitySet Name="Teams" EntityType="EntityModel.Team" />
+    <EntitySet Name="Tasks" EntityType="EntityModel.Task" />
+    <EntitySet Name="TaskCategories" EntityType="EntityModel.TaskCategory" />
+    <EntitySet Name="Messages" EntityType="EntityModel.Message" />
+    <EntitySet Name="Documents" EntityType="EntityModel.Document" />
+    <EntitySet Name="TaskAssignments" EntityType="EntityModel.TaskAssignment" />
+    <EntitySet Name="Notes" EntityType="EntityModel.Note" />
+    <EntitySet Name="Topics" EntityType="EntityModel.Topic" />
+    <EntitySet Name="Clients" EntityType="EntityModel.Client" />
+    <EntitySet Name="ProjectCategories" EntityType="EntityModel.ProjectCategory" />
+    <EntitySet Name="Projects" EntityType="EntityModel.Project" />
+    <EntitySet Name="IssueCategories" EntityType="EntityModel.IssueCategory" />
+    <EntitySet Name="Issues" EntityType="EntityModel.Issue" />
+    <EntitySet Name="ProjectAssignments" EntityType="EntityModel.ProjectAssignment" />
+    <EntitySet Name="Milestones" EntityType="EntityModel.Milestone" />
+    <EntitySet Name="Whiteboards" EntityType="EntityModel.Whiteboard" />
+    <EntitySet Name="IssueAttachments" EntityType="EntityModel.IssueAttachment" />
+    <EntitySet Name="IssueAssignments" EntityType="EntityModel.IssueAssignment" />
+    <AssociationSet Name="ProjectTask" Association="EntityModel.ProjectTask">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="Task" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="TaskTaskAssignment" Association="EntityModel.TaskTaskAssignment">
+      <End Role="Task" EntitySet="Tasks" />
+      <End Role="TaskAssignment" EntitySet="TaskAssignments" />
+    </AssociationSet>
+    <AssociationSet Name="DeveloperMessage" Association="EntityModel.DeveloperMessage">
+      <End Role="Developer" EntitySet="Developers" />
+      <End Role="Message" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="TopicMessage" Association="EntityModel.TopicMessage">
+      <End Role="Topic" EntitySet="Topics" />
+      <End Role="Message" EntitySet="Messages" />
+    </AssociationSet>
+    <AssociationSet Name="DeveloperDocument" Association="EntityModel.DeveloperDocument">
+      <End Role="Developer" EntitySet="Developers" />
+      <End Role="Document" EntitySet="Documents" />
+    </AssociationSet>
+    <AssociationSet Name="DeveloperTaskAssignment" Association="EntityModel.DeveloperTaskAssignment">
+      <End Role="Developer" EntitySet="Developers" />
+      <End Role="TaskAssignment" EntitySet="TaskAssignments" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectNote" Association="EntityModel.ProjectNote">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="Note" EntitySet="Notes" />
+    </AssociationSet>
+    <AssociationSet Name="ClientProject" Association="EntityModel.ClientProject">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectProjectAssignment" Association="EntityModel.ProjectProjectAssignment">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="ProjectRole" EntitySet="ProjectAssignments" />
+    </AssociationSet>
+    <AssociationSet Name="DeveloperProjectAssignment" Association="EntityModel.DeveloperProjectAssignment">
+      <End Role="Developer" EntitySet="Developers" />
+      <End Role="ProjectRole" EntitySet="ProjectAssignments" />
+    </AssociationSet>
+    <AssociationSet Name="IssueIssueAssignment" Association="EntityModel.IssueIssueAssignment">
+      <End Role="Issue" EntitySet="Issues" />
+      <End Role="IssueAssignment" EntitySet="IssueAssignments" />
+    </AssociationSet>
+    <AssociationSet Name="DeveloperIssueAssignment" Association="EntityModel.DeveloperIssueAssignment">
+      <End Role="Developer" EntitySet="Developers" />
+      <End Role="IssueAssignment" EntitySet="IssueAssignments" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectWhiteboard" Association="EntityModel.ProjectWhiteboard">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="Whiteboard" EntitySet="Whiteboards" />
+    </AssociationSet>
+    <AssociationSet Name="DeveloperIssueAttachment" Association="EntityModel.DeveloperIssueAttachment">
+      <End Role="Developer" EntitySet="Developers" />
+      <End Role="IssueAttachment" EntitySet="IssueAttachments" />
+    </AssociationSet>
+    <AssociationSet Name="IssueIssueAttachment" Association="EntityModel.IssueIssueAttachment">
+      <End Role="Issue" EntitySet="Issues" />
+      <End Role="IssueAttachment" EntitySet="IssueAttachments" />
+    </AssociationSet>
+    <AssociationSet Name="MilestoneIssue" Association="EntityModel.MilestoneIssue">
+      <End Role="Milestone" EntitySet="Milestones" />
+      <End Role="Issue" EntitySet="Issues" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectMilestone" Association="EntityModel.ProjectMilestone">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="Milestone" EntitySet="Milestones" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectCategoryProject" Association="EntityModel.ProjectCategoryProject">
+      <End Role="ProjectCategory" EntitySet="ProjectCategories" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectIssue" Association="EntityModel.ProjectIssue">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="Issue" EntitySet="Issues" />
+    </AssociationSet>
+    <AssociationSet Name="DeveloperNote" Association="EntityModel.DeveloperNote">
+      <End Role="Developer" EntitySet="Developers" />
+      <End Role="Note" EntitySet="Notes" />
+    </AssociationSet>
+    <AssociationSet Name="TaskCategoryTask" Association="EntityModel.TaskCategoryTask">
+      <End Role="TaskCategory" EntitySet="TaskCategories" />
+      <End Role="Task" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="TeamDeveloper" Association="EntityModel.TeamDeveloper">
+      <End Role="Team" EntitySet="Teams" />
+      <End Role="Developer" EntitySet="Developers" />
+    </AssociationSet>
+    <AssociationSet Name="IssueCategoryIssue" Association="EntityModel.IssueCategoryIssue">
+      <End Role="IssueCategory" EntitySet="IssueCategories" />
+      <End Role="Issue" EntitySet="Issues" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Developer">
+    <Key>
+      <PropertyRef Name="DeveloperID" />
+    </Key>
+    <Property Type="Int32" Name="DeveloperID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="FirstName" Nullable="false" />
+    <Property Type="String" Name="LastName" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="true" />
+    <Property Type="String" Name="PhoneNumber" Nullable="true" />
+    <Property Type="String" Name="Position" Nullable="true" />
+    <NavigationProperty Name="Message" Relationship="EntityModel.DeveloperMessage" FromRole="Developer" ToRole="Message" />
+    <NavigationProperty Name="Document" Relationship="EntityModel.DeveloperDocument" FromRole="Developer" ToRole="Document" />
+    <NavigationProperty Name="TaskAssignment" Relationship="EntityModel.DeveloperTaskAssignment" FromRole="Developer" ToRole="TaskAssignment" />
+    <NavigationProperty Name="ProjectRole" Relationship="EntityModel.DeveloperProjectAssignment" FromRole="Developer" ToRole="ProjectRole" />
+    <NavigationProperty Name="IssueAssignment" Relationship="EntityModel.DeveloperIssueAssignment" FromRole="Developer" ToRole="IssueAssignment" />
+    <NavigationProperty Name="IssueAttachment" Relationship="EntityModel.DeveloperIssueAttachment" FromRole="Developer" ToRole="IssueAttachment" />
+    <NavigationProperty Name="Note" Relationship="EntityModel.DeveloperNote" FromRole="Developer" ToRole="Note" />
+    <Property Type="String" Name="UserName" Nullable="false" />
+    <NavigationProperty Name="Team" Relationship="EntityModel.TeamDeveloper" FromRole="Developer" ToRole="Team" />
+    <Property Type="String" Name="TeamName" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Team">
+    <Key>
+      <PropertyRef Name="TeamName" />
+    </Key>
+    <Property Type="String" Name="TeamName" Nullable="false" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <NavigationProperty Name="Developer" Relationship="EntityModel.TeamDeveloper" FromRole="Team" ToRole="Developer" />
+  </EntityType>
+  <EntityType Name="Task">
+    <Key>
+      <PropertyRef Name="TaskID" />
+    </Key>
+    <Property Type="Int32" Name="TaskID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="DateTime" Name="StartDate" Nullable="true" />
+    <Property Type="DateTime" Name="EndDate" Nullable="true" />
+    <Property Type="Int32" Name="ExpectedWorkHours" Nullable="true" />
+    <Property Type="Int32" Name="TimeSpend" Nullable="true" />
+    <Property Type="String" Name="Status" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <NavigationProperty Name="Project" Relationship="EntityModel.ProjectTask" FromRole="Task" ToRole="Project" />
+    <Property Type="Int32" Name="ProjectID" Nullable="false" />
+    <NavigationProperty Name="TaskAssignment" Relationship="EntityModel.TaskTaskAssignment" FromRole="Task" ToRole="TaskAssignment" />
+    <NavigationProperty Name="TaskCategory" Relationship="EntityModel.TaskCategoryTask" FromRole="Task" ToRole="TaskCategory" />
+    <Property Type="String" Name="TaskCategoryName" Nullable="true" />
+  </EntityType>
+  <EntityType Name="TaskCategory">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Type="String" Name="Name" Nullable="false" />
+    <NavigationProperty Name="Task" Relationship="EntityModel.TaskCategoryTask" FromRole="TaskCategory" ToRole="Task" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="MessageID" />
+    </Key>
+    <Property Type="Int32" Name="MessageID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Data" Nullable="false" />
+    <Property Type="DateTime" Name="EntryDate" Nullable="false" />
+    <NavigationProperty Name="Developer" Relationship="EntityModel.DeveloperMessage" FromRole="Message" ToRole="Developer" />
+    <Property Type="Int32" Name="DeveloperID" Nullable="false" />
+    <NavigationProperty Name="Topic" Relationship="EntityModel.TopicMessage" FromRole="Message" ToRole="Topic" />
+    <Property Type="Int32" Name="TopicID" Nullable="false" />
+    <Property Type="DateTime" Name="EditDate" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Document">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+    </Key>
+    <Property Type="Int32" Name="DocumentID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="FileName" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="DateTime" Name="EntryDate" Nullable="false" />
+    <NavigationProperty Name="Developer" Relationship="EntityModel.DeveloperDocument" FromRole="Document" ToRole="Developer" />
+    <Property Type="Int32" Name="DeveloperID" Nullable="false" />
+    <Property Type="String" Name="MimeType" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TaskAssignment">
+    <Key>
+      <PropertyRef Name="TaskAssignmentID" />
+    </Key>
+    <Property Type="Int32" Name="TaskAssignmentID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Task" Relationship="EntityModel.TaskTaskAssignment" FromRole="TaskAssignment" ToRole="Task" />
+    <Property Type="Int32" Name="TaskID" Nullable="false" />
+    <NavigationProperty Name="Developer" Relationship="EntityModel.DeveloperTaskAssignment" FromRole="TaskAssignment" ToRole="Developer" />
+    <Property Type="Int32" Name="DeveloperID" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Note">
+    <Key>
+      <PropertyRef Name="NoteID" />
+    </Key>
+    <Property Type="Int32" Name="NoteID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Data" Nullable="false" />
+    <NavigationProperty Name="Project" Relationship="EntityModel.ProjectNote" FromRole="Note" ToRole="Project" />
+    <Property Type="Int32" Name="ProjectID" Nullable="false" />
+    <NavigationProperty Name="Developer" Relationship="EntityModel.DeveloperNote" FromRole="Note" ToRole="Developer" />
+    <Property Type="Int32" Name="DeveloperID" Nullable="false" />
+    <Property Type="String" Name="LocX" Nullable="false" />
+    <Property Type="String" Name="LocY" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Topic">
+    <Key>
+      <PropertyRef Name="TopicID" />
+    </Key>
+    <Property Type="Int32" Name="TopicID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <NavigationProperty Name="Message" Relationship="EntityModel.TopicMessage" FromRole="Topic" ToRole="Message" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ClientID" />
+    </Key>
+    <Property Type="Int32" Name="ClientID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="String" Name="Representative" Nullable="false" />
+    <Property Type="String" Name="Address" Nullable="true" />
+    <Property Type="String" Name="City" Nullable="true" />
+    <Property Type="String" Name="Country" Nullable="true" />
+    <Property Type="String" Name="PhoneNumber" Nullable="false" />
+    <Property Type="String" Name="Email" Nullable="true" />
+    <NavigationProperty Name="Project" Relationship="EntityModel.ClientProject" FromRole="Client" ToRole="Project" />
+  </EntityType>
+  <EntityType Name="ProjectCategory">
+    <Key>
+      <PropertyRef Name="ProjectCategoryID" />
+    </Key>
+    <Property Type="Int32" Name="ProjectCategoryID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <NavigationProperty Name="Project" Relationship="EntityModel.ProjectCategoryProject" FromRole="ProjectCategory" ToRole="Project" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="ProjectID" />
+    </Key>
+    <Property Type="Int32" Name="ProjectID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="DateTime" Name="StartDate" Nullable="true" />
+    <Property Type="DateTime" Name="EndDate" Nullable="true" />
+    <Property Type="String" Name="Status" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <NavigationProperty Name="Task" Relationship="EntityModel.ProjectTask" FromRole="Project" ToRole="Task" />
+    <NavigationProperty Name="Note" Relationship="EntityModel.ProjectNote" FromRole="Project" ToRole="Note" />
+    <NavigationProperty Name="Client" Relationship="EntityModel.ClientProject" FromRole="Project" ToRole="Client" />
+    <Property Type="Int32" Name="ClientID" Nullable="true" />
+    <NavigationProperty Name="ProjectRole" Relationship="EntityModel.ProjectProjectAssignment" FromRole="Project" ToRole="ProjectRole" />
+    <NavigationProperty Name="Whiteboard" Relationship="EntityModel.ProjectWhiteboard" FromRole="Project" ToRole="Whiteboard" />
+    <NavigationProperty Name="Milestone" Relationship="EntityModel.ProjectMilestone" FromRole="Project" ToRole="Milestone" />
+    <NavigationProperty Name="ProjectCategory" Relationship="EntityModel.ProjectCategoryProject" FromRole="Project" ToRole="ProjectCategory" />
+    <Property Type="Int32" Name="ProjectCategoryID" Nullable="true" />
+    <NavigationProperty Name="Issue" Relationship="EntityModel.ProjectIssue" FromRole="Project" ToRole="Issue" />
+  </EntityType>
+  <EntityType Name="IssueCategory">
+    <Key>
+      <PropertyRef Name="IssueCategoryName" />
+    </Key>
+    <Property Type="String" Name="IssueCategoryName" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Issue" Relationship="EntityModel.IssueCategoryIssue" FromRole="IssueCategory" ToRole="Issue" />
+  </EntityType>
+  <EntityType Name="Issue">
+    <Key>
+      <PropertyRef Name="IssueID" />
+    </Key>
+    <Property Type="Int32" Name="IssueID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Summary" Nullable="false" />
+    <Property Type="String" Name="Priority" Nullable="true" />
+    <Property Type="String" Name="Severity" Nullable="true" />
+    <Property Type="String" Name="Status" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="false" />
+    <Property Type="DateTime" Name="EntryDate" Nullable="true" />
+    <NavigationProperty Name="IssueAssignment" Relationship="EntityModel.IssueIssueAssignment" FromRole="Issue" ToRole="IssueAssignment" />
+    <NavigationProperty Name="IssueAttachment" Relationship="EntityModel.IssueIssueAttachment" FromRole="Issue" ToRole="IssueAttachment" />
+    <NavigationProperty Name="Milestone" Relationship="EntityModel.MilestoneIssue" FromRole="Issue" ToRole="Milestone" />
+    <Property Type="Int32" Name="MilestoneID" Nullable="true" />
+    <NavigationProperty Name="Project" Relationship="EntityModel.ProjectIssue" FromRole="Issue" ToRole="Project" />
+    <Property Type="Int32" Name="ProjectID" Nullable="false" />
+    <NavigationProperty Name="IssueCategory" Relationship="EntityModel.IssueCategoryIssue" FromRole="Issue" ToRole="IssueCategory" />
+    <Property Type="String" Name="IssueCategoryName" Nullable="true" />
+  </EntityType>
+  <EntityType Name="ProjectAssignment">
+    <Key>
+      <PropertyRef Name="ProjectAssignmentID" />
+    </Key>
+    <Property Type="Int32" Name="ProjectAssignmentID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="RoleName" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <NavigationProperty Name="Project" Relationship="EntityModel.ProjectProjectAssignment" FromRole="ProjectRole" ToRole="Project" />
+    <Property Type="Int32" Name="ProjectID" Nullable="false" />
+    <NavigationProperty Name="Developer" Relationship="EntityModel.DeveloperProjectAssignment" FromRole="ProjectRole" ToRole="Developer" />
+    <Property Type="Int32" Name="DeveloperID" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Milestone">
+    <Key>
+      <PropertyRef Name="MilestoneID" />
+    </Key>
+    <Property Type="Int32" Name="MilestoneID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="DateTime" Name="DueDate" Nullable="true" />
+    <NavigationProperty Name="Issue" Relationship="EntityModel.MilestoneIssue" FromRole="Milestone" ToRole="Issue" />
+    <NavigationProperty Name="Project" Relationship="EntityModel.ProjectMilestone" FromRole="Milestone" ToRole="Project" />
+    <Property Type="Int32" Name="ProjectID" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Whiteboard">
+    <Key>
+      <PropertyRef Name="WhiteboardID" />
+    </Key>
+    <Property Type="Int32" Name="WhiteboardID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Project" Relationship="EntityModel.ProjectWhiteboard" FromRole="Whiteboard" ToRole="Project" />
+    <Property Type="Int32" Name="ProjectID" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IssueAttachment">
+    <Key>
+      <PropertyRef Name="IssueAttachmentID" />
+    </Key>
+    <Property Type="Int32" Name="IssueAttachmentID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Filename" Nullable="false" />
+    <Property Type="DateTime" Name="EntryDate" Nullable="false" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <NavigationProperty Name="Developer" Relationship="EntityModel.DeveloperIssueAttachment" FromRole="IssueAttachment" ToRole="Developer" />
+    <Property Type="Int32" Name="DeveloperID" Nullable="false" />
+    <NavigationProperty Name="Issue" Relationship="EntityModel.IssueIssueAttachment" FromRole="IssueAttachment" ToRole="Issue" />
+    <Property Type="Int32" Name="IssueID" Nullable="false" />
+    <Property Type="String" Name="MimeType" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IssueAssignment">
+    <Key>
+      <PropertyRef Name="IssueAssignmentID" />
+    </Key>
+    <Property Type="Int32" Name="IssueAssignmentID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Issue" Relationship="EntityModel.IssueIssueAssignment" FromRole="IssueAssignment" ToRole="Issue" />
+    <Property Type="Int32" Name="IssueID" Nullable="false" />
+    <NavigationProperty Name="Developer" Relationship="EntityModel.DeveloperIssueAssignment" FromRole="IssueAssignment" ToRole="Developer" />
+    <Property Type="Int32" Name="DeveloperID" Nullable="false" />
+  </EntityType>
+  <Association Name="ProjectTask">
+    <End Type="EntityModel.Project" Role="Project" Multiplicity="1" />
+    <End Type="EntityModel.Task" Role="Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TaskTaskAssignment">
+    <End Type="EntityModel.Task" Role="Task" Multiplicity="1" />
+    <End Type="EntityModel.TaskAssignment" Role="TaskAssignment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="TaskID" />
+      </Principal>
+      <Dependent Role="TaskAssignment">
+        <PropertyRef Name="TaskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DeveloperMessage">
+    <End Type="EntityModel.Developer" Role="Developer" Multiplicity="1" />
+    <End Type="EntityModel.Message" Role="Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Developer">
+        <PropertyRef Name="DeveloperID" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="DeveloperID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TopicMessage">
+    <End Type="EntityModel.Topic" Role="Topic" Multiplicity="1" />
+    <End Type="EntityModel.Message" Role="Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Topic">
+        <PropertyRef Name="TopicID" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="TopicID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DeveloperDocument">
+    <End Type="EntityModel.Developer" Role="Developer" Multiplicity="1" />
+    <End Type="EntityModel.Document" Role="Document" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Developer">
+        <PropertyRef Name="DeveloperID" />
+      </Principal>
+      <Dependent Role="Document">
+        <PropertyRef Name="DeveloperID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DeveloperTaskAssignment">
+    <End Type="EntityModel.Developer" Role="Developer" Multiplicity="1" />
+    <End Type="EntityModel.TaskAssignment" Role="TaskAssignment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Developer">
+        <PropertyRef Name="DeveloperID" />
+      </Principal>
+      <Dependent Role="TaskAssignment">
+        <PropertyRef Name="DeveloperID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectNote">
+    <End Type="EntityModel.Project" Role="Project" Multiplicity="1" />
+    <End Type="EntityModel.Note" Role="Note" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="Note">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClientProject">
+    <End Type="EntityModel.Client" Role="Client" Multiplicity="0..1" />
+    <End Type="EntityModel.Project" Role="Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ClientID" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectProjectAssignment">
+    <End Type="EntityModel.Project" Role="Project" Multiplicity="1" />
+    <End Type="EntityModel.ProjectAssignment" Role="ProjectRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="ProjectRole">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DeveloperProjectAssignment">
+    <End Type="EntityModel.Developer" Role="Developer" Multiplicity="1" />
+    <End Type="EntityModel.ProjectAssignment" Role="ProjectRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Developer">
+        <PropertyRef Name="DeveloperID" />
+      </Principal>
+      <Dependent Role="ProjectRole">
+        <PropertyRef Name="DeveloperID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IssueIssueAssignment">
+    <End Type="EntityModel.Issue" Role="Issue" Multiplicity="1" />
+    <End Type="EntityModel.IssueAssignment" Role="IssueAssignment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Issue">
+        <PropertyRef Name="IssueID" />
+      </Principal>
+      <Dependent Role="IssueAssignment">
+        <PropertyRef Name="IssueID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DeveloperIssueAssignment">
+    <End Type="EntityModel.Developer" Role="Developer" Multiplicity="1" />
+    <End Type="EntityModel.IssueAssignment" Role="IssueAssignment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Developer">
+        <PropertyRef Name="DeveloperID" />
+      </Principal>
+      <Dependent Role="IssueAssignment">
+        <PropertyRef Name="DeveloperID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectWhiteboard">
+    <End Type="EntityModel.Project" Role="Project" Multiplicity="1" />
+    <End Type="EntityModel.Whiteboard" Role="Whiteboard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="Whiteboard">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DeveloperIssueAttachment">
+    <End Type="EntityModel.Developer" Role="Developer" Multiplicity="1" />
+    <End Type="EntityModel.IssueAttachment" Role="IssueAttachment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Developer">
+        <PropertyRef Name="DeveloperID" />
+      </Principal>
+      <Dependent Role="IssueAttachment">
+        <PropertyRef Name="DeveloperID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IssueIssueAttachment">
+    <End Type="EntityModel.Issue" Role="Issue" Multiplicity="1" />
+    <End Type="EntityModel.IssueAttachment" Role="IssueAttachment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Issue">
+        <PropertyRef Name="IssueID" />
+      </Principal>
+      <Dependent Role="IssueAttachment">
+        <PropertyRef Name="IssueID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MilestoneIssue">
+    <End Type="EntityModel.Milestone" Role="Milestone" Multiplicity="0..1" />
+    <End Type="EntityModel.Issue" Role="Issue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Milestone">
+        <PropertyRef Name="MilestoneID" />
+      </Principal>
+      <Dependent Role="Issue">
+        <PropertyRef Name="MilestoneID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectMilestone">
+    <End Type="EntityModel.Project" Role="Project" Multiplicity="0..1" />
+    <End Type="EntityModel.Milestone" Role="Milestone" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="Milestone">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectCategoryProject">
+    <End Type="EntityModel.ProjectCategory" Role="ProjectCategory" Multiplicity="0..1" />
+    <End Type="EntityModel.Project" Role="Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectCategory">
+        <PropertyRef Name="ProjectCategoryID" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="ProjectCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectIssue">
+    <End Type="EntityModel.Project" Role="Project" Multiplicity="1" />
+    <End Type="EntityModel.Issue" Role="Issue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="ProjectID" />
+      </Principal>
+      <Dependent Role="Issue">
+        <PropertyRef Name="ProjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DeveloperNote">
+    <End Type="EntityModel.Developer" Role="Developer" Multiplicity="1" />
+    <End Type="EntityModel.Note" Role="Note" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Developer">
+        <PropertyRef Name="DeveloperID" />
+      </Principal>
+      <Dependent Role="Note">
+        <PropertyRef Name="DeveloperID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TaskCategoryTask">
+    <End Type="EntityModel.TaskCategory" Role="TaskCategory" Multiplicity="0..1" />
+    <End Type="EntityModel.Task" Role="Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaskCategory">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="TaskCategoryName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TeamDeveloper">
+    <End Type="EntityModel.Team" Role="Team" Multiplicity="0..1" />
+    <End Type="EntityModel.Developer" Role="Developer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Team">
+        <PropertyRef Name="TeamName" />
+      </Principal>
+      <Dependent Role="Developer">
+        <PropertyRef Name="TeamName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IssueCategoryIssue">
+    <End Type="EntityModel.IssueCategory" Role="IssueCategory" Multiplicity="0..1" />
+    <End Type="EntityModel.Issue" Role="Issue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IssueCategory">
+        <PropertyRef Name="IssueCategoryName" />
+      </Principal>
+      <Dependent Role="Issue">
+        <PropertyRef Name="IssueCategoryName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

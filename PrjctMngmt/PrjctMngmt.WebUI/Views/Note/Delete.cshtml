@@ -1,0 +1,34 @@
+﻿@model PrjctMngmt.Models.Note
+
+@{
+    ViewBag.Title = "Delete note";
+}
+
+<h2>Delete note</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Note</legend>
+
+    <div class="display-label">Note</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Data)
+    </div>
+
+    <div class="display-label">Project</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Project.Name)
+    </div>
+
+    <div class="display-label">Developer</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Developer.FirstName)
+        @Html.DisplayFor(model => model.Developer.LastName)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

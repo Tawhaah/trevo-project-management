@@ -1,0 +1,7 @@
+C:\Users\Pepe\documents\visual studio 2010\Projects\PrjctMgmt\PrjctMgmt\bin\PrjctMgmt.dll
+C:\Users\Pepe\documents\visual studio 2010\Projects\PrjctMgmt\PrjctMgmt\bin\PrjctMgmt.pdb
+C:\Users\Pepe\documents\visual studio 2010\Projects\PrjctMgmt\PrjctMgmt\bin\EntityFramework.dll
+C:\Users\Pepe\documents\visual studio 2010\Projects\PrjctMgmt\PrjctMgmt\bin\EntityFramework.xml
+C:\Users\Pepe\documents\visual studio 2010\Projects\PrjctMgmt\PrjctMgmt\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Pepe\documents\visual studio 2010\Projects\PrjctMgmt\PrjctMgmt\obj\Debug\PrjctMgmt.dll
+C:\Users\Pepe\documents\visual studio 2010\Projects\PrjctMgmt\PrjctMgmt\obj\Debug\PrjctMgmt.pdb

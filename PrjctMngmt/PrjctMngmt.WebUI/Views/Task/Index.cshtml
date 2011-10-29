@@ -1,0 +1,81 @@
+﻿@model IEnumerable<PrjctMngmt.Models.Task>
+
+@{
+    ViewBag.Title = "Tasks";
+}
+
+<h2>Tasks</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Start date
+        </th>
+        <th>
+            End date
+        </th>
+        <th>
+            Expected work hours
+        </th>
+        <th>
+            Time spend
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Task category
+        </th>
+        <th>
+            Project
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpectedWorkHours)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeSpend)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TaskCategory.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Project.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.TaskID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TaskID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TaskID })
+        </td>
+    </tr>
+}
+
+</table>

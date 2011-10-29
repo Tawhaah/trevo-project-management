@@ -1,0 +1,69 @@
+﻿@model IEnumerable<PrjctMngmt.Models.Project>
+
+@{
+    ViewBag.Title = "Projects";
+}
+
+<h2>Projects</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Start date
+        </th>
+        <th>
+            End date
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Client
+        </th>
+        <th>
+            Category
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Client.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProjectCategory.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProjectID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ProjectID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProjectID })
+        </td>
+    </tr>
+}
+
+</table>

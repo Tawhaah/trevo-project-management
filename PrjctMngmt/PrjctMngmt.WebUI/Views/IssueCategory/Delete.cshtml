@@ -1,0 +1,24 @@
+﻿@model PrjctMngmt.Models.IssueCategory
+
+@{
+    ViewBag.Title = "Delete issue category";
+}
+
+<h2>Delete issue category</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Issue category</legend>
+
+    <div class="display-label">Issue category</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IssueCategoryName)
+    </div>
+
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
