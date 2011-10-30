@@ -112,6 +112,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\team.css" />
     <Content Include="Content\themes\base\images\ui-bg_diagonals-thick_70_6e8bbf_40x40.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_616161_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_5c88c1_1x400.png" />

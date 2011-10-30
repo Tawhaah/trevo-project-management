@@ -6,3 +6,11 @@ C:\Users\Pepe\Documents\Visual Studio 2010\Projects\PrjctMngmt\PrjctMngmt.Domain
 C:\Users\Pepe\Documents\Visual Studio 2010\Projects\PrjctMngmt\PrjctMngmt.Domain\obj\Debug\PrjctMngmt.Domain.dll
 C:\Users\Pepe\Documents\Visual Studio 2010\Projects\PrjctMngmt\PrjctMngmt.Domain\obj\Debug\PrjctMngmt.Domain.pdb
 C:\Users\Pepe\Documents\Visual Studio 2010\Projects\PrjctMngmt\PrjctMngmt.Domain\bin\Debug\PrjctMngmt.Domain.dll.config
+C:\Users\Pepe\Documents\Visual Studio 2010\Projects\trevo-project-management\PrjctMngmt\PrjctMngmt.Domain\bin\Debug\PrjctMngmt.Domain.dll.config
+C:\Users\Pepe\Documents\Visual Studio 2010\Projects\trevo-project-management\PrjctMngmt\PrjctMngmt.Domain\bin\Debug\PrjctMngmt.Domain.dll
+C:\Users\Pepe\Documents\Visual Studio 2010\Projects\trevo-project-management\PrjctMngmt\PrjctMngmt.Domain\bin\Debug\PrjctMngmt.Domain.pdb
+C:\Users\Pepe\Documents\Visual Studio 2010\Projects\trevo-project-management\PrjctMngmt\PrjctMngmt.Domain\bin\Debug\EntityFramework.dll
+C:\Users\Pepe\Documents\Visual Studio 2010\Projects\trevo-project-management\PrjctMngmt\PrjctMngmt.Domain\bin\Debug\EntityFramework.xml
+C:\Users\Pepe\Documents\Visual Studio 2010\Projects\trevo-project-management\PrjctMngmt\PrjctMngmt.Domain\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Pepe\Documents\Visual Studio 2010\Projects\trevo-project-management\PrjctMngmt\PrjctMngmt.Domain\obj\Debug\PrjctMngmt.Domain.dll
+C:\Users\Pepe\Documents\Visual Studio 2010\Projects\trevo-project-management\PrjctMngmt\PrjctMngmt.Domain\obj\Debug\PrjctMngmt.Domain.pdb
