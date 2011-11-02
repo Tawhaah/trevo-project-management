@@ -7,8 +7,8 @@
 <script type="text/javascript">
     $(function () {
         // there's the developers and the team
-        var $developers = $("#developers"),
-            $team = $("#team");
+        var $developers = $(".developers"),
+            $teams = $(".team");
 
         // let the developers items be draggable
         $("li", $developers).draggable({
@@ -19,40 +19,42 @@
         });
 
         // let the team be droppable, accepting the developers' items
-        $team.droppable({
-            accept: "#developers > li",
-            activeClass: "ui-state-highlight",
+        $teams.droppable({
+            accept: ".developers > li",
+            hoverClass: "ui-state-highlight",
             drop: function (event, ui) {
                 deleteImage(ui.draggable);
             }
         });
 
-        // let the developers be droppable as well, accepting items from the team
-        $developers.droppable({
-            accept: "#team li",
-            activeClass: "custom-state-active",
-            drop: function (event, ui) {
-                recycleImage(ui.draggable);
-            }
-        });
-
-        // image deletion function
-        var recycle_icon = "<a href='link/to/recycle/script/when/we/have/js/off'
-         title='Recycle this image' class='ui-icon ui-icon-refresh'>Recycle image</a>";
+        // add developer to team function
+        var removeMember = "<a href='link/to/recycle/script/when/we/have/js/off' title='Remove member' class='ui-icon ui-icon-remove'>Remove member</a>";
         function deleteImage($item) {
             $item.fadeOut(function () {
-                var $list = $("ul", $team).length ?
-					$("ul", $team) :
-					$("<ul class='developers ui-helper-reset'/>").appendTo($team);
-                $item.append(recycle_icon).appendTo($list).fadeIn(function () { });
+                var targetElem = $(this).attr("id");
+                var $list = $($teams).length ?
+					$($teams) :
+					$("<ul class='developers ui-helper-reset'/>").appendTo(targetElem);
+                if ($item.hasOwnProperty(removeMember)) {
+                }
+                else {
+                    $item.append(removeMember);
+                }
+                $item.appendTo($list).fadeIn(function () { });
+                /*
+                var $list = $("ul", $teams).length ?
+                $("ul", $teams) :
+                $("<ul class='developers ui-helper-reset'/>").appendTo(targetElem);
+                $item.append(removeMember).appendTo($list).fadeIn(function () { });
+                */
             });
         }
 
-        // image recycle function
+        // remove developer from the team
         function recycleImage($item) {
             $item.fadeOut(function () {
                 $item
-					.find("a.ui-icon-refresh")
+					.find("a.ui-icon-remove")
 						.remove()
 					.end()
 					.css("width", "96px")
@@ -68,7 +70,7 @@
         $("ul.developers > li").click(function (event) {
             var $item = $(this),
 				$target = $(event.target);
-            if ($target.is("a.ui-icon-refresh")) {
+            if ($target.is("a.ui-icon-remove")) {
                 recycleImage($item);
             }
             return false;
@@ -77,14 +79,18 @@
 </script>
 
 <div class="ui-widget ui-helper-clearfix">
-    <ul id="developers" class="developers ui-helper-reset ui-helper-clearfix">
-    @foreach (var dev in (List<string>)ViewData["Developers"])
-    {
-       	<li class="ui-widget-content ui-corner-tr">
-            @dev
-        </li>
-    }
+    <ul class="developers ui-helper-reset ui-helper-clearfix">
+        @foreach (var dev in (List<string>)ViewData["Developers"])
+        {
+            <li id="@dev" class="ui-widget-content ui-corner-tr">
+                @dev
+            </li>
+        }
     </ul>
-    <div id="team" class="ui-widget-content">
-    </div>
+    @foreach (var team in Model)
+    {
+        <div id="@team.TeamName" class="team ui-widget-content">
+            <p>@team.TeamName</p>
+        </div>
+    }
 </div>

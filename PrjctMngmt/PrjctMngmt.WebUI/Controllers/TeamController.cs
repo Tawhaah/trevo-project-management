@@ -58,10 +58,11 @@ namespace PrjctMngmt.Controllers
 
         //
         // GET: /Team/Create
-
+        [OutputCache(Duration = 0)]
         public ActionResult Create()
         {
-            return View();
+            var team = new Team();
+            return PartialView(team);
         } 
 
         //
@@ -71,21 +72,21 @@ namespace PrjctMngmt.Controllers
         public ActionResult Create([Bind(Exclude = "TeamID")]Team newTeam)
         {
             if (!ModelState.IsValid)
-                return View();
+            return View();
 
             try
             {
                 _dataModel.AddToTeams(newTeam);
                 _dataModel.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "Developer");
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "Developer");
             }
         }
-        
+
         //
         // GET: /Team/Edit/5
  
@@ -179,19 +180,7 @@ namespace PrjctMngmt.Controllers
         }
 
         public JsonResult DevelopersByTeam(string TeamName)
-        {
-            /*
-            List<Developer> teamList = new List<Developer>();
-            List<Developer> developers = _dataModel.Developers.ToList();
-            foreach (Developer dev in developers)
-            {
-                if (dev.TeamName == TeamName)
-                {
-                    teamList.Add(dev);
-                }
-            }
-            */
-            
+        {            
             var developers = _dataModel.Developers
                 .Where(d => d.TeamName.Contains(TeamName))
                 .Select(d => new { label = d.FirstName + " " + d.LastName });

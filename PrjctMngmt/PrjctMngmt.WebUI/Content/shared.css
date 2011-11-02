@@ -1,0 +1,4 @@
+﻿.ButtonLink { cursor:pointer; }
+.ButtonLink:hover { text-decoration:underline; }
+.Hidden { display:none; }
+.Top { vertical-align: top }

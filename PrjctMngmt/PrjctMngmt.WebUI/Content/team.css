@@ -1,0 +1,47 @@
+﻿/*
+.developers
+{
+    float: left;
+    width: 65%;
+    min-height: 12em;
+}
+* html .developers 
+{
+     height: 12em; 
+}*/ /* IE6 */
+
+.developers.custom-state-active 
+{ 
+    background: #eee; 
+}
+
+.developers li 
+{
+    float: left; 
+    width: 96px; 
+    padding: 0.4em; 
+    margin: 0 0.4em 0.4em 0; 
+    text-align: center; 
+}
+
+.developers li a 
+{ 
+    float: right;
+}
+
+.team 
+{
+    float: right; 
+    width: 20%; 
+    min-height: 5em; 
+    padding: 1%;
+} 
+* html .team
+{ 
+    height: 5em;
+} /* IE6 */
+
+.team .developers h5
+{ 
+    display: none;
+}
