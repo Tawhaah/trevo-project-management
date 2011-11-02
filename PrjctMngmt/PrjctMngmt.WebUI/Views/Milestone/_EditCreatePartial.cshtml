@@ -1,8 +1,5 @@
 ﻿@model PrjctMngmt.Models.Milestone
 
-<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
-
 <script type="text/javascript">
     $(function () {
         $(".datetimepicker").datetimepicker({
@@ -13,7 +10,7 @@
     });
 </script>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Create", "Milestone", FormMethod.Post, new { id = "MilestoneForm" })) {
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>Milestone</legend>
@@ -27,7 +24,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.DueDate)
+            Due date
         </div>
         <div class="editor-field">
             @Html.TextBoxFor(model => model.DueDate, new { @class = "datetimepicker" })
@@ -41,12 +38,5 @@
             @Html.DropDownList("ProjectID", (IEnumerable<SelectListItem>) ViewData["Projects"], "")
         </div>
 
-        <p>
-            <input type="submit" value="Create" />
-        </p>
     </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

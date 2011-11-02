@@ -50,12 +50,13 @@ namespace PrjctMngmt.Controllers
         }
 
         //
-        // GET: /Milestone/Create
+        // GET: /Team/Create
 
+        [OutputCache(Duration = 0)]
         public ActionResult Create()
         {
             ViewData["Projects"] = new SelectList(_dataModel.Projects.ToList(), "ProjectID", "Name");
-            return View();
+            return PartialView(new Milestone());
         } 
 
         //
@@ -72,11 +73,11 @@ namespace PrjctMngmt.Controllers
                 _dataModel.AddToMilestones(newMilestone);
                 _dataModel.SaveChanges();
 
-                return RedirectToAction("Index");
+                return View();
             }
             catch
             {
-                return RedirectToAction("Index");
+                return View();
             }
         }
         

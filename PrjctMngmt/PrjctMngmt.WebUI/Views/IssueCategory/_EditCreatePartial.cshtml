@@ -1,8 +1,4 @@
 ﻿@model PrjctMngmt.Models.IssueCategory
-           
-@{
-    ViewBag.Title = "Create an issue category";
-}
 
 @using (Html.BeginForm("Create", "IssueCategory", FormMethod.Post, new { id = "IssueCategoryForm" })) {
     @Html.ValidationSummary(true)

@@ -58,11 +58,11 @@ namespace PrjctMngmt.Controllers
 
         //
         // GET: /Team/Create
+
         [OutputCache(Duration = 0)]
         public ActionResult Create()
         {
-            var team = new Team();
-            return PartialView(team);
+            return PartialView(new Team());
         } 
 
         //
@@ -79,11 +79,11 @@ namespace PrjctMngmt.Controllers
                 _dataModel.AddToTeams(newTeam);
                 _dataModel.SaveChanges();
 
-                return RedirectToAction("Create", "Developer");
+                return View();
             }
             catch
             {
-                return RedirectToAction("Create", "Developer");
+                return View();
             }
         }
 

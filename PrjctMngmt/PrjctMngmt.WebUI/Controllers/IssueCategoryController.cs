@@ -52,16 +52,17 @@ namespace PrjctMngmt.Controllers
         //
         // GET: /IssueCategory/Create
 
+        [OutputCache(Duration = 0)]
         public ActionResult Create()
         {
-            return View();
+            return PartialView(new IssueCategory());
         } 
 
         //
         // POST: /IssueCategory/Create
 
         [HttpPost]
-        public ActionResult Create([Bind(Exclude = "IssueCategoryID")]IssueCategory newIssueCategory)
+        public ActionResult Create(IssueCategory newIssueCategory)
         {
             if (!ModelState.IsValid)
                 return View();
@@ -71,11 +72,11 @@ namespace PrjctMngmt.Controllers
                 _dataModel.AddToIssueCategories(newIssueCategory);
                 _dataModel.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "Issue");
             }
             catch
             {
-                return RedirectToAction("Index");
+                return View();
             }
         }
         

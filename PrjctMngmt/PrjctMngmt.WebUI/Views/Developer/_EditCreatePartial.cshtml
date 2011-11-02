@@ -16,7 +16,7 @@
                 Cancel: function () { $(this).dialog("close"); }
             }
         });
-        $(".AddLink").click(function () {
+        $(".addTeam").click(function () {
             $("#dialog").html("")
                 .dialog("option", "title", "Create team")
                 .load("/Team/Create", function () { $("#dialog").dialog("open"); });
@@ -72,10 +72,9 @@
         <div class="editor-label">
             Team
         </div>
-
         <div class="editor-field Top">      
             @Html.DropDownList("TeamName", (IEnumerable<SelectListItem>)ViewData["Teams"], "")
-            <img alt="Create team" class="AddLink ButtonLink Top" src="../../Content/themes/base/images/plus-sign_small.png" />  
+            <img alt="Create team" class="addTeam ButtonLink Top" src="../../Content/themes/base/images/plus-sign_small.png" />  
         </div>
 
         <p>
