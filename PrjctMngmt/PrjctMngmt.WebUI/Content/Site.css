@@ -243,21 +243,21 @@ table th {
 
 nav, 
 #menucontainer {
-    margin-top: 50px;
+    margin-top: 10px;
 }
 
 div#title {
     display: block;
-    float: left;
-    text-align: left;
+    background-image: url("../../Content/themes/base/images/title_bg.png");
+    background-repeat: repeat-x;
 }
 
 #logindisplay {
     font-size: 1.1em;
     display: block;
     text-align: right;
-    margin: 10px;
-    color: White;
+    color: white;
+    background-color: Black;
 }
 
 #logindisplay a:link {
