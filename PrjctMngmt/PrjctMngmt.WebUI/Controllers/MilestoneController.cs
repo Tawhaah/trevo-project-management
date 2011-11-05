@@ -50,7 +50,7 @@ namespace PrjctMngmt.Controllers
         }
 
         //
-        // GET: /Team/Create
+        // GET: /Milestone/Create
 
         [OutputCache(Duration = 0)]
         public ActionResult Create()
@@ -73,11 +73,11 @@ namespace PrjctMngmt.Controllers
                 _dataModel.AddToMilestones(newMilestone);
                 _dataModel.SaveChanges();
 
-                return View();
+                return RedirectToAction("Create", "Issue");
             }
             catch
             {
-                return View();
+                return RedirectToAction("Create", "Issue");
             }
         }
         

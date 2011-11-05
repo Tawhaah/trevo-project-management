@@ -2,6 +2,30 @@
 
 <script type="text/javascript">
     $(function () {
+        $("#category").dialog({
+            autoOpen: false, width: 400, modal: true,
+            buttons: {
+                "Save": function () {
+                    $.post("/TaskCategory/Create",
+                        $("#TaskCategoryForm").serialize(),
+                        function () {
+                            $("#category").dialog("close");
+                            window.location.reload();
+                        });
+                },
+                Cancel: function () { $(this).dialog("close"); }
+            }
+        });
+        $(".addCategory").click(function () {
+            $("#category").html("")
+                .dialog("option", "title", "Create category")
+                .load("/TaskCategory/Create", function () { $("#category").dialog("open"); });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
         $(".datetimepicker").datetimepicker({
             showSecond: true,
             timeFormat: 'hh:mm:ss',
@@ -75,6 +99,7 @@
         </div>
         <div class="editor-field">
             @Html.DropDownList("Name", (IEnumerable<SelectListItem>) ViewData["TaskCategories"], "")
+            <img alt="Create category" class="addCategory ButtonLink Top" src="../../Content/themes/base/images/plus-sign_small.png" />
         </div>
 
         <div class="editor-label">
@@ -87,6 +112,8 @@
         <p>
             <input type="submit" value="Create" />
         </p>
+
+        <div id="category"></div>
     </fieldset>
 }
 

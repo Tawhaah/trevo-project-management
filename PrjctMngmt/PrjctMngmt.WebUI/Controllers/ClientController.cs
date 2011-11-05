@@ -75,10 +75,41 @@ namespace PrjctMngmt.Controllers
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "Project");
             }
         }
-        
+
+        //
+        // GET: /Client/CreateDialog
+
+        [OutputCache(Duration = 0)]
+        public ActionResult CreateDialog()
+        {
+            return PartialView(new Client());
+        }
+
+        //
+        // POST: /Client/CreateDialog
+
+        [HttpPost]
+        public ActionResult CreateDialog(Client newClient)
+        {
+            if (!ModelState.IsValid)
+                return View();
+
+            try
+            {
+                _dataModel.AddToClients(newClient);
+                _dataModel.SaveChanges();
+
+                return RedirectToAction("Create", "Project");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
         //
         // GET: /Client/Edit/5
  

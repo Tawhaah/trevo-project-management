@@ -2,6 +2,54 @@
 
 <script type="text/javascript">
     $(function () {
+        $("#category").dialog({
+            autoOpen: false, width: 400, modal: true,
+            buttons: {
+                "Save": function () {
+                    $.post("/ProjectCategory/Create",
+                        $("#ProjectCategoryForm").serialize(),
+                        function () {
+                            $("#category").dialog("close");
+                            window.location.reload();
+                        });
+                },
+                Cancel: function () { $(this).dialog("close"); }
+            }
+        });
+        $(".addCategory").click(function () {
+            $("#category").html("")
+                .dialog("option", "title", "Create category")
+                .load("/ProjectCategory/Create", function () { $("#category").dialog("open"); });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#client").dialog({
+            autoOpen: false, width: 400, modal: true,
+            buttons: {
+                "Save": function () {
+                    $.post("/Client/CreateDialog",
+                        $("#ClientForm").serialize(),
+                        function () {
+                            $("#client").dialog("close");
+                            window.location.reload();
+                        });
+                },
+                Cancel: function () { $(this).dialog("close"); }
+            }
+        });
+        $(".addClient").click(function () {
+            $("#client").html("")
+                .dialog("option", "title", "Create client")
+                .load("/Client/CreateDialog", function () { $("#client").dialog("open"); });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
         $(".datetimepicker").datetimepicker({
             showSecond: true,
             timeFormat: 'hh:mm:ss',
@@ -59,6 +107,7 @@
         </div>
         <div class="editor-field">
             @Html.DropDownList("ClientID", (IEnumerable<SelectListItem>) ViewData["Clients"], "")
+            <img alt="Create client" class="addClient ButtonLink Top" src="../../Content/themes/base/images/plus-sign_small.png" />
         </div>
 
         <div class="editor-label">
@@ -66,11 +115,15 @@
         </div>
         <div class="editor-field">
             @Html.DropDownList("ProjectCategoryID", (IEnumerable<SelectListItem>) ViewData["ProjectCategories"], "")
+            <img alt="Create category" class="addCategory ButtonLink Top" src="../../Content/themes/base/images/plus-sign_small.png" />
         </div>
 
         <p>
             <input type="submit" value="Create" />
         </p>
+
+        <div id="category"></div>
+        <div id="client"></div>
     </fieldset>
 }
 

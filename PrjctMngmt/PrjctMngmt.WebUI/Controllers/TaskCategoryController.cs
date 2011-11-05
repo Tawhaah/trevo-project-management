@@ -52,10 +52,11 @@ namespace PrjctMngmt.Controllers
         //
         // GET: /TaskCategory/Create
 
+        [OutputCache(Duration = 0)]
         public ActionResult Create()
         {
-            return View();
-        } 
+            return PartialView(new TaskCategory());
+        }
 
         //
         // POST: /TaskCategory/Create
@@ -71,11 +72,11 @@ namespace PrjctMngmt.Controllers
                 _dataModel.AddToTaskCategories(newTaskCategory);
                 _dataModel.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "Task");
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "Task");
             }
         }
         

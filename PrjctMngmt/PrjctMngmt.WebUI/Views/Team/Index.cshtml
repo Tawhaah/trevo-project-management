@@ -79,6 +79,7 @@
 </script>
 
 <div class="ui-widget ui-helper-clearfix">
+    <b>Developers</b>
     <ul class="developers ui-helper-reset ui-helper-clearfix">
         @foreach (var dev in (List<string>)ViewData["Developers"])
         {
@@ -87,6 +88,9 @@
             </li>
         }
     </ul>
+    <br />
+    <b>Teams</b>
+    <br />
     @foreach (var team in Model)
     {
         <div id="@team.TeamName" class="team ui-widget-content">

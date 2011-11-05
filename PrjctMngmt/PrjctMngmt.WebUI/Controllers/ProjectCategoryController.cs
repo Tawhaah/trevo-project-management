@@ -52,10 +52,11 @@ namespace PrjctMngmt.Controllers
         //
         // GET: /ProjectCategory/Create
 
+        [OutputCache(Duration = 0)]
         public ActionResult Create()
         {
-            return View();
-        } 
+            return PartialView(new ProjectCategory());
+        }
 
         //
         // POST: /ProjectCategory/Create
@@ -71,11 +72,11 @@ namespace PrjctMngmt.Controllers
                 _dataModel.AddToProjectCategories(newProjCategory);
                 _dataModel.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "Project");
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "Project");
             }
         }
         

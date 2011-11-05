@@ -1,6 +1,6 @@
 ﻿@model PrjctMngmt.Models.ProjectCategory
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Create", "ProjectCategory", FormMethod.Post, new { id = "ProjectCategoryForm" })) {
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>Project category</legend>
@@ -13,12 +13,5 @@
             @Html.ValidationMessageFor(model => model.Name)
         </div>
 
-        <p>
-            <input type="submit" value="Create" />
-        </p>
     </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

@@ -2,28 +2,14 @@
 
 <script type="text/javascript">
     $(function () {
-        $("#dialog").dialog({
+        $("#category").dialog({
             autoOpen: false, width: 400, modal: true,
             buttons: {
                 "Save": function () {
                     $.post("/IssueCategory/Create",
                         $("#IssueCategoryForm").serialize(),
                         function () {
-                            $("#dialog").dialog("close");
-                            window.location.reload();
-                        });
-                },
-                Cancel: function () { $(this).dialog("close"); }
-            }
-        });
-        $("#dialog2").dialog({
-            autoOpen: false, width: 400, modal: true,
-            buttons: {
-                "Save": function () {
-                    $.post("/Milestone/Create",
-                        $("#MilestoneForm").serialize(),
-                        function () {
-                            $("#dialog2").dialog("close");
+                            $("#category").dialog("close");
                             window.location.reload();
                         });
                 },
@@ -31,14 +17,33 @@
             }
         });
         $(".addCategory").click(function () {
-            $("#dialog").html("")
+            $("#category").html("")
                 .dialog("option", "title", "Create category")
-                .load("/IssueCategory/Create", function () { $("#dialog").dialog("open"); });
+                .load("/IssueCategory/Create", function () { $("#category").dialog("open"); });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#milestone").dialog({
+            autoOpen: false, width: 400, modal: true,
+            buttons: {
+                "Save": function () {
+                    $.post("/Milestone/Create",
+                        $("#MilestoneForm").serialize(),
+                        function () {
+                            $("#milestone").dialog("close");
+                            window.location.reload();
+                        });
+                },
+                Cancel: function () { $(this).dialog("close"); }
+            }
         });
         $(".addMilestone").click(function () {
-            $("#dialog2").html("")
+            $("#milestone").html("")
                 .dialog("option", "title", "Create milestone")
-                .load("/Milestone/Create", function () { $("#dialog2").dialog("open"); });
+                .load("/Milestone/Create", function () { $("#milestone").dialog("open"); });
         });
     });
 </script>
@@ -114,8 +119,8 @@
             <input type="submit" value="Create" />
         </p>
 
-        <div id="dialog"></div>
-        <div id="dialog2"></div>
+        <div id="category"></div>
+        <div id="milestone"></div>
     </fieldset>
 }
 

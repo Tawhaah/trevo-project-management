@@ -76,7 +76,7 @@ namespace PrjctMngmt.Controllers
             }
             catch
             {
-                return View();
+                return RedirectToAction("Create", "Issue");
             }
         }
         

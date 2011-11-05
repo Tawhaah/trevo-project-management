@@ -31,10 +31,11 @@
 
 .team 
 {
-    float: right; 
+    float: left; 
     width: 20%; 
     min-height: 5em; 
     padding: 1%;
+    margin: 1%;
 } 
 * html .team
 { 
