@@ -26,12 +26,15 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PrjctMngmt.Models;
+using System.IO;
 
 namespace PrjctMngmt.Controllers
 {
     public class DocumentController : Controller
     {
-        private EntityModelContainer _dataModel = new EntityModelContainer(); 
+        private EntityModelContainer _dataModel = new EntityModelContainer();
+
+        private static string basePath = AppDomain.CurrentDomain.BaseDirectory + "Uploads\\Documents\\";
 
         //
         // GET: /Document/
@@ -59,14 +62,27 @@ namespace PrjctMngmt.Controllers
 
         //
         // POST: /Document/Create
+
         [HttpPost]
-        public ActionResult Create([Bind(Exclude = "DocumentID")]Document newDoc)
+        public ActionResult Create([Bind(Exclude = "DocumentID")]Document newDoc, HttpPostedFileBase file)
         {
             if (!ModelState.IsValid)
                 return View();
 
             try
             {
+                //Save file to server if user selected a file
+                if (file != null && file.ContentLength > 0)
+                {
+                    newDoc.FileName = Path.GetFileName(file.FileName);
+                    newDoc.MimeType = file.ContentType;
+                    var path = Path.Combine(basePath, newDoc.FileName);
+                    file.SaveAs(path);
+                }
+
+                newDoc.DeveloperID = 1; //TODO: Change to dynamic
+                newDoc.Name = newDoc.Name;
+                newDoc.EntryDate = DateTime.Now;
                 _dataModel.AddToDocuments(newDoc);
                 _dataModel.SaveChanges();
 
@@ -74,7 +90,7 @@ namespace PrjctMngmt.Controllers
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index");
             }
         }
         
@@ -147,14 +163,41 @@ namespace PrjctMngmt.Controllers
                 if (doc == null)
                     return RedirectToAction("Index");
 
+                //delete entry from database
                 _dataModel.DeleteObject(doc);
                 _dataModel.SaveChanges();
+
+                //delete file from the server
+                FileInfo docFile = new FileInfo(basePath + doc.FileName);
+                docFile.Delete();
 
                 return RedirectToAction("Index");
             }
             catch
             {
                 return RedirectToAction("Index");
+            }
+        }
+
+        public FilePathResult GetFile(int id)
+        {
+            Document doc = GetDocumentByID(id);
+            if (doc != null)
+            {
+                try
+                {
+                    string filename = doc.FileName;
+                    return File(basePath + filename, doc.MimeType);
+                }
+                catch
+                {
+                    //TODO: log error - file no longer exists on server
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
             }
         }
 

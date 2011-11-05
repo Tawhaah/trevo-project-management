@@ -182,9 +182,10 @@ namespace PrjctMngmt.Controllers
                     return RedirectToAction("Index");
                 else
                 {
-                    //delete img from server
-                    var path = Path.Combine(basePath, issueAtchmnt.Filename);
-                    System.IO.File.Delete(path);
+                    //delete file from the server
+                    FileInfo file = new FileInfo(basePath + issueAtchmnt.Filename);
+                    file.Delete();
+
                     //delete entry from database
                     _dataModel.DeleteObject(issueAtchmnt);
                     _dataModel.SaveChanges();
