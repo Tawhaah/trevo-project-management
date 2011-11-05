@@ -1,5 +1,29 @@
 ﻿@model PrjctMngmt.Models.Message
 
+<script type="text/javascript">
+    $(function () {
+        $("#topic").dialog({
+            autoOpen: false, width: 400, modal: true,
+            buttons: {
+                "Save": function () {
+                    $.post("/Topic/Create",
+                        $("#TopicForm").serialize(),
+                        function () {
+                            $("#topic").dialog("close");
+                            window.location.reload();
+                        });
+                },
+                Cancel: function () { $(this).dialog("close"); }
+            }
+        });
+        $(".addTopic").click(function () {
+            $("#topic").html("")
+                .dialog("option", "title", "Create topic")
+                .load("/Topic/Create", function () { $("#topic").dialog("open"); });
+        });
+    });
+</script>
+
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
@@ -18,11 +42,14 @@
         </div>
         <div class="editor-field">
             @Html.DropDownList("TopicID", (IEnumerable<SelectListItem>)ViewData["Topics"], "")
+            <img alt="Create topic" class="addTopic ButtonLink Top" src="../../Content/themes/base/images/plus-sign_small.png" />
         </div>
         
         <p>
             <input type="submit" value="Create" />
         </p>
+
+        <div id="topic"></div>
     </fieldset>
 }
 

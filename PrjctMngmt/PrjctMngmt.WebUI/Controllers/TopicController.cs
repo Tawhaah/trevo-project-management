@@ -52,9 +52,10 @@ namespace PrjctMngmt.Controllers
         //
         // GET: /Topic/Create
 
+        [OutputCache(Duration = 0)]
         public ActionResult Create()
         {
-            return View();
+            return PartialView(new Topic());
         } 
 
         //
@@ -71,11 +72,11 @@ namespace PrjctMngmt.Controllers
                 _dataModel.AddToTopics(newTopic);
                 _dataModel.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "Message");
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "Message");
             }
         }
         

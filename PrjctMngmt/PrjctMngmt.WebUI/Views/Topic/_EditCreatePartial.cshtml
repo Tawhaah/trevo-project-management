@@ -1,6 +1,6 @@
 ﻿@model PrjctMngmt.Models.Topic
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm("Create", "Topic", FormMethod.Post, new { id = "TopicForm" })) {
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>Topic</legend>
@@ -21,12 +21,5 @@
             @Html.ValidationMessageFor(model => model.Description)
         </div>
 
-        <p>
-            <input type="submit" value="Create" />
-        </p>
     </fieldset>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
