@@ -42,6 +42,15 @@ namespace PrjctMngmt.Controllers
         }
 
         //
+        // GET: /IssueAssignment/ShowIssueAssignments/5
+
+        public ActionResult ShowIssueAssignments(int id)
+        {
+            //get issue assignments that belong to issue id
+            return View(GetIssueAssignmentsByIssue(id));
+        }
+
+        //
         // GET: /IssueAssignment/Details/5
 
         public ActionResult Details(int id)
@@ -173,6 +182,19 @@ namespace PrjctMngmt.Controllers
             try
             {
                 return _dataModel.IssueAssignments.Single(i => i.IssueAssignmentID == id);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public List<IssueAssignment> GetIssueAssignmentsByIssue(int id)
+        {
+            try
+            {
+                IEnumerable<IssueAssignment> results = _dataModel.IssueAssignments.Where(i => i.IssueID == id);
+                return results.Cast<IssueAssignment>().ToList();
             }
             catch
             {

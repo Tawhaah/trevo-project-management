@@ -26,6 +26,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PrjctMngmt.Models;
+using System.Web.Configuration;
 
 namespace PrjctMngmt.Controllers
 {
@@ -39,6 +40,15 @@ namespace PrjctMngmt.Controllers
         public ActionResult Index()
         {
             return View(_dataModel.TaskAssignments.ToList());
+        }
+
+        //
+        // GET: /TaskAssignment/ShowTaskAssignments/5
+
+        public ActionResult ShowTaskAssignments(int id)
+        {
+            //get task assignments that belong to task id
+            return View(GetTaskAssignmentsByTask(id));
         }
 
         //
@@ -173,6 +183,19 @@ namespace PrjctMngmt.Controllers
             try
             {
                 return _dataModel.TaskAssignments.Single(t => t.TaskAssignmentID == id);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public List<TaskAssignment> GetTaskAssignmentsByTask(int id)
+        {
+            try
+            {
+                IEnumerable<TaskAssignment> results = _dataModel.TaskAssignments.Where(t => t.TaskID == id);
+                return results.Cast<TaskAssignment>().ToList();
             }
             catch
             {

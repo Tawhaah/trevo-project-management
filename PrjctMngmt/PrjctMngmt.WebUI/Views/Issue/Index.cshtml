@@ -71,6 +71,7 @@
             @Html.DisplayFor(modelItem => item.Project.Name)
         </td>
         <td>
+            @Html.ActionLink("See assignments", "ShowIssueAssignments", "IssueAssignment", new { id = item.IssueID }, null) |
             @Html.ActionLink("Edit", "Edit", new { id=item.IssueID }) |
             @Html.ActionLink("Details", "Details", new { id=item.IssueID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.IssueID })

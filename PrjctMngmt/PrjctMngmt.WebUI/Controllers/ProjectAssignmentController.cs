@@ -43,6 +43,15 @@ namespace PrjctMngmt.Controllers
         }
 
         //
+        // GET: /ProjectAssignment/ShowProjectAssignments/5
+
+        public ActionResult ShowProjectAssignments(int id)
+        {
+            //get project assignments that belong to project id
+            return View(GetProjectAssignmentsByProject(id));
+        }
+
+        //
         // GET: /ProjectAssignment/Details/5
 
         public ActionResult Details(int id)
@@ -174,6 +183,19 @@ namespace PrjctMngmt.Controllers
             try
             {
                 return _dataModel.ProjectAssignments.Single(p => p.ProjectAssignmentID == id);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public List<ProjectAssignment> GetProjectAssignmentsByProject(int id)
+        {
+            try
+            {
+                IEnumerable<ProjectAssignment> results = _dataModel.ProjectAssignments.Where(p => p.ProjectID == id);
+                return results.Cast<ProjectAssignment>().ToList();
             }
             catch
             {

@@ -59,6 +59,7 @@
             @Html.DisplayFor(modelItem => item.ProjectCategory.Name)
         </td>
         <td>
+            @Html.ActionLink("See assignments", "ShowProjectAssignments", "ProjectAssignment", new { id = item.ProjectID }, null) |
             @Html.ActionLink("Edit", "Edit", new { id=item.ProjectID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ProjectID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ProjectID })
