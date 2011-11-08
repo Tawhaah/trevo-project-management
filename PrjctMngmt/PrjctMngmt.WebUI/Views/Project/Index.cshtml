@@ -4,6 +4,30 @@
     ViewBag.Title = "Projects";
 }
 
+<script type="text/javascript">
+    $(function () {
+        $("#milestone").dialog({
+            autoOpen: false, width: 400, modal: true,
+            buttons: {
+                "Save": function () {
+                    $.post("/Milestone/Create",
+                        $("#MilestoneForm").serialize(),
+                        function () {
+                            $("#milestone").dialog("close");
+                            window.location.reload();
+                        });
+                },
+                Cancel: function () { $(this).dialog("close"); }
+            }
+        });
+        $(".addMilestone").click(function () {
+            $("#milestone").html("")
+                .dialog("option", "title", "Create milestone")
+                .load("/Milestone/Create", function () { $("#milestone").dialog("open"); });
+        });
+    });
+</script>
+
 <h2>Projects</h2>
 
 <p>
@@ -60,6 +84,8 @@
         </td>
         <td>
             @Html.ActionLink("See assignments", "ShowProjectAssignments", "ProjectAssignment", new { id = item.ProjectID }, null) |
+            <button class="addMilestone">Create milestone</button> |
+            @Html.ActionLink("See milestones", "ShowProjectMilestones", "Milestone", new { id = item.ProjectID }, null) |
             @Html.ActionLink("Edit", "Edit", new { id=item.ProjectID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ProjectID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ProjectID })
@@ -68,3 +94,4 @@
 }
 
 </table>
+<div id="milestone"></div>

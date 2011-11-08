@@ -42,6 +42,15 @@ namespace PrjctMngmt.Controllers
         }
 
         //
+        // GET: /Mileston/ShowProjectMilestones/5
+
+        public ActionResult ShowProjectMilestones(int id)
+        {
+            //get milestones that belong to project
+            return View(GetMilestonesByProject(id));
+        }
+
+        //
         // GET: /Milestone/Details/5
 
         public ActionResult Details(int id)
@@ -167,6 +176,19 @@ namespace PrjctMngmt.Controllers
             try
             {
                 return _dataModel.Milestones.Single(m => m.MilestoneID == id);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public List<Milestone> GetMilestonesByProject(int id)
+        {
+            try
+            {
+                IEnumerable<Milestone> results = _dataModel.Milestones.Where(p => p.ProjectID == id);
+                return results.Cast<Milestone>().ToList();
             }
             catch
             {
