@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<PrjctMngmt.Models.Team>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Teams";
 }
 
 <script type="text/javascript">
@@ -37,7 +37,7 @@
         });
 
         // add developer to team function
-        var removeMember = "<a href='link/to/unbind/script/when/js/is/off' title='Unbind developer' class='ui-icon ui-icon-remove'>Unbind developer</a>";
+        var removeMember = "<a href='link/to/unbind/script/when/js/is/off' title='Unbind developer' class='ui-icon ui-icon-remove'>Unbind</a>";
         function moveToTeam($item, $dropped) {
             $item.fadeOut(function () {
                 if (!$item.hasOwnProperty(removeMember)) {
@@ -52,12 +52,10 @@
         function unbindDeveloper($item) {
             $item.fadeOut(function () {
                 $item
-					.find("a.ui-icon-remove")
-						.remove()
+					.find("a.ui-icon-remove").remove()
 					.end()
-					.css("width", "96px")
-					.find("img")
-						.css("height", "72px")
+					//.css("width", "96px")
+					.find("img").css("height", "72px")
 					.end()
 					.appendTo($developers)
 					.fadeIn();
@@ -100,12 +98,12 @@
     });
 </script>
 
-<div class="ui-widget ui-helper-clearfix">
+<div class="ui-helper-clearfix">
     <b>Developers</b>
-    <ul class="developers ui-helper-reset ui-helper-clearfix">
+    <ul class="developers">
         @foreach (var dev in (List<string>)ViewData["Developers"])
         {
-            <li id="@dev" class="ui-widget-content ui-corner-tr">
+            <li id="@dev" class="ui-widget-content ui-corner-tr devLi">
                 @dev
             </li>
         }
@@ -116,8 +114,8 @@
     <br />
     @foreach (var team in Model)
     {
-        <div id="@team.TeamName" class="team ui-widget-content">
-            <p>@team.TeamName</p>
+        <div id="@team.TeamName" class="team">
+            <div class="teamTitle ui-widget-header">@team.TeamName</div>
         </div>
     }
 </div>

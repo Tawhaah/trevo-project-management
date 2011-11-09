@@ -34,3 +34,21 @@
 { 
     display: none;
 }
+
+.teamTitle 
+{
+    color: Black;
+    font-weight: bold;
+    font-size: small;
+    padding: 5px;
+}
+
+.devLi 
+{
+    list-style-type: none;
+}
+
+.team
+{
+}
+    
