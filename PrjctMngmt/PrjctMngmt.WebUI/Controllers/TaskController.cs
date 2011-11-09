@@ -38,6 +38,7 @@ namespace PrjctMngmt.Controllers
 
         public ActionResult Index()
         {
+            ViewData["Projects"] = _dataModel.Projects.ToList();
             return View(_dataModel.Tasks.ToList());
         }
 
@@ -46,7 +47,7 @@ namespace PrjctMngmt.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            return View(GetTaskByID(id));
         }
 
         //
@@ -166,7 +167,7 @@ namespace PrjctMngmt.Controllers
             ViewData["Projects"] = new SelectList(_dataModel.Projects.ToList(), "ProjectID", "Name");
             ViewData["TaskCategories"] = new SelectList(_dataModel.TaskCategories.ToList(), "Name", "Name");
 
-            String[] statusStrings = { "Started", "Finished", "Under review" };
+            String[] statusStrings = { "Started", "Done", "Under review" };
             List<SelectListItem> statusItems = new List<SelectListItem>();
             foreach (String s in statusStrings)
             {

@@ -78,6 +78,30 @@
     });
 </script>
 
+<script type="text/javascript">
+    $(function () {
+        $("#dialog").dialog({
+            autoOpen: false, width: 400, modal: true,
+            buttons: {
+                "Save": function () {
+                    $.post("/Developer/CreateDialog",
+                        $("#DeveloperForm").serialize(),
+                        function () {
+                            $("#dialog").dialog("close");
+                            window.location.reload();
+                        });
+                },
+                Cancel: function () { $(this).dialog("close"); }
+            }
+        });
+        $(".addDeveloper").click(function () {
+            $("#dialog").html("")
+                .dialog("option", "title", "Create developer")
+                .load("/Developer/CreateDialog", function () { $("#dialog").dialog("open"); });
+        });
+    });
+</script>
+
 <div class="ui-widget ui-helper-clearfix">
     <b>Developers</b>
     <ul class="developers ui-helper-reset ui-helper-clearfix">
@@ -87,6 +111,7 @@
                 @dev
             </li>
         }
+        <img alt="Create developer" class="addDeveloper ButtonLink" src="../../Content/themes/base/images/plus-sign_small.png" />
     </ul>
     <br />
     <b>Teams</b>
@@ -98,3 +123,4 @@
         </div>
     }
 </div>
+<div id="dialog"></div>

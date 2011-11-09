@@ -4,7 +4,6 @@
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>Issue category</legend>
-
         <div class="editor-label">
             Name
         </div>
@@ -12,6 +11,5 @@
             @Html.EditorFor(model => model.IssueCategoryName)
             @Html.ValidationMessageFor(model => model.IssueCategoryName)
         </div>
-
     </fieldset>
 }

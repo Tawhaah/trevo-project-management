@@ -322,3 +322,16 @@ div#title {
 .tri-state {
     width: 6em;
 }
+
+/* Task
+----------------------------------------------------------*/
+.taskTable {
+    border-width: 0px;
+    border-spacing: 0px;
+    border-style: none;
+}
+
+.taskTd {
+    border-width: 0px;
+    padding: 0px 20px 2px 0px;
+}

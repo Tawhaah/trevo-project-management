@@ -92,6 +92,47 @@ namespace PrjctMngmt.Controllers
         }
 
         //
+        // GET: /Developer/CreateDialog
+
+        [OutputCache(Duration = 0)]
+        public ActionResult CreateDialog()
+        {
+            SelectList teams = new SelectList(_dataModel.Teams.ToList(), "TeamName", "TeamName");
+            ViewData["Teams"] = teams;
+            return PartialView(new Developer());
+        }
+
+        //
+        // POST: /Developer/CreateDialog
+
+        [HttpPost]
+        public ActionResult CreateDialog(string FirstName, string LastName, string Email, string PhoneNumber, string Position, string TeamName)
+        {
+            if (!ModelState.IsValid)
+                return View();
+
+            try
+            {
+                Developer dev = new Developer();
+                dev.FirstName = FirstName;
+                dev.LastName = LastName;
+                dev.Email = Email;
+                dev.PhoneNumber = PhoneNumber;
+                dev.Position = Position;
+                dev.TeamName = TeamName;
+                dev.UserName = Membership.GetUser().UserName;
+                _dataModel.AddToDevelopers(dev);
+                _dataModel.SaveChanges();
+
+                return View();
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        //
         // GET: /Developer/Edit/5
  
         public ActionResult Edit(int id)

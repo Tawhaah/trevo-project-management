@@ -4,79 +4,54 @@
     ViewBag.Title = "Tasks";
 }
 
-<h2>Tasks</h2>
+<script type="text/javascript">
+    $(function () {
+        $("#tabs").tabs();
+    });
+</script>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            Name
-        </th>
-        <th>
-            Start date
-        </th>
-        <th>
-            End date
-        </th>
-        <th>
-            Expected work hours
-        </th>
-        <th>
-            Time spend
-        </th>
-        <th>
-            Status
-        </th>
-        <th>
-            Description
-        </th>
-        <th>
-            Task category
-        </th>
-        <th>
-            Project
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ExpectedWorkHours)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TimeSpend)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TaskCategory.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Project.Name)
-        </td>
-        <td>
-            @Html.ActionLink("See assignments", "ShowTaskAssignments", "TaskAssignment", new { id = item.TaskID }, null) |
-            @Html.ActionLink("Edit", "Edit", new { id=item.TaskID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TaskID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TaskID })
-        </td>
-    </tr>
-}
-
-</table>
+<div id="tabs">
+	<ul>
+        @foreach (var proj in (List<PrjctMngmt.Models.Project>)ViewData["Projects"])
+        {
+            <!-- Project tabs -->
+		    <li><a href="#@proj.Name">@proj.Name</a></li>
+        }
+	</ul>
+    @foreach (var proj in (List<PrjctMngmt.Models.Project>)ViewData["Projects"])
+    {
+	    <div id="@proj.Name">
+            <!-- List project's tasks here -->
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+            <table class="taskTable">
+                @foreach (var item in Model)
+                {
+                    if (item.ProjectID == proj.ProjectID)
+                    {
+                    <tr>
+                        <td class="taskTd">
+                            @if(item.Status == "Done")
+                            {
+                                @Html.CheckBox("Status", true)
+                            }
+                            else
+                            {
+                                @Html.CheckBox("Status", false)
+                            }
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td class="taskTd">
+                            @Html.ActionLink("See assignments", "ShowTaskAssignments", "TaskAssignment", new { id = item.TaskID }, null) |
+                            @Html.ActionLink("Edit", "Edit", new { id = item.TaskID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.TaskID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.TaskID })
+                        </td>
+                    </tr>
+                    }
+                }
+            </table>
+	    </div>
+    }
+</div>

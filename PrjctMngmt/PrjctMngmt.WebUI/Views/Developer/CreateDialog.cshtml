@@ -1,0 +1,85 @@
+﻿@model PrjctMngmt.Models.Developer
+
+<script type="text/javascript">
+    $(function () {
+        $("#dialog").dialog({
+            autoOpen: false, width: 400, modal: true,
+            buttons: {
+                "Save": function () {
+                    $.post("/Team/Create",
+                        $("#TeamForm").serialize(),
+                        function () {
+                            $("#dialog").dialog("close");
+                            window.location.reload();
+                        });
+                },
+                Cancel: function () { $(this).dialog("close"); }
+            }
+        });
+        $(".addTeam").click(function () {
+            $("#dialog").html("")
+                .dialog("option", "title", "Create team")
+                .load("/Team/Create", function () { $("#dialog").dialog("open"); });
+        });
+    });
+</script>
+
+@using (Html.BeginForm("CreateDialog", "Developer", FormMethod.Post, new { id = "DeveloperForm" })) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Developer</legend>
+
+        <div class="editor-label">
+            First name
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FirstName)
+            @Html.ValidationMessageFor(model => model.FirstName)
+        </div>
+
+        <div class="editor-label">
+            Last name
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LastName)
+            @Html.ValidationMessageFor(model => model.LastName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+            Phone number
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PhoneNumber)
+            @Html.ValidationMessageFor(model => model.PhoneNumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Position)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Position)
+            @Html.ValidationMessageFor(model => model.Position)
+        </div>
+
+        <div class="editor-label">
+            Team
+        </div>
+        <div class="editor-field Top">      
+            @Html.DropDownList("TeamName", (IEnumerable<SelectListItem>)ViewData["Teams"], "")
+            <img alt="Create team" class="addTeam ButtonLink Top" src="../../Content/themes/base/images/plus-sign_small.png" />  
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+        <div id="dialog"></div>
+    </fieldset>
+}
