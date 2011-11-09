@@ -1,16 +1,4 @@
-﻿/*
-.developers
-{
-    float: left;
-    width: 65%;
-    min-height: 12em;
-}
-* html .developers 
-{
-     height: 12em; 
-}*/ /* IE6 */
-
-.developers.custom-state-active 
+﻿.developers.custom-state-active 
 { 
     background: #eee; 
 }

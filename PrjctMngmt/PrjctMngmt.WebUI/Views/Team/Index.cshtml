@@ -10,7 +10,7 @@
         var $developers = $(".developers"),
             $teams = $(".team");
 
-        // let the developers items be draggable
+        // let the developers be draggable
         $("li", $developers).draggable({
             cancel: "a.ui-icon", // clicking an icon won't initiate dragging
             revert: "invalid", // when not dropped, the item will revert back to its initial position
@@ -18,40 +18,38 @@
             cursor: "move"
         });
 
-        // let the team be droppable, accepting the developers' items
+        // let the team be droppable, accepting developers
         $teams.droppable({
-            accept: ".developers > li",
+            accept: '.developers > *, .team > *', //allow also team to team drops
             hoverClass: "ui-state-highlight",
             drop: function (event, ui) {
-                deleteImage(ui.draggable);
+                moveToTeam(ui.draggable, $(this));
+            }
+        });
+
+        // let developers be droppable, accepting developers from teams
+        $developers.droppable({
+            accept: ".team > li",
+            hoverClass: "ui-state-highlight",
+            drop: function (event, ui) {
+                unbindDeveloper(ui.draggable);
             }
         });
 
         // add developer to team function
-        var removeMember = "<a href='link/to/recycle/script/when/we/have/js/off' title='Remove member' class='ui-icon ui-icon-remove'>Remove member</a>";
-        function deleteImage($item) {
+        var removeMember = "<a href='link/to/unbind/script/when/js/is/off' title='Unbind developer' class='ui-icon ui-icon-remove'>Unbind developer</a>";
+        function moveToTeam($item, $dropped) {
             $item.fadeOut(function () {
-                var targetElem = $(this).attr("id");
-                var $list = $($teams).length ?
-					$($teams) :
-					$("<ul class='developers ui-helper-reset'/>").appendTo(targetElem);
-                if ($item.hasOwnProperty(removeMember)) {
-                }
-                else {
+                if (!$item.hasOwnProperty(removeMember)) {
+                    $item.find("a.ui-icon-remove").remove();
                     $item.append(removeMember);
                 }
-                $item.appendTo($list).fadeIn(function () { });
-                /*
-                var $list = $("ul", $teams).length ?
-                $("ul", $teams) :
-                $("<ul class='developers ui-helper-reset'/>").appendTo(targetElem);
-                $item.append(removeMember).appendTo($list).fadeIn(function () { });
-                */
+                $item.appendTo($dropped).fadeIn(function () { });
             });
         }
 
         // remove developer from the team
-        function recycleImage($item) {
+        function unbindDeveloper($item) {
             $item.fadeOut(function () {
                 $item
 					.find("a.ui-icon-remove")
@@ -71,7 +69,7 @@
             var $item = $(this),
 				$target = $(event.target);
             if ($target.is("a.ui-icon-remove")) {
-                recycleImage($item);
+                unbindDeveloper($item);
             }
             return false;
         });
