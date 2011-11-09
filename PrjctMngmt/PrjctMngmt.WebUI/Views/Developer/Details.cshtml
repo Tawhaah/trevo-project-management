@@ -1,0 +1,43 @@
+﻿@model PrjctMngmt.Models.Developer
+
+<fieldset>
+    <legend>Developer</legend>
+
+    <div class="display-label">First name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FirstName)
+    </div>
+
+    <div class="display-label">Last name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastName)
+    </div>
+
+    <div class="display-label">Email</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">Phone number</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PhoneNumber)
+    </div>
+
+    <div class="display-label">Position</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Position)
+    </div>
+
+    <div class="display-label">User name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserName)
+    </div>
+
+    <div class="display-label">Team</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TeamName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.DeveloperID }) |
+</p>

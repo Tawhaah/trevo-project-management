@@ -54,9 +54,6 @@
                 $item
 					.find("a.ui-icon-remove").remove()
 					.end()
-					//.css("width", "96px")
-					.find("img").css("height", "72px")
-					.end()
 					.appendTo($developers)
 					.fadeIn();
             });
@@ -124,8 +121,19 @@
 
 <script type="text/javascript">
     $(function () {
+        $(".devDetails").click(function () {
+            var name = $(this).attr("title");
+            $("#devDialog").html("")
+                .dialog("option", "title", "Developer details")
+                .load("/Developer/Details/"/*TODO +name*/, function () { $("#devDialog").dialog("open"); });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
         $(".removeTeam").click(function () {
-            var id = $(this).attr("id");
+            var id = $(this).attr("title");
             var url = '@Url.Action("Delete", "Team", new { TeamName = "team" })';
             url = url.replace("team", id);
             $.post(url,
@@ -145,6 +153,7 @@
         {
             <li id="@dev" class="ui-widget-content ui-corner-tr devLi">
                 @dev
+                <img alt="Details" title="@dev" class="devDetails ButtonLink" src="../../Content/themes/base/images/mag_glass.png" />
             </li>
         }
         <img alt="Create developer" class="addDeveloper ButtonLink" src="../../Content/themes/base/images/plus-sign_small.png" />
@@ -155,8 +164,9 @@
     @foreach (var team in Model)
     {
         <div id="@team.TeamName" class="team">
-            <div class="teamTitle ui-widget-header">@team.TeamName
-                <img alt="Remove team" id="@team.TeamName" class="removeTeam ButtonLink removeIcon" src="../../Content/themes/base/images/remove-icon.png" />
+            <div class="teamTitle ui-widget-header">
+                @team.TeamName
+                <img alt="Remove team" title="@team.TeamName" class="removeTeam ButtonLink removeIcon" src="../../Content/themes/base/images/remove-icon.png" />
             </div>
         </div>
     }

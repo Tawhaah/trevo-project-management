@@ -47,7 +47,7 @@ namespace PrjctMngmt.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            return View(GetDeveloperByID(id));
         }
 
         //
