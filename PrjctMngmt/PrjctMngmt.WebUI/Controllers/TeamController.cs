@@ -76,8 +76,12 @@ namespace PrjctMngmt.Controllers
 
             try
             {
-                _dataModel.AddToTeams(newTeam);
-                _dataModel.SaveChanges();
+                //do not allow to create duplicate team name
+                if (GetTeamByName(newTeam.TeamName) == null)
+                {
+                    _dataModel.AddToTeams(newTeam);
+                    _dataModel.SaveChanges();
+                }
 
                 return View();
             }

@@ -76,14 +76,14 @@
 
 <script type="text/javascript">
     $(function () {
-        $("#dialog").dialog({
+        $("#devDialog").dialog({
             autoOpen: false, width: 400, modal: true,
             buttons: {
                 "Save": function () {
                     $.post("/Developer/CreateDialog",
                         $("#DeveloperForm").serialize(),
                         function () {
-                            $("#dialog").dialog("close");
+                            $("#devDialog").dialog("close");
                             window.location.reload();
                         });
                 },
@@ -91,9 +91,49 @@
             }
         });
         $(".addDeveloper").click(function () {
-            $("#dialog").html("")
+            $("#devDialog").html("")
                 .dialog("option", "title", "Create developer")
-                .load("/Developer/CreateDialog", function () { $("#dialog").dialog("open"); });
+                .load("/Developer/CreateDialog", function () { $("#devDialog").dialog("open"); });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        $("#teamDialog").dialog({
+            autoOpen: false, width: 400, modal: true,
+            buttons: {
+                "Save": function () {
+                    $.post("/Team/Create",
+                        $("#TeamForm").serialize(),
+                        function () {
+                            $("#teamDialog").dialog("close");
+                            window.location.reload();
+                        });
+                },
+                Cancel: function () { $(this).dialog("close"); }
+            }
+        });
+        $(".addTeam").click(function () {
+            $("#teamDialog").html("")
+                .dialog("option", "title", "Create team")
+                .load("/Team/Create", function () { $("#teamDialog").dialog("open"); });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        $(".removeTeam").click(function () {
+            var id = $(this).attr("id");
+            var url = '@Url.Action("Delete", "Team", new { TeamName = "team" })';
+            url = url.replace("team", id);
+            $.post(url,
+                null,
+                function (data) {
+                    window.location.reload();
+                }
+            );
         });
     });
 </script>
@@ -115,8 +155,12 @@
     @foreach (var team in Model)
     {
         <div id="@team.TeamName" class="team">
-            <div class="teamTitle ui-widget-header">@team.TeamName</div>
+            <div class="teamTitle ui-widget-header">@team.TeamName
+                <img alt="Remove team" id="@team.TeamName" class="removeTeam ButtonLink removeIcon" src="../../Content/themes/base/images/remove-icon.png" />
+            </div>
         </div>
     }
+    <img alt="Create team" class="addTeam ButtonLink" src="../../Content/themes/base/images/plus-sign_small.png" />
 </div>
-<div id="dialog"></div>
+<div id="devDialog"></div>
+<div id="teamDialog"></div>

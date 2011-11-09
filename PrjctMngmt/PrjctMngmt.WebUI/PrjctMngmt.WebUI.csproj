@@ -115,6 +115,7 @@
     <Content Include="Content\shared.css" />
     <Content Include="Content\team.css" />
     <Content Include="Content\themes\base\images\plus-sign_small.png" />
+    <Content Include="Content\themes\base\images\remove-icon.png" />
     <Content Include="Content\themes\base\images\title_bg.png" />
     <Content Include="Content\themes\base\images\title_with_logo.png" />
     <Content Include="Content\themes\base\images\trevo.png" />
