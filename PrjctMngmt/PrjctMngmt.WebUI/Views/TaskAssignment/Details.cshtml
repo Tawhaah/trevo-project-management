@@ -1,0 +1,19 @@
+﻿@model PrjctMngmt.Models.TaskAssignment
+
+<fieldset>
+    <legend>Task assignment</legend>
+
+    <div class="display-label">Task</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Task.Name)
+    </div>
+
+    <div class="display-label">Developer</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Developer.FirstName)
+        @Html.DisplayFor(model => model.Developer.LastName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.TaskAssignmentID })
+</p>

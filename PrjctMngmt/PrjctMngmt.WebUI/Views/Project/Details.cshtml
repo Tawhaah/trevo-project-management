@@ -1,7 +1,7 @@
-﻿@model PrjctMngmt.Models.Task
+﻿@model PrjctMngmt.Models.Project
 
 <fieldset>
-    <legend>Task</legend>
+    <legend>Project</legend>
 
     <div class="display-label">Name</div>
     <div class="display-field">
@@ -18,16 +18,6 @@
         @Html.DisplayFor(model => model.EndDate)
     </div>
 
-    <div class="display-label">Expected work hours</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.ExpectedWorkHours)
-    </div>
-
-    <div class="display-label">Time spend</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TimeSpend)
-    </div>
-
     <div class="display-label">Status</div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Status)
@@ -38,16 +28,16 @@
         @Html.DisplayFor(model => model.Description)
     </div>
 
-    <div class="display-label">Project</div>
+    <div class="display-label">Client</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Project.Name)
+        @Html.DisplayFor(model => model.Client.Name)
     </div>
 
-    <div class="display-label">Category</div>
+    <div class="display-label">Project category</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.TaskCategoryName)
+        @Html.DisplayFor(model => model.ProjectCategory.Name)
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.TaskID })
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ProjectID })
 </p>

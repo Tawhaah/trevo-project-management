@@ -1,0 +1,24 @@
+﻿@model PrjctMngmt.Models.Note
+
+<fieldset>
+    <legend>Note</legend>
+
+    <div class="display-label">Data</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Data)
+    </div>
+
+    <div class="display-label">Project</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Project.Name)
+    </div>
+
+    <div class="display-label">Developer</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Developer.FirstName)
+        @Html.DisplayFor(model => model.Developer.LastName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.NoteID })
+</p>

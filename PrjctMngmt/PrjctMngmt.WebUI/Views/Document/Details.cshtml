@@ -1,0 +1,29 @@
+﻿@model PrjctMngmt.Models.Document
+
+<fieldset>
+    <legend>Document</legend>
+
+    <div class="display-label">Filename</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FileName)
+    </div>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">Entry date</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EntryDate)
+    </div>
+
+    <div class="display-label">Developer</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Developer.FirstName)
+        @Html.DisplayFor(model => model.Developer.LastName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.DocumentID })
+</p>

@@ -1,0 +1,17 @@
+﻿@model PrjctMngmt.Models.Team
+
+<fieldset>
+    <legend>Team</legend>
+    <div class="display-label">Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TeamName)
+    </div>
+
+    <div class="display-label">Description</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.TeamName })
+</p>

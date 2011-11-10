@@ -1,0 +1,14 @@
+﻿@model PrjctMngmt.Models.IssueCategory
+
+<fieldset>
+    <legend>Issue category</legend>
+    <div class="display-label">
+        Name
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IssueCategoryName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.IssueCategoryName })
+</p>

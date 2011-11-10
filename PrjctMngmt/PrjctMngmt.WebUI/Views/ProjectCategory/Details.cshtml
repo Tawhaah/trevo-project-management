@@ -1,0 +1,12 @@
+﻿@model PrjctMngmt.Models.ProjectCategory
+
+<fieldset>
+    <legend>Project category</legend>
+    <div class="display-label">Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ProjectCategoryID })
+</p>

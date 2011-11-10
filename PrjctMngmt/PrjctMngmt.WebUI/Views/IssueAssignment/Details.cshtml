@@ -1,0 +1,19 @@
+﻿@model PrjctMngmt.Models.IssueAssignment
+
+<fieldset>
+    <legend>Issue assignment</legend>
+
+    <div class="display-label">Issue</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Issue.Summary)
+    </div>
+
+    <div class="display-label">Developer</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Developer.FirstName)
+        @Html.DisplayFor(model => model.Developer.LastName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.IssueAssignmentID })
+</p>

@@ -1,0 +1,34 @@
+﻿@model PrjctMngmt.Models.Message
+
+<fieldset>
+    <legend>Message</legend>
+
+    <div class="display-label">Message</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Data)
+    </div>
+
+    <div class="display-label">Entry date</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EntryDate)
+    </div>
+
+    <div class="display-label">Developer</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Developer.FirstName)
+        @Html.DisplayFor(model => model.Developer.LastName)
+    </div>
+
+    <div class="display-label">Topic</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Topic.Name)
+    </div>
+
+    <div class="display-label">Edit date</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EditDate)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.MessageID })
+</p>
