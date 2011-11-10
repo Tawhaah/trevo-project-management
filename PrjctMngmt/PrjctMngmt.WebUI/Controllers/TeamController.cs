@@ -49,11 +49,11 @@ namespace PrjctMngmt.Controllers
         }
 
         //
-        // GET: /Team/Details/5
+        // GET: /Team/Details/string
 
-        public ActionResult Details(int id)
+        public ActionResult Details(string name)
         {
-            return View();
+            return View(GetTeamByName(name));
         }
 
         //

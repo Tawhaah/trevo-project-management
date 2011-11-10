@@ -78,7 +78,15 @@ namespace PrjctMngmt.Controllers
                 return RedirectToAction("Index");
             }
         }
-        
+
+        //
+        // GET: /Message/Details/5
+
+        public ActionResult Details(int id)
+        {
+            return View(GetMessageByID(id));
+        }
+
         //
         // GET: /Message/Edit/5
  

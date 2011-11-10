@@ -42,11 +42,11 @@ namespace PrjctMngmt.Controllers
         }
 
         //
-        // GET: /IssueCategory/Details/5
+        // GET: /IssueCategory/Details/string
 
-        public ActionResult Details(int id)
+        public ActionResult Details(string name)
         {
-            return View();
+            return View(GetIssueCategoryByName(name));
         }
 
         //
