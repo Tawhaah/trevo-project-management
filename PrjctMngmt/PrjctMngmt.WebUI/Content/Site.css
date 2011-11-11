@@ -3,8 +3,11 @@ The base color for this template is #5c87b2. If you'd like
 to use a different color start by replacing all instances of
 #5c87b2 with your new color.
 ----------------------------------------------------------*/
-body {
-    background-color: #5c87b2;
+body 
+{
+    /*background: url("../../Content/themes/base/images/clover_bg.png");
+    background-repeat: repeat;*/
+    background-color: #3b575d;
     font-size: .85em;
     font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
     margin: 0;
@@ -150,15 +153,15 @@ ul#menu li a {
     font-weight: bold;
     text-decoration: none;
     line-height: 2.8em;
-    background-color: #e8eef4;
-    color: #034af3;
+    background-color: #1d3137;
+    color: #ffffff;
     border-radius: 4px 4px 0 0;
     -webkit-border-radius: 4px 4px 0 0;
     -moz-border-radius: 4px 4px 0 0;
 }
 
 ul#menu li a:hover {
-    background-color: #fff;
+    background-color: #3c8da4;
     text-decoration: none;
 }
 
@@ -168,7 +171,7 @@ ul#menu li a:active {
 }
 
 ul#menu li.selected a {
-    background-color: #fff;
+    background-color: #3c8da4;
     color: #000;
 }
 
@@ -248,8 +251,10 @@ nav,
 
 div#title {
     display: block;
+    /*
     background-image: url("../../Content/themes/base/images/title_bg.png");
     background-repeat: repeat-x;
+    */
 }
 
 #logindisplay {
@@ -257,7 +262,7 @@ div#title {
     display: block;
     text-align: right;
     color: white;
-    background-color: Black;
+    background-color: #19292c;
 }
 
 #logindisplay a:link {
