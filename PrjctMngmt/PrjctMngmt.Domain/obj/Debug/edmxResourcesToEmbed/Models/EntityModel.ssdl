@@ -147,6 +147,7 @@
     <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
     <Property Name="ProjectID" Type="int" Nullable="false" />
     <Property Name="TaskCategoryName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Finished" Type="tinyint" Nullable="false" DefaultValue="0" />
   </EntityType>
   <EntityType Name="TaskCategories">
     <Key>

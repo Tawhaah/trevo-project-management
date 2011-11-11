@@ -4219,6 +4219,30 @@ namespace PrjctMngmt.Models
         private global::System.String _TaskCategoryName;
         partial void OnTaskCategoryNameChanging(global::System.String value);
         partial void OnTaskCategoryNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Byte Finished
+        {
+            get
+            {
+                return _Finished;
+            }
+            set
+            {
+                OnFinishedChanging(value);
+                ReportPropertyChanging("Finished");
+                _Finished = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Finished");
+                OnFinishedChanged();
+            }
+        }
+        private global::System.Byte _Finished = 0;
+        partial void OnFinishedChanging(global::System.Byte value);
+        partial void OnFinishedChanged();
 
         #endregion
     

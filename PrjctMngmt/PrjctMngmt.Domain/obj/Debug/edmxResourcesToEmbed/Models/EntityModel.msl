@@ -36,6 +36,7 @@
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
           <ScalarProperty Name="TaskCategoryName" ColumnName="TaskCategoryName" />
+          <ScalarProperty Name="Finished" ColumnName="Finished" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

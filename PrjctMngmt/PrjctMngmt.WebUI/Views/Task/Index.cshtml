@@ -17,8 +17,11 @@
 </script>
 
 <script type="text/javascript">
-    $(function () {
+    $(function toggle() {
         //TODO: Create AJAX call to for checkbox item change / task status change
+        var id = $(this).attr("id");
+        $.post("/Task/ToggleTaskStatus/"+id,
+            function () {});
     });
 </script>
 
@@ -40,14 +43,14 @@
                     if (item.ProjectID == proj.ProjectID)
                     {
                     <tr>
-                        <td class="taskTd">
-                            @if(item.Status == "Done")
+                        <td id="@item.TaskID" class="taskTd">
+                            @if(item.Finished == 1)
                             {
-                                @Html.CheckBox("Status", true)
+                                @Html.CheckBox("Status", true, new { onclick = "toggle();" })
                             }
                             else
                             {
-                                @Html.CheckBox("Status", false)
+                                @Html.CheckBox("Status", false, new { onclick = "toggle();" })
                             }
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>

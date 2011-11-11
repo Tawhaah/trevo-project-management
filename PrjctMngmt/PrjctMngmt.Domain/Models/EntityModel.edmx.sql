@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 10/25/2011 00:16:53
--- Generated from EDMX file: C:\Users\Pepe\Documents\Visual Studio 2010\Projects\PrjctMngmt\PrjctMngmt.Domain\Models\EntityModel.edmx
+-- Date Created: 11/11/2011 22:26:25
+-- Generated from EDMX file: C:\Users\Pepe\Documents\Visual Studio 2010\Projects\trevo-project-management\PrjctMngmt\PrjctMngmt.Domain\Models\EntityModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -184,7 +184,8 @@ CREATE TABLE [dbo].[Tasks] (
     [Status] nvarchar(max)  NULL,
     [Description] nvarchar(max)  NULL,
     [ProjectID] int  NOT NULL,
-    [TaskCategoryName] nvarchar(max)  NULL
+    [TaskCategoryName] nvarchar(max)  NULL,
+    [Finished] tinyint  NOT NULL
 );
 GO
 

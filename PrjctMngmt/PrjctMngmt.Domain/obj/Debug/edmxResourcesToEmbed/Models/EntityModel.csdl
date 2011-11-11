@@ -159,6 +159,7 @@
     <NavigationProperty Name="TaskAssignment" Relationship="EntityModel.TaskTaskAssignment" FromRole="Task" ToRole="TaskAssignment" />
     <NavigationProperty Name="TaskCategory" Relationship="EntityModel.TaskCategoryTask" FromRole="Task" ToRole="TaskCategory" />
     <Property Type="String" Name="TaskCategoryName" Nullable="true" />
+    <Property Type="Byte" Name="Finished" Nullable="false" DefaultValue="0" />
   </EntityType>
   <EntityType Name="TaskCategory">
     <Key>

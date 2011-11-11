@@ -191,5 +191,28 @@ namespace PrjctMngmt.Controllers
                 return null;
             }
         }
+
+        public ActionResult ToggleTaskStatus(int id)
+        {
+            try
+            {
+                Task task = GetTaskByID(id);
+                if (task.Finished == 0)
+                {
+                    task.Finished = 1;
+                }
+                else
+                {
+                    task.Finished = 0;
+                }
+                UpdateModel(task);
+                _dataModel.SaveChanges();
+                return View();
+            }
+            catch
+            {
+                return View();
+            }
+        }
     }
 }
