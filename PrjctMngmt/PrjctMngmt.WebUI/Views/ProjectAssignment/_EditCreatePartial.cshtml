@@ -5,6 +5,8 @@
     <fieldset>
         <legend>Project assignment</legend>
 
+        <p>* indicates a required field.</p>
+
         <div class="editor-label">
             Role
         </div>
@@ -25,14 +27,14 @@
             Project
         </div>
         <div class="editor-field">
-            @Html.DropDownList("ProjectID", (IEnumerable<SelectListItem>) ViewData["Projects"], "")
+            @Html.DropDownList("ProjectID", (IEnumerable<SelectListItem>) ViewData["Projects"], "") *
         </div>
 
         <div class="editor-label">
             Developer
         </div>
         <div class="editor-field">
-            @Html.DropDownList("DeveloperID", (IEnumerable<SelectListItem>) ViewData["Developers"], "")
+            @Html.DropDownList("DeveloperID", (IEnumerable<SelectListItem>) ViewData["Developers"], "") *
         </div>
 
         <p>
