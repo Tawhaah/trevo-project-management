@@ -6,6 +6,10 @@
 
 <h2>Notes</h2>
 
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
 <script type="text/javascript">
     $(function () {
         $("#tabs").tabs();
@@ -22,7 +26,13 @@
     @foreach (var proj in (List<PrjctMngmt.Models.Project>)ViewData["Projects"])
     {
 	    <div id="@proj.Name">
-        <!-- List project's notes here -->
+            <!-- List project's notes here -->
+            @foreach (var item in Model) {
+                if(item.ProjectID == proj.ProjectID) {
+                    @item.Data;  
+                    <br />
+                }  
+            }
 	    </div>
     }
 </div>

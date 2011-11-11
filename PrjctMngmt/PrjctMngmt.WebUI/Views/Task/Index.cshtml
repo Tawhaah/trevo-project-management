@@ -6,6 +6,10 @@
 
 <h2>Tasks</h2>
 
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
 <script type="text/javascript">
     $(function () {
         $("#tabs").tabs();
@@ -30,9 +34,6 @@
     {
 	    <div id="@proj.Name">
             <!-- List project's tasks here -->
-            <p>
-                @Html.ActionLink("Create New", "Create")
-            </p>
             <table class="taskTable">
                 @foreach (var item in Model)
                 {
