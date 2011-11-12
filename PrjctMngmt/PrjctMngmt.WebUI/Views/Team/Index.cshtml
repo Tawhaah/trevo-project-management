@@ -8,10 +8,18 @@
     $(function () {
         // there's the developers and the team
         var $developers = $(".developers"),
-            $teams = $(".team");
+            $teams = $(".teams");
 
-        // let the developers be draggable
+        // let the developers without team be draggable
         $("li", $developers).draggable({
+            cancel: "a.ui-icon", // clicking an icon won't initiate dragging
+            revert: "invalid", // when not dropped, the item will revert back to its initial position
+            helper: "clone",
+            cursor: "move"
+        });
+
+        // let the developers within teams be draggable
+        $("li", $teams).draggable({
             cancel: "a.ui-icon", // clicking an icon won't initiate dragging
             revert: "invalid", // when not dropped, the item will revert back to its initial position
             helper: "clone",
@@ -20,7 +28,7 @@
 
         // let the team be droppable, accepting developers
         $teams.droppable({
-            accept: '.developers > *, .team > *', //allow also team to team drops
+            accept: '.developers > *, .teams > *', //allow also team to team drops
             hoverClass: "ui-state-highlight",
             drop: function (event, ui) {
                 moveToTeam(ui.draggable, $(this));
@@ -29,7 +37,7 @@
 
         // let developers be droppable, accepting developers from teams
         $developers.droppable({
-            accept: ".team > li",
+            accept: ".teams > li",
             hoverClass: "ui-state-highlight",
             drop: function (event, ui) {
                 unbindDeveloper(ui.draggable);
@@ -37,7 +45,6 @@
         });
 
         // add developer to team function
-        //var removeMember = "<a href='link/to/unbind/script/when/js/is/off' title='Unbind developer' class='ui-icon ui-icon-remove'>Unbind</a>";
         var removeMember = "<a href='link/to/unbind/script/when/js/is/off' title='Unbind developer' class='devRecycle ButtonLink recycleIcon'></a>";
         function moveToTeam($item, $dropped) {
             $item.fadeOut(function () {
@@ -62,6 +69,16 @@
 
         // resolve the icons behavior with event delegation
         $("ul.developers > li").click(function (event) {
+            var $item = $(this),
+				$target = $(event.target);
+            if ($target.is("a.recycleIcon")) {
+                unbindDeveloper($item);
+            }
+            return false;
+        });
+
+        // resolve the icons behavior with event delegation
+        $(".teams > li").click(function (event) {
             var $item = $(this),
 				$target = $(event.target);
             if ($target.is("a.recycleIcon")) {
@@ -180,7 +197,7 @@
 
         $(".removeDev").click(function (e) {
             e.preventDefault();
-            var id = $(this).attr("title");
+            var id = parent.id;
             var url = '@Url.Action("Delete", "Developer", new { DeveloperID = "id" })';
             url = url.replace("id", id);
 
@@ -210,11 +227,14 @@
         {
             foreach (var dev in item.developers)
             {
-                <li id="@dev.DeveloperID" class="ui-widget-content ui-corner-tr devLi">
-                    @dev.FirstName @dev.LastName
-                    <img alt="Remove" title="@dev.DeveloperID" class="removeDev ButtonLink removeIcon" src="../../Content/themes/base/images/remove-icon.png" />
-                    <img alt="Details" title="@dev.DeveloperID" class="devDetails ButtonLink detailIcon" src="../../Content/themes/base/images/mag_glass.png" />
-                </li>
+                if (dev.TeamName == null)
+                {
+                    <li id="@dev.DeveloperID" class="ui-widget-content ui-corner-tr devLi">
+                        @dev.FirstName @dev.LastName
+                        <img alt="Remove" class="removeDev ButtonLink removeIcon" src="../../Content/themes/base/images/remove-icon.png" />
+                        <img alt="Details" class="devDetails ButtonLink detailIcon" src="../../Content/themes/base/images/mag_glass.png" />
+                    </li>
+                }
             }
         }
         <img alt="Create developer" class="addDeveloper ButtonLink" src="../../Content/themes/base/images/plus-sign_small.png" />
@@ -226,12 +246,24 @@
     {
         foreach (var team in item.teams)
         {
-            <div id="@team.TeamName" class="team">
+            <div id="@team.TeamName" class="teams">
                 <div class="teamTitle ui-widget-header">
                     @team.TeamName
                     <img alt="Remove" title="@team.TeamName" class="removeTeam ButtonLink removeIcon" src="../../Content/themes/base/images/remove-icon.png" />
                     <img alt="Details" title="@team.TeamName" class="teamDetails ButtonLink detailIcon" src="../../Content/themes/base/images/mag_glass.png" />
                 </div>
+                @foreach (var dev in item.developers)
+                {
+                    if (dev.TeamName == team.TeamName)
+                    {
+                        <li id="@dev.DeveloperID" class="ui-widget-content ui-corner-tr devLi">
+                            @dev.FirstName @dev.LastName
+                            <img alt="Remove" class="removeDev ButtonLink removeIcon" src="../../Content/themes/base/images/remove-icon.png" />
+                            <img alt="Details" class="devDetails ButtonLink detailIcon" src="../../Content/themes/base/images/mag_glass.png" />
+                            <a href='link/to/unbind/script/when/js/is/off' title='Unbind developer' class='devRecycle ButtonLink recycleIcon'></a>
+                        </li>
+                    }
+                }
             </div>
         }
     }

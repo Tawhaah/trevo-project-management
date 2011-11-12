@@ -16,7 +16,7 @@
     float: right;
 }
 
-.team 
+.teams
 {
     float: left; 
     width: 15%;
@@ -24,12 +24,12 @@
     padding: 1%;
     margin: 1%;
 } 
-* html .team
+* html .teams
 { 
     height: 5em;
 } /* IE6 */
 
-.team .developers h5
+.teams .developers h5
 { 
     display: none;
 }
