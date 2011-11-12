@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PrjctMngmt.Models.Team>
+﻿@model IEnumerable<PrjctMngmt.Models.TeamDeveloperModel>
 
 @{
     ViewBag.Title = "Teams";
@@ -123,10 +123,10 @@
 <script type="text/javascript">
     $(function () {
         $(".devDetails").click(function () {
-            var name = $(this).attr("title");
+            var id = parent.id;
             $("#devDialog").html("")
                 .dialog("option", "title", "Developer details")
-                .load("/Developer/Details/"/*TODO +name*/, function () { $("#devDialog").dialog("open"); });
+                .load("/Developer/Details/"+id, function () { $("#devDialog").dialog("open"); });
         });
         $(".teamDetails").click(function () {
             var name = $(this).attr("title");
@@ -181,8 +181,8 @@
         $(".removeDev").click(function (e) {
             e.preventDefault();
             var id = $(this).attr("title");
-            var url = '@Url.Action("Delete", "Developer", new { Name = "name" })';
-            url = url.replace("name", id);
+            var url = '@Url.Action("Delete", "Developer", new { DeveloperID = "id" })';
+            url = url.replace("id", id);
 
             $("#confirmDevDelete").dialog('option', 'buttons', {
                 "Confirm": function () {
@@ -206,28 +206,34 @@
 <div class="ui-helper-clearfix">
     <b>Developers</b>
     <ul class="developers">
-        @foreach (var dev in (List<string>)ViewData["Developers"])
+        @foreach (var item in Model)
         {
-            <li id="@dev" class="ui-widget-content ui-corner-tr devLi">
-                @dev
-                <img alt="Remove" title="@dev" class="removeDev ButtonLink removeIcon" src="../../Content/themes/base/images/remove-icon.png" />
-                <img alt="Details" title="@dev" class="devDetails ButtonLink detailIcon" src="../../Content/themes/base/images/mag_glass.png" />
-            </li>
+            foreach (var dev in item.developers)
+            {
+                <li id="@dev.DeveloperID" class="ui-widget-content ui-corner-tr devLi">
+                    @dev.FirstName @dev.LastName
+                    <img alt="Remove" title="@dev.DeveloperID" class="removeDev ButtonLink removeIcon" src="../../Content/themes/base/images/remove-icon.png" />
+                    <img alt="Details" title="@dev.DeveloperID" class="devDetails ButtonLink detailIcon" src="../../Content/themes/base/images/mag_glass.png" />
+                </li>
+            }
         }
         <img alt="Create developer" class="addDeveloper ButtonLink" src="../../Content/themes/base/images/plus-sign_small.png" />
     </ul>
     <br />
     <b>Teams</b>
     <br />
-    @foreach (var team in Model)
+    @foreach (var item in Model)
     {
-        <div id="@team.TeamName" class="team">
-            <div class="teamTitle ui-widget-header">
-                @team.TeamName
-                <img alt="Remove" title="@team.TeamName" class="removeTeam ButtonLink removeIcon" src="../../Content/themes/base/images/remove-icon.png" />
-                <img alt="Details" title="@team.TeamName" class="teamDetails ButtonLink detailIcon" src="../../Content/themes/base/images/mag_glass.png" />
+        foreach (var team in item.teams)
+        {
+            <div id="@team.TeamName" class="team">
+                <div class="teamTitle ui-widget-header">
+                    @team.TeamName
+                    <img alt="Remove" title="@team.TeamName" class="removeTeam ButtonLink removeIcon" src="../../Content/themes/base/images/remove-icon.png" />
+                    <img alt="Details" title="@team.TeamName" class="teamDetails ButtonLink detailIcon" src="../../Content/themes/base/images/mag_glass.png" />
+                </div>
             </div>
-        </div>
+        }
     }
     <img alt="Create team" class="addTeam ButtonLink" src="../../Content/themes/base/images/plus-sign_small.png" />
 </div>

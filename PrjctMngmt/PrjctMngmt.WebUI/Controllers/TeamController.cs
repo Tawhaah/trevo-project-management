@@ -38,6 +38,15 @@ namespace PrjctMngmt.Controllers
 
         public ActionResult Index()
         {
+            var model = new TeamDeveloperModel();
+            model.teams = _dataModel.Teams.ToList();
+            model.developers = _dataModel.Developers.ToList();
+
+            List<TeamDeveloperModel> viewModelList = new List<TeamDeveloperModel>();
+            viewModelList.Add(model);
+            return View(viewModelList);
+
+            /*
             List<Developer> devs = _dataModel.Developers.ToList();
             List<string> devNames = new List<string>();
             foreach (Developer dev in devs)
@@ -46,6 +55,7 @@ namespace PrjctMngmt.Controllers
             }
             ViewData["Developers"] = devNames;
             return View(_dataModel.Teams.ToList());
+            */
         }
 
         //
