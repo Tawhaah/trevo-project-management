@@ -20,8 +20,11 @@
     $(function toggle() {
         //TODO: Create AJAX call to for checkbox item change / task status change
         var id = $(this).attr("id");
+        $.post("/Task/ToggleTaskStatus/?id=" + this.attr("id"), function () { });
+        /*
         $.post("/Task/ToggleTaskStatus/"+id,
             function () {});
+            */
     });
 </script>
 

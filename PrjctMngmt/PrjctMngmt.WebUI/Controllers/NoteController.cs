@@ -63,14 +63,21 @@ namespace PrjctMngmt.Controllers
         // POST: /Note/Create
 
         [HttpPost]
-        public ActionResult Create([Bind(Exclude = "NoteID")]Note newNote)
+        public ActionResult Create(String Data, string LocX, string LocY, int ProjectID, int DeveloperID)
         {
             if (!ModelState.IsValid)
                 return View();
 
             try
             {
-                _dataModel.AddToNotes(newNote);
+                Note note = new Note();
+                note.Data = Data;
+                note.LocX = LocX;
+                note.LocY = LocY;
+                note.ProjectID = ProjectID;
+                note.DeveloperID = DeveloperID;
+
+                _dataModel.AddToNotes(note);
                 _dataModel.SaveChanges();
 
                 return RedirectToAction("Index");
@@ -159,6 +166,20 @@ namespace PrjctMngmt.Controllers
             catch
             {
                 return RedirectToAction("Index");
+            }
+        }
+
+        public void UpdateLocation(int id, string LocX, string LocY)
+        {
+            try
+            {
+                Note note = GetNoteByID(id);
+                note.LocX = LocX;
+                note.LocY = LocY;
+                _dataModel.SaveChanges();
+            }
+            catch
+            {
             }
         }
 

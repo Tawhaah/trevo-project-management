@@ -16,6 +16,37 @@
     });
 </script>
 
+<script type="text/javascript">
+    $(function () {
+        $(".note").draggable({
+            containment: 'parent',
+            cursor: 'move',
+            snap: 'parent',
+            drag: function (event, ui) {
+                this.style.opacity = 0.5
+                dragging = true;
+            },
+            stop: function (event, ui) {
+                this.style.opacity = 1.0
+                dragging = false;
+
+                //calculate final location
+                var width = parent.width();
+                var height = parent.height();
+                var left = 100 - (width - this.position().left) / width * 100;
+                var top = 100 - (height - this.position().top) / height * 100;
+                var LocX = left + "";
+                var LocY = top + "";
+                LocX = LocX.substr(0, 6) + "%";
+                LocY = LocY.substr(0, 6) + "%";
+
+                //post back new location
+                $.post("Note/UpdateLocation/?id=" + this.attr("id") + "&LocX=" + LocX + "&LocY" + LocY, function () { });
+            }
+        });
+    });
+</script>
+
 <div id="tabs">
 	<ul>
         @foreach (var proj in (List<PrjctMngmt.Models.Project>)ViewData["Projects"])
@@ -29,8 +60,9 @@
             <!-- List project's notes here -->
             @foreach (var item in Model) {
                 if(item.ProjectID == proj.ProjectID) {
-                    @item.Data;  
-                    <br />
+                    <div class="note" style=" left:@item.LocX; right:@item.LocY"> 
+                        @item.Data
+                    </div>
                 }  
             }
 	    </div>

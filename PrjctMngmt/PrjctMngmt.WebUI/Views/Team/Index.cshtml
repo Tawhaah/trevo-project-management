@@ -170,6 +170,39 @@
     });
 </script>
 
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#confirmDevDelete").dialog({
+            modal: true,
+            autoOpen: false
+        });
+
+        $(".removeDev").click(function (e) {
+            e.preventDefault();
+            var id = $(this).attr("title");
+            var url = '@Url.Action("Delete", "Developer", new { Name = "name" })';
+            url = url.replace("name", id);
+
+            $("#confirmDevDelete").dialog('option', 'buttons', {
+                "Confirm": function () {
+                    $.post(url,
+                            null,
+                            function (data) {
+                                window.location.reload();
+                            }
+                    );
+                },
+                "Cancel": function () {
+                    $(this).dialog("close");
+                }
+            });
+
+            $("#confirmDevDelete").dialog("open");
+        });
+    });
+</script>
+
 <div class="ui-helper-clearfix">
     <b>Developers</b>
     <ul class="developers">
@@ -202,4 +235,7 @@
 <div id="teamDialog"></div>
 <div id="confirmTeamDelete" title="Confirmation">
 	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Are you sure you want to delete this team?</p>
+</div>
+<div id="confirmDevDelete" title="Confirmation">
+	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Are you sure you want to delete this developer?</p>
 </div>
