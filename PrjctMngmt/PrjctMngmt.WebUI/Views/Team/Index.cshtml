@@ -140,16 +140,16 @@
 <script type="text/javascript">
     $(function () {
         $(".devDetails").click(function () {
-            var id = parent.id;
+            var id = $(this).parent().attr("id");
             $("#devDialog").html("")
                 .dialog("option", "title", "Developer details")
-                .load("/Developer/Details/"+id, function () { $("#devDialog").dialog("open"); });
+                .load("/Developer/Details?="+id/* TODO: FIX*/, function () { $("#devDialog").dialog("open"); });
         });
         $(".teamDetails").click(function () {
-            var name = $(this).attr("title");
+            var name = $(this).parent().attr("id");
             $("#teamDialog").html("")
                 .dialog("option", "title", "Team details")
-                .load("/Team/Details/" +name/*TODO +name*/, function () { $("#teamDialog").dialog("open"); });
+                .load("/Team/Details/" +name/*TODO: FIX*/, function () { $("#teamDialog").dialog("open"); });
         });
     });
 </script>
@@ -164,7 +164,7 @@
 
         $(".removeTeam").click(function (e) {
             e.preventDefault();
-            var id = $(this).attr("title");
+            var id = $(this).parent().parent().attr("id");
             var url = '@Url.Action("Delete", "Team", new { TeamName = "team" })';
             url = url.replace("team", id);
 
@@ -197,8 +197,8 @@
 
         $(".removeDev").click(function (e) {
             e.preventDefault();
-            var id = parent.id;
-            var url = '@Url.Action("Delete", "Developer", new { DeveloperID = "id" })';
+            var id = $(this).parent().attr("id");
+            var url = '@Url.Action("Delete", "Developer", new { id = "id" })';
             url = url.replace("id", id);
 
             $("#confirmDevDelete").dialog('option', 'buttons', {
@@ -231,8 +231,8 @@
                 {
                     <li id="@dev.DeveloperID" class="ui-widget-content ui-corner-tr devLi">
                         @dev.FirstName @dev.LastName
-                        <img alt="Remove" class="removeDev ButtonLink removeIcon" src="../../Content/themes/base/images/remove-icon.png" />
-                        <img alt="Details" class="devDetails ButtonLink detailIcon" src="../../Content/themes/base/images/mag_glass.png" />
+                        <img alt="Remove" title="Remove" class="removeDev ButtonLink removeIcon" src="../../Content/themes/base/images/remove-icon.png" />
+                        <img alt="Details" title="Details" class="devDetails ButtonLink detailIcon" src="../../Content/themes/base/images/mag_glass.png" />
                     </li>
                 }
             }
@@ -249,8 +249,8 @@
             <div id="@team.TeamName" class="teams">
                 <div class="teamTitle ui-widget-header">
                     @team.TeamName
-                    <img alt="Remove" title="@team.TeamName" class="removeTeam ButtonLink removeIcon" src="../../Content/themes/base/images/remove-icon.png" />
-                    <img alt="Details" title="@team.TeamName" class="teamDetails ButtonLink detailIcon" src="../../Content/themes/base/images/mag_glass.png" />
+                    <img alt="Remove" title="Remove" class="removeTeam ButtonLink removeIcon" src="../../Content/themes/base/images/remove-icon.png" />
+                    <img alt="Details" title="Details" class="teamDetails ButtonLink detailIcon" src="../../Content/themes/base/images/mag_glass.png" />
                 </div>
                 @foreach (var dev in item.developers)
                 {
@@ -258,8 +258,8 @@
                     {
                         <li id="@dev.DeveloperID" class="ui-widget-content ui-corner-tr devLi">
                             @dev.FirstName @dev.LastName
-                            <img alt="Remove" class="removeDev ButtonLink removeIcon" src="../../Content/themes/base/images/remove-icon.png" />
-                            <img alt="Details" class="devDetails ButtonLink detailIcon" src="../../Content/themes/base/images/mag_glass.png" />
+                            <img alt="Remove" title="Remove" class="removeDev ButtonLink removeIcon" src="../../Content/themes/base/images/remove-icon.png" />
+                            <img alt="Details" title="Details" class="devDetails ButtonLink detailIcon" src="../../Content/themes/base/images/mag_glass.png" />
                             <a href='link/to/unbind/script/when/js/is/off' title='Unbind developer' class='devRecycle ButtonLink recycleIcon'></a>
                         </li>
                     }

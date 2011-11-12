@@ -6,7 +6,7 @@
 .developers li 
 {
     float: left; 
-    padding: 0.4em; 
+    padding: 0.4em 0 0.4em 0.4em; 
     margin: 0 0.4em 0.4em 0; 
     text-align: center; 
 }
@@ -39,7 +39,7 @@
     color: Black;
     font-weight: bold;
     font-size: small;
-    padding: 5px;
+    padding: 5px 0px 5px 5px;
 }
 
 .devLi 
@@ -50,6 +50,7 @@
 .removeIcon
 {
     float: right;
+    padding-right: 5px;
 }
     
 .detailIcon
