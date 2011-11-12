@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 11/11/2011 22:26:25
+-- Date Created: 11/12/2011 22:38:57
 -- Generated from EDMX file: C:\Users\Pepe\Documents\Visual Studio 2010\Projects\trevo-project-management\PrjctMngmt\PrjctMngmt.Domain\Models\EntityModel.edmx
 -- --------------------------------------------------
 
@@ -52,9 +52,6 @@ IF OBJECT_ID(N'[dbo].[FK_IssueIssueAssignment]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_DeveloperIssueAssignment]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[IssueAssignments] DROP CONSTRAINT [FK_DeveloperIssueAssignment];
-GO
-IF OBJECT_ID(N'[dbo].[FK_ProjectWhiteboard]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Whiteboards] DROP CONSTRAINT [FK_ProjectWhiteboard];
 GO
 IF OBJECT_ID(N'[dbo].[FK_DeveloperIssueAttachment]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[IssueAttachments] DROP CONSTRAINT [FK_DeveloperIssueAttachment];
@@ -138,9 +135,6 @@ IF OBJECT_ID(N'[dbo].[ProjectAssignments]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Milestones]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Milestones];
-GO
-IF OBJECT_ID(N'[dbo].[Whiteboards]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Whiteboards];
 GO
 IF OBJECT_ID(N'[dbo].[IssueAttachments]', 'U') IS NOT NULL
     DROP TABLE [dbo].[IssueAttachments];
@@ -317,13 +311,6 @@ CREATE TABLE [dbo].[Milestones] (
 );
 GO
 
--- Creating table 'Whiteboards'
-CREATE TABLE [dbo].[Whiteboards] (
-    [WhiteboardID] int IDENTITY(1,1) NOT NULL,
-    [ProjectID] int  NOT NULL
-);
-GO
-
 -- Creating table 'IssueAttachments'
 CREATE TABLE [dbo].[IssueAttachments] (
     [IssueAttachmentID] int IDENTITY(1,1) NOT NULL,
@@ -442,12 +429,6 @@ GO
 ALTER TABLE [dbo].[Milestones]
 ADD CONSTRAINT [PK_Milestones]
     PRIMARY KEY CLUSTERED ([MilestoneID] ASC);
-GO
-
--- Creating primary key on [WhiteboardID] in table 'Whiteboards'
-ALTER TABLE [dbo].[Whiteboards]
-ADD CONSTRAINT [PK_Whiteboards]
-    PRIMARY KEY CLUSTERED ([WhiteboardID] ASC);
 GO
 
 -- Creating primary key on [IssueAttachmentID] in table 'IssueAttachments'
@@ -632,20 +613,6 @@ ADD CONSTRAINT [FK_DeveloperIssueAssignment]
 CREATE INDEX [IX_FK_DeveloperIssueAssignment]
 ON [dbo].[IssueAssignments]
     ([DeveloperID]);
-GO
-
--- Creating foreign key on [ProjectID] in table 'Whiteboards'
-ALTER TABLE [dbo].[Whiteboards]
-ADD CONSTRAINT [FK_ProjectWhiteboard]
-    FOREIGN KEY ([ProjectID])
-    REFERENCES [dbo].[Projects]
-        ([ProjectID])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ProjectWhiteboard'
-CREATE INDEX [IX_FK_ProjectWhiteboard]
-ON [dbo].[Whiteboards]
-    ([ProjectID]);
 GO
 
 -- Creating foreign key on [DeveloperID] in table 'IssueAttachments'

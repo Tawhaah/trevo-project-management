@@ -30,7 +30,6 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("EntityModel", "DeveloperProjectAssignment", "Developer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PrjctMngmt.Models.Developer), "ProjectRole", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PrjctMngmt.Models.ProjectAssignment), true)]
 [assembly: EdmRelationshipAttribute("EntityModel", "IssueIssueAssignment", "Issue", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PrjctMngmt.Models.Issue), "IssueAssignment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PrjctMngmt.Models.IssueAssignment), true)]
 [assembly: EdmRelationshipAttribute("EntityModel", "DeveloperIssueAssignment", "Developer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PrjctMngmt.Models.Developer), "IssueAssignment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PrjctMngmt.Models.IssueAssignment), true)]
-[assembly: EdmRelationshipAttribute("EntityModel", "ProjectWhiteboard", "Project", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PrjctMngmt.Models.Project), "Whiteboard", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PrjctMngmt.Models.Whiteboard), true)]
 [assembly: EdmRelationshipAttribute("EntityModel", "DeveloperIssueAttachment", "Developer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PrjctMngmt.Models.Developer), "IssueAttachment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PrjctMngmt.Models.IssueAttachment), true)]
 [assembly: EdmRelationshipAttribute("EntityModel", "IssueIssueAttachment", "Issue", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PrjctMngmt.Models.Issue), "IssueAttachment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PrjctMngmt.Models.IssueAttachment), true)]
 [assembly: EdmRelationshipAttribute("EntityModel", "MilestoneIssue", "Milestone", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(PrjctMngmt.Models.Milestone), "Issue", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PrjctMngmt.Models.Issue), true)]
@@ -351,22 +350,6 @@ namespace PrjctMngmt.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Whiteboard> Whiteboards
-        {
-            get
-            {
-                if ((_Whiteboards == null))
-                {
-                    _Whiteboards = base.CreateObjectSet<Whiteboard>("Whiteboards");
-                }
-                return _Whiteboards;
-            }
-        }
-        private ObjectSet<Whiteboard> _Whiteboards;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<IssueAttachment> IssueAttachments
         {
             get
@@ -525,14 +508,6 @@ namespace PrjctMngmt.Models
         public void AddToMilestones(Milestone milestone)
         {
             base.AddObject("Milestones", milestone);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the Whiteboards EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToWhiteboards(Whiteboard whiteboard)
-        {
-            base.AddObject("Whiteboards", whiteboard);
         }
     
         /// <summary>
@@ -3508,28 +3483,6 @@ namespace PrjctMngmt.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("EntityModel", "ProjectWhiteboard", "Whiteboard")]
-        public EntityCollection<Whiteboard> Whiteboard
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Whiteboard>("EntityModel.ProjectWhiteboard", "Whiteboard");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Whiteboard>("EntityModel.ProjectWhiteboard", "Whiteboard", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("EntityModel", "ProjectMilestone", "Milestone")]
         public EntityCollection<Milestone> Milestone
         {
@@ -4842,128 +4795,6 @@ namespace PrjctMngmt.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Message>("EntityModel.TopicMessage", "Message", value);
-                }
-            }
-        }
-
-        #endregion
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="EntityModel", Name="Whiteboard")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class Whiteboard : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new Whiteboard object.
-        /// </summary>
-        /// <param name="whiteboardID">Initial value of the WhiteboardID property.</param>
-        /// <param name="projectID">Initial value of the ProjectID property.</param>
-        public static Whiteboard CreateWhiteboard(global::System.Int32 whiteboardID, global::System.Int32 projectID)
-        {
-            Whiteboard whiteboard = new Whiteboard();
-            whiteboard.WhiteboardID = whiteboardID;
-            whiteboard.ProjectID = projectID;
-            return whiteboard;
-        }
-
-        #endregion
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 WhiteboardID
-        {
-            get
-            {
-                return _WhiteboardID;
-            }
-            set
-            {
-                if (_WhiteboardID != value)
-                {
-                    OnWhiteboardIDChanging(value);
-                    ReportPropertyChanging("WhiteboardID");
-                    _WhiteboardID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("WhiteboardID");
-                    OnWhiteboardIDChanged();
-                }
-            }
-        }
-        private global::System.Int32 _WhiteboardID;
-        partial void OnWhiteboardIDChanging(global::System.Int32 value);
-        partial void OnWhiteboardIDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 ProjectID
-        {
-            get
-            {
-                return _ProjectID;
-            }
-            set
-            {
-                OnProjectIDChanging(value);
-                ReportPropertyChanging("ProjectID");
-                _ProjectID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("ProjectID");
-                OnProjectIDChanged();
-            }
-        }
-        private global::System.Int32 _ProjectID;
-        partial void OnProjectIDChanging(global::System.Int32 value);
-        partial void OnProjectIDChanged();
-
-        #endregion
-    
-        #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("EntityModel", "ProjectWhiteboard", "Project")]
-        public Project Project
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("EntityModel.ProjectWhiteboard", "Project").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("EntityModel.ProjectWhiteboard", "Project").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Project> ProjectReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Project>("EntityModel.ProjectWhiteboard", "Project");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Project>("EntityModel.ProjectWhiteboard", "Project", value);
                 }
             }
         }

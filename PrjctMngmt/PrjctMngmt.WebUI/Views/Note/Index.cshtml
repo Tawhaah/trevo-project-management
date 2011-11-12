@@ -33,15 +33,15 @@
                 //calculate final location
                 var width = parent.width();
                 var height = parent.height();
-                var left = 100 - (width - this.position().left) / width * 100;
-                var top = 100 - (height - this.position().top) / height * 100;
+                var left = 100 - (width - $(this).position().left) / width * 100;
+                var top = 100 - (height - $(this).position().top) / height * 100;
                 var LocX = left + "";
                 var LocY = top + "";
                 LocX = LocX.substr(0, 6) + "%";
                 LocY = LocY.substr(0, 6) + "%";
 
                 //post back new location
-                $.post("Note/UpdateLocation/?id=" + this.attr("id") + "&LocX=" + LocX + "&LocY" + LocY, function () { });
+                $.post("Note/UpdateLocation/?id=" + $(this).attr("id") + "&LocX=" + LocX + "&LocY" + LocY, function () { });
             }
         });
     });
@@ -60,7 +60,7 @@
             <!-- List project's notes here -->
             @foreach (var item in Model) {
                 if(item.ProjectID == proj.ProjectID) {
-                    <div class="note" style=" left:@item.LocX; right:@item.LocY"> 
+                    <div id="@item.NoteID" class="note" style="left:@item.LocX; right:@item.LocY"> 
                         @item.Data
                     </div>
                 }  

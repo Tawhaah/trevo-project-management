@@ -303,7 +303,6 @@
     <Content Include="Views\TaskAssignment\_EditCreatePartial.cshtml" />
     <Content Include="Views\TaskCategory\_EditCreatePartial.cshtml" />
     <Content Include="Views\Topic\_EditCreatePartial.cshtml" />
-    <Content Include="Views\Note\Copy of Index.cshtml" />
     <Content Include="Views\Team\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

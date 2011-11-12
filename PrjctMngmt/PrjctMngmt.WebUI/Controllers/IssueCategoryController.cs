@@ -62,14 +62,16 @@ namespace PrjctMngmt.Controllers
         // POST: /IssueCategory/Create
 
         [HttpPost]
-        public ActionResult Create(IssueCategory newIssueCategory)
+        public ActionResult Create(string IssueCategoryName)
         {
             if (!ModelState.IsValid)
                 return View();
 
             try
             {
-                _dataModel.AddToIssueCategories(newIssueCategory);
+                IssueCategory issueCat = new IssueCategory();
+                issueCat.IssueCategoryName = IssueCategoryName;
+                _dataModel.AddToIssueCategories(issueCat);
                 _dataModel.SaveChanges();
 
                 return RedirectToAction("Create", "Issue");
