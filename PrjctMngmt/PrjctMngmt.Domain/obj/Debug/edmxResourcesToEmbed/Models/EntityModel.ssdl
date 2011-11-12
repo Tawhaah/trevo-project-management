@@ -17,7 +17,6 @@
     <EntitySet Name="Issues" EntityType="EntityModel.Store.Issues" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ProjectAssignments" EntityType="EntityModel.Store.ProjectAssignments" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Milestones" EntityType="EntityModel.Store.Milestones" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Whiteboards" EntityType="EntityModel.Store.Whiteboards" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="IssueAttachments" EntityType="EntityModel.Store.IssueAttachments" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="IssueAssignments" EntityType="EntityModel.Store.IssueAssignments" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="ProjectTask" Association="EntityModel.Store.ProjectTask">
@@ -67,10 +66,6 @@
     <AssociationSet Name="DeveloperIssueAssignment" Association="EntityModel.Store.DeveloperIssueAssignment">
       <End Role="Developer" EntitySet="Developers" />
       <End Role="IssueAssignment" EntitySet="IssueAssignments" />
-    </AssociationSet>
-    <AssociationSet Name="ProjectWhiteboard" Association="EntityModel.Store.ProjectWhiteboard">
-      <End Role="Project" EntitySet="Projects" />
-      <End Role="Whiteboard" EntitySet="Whiteboards" />
     </AssociationSet>
     <AssociationSet Name="DeveloperIssueAttachment" Association="EntityModel.Store.DeveloperIssueAttachment">
       <End Role="Developer" EntitySet="Developers" />
@@ -277,13 +272,6 @@
     <Property Name="DueDate" Type="datetime" Nullable="true" />
     <Property Name="ProjectID" Type="int" Nullable="true" />
   </EntityType>
-  <EntityType Name="Whiteboards">
-    <Key>
-      <PropertyRef Name="WhiteboardID" />
-    </Key>
-    <Property Name="WhiteboardID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ProjectID" Type="int" Nullable="false" />
-  </EntityType>
   <EntityType Name="IssueAttachments">
     <Key>
       <PropertyRef Name="IssueAttachmentID" />
@@ -445,18 +433,6 @@
       </Principal>
       <Dependent Role="IssueAssignment">
         <PropertyRef Name="DeveloperID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ProjectWhiteboard">
-    <End Role="Project" Type="EntityModel.Store.Projects" Multiplicity="1" />
-    <End Role="Whiteboard" Type="EntityModel.Store.Whiteboards" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Project">
-        <PropertyRef Name="ProjectID" />
-      </Principal>
-      <Dependent Role="Whiteboard">
-        <PropertyRef Name="ProjectID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

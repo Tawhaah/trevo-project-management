@@ -181,14 +181,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Whiteboards">
-      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.Whiteboard)">
-        <MappingFragment StoreEntitySet="Whiteboards">
-          <ScalarProperty Name="WhiteboardID" ColumnName="WhiteboardID" />
-          <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="IssueAttachments">
       <EntityTypeMapping TypeName="IsTypeOf(EntityModel.IssueAttachment)">
         <MappingFragment StoreEntitySet="IssueAttachments">
