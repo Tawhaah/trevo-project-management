@@ -12,13 +12,13 @@
 
     <div class="display-label">Issue</div>
     <div class="display-field">
-        @Html.DisplayFor(model => model.Issue.Summary)
+        @Html.DisplayFor(model => model.Issue.Subject)
     </div>
 
     <div class="display-label">Developer</div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Developer.FirstName)
-        @Html.DisplayFor(model => model.Developer.LsatName)
+        @Html.DisplayFor(model => model.Developer.LastName)
     </div>
 </fieldset>
 @using (Html.BeginForm()) {

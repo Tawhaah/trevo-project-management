@@ -62,7 +62,7 @@ namespace PrjctMngmt.Controllers
         } 
         
         [HttpPost]
-        public ActionResult Create(string Summary, string Priority, string Severity, string Status,
+        public ActionResult Create(string Subject, string Priority, string Severity, string Status,
             string Description, string IssueCategoryName, int? MilestoneID, int ProjectID, HttpPostedFileBase file)
         {
             if (!ModelState.IsValid)
@@ -71,7 +71,7 @@ namespace PrjctMngmt.Controllers
             try
             {
                 Issue issue = new Issue();
-                issue.Summary = Summary;
+                issue.Subject = Subject;
                 issue.Priority = Priority;
                 issue.Severity = Severity;
                 issue.Status = Status;

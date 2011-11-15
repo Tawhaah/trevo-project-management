@@ -148,7 +148,7 @@
       <EntityTypeMapping TypeName="IsTypeOf(EntityModel.Issue)">
         <MappingFragment StoreEntitySet="Issues">
           <ScalarProperty Name="IssueID" ColumnName="IssueID" />
-          <ScalarProperty Name="Summary" ColumnName="Summary" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
           <ScalarProperty Name="Priority" ColumnName="Priority" />
           <ScalarProperty Name="Severity" ColumnName="Severity" />
           <ScalarProperty Name="Status" ColumnName="Status" />

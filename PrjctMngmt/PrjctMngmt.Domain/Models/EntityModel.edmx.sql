@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 11/15/2011 02:40:06
+-- Date Created: 11/16/2011 01:52:48
 -- Generated from EDMX file: C:\Users\Pepe\Documents\Visual Studio 2010\Projects\trevo-project-management\PrjctMngmt\PrjctMngmt.Domain\Models\EntityModel.edmx
 -- --------------------------------------------------
 
@@ -82,6 +82,12 @@ IF OBJECT_ID(N'[dbo].[FK_TeamDeveloper]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_IssueCategoryIssue]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Issues] DROP CONSTRAINT [FK_IssueCategoryIssue];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ConferenceConferenceAttendant]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ConferenceAttendants] DROP CONSTRAINT [FK_ConferenceConferenceAttendant];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DeveloperConferenceAttendant]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ConferenceAttendants] DROP CONSTRAINT [FK_DeveloperConferenceAttendant];
 GO
 
 -- --------------------------------------------------
@@ -286,7 +292,7 @@ GO
 -- Creating table 'Issues'
 CREATE TABLE [dbo].[Issues] (
     [IssueID] int IDENTITY(1,1) NOT NULL,
-    [Summary] nvarchar(max)  NOT NULL,
+    [Subject] nvarchar(max)  NOT NULL,
     [Priority] nvarchar(max)  NULL,
     [Severity] nvarchar(max)  NULL,
     [Status] nvarchar(max)  NULL,

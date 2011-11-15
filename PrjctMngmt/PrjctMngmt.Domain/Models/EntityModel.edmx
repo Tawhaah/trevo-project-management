@@ -258,7 +258,7 @@
       <PropertyRef Name="IssueID" />
     </Key>
     <Property Name="IssueID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Summary" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Subject" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Priority" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Severity" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Status" Type="nvarchar(max)" Nullable="true" />
@@ -908,7 +908,7 @@
             <PropertyRef Name="IssueID" />
           </Key>
           <Property Type="Int32" Name="IssueID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Summary" Nullable="false" />
+          <Property Type="String" Name="Subject" Nullable="false" />
           <Property Type="String" Name="Priority" Nullable="true" />
           <Property Type="String" Name="Severity" Nullable="true" />
           <Property Type="String" Name="Status" Nullable="true" />
@@ -1438,7 +1438,7 @@
       <EntityTypeMapping TypeName="IsTypeOf(EntityModel.Issue)">
         <MappingFragment StoreEntitySet="Issues">
           <ScalarProperty Name="IssueID" ColumnName="IssueID" />
-          <ScalarProperty Name="Summary" ColumnName="Summary" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
           <ScalarProperty Name="Priority" ColumnName="Priority" />
           <ScalarProperty Name="Severity" ColumnName="Severity" />
           <ScalarProperty Name="Status" ColumnName="Status" />

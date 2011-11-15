@@ -285,7 +285,7 @@
       <PropertyRef Name="IssueID" />
     </Key>
     <Property Type="Int32" Name="IssueID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="Summary" Nullable="false" />
+    <Property Type="String" Name="Subject" Nullable="false" />
     <Property Type="String" Name="Priority" Nullable="true" />
     <Property Type="String" Name="Severity" Nullable="true" />
     <Property Type="String" Name="Status" Nullable="true" />

@@ -253,7 +253,7 @@
       <PropertyRef Name="IssueID" />
     </Key>
     <Property Name="IssueID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Summary" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Subject" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Priority" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Severity" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Status" Type="nvarchar(max)" Nullable="true" />

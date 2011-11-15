@@ -172,7 +172,7 @@ namespace PrjctMngmt.Controllers
 
         public void PopulateDropDownLists()
         {
-            ViewData["Issues"] = new SelectList(_dataModel.Issues.ToList(), "IssueID", "Summary");
+            ViewData["Issues"] = new SelectList(_dataModel.Issues.ToList(), "IssueID", "Subject");
             var devQuery = _dataModel.Developers.Select(d => new { d.DeveloperID, DeveloperName = d.FirstName + " " + d.LastName });
             ViewData["Developers"] = new SelectList(devQuery.AsEnumerable(), "DeveloperID", "DeveloperName");
         }

@@ -2044,14 +2044,14 @@ namespace PrjctMngmt.Models
         /// Create a new Issue object.
         /// </summary>
         /// <param name="issueID">Initial value of the IssueID property.</param>
-        /// <param name="summary">Initial value of the Summary property.</param>
+        /// <param name="subject">Initial value of the Subject property.</param>
         /// <param name="description">Initial value of the Description property.</param>
         /// <param name="projectID">Initial value of the ProjectID property.</param>
-        public static Issue CreateIssue(global::System.Int32 issueID, global::System.String summary, global::System.String description, global::System.Int32 projectID)
+        public static Issue CreateIssue(global::System.Int32 issueID, global::System.String subject, global::System.String description, global::System.Int32 projectID)
         {
             Issue issue = new Issue();
             issue.IssueID = issueID;
-            issue.Summary = summary;
+            issue.Subject = subject;
             issue.Description = description;
             issue.ProjectID = projectID;
             return issue;
@@ -2092,24 +2092,24 @@ namespace PrjctMngmt.Models
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String Summary
+        public global::System.String Subject
         {
             get
             {
-                return _Summary;
+                return _Subject;
             }
             set
             {
-                OnSummaryChanging(value);
-                ReportPropertyChanging("Summary");
-                _Summary = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Summary");
-                OnSummaryChanged();
+                OnSubjectChanging(value);
+                ReportPropertyChanging("Subject");
+                _Subject = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Subject");
+                OnSubjectChanged();
             }
         }
-        private global::System.String _Summary;
-        partial void OnSummaryChanging(global::System.String value);
-        partial void OnSummaryChanged();
+        private global::System.String _Subject;
+        partial void OnSubjectChanging(global::System.String value);
+        partial void OnSubjectChanged();
     
         /// <summary>
         /// No Metadata Documentation available.

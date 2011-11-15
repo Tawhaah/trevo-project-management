@@ -224,7 +224,7 @@ namespace PrjctMngmt.Controllers
 
         public void PopulateDropDownLists()
         {
-            ViewData["Issues"] = new SelectList(_dataModel.Issues.ToList(), "IssueID", "Summary");
+            ViewData["Issues"] = new SelectList(_dataModel.Issues.ToList(), "IssueID", "Subject");
         }
 
         public IssueAttachment GetIssueAttachmentByID(int id)
