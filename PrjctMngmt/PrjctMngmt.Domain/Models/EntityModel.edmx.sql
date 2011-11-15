@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 11/12/2011 22:38:57
+-- Date Created: 11/15/2011 00:49:37
 -- Generated from EDMX file: C:\Users\Pepe\Documents\Visual Studio 2010\Projects\trevo-project-management\PrjctMngmt\PrjctMngmt.Domain\Models\EntityModel.edmx
 -- --------------------------------------------------
 
@@ -83,6 +83,12 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_IssueCategoryIssue]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Issues] DROP CONSTRAINT [FK_IssueCategoryIssue];
 GO
+IF OBJECT_ID(N'[dbo].[FK_ConferenceConferenceAttentands]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ConferenceAttentandsSet] DROP CONSTRAINT [FK_ConferenceConferenceAttentands];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DeveloperConferenceAttentands]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ConferenceAttentandsSet] DROP CONSTRAINT [FK_DeveloperConferenceAttentands];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -141,6 +147,12 @@ IF OBJECT_ID(N'[dbo].[IssueAttachments]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[IssueAssignments]', 'U') IS NOT NULL
     DROP TABLE [dbo].[IssueAssignments];
+GO
+IF OBJECT_ID(N'[dbo].[Conferences]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Conferences];
+GO
+IF OBJECT_ID(N'[dbo].[ConferenceAttentandsSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ConferenceAttentandsSet];
 GO
 
 -- --------------------------------------------------
@@ -331,6 +343,30 @@ CREATE TABLE [dbo].[IssueAssignments] (
 );
 GO
 
+-- Creating table 'Conferences'
+CREATE TABLE [dbo].[Conferences] (
+    [ConferenceID] int IDENTITY(1,1) NOT NULL,
+    [Name] nvarchar(max)  NOT NULL,
+    [Date] datetime  NOT NULL,
+    [Description] nvarchar(max)  NULL,
+    [Address] nvarchar(max)  NOT NULL,
+    [Country] nvarchar(max)  NOT NULL,
+    [ContactPhone] nvarchar(max)  NOT NULL,
+    [Organizer] nvarchar(max)  NOT NULL,
+    [Room] nvarchar(max)  NOT NULL,
+    [Latitude] int  NULL,
+    [Longitude] int  NULL
+);
+GO
+
+-- Creating table 'ConferenceAttentandsSet'
+CREATE TABLE [dbo].[ConferenceAttentandsSet] (
+    [ID] int IDENTITY(1,1) NOT NULL,
+    [ConferenceID] int  NOT NULL,
+    [DeveloperID] int  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -441,6 +477,18 @@ GO
 ALTER TABLE [dbo].[IssueAssignments]
 ADD CONSTRAINT [PK_IssueAssignments]
     PRIMARY KEY CLUSTERED ([IssueAssignmentID] ASC);
+GO
+
+-- Creating primary key on [ConferenceID] in table 'Conferences'
+ALTER TABLE [dbo].[Conferences]
+ADD CONSTRAINT [PK_Conferences]
+    PRIMARY KEY CLUSTERED ([ConferenceID] ASC);
+GO
+
+-- Creating primary key on [ID] in table 'ConferenceAttentandsSet'
+ALTER TABLE [dbo].[ConferenceAttentandsSet]
+ADD CONSTRAINT [PK_ConferenceAttentandsSet]
+    PRIMARY KEY CLUSTERED ([ID] ASC);
 GO
 
 -- --------------------------------------------------
@@ -753,6 +801,34 @@ ADD CONSTRAINT [FK_IssueCategoryIssue]
 CREATE INDEX [IX_FK_IssueCategoryIssue]
 ON [dbo].[Issues]
     ([IssueCategoryName]);
+GO
+
+-- Creating foreign key on [ConferenceID] in table 'ConferenceAttentandsSet'
+ALTER TABLE [dbo].[ConferenceAttentandsSet]
+ADD CONSTRAINT [FK_ConferenceConferenceAttentands]
+    FOREIGN KEY ([ConferenceID])
+    REFERENCES [dbo].[Conferences]
+        ([ConferenceID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ConferenceConferenceAttentands'
+CREATE INDEX [IX_FK_ConferenceConferenceAttentands]
+ON [dbo].[ConferenceAttentandsSet]
+    ([ConferenceID]);
+GO
+
+-- Creating foreign key on [DeveloperID] in table 'ConferenceAttentandsSet'
+ALTER TABLE [dbo].[ConferenceAttentandsSet]
+ADD CONSTRAINT [FK_DeveloperConferenceAttentands]
+    FOREIGN KEY ([DeveloperID])
+    REFERENCES [dbo].[Developers]
+        ([DeveloperID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_DeveloperConferenceAttentands'
+CREATE INDEX [IX_FK_DeveloperConferenceAttentands]
+ON [dbo].[ConferenceAttentandsSet]
+    ([DeveloperID]);
 GO
 
 -- --------------------------------------------------

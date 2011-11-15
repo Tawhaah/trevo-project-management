@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using PrjctMngmt.CustomModelBinders;
 
 namespace PrjctMngmt
 {
@@ -37,6 +38,8 @@ namespace PrjctMngmt
             RegisterRoutes(RouteTable.Routes);
 
             ControllerBuilder.Current.DefaultNamespaces.Add("PrjctMngmt.Controllers");
+
+            ModelBinders.Binders.Add(typeof(decimal), new DecimalModelBinder());
         }
     }
 }

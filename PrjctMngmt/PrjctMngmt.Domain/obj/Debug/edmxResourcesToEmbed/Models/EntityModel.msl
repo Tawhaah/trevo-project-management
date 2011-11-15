@@ -203,5 +203,31 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Conferences">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.Conference)">
+        <MappingFragment StoreEntitySet="Conferences">
+          <ScalarProperty Name="ConferenceID" ColumnName="ConferenceID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+          <ScalarProperty Name="Organizer" ColumnName="Organizer" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConferenceAttentandsSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.ConferenceAttentands)">
+        <MappingFragment StoreEntitySet="ConferenceAttentandsSet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ConferenceID" ColumnName="ConferenceID" />
+          <ScalarProperty Name="DeveloperID" ColumnName="DeveloperID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<PrjctMngmt.Models.Conference>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Conferences</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            Address
+        </th>
+        <th>
+            Country
+        </th>
+        <th>
+            Contact phone
+        </th>
+        <th>
+            Organizer
+        </th>
+        <th>
+            Room
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactPhone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Organizer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Room)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ConferenceID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ConferenceID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ConferenceID })
+        </td>
+    </tr>
+}
+
+</table>

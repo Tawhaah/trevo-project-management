@@ -40,6 +40,8 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("EntityModel", "TaskCategoryTask", "TaskCategory", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(PrjctMngmt.Models.TaskCategory), "Task", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PrjctMngmt.Models.Task), true)]
 [assembly: EdmRelationshipAttribute("EntityModel", "TeamDeveloper", "Team", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(PrjctMngmt.Models.Team), "Developer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PrjctMngmt.Models.Developer), true)]
 [assembly: EdmRelationshipAttribute("EntityModel", "IssueCategoryIssue", "IssueCategory", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(PrjctMngmt.Models.IssueCategory), "Issue", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PrjctMngmt.Models.Issue), true)]
+[assembly: EdmRelationshipAttribute("EntityModel", "ConferenceConferenceAttentands", "Conference", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PrjctMngmt.Models.Conference), "ConferenceAttentands", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PrjctMngmt.Models.ConferenceAttentands), true)]
+[assembly: EdmRelationshipAttribute("EntityModel", "DeveloperConferenceAttentands", "Developer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PrjctMngmt.Models.Developer), "ConferenceAttentands", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PrjctMngmt.Models.ConferenceAttentands), true)]
 
 #endregion
 
@@ -378,6 +380,38 @@ namespace PrjctMngmt.Models
             }
         }
         private ObjectSet<IssueAssignment> _IssueAssignments;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Conference> Conferences
+        {
+            get
+            {
+                if ((_Conferences == null))
+                {
+                    _Conferences = base.CreateObjectSet<Conference>("Conferences");
+                }
+                return _Conferences;
+            }
+        }
+        private ObjectSet<Conference> _Conferences;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ConferenceAttentands> ConferenceAttentandsSet
+        {
+            get
+            {
+                if ((_ConferenceAttentandsSet == null))
+                {
+                    _ConferenceAttentandsSet = base.CreateObjectSet<ConferenceAttentands>("ConferenceAttentandsSet");
+                }
+                return _ConferenceAttentandsSet;
+            }
+        }
+        private ObjectSet<ConferenceAttentands> _ConferenceAttentandsSet;
 
         #endregion
         #region AddTo Methods
@@ -524,6 +558,22 @@ namespace PrjctMngmt.Models
         public void AddToIssueAssignments(IssueAssignment issueAssignment)
         {
             base.AddObject("IssueAssignments", issueAssignment);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Conferences EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToConferences(Conference conference)
+        {
+            base.AddObject("Conferences", conference);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ConferenceAttentandsSet EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToConferenceAttentandsSet(ConferenceAttentands conferenceAttentands)
+        {
+            base.AddObject("ConferenceAttentandsSet", conferenceAttentands);
         }
 
         #endregion
@@ -781,6 +831,526 @@ namespace PrjctMngmt.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Project>("EntityModel.ClientProject", "Project", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="EntityModel", Name="Conference")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Conference : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Conference object.
+        /// </summary>
+        /// <param name="conferenceID">Initial value of the ConferenceID property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="date">Initial value of the Date property.</param>
+        /// <param name="address">Initial value of the Address property.</param>
+        /// <param name="country">Initial value of the Country property.</param>
+        /// <param name="contactPhone">Initial value of the ContactPhone property.</param>
+        /// <param name="organizer">Initial value of the Organizer property.</param>
+        /// <param name="room">Initial value of the Room property.</param>
+        public static Conference CreateConference(global::System.Int32 conferenceID, global::System.String name, global::System.DateTime date, global::System.String address, global::System.String country, global::System.String contactPhone, global::System.String organizer, global::System.String room)
+        {
+            Conference conference = new Conference();
+            conference.ConferenceID = conferenceID;
+            conference.Name = name;
+            conference.Date = date;
+            conference.Address = address;
+            conference.Country = country;
+            conference.ContactPhone = contactPhone;
+            conference.Organizer = organizer;
+            conference.Room = room;
+            return conference;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ConferenceID
+        {
+            get
+            {
+                return _ConferenceID;
+            }
+            set
+            {
+                if (_ConferenceID != value)
+                {
+                    OnConferenceIDChanging(value);
+                    ReportPropertyChanging("ConferenceID");
+                    _ConferenceID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ConferenceID");
+                    OnConferenceIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ConferenceID;
+        partial void OnConferenceIDChanging(global::System.Int32 value);
+        partial void OnConferenceIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime Date
+        {
+            get
+            {
+                return _Date;
+            }
+            set
+            {
+                OnDateChanging(value);
+                ReportPropertyChanging("Date");
+                _Date = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Date");
+                OnDateChanged();
+            }
+        }
+        private global::System.DateTime _Date;
+        partial void OnDateChanging(global::System.DateTime value);
+        partial void OnDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Address
+        {
+            get
+            {
+                return _Address;
+            }
+            set
+            {
+                OnAddressChanging(value);
+                ReportPropertyChanging("Address");
+                _Address = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Address");
+                OnAddressChanged();
+            }
+        }
+        private global::System.String _Address;
+        partial void OnAddressChanging(global::System.String value);
+        partial void OnAddressChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Country
+        {
+            get
+            {
+                return _Country;
+            }
+            set
+            {
+                OnCountryChanging(value);
+                ReportPropertyChanging("Country");
+                _Country = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Country");
+                OnCountryChanged();
+            }
+        }
+        private global::System.String _Country;
+        partial void OnCountryChanging(global::System.String value);
+        partial void OnCountryChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String ContactPhone
+        {
+            get
+            {
+                return _ContactPhone;
+            }
+            set
+            {
+                OnContactPhoneChanging(value);
+                ReportPropertyChanging("ContactPhone");
+                _ContactPhone = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("ContactPhone");
+                OnContactPhoneChanged();
+            }
+        }
+        private global::System.String _ContactPhone;
+        partial void OnContactPhoneChanging(global::System.String value);
+        partial void OnContactPhoneChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Organizer
+        {
+            get
+            {
+                return _Organizer;
+            }
+            set
+            {
+                OnOrganizerChanging(value);
+                ReportPropertyChanging("Organizer");
+                _Organizer = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Organizer");
+                OnOrganizerChanged();
+            }
+        }
+        private global::System.String _Organizer;
+        partial void OnOrganizerChanging(global::System.String value);
+        partial void OnOrganizerChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Room
+        {
+            get
+            {
+                return _Room;
+            }
+            set
+            {
+                OnRoomChanging(value);
+                ReportPropertyChanging("Room");
+                _Room = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Room");
+                OnRoomChanged();
+            }
+        }
+        private global::System.String _Room;
+        partial void OnRoomChanging(global::System.String value);
+        partial void OnRoomChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Latitude
+        {
+            get
+            {
+                return _Latitude;
+            }
+            set
+            {
+                OnLatitudeChanging(value);
+                ReportPropertyChanging("Latitude");
+                _Latitude = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Latitude");
+                OnLatitudeChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Latitude;
+        partial void OnLatitudeChanging(Nullable<global::System.Int32> value);
+        partial void OnLatitudeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> Longitude
+        {
+            get
+            {
+                return _Longitude;
+            }
+            set
+            {
+                OnLongitudeChanging(value);
+                ReportPropertyChanging("Longitude");
+                _Longitude = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Longitude");
+                OnLongitudeChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _Longitude;
+        partial void OnLongitudeChanging(Nullable<global::System.Int32> value);
+        partial void OnLongitudeChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("EntityModel", "ConferenceConferenceAttentands", "ConferenceAttentands")]
+        public EntityCollection<ConferenceAttentands> ConferenceAttentands
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ConferenceAttentands>("EntityModel.ConferenceConferenceAttentands", "ConferenceAttentands");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ConferenceAttentands>("EntityModel.ConferenceConferenceAttentands", "ConferenceAttentands", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="EntityModel", Name="ConferenceAttentands")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ConferenceAttentands : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ConferenceAttentands object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="conferenceID">Initial value of the ConferenceID property.</param>
+        /// <param name="developerID">Initial value of the DeveloperID property.</param>
+        public static ConferenceAttentands CreateConferenceAttentands(global::System.Int32 id, global::System.Int32 conferenceID, global::System.Int32 developerID)
+        {
+            ConferenceAttentands conferenceAttentands = new ConferenceAttentands();
+            conferenceAttentands.ID = id;
+            conferenceAttentands.ConferenceID = conferenceID;
+            conferenceAttentands.DeveloperID = developerID;
+            return conferenceAttentands;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ConferenceID
+        {
+            get
+            {
+                return _ConferenceID;
+            }
+            set
+            {
+                OnConferenceIDChanging(value);
+                ReportPropertyChanging("ConferenceID");
+                _ConferenceID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ConferenceID");
+                OnConferenceIDChanged();
+            }
+        }
+        private global::System.Int32 _ConferenceID;
+        partial void OnConferenceIDChanging(global::System.Int32 value);
+        partial void OnConferenceIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 DeveloperID
+        {
+            get
+            {
+                return _DeveloperID;
+            }
+            set
+            {
+                OnDeveloperIDChanging(value);
+                ReportPropertyChanging("DeveloperID");
+                _DeveloperID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DeveloperID");
+                OnDeveloperIDChanged();
+            }
+        }
+        private global::System.Int32 _DeveloperID;
+        partial void OnDeveloperIDChanging(global::System.Int32 value);
+        partial void OnDeveloperIDChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("EntityModel", "ConferenceConferenceAttentands", "Conference")]
+        public Conference Conference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Conference>("EntityModel.ConferenceConferenceAttentands", "Conference").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Conference>("EntityModel.ConferenceConferenceAttentands", "Conference").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Conference> ConferenceReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Conference>("EntityModel.ConferenceConferenceAttentands", "Conference");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Conference>("EntityModel.ConferenceConferenceAttentands", "Conference", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("EntityModel", "DeveloperConferenceAttentands", "Developer")]
+        public Developer Developer
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Developer>("EntityModel.DeveloperConferenceAttentands", "Developer").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Developer>("EntityModel.DeveloperConferenceAttentands", "Developer").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Developer> DeveloperReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Developer>("EntityModel.DeveloperConferenceAttentands", "Developer");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Developer>("EntityModel.DeveloperConferenceAttentands", "Developer", value);
                 }
             }
         }
@@ -1205,6 +1775,28 @@ namespace PrjctMngmt.Models
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Team>("EntityModel.TeamDeveloper", "Team", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("EntityModel", "DeveloperConferenceAttentands", "ConferenceAttentands")]
+        public EntityCollection<ConferenceAttentands> ConferenceAttentands
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ConferenceAttentands>("EntityModel.DeveloperConferenceAttentands", "ConferenceAttentands");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ConferenceAttentands>("EntityModel.DeveloperConferenceAttentands", "ConferenceAttentands", value);
                 }
             }
         }

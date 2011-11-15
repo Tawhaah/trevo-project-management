@@ -107,6 +107,16 @@
       <End Role="IssueCategory" EntitySet="IssueCategories" />
       <End Role="Issue" EntitySet="Issues" />
     </AssociationSet>
+    <EntitySet Name="Conferences" EntityType="EntityModel.Conference" />
+    <EntitySet Name="ConferenceAttentandsSet" EntityType="EntityModel.ConferenceAttentands" />
+    <AssociationSet Name="ConferenceConferenceAttentands" Association="EntityModel.ConferenceConferenceAttentands">
+      <End Role="Conference" EntitySet="Conferences" />
+      <End Role="ConferenceAttentands" EntitySet="ConferenceAttentandsSet" />
+    </AssociationSet>
+    <AssociationSet Name="DeveloperConferenceAttentands" Association="EntityModel.DeveloperConferenceAttentands">
+      <End Role="Developer" EntitySet="Developers" />
+      <End Role="ConferenceAttentands" EntitySet="ConferenceAttentandsSet" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Developer">
     <Key>
@@ -128,6 +138,7 @@
     <Property Type="String" Name="UserName" Nullable="false" />
     <NavigationProperty Name="Team" Relationship="EntityModel.TeamDeveloper" FromRole="Developer" ToRole="Team" />
     <Property Type="String" Name="TeamName" Nullable="true" />
+    <NavigationProperty Name="ConferenceAttentands" Relationship="EntityModel.DeveloperConferenceAttentands" FromRole="Developer" ToRole="ConferenceAttentands" />
   </EntityType>
   <EntityType Name="Team">
     <Key>
@@ -597,6 +608,57 @@
       </Principal>
       <Dependent Role="Issue">
         <PropertyRef Name="IssueCategoryName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Conference">
+    <Key>
+      <PropertyRef Name="ConferenceID" />
+    </Key>
+    <Property Type="Int32" Name="ConferenceID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="DateTime" Name="Date" Nullable="false" />
+    <Property Type="String" Name="Description" Nullable="true" />
+    <Property Type="String" Name="Address" Nullable="false" />
+    <Property Type="String" Name="Country" Nullable="false" />
+    <Property Type="String" Name="ContactPhone" Nullable="false" />
+    <Property Type="String" Name="Organizer" Nullable="false" />
+    <NavigationProperty Name="ConferenceAttentands" Relationship="EntityModel.ConferenceConferenceAttentands" FromRole="Conference" ToRole="ConferenceAttentands" />
+    <Property Type="String" Name="Room" Nullable="false" />
+    <Property Type="Int32" Name="Latitude" Nullable="true" />
+    <Property Type="Int32" Name="Longitude" Nullable="true" />
+  </EntityType>
+  <EntityType Name="ConferenceAttentands">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Conference" Relationship="EntityModel.ConferenceConferenceAttentands" FromRole="ConferenceAttentands" ToRole="Conference" />
+    <Property Type="Int32" Name="ConferenceID" Nullable="false" />
+    <NavigationProperty Name="Developer" Relationship="EntityModel.DeveloperConferenceAttentands" FromRole="ConferenceAttentands" ToRole="Developer" />
+    <Property Type="Int32" Name="DeveloperID" Nullable="false" />
+  </EntityType>
+  <Association Name="ConferenceConferenceAttentands">
+    <End Type="EntityModel.Conference" Role="Conference" Multiplicity="1" />
+    <End Type="EntityModel.ConferenceAttentands" Role="ConferenceAttentands" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Conference">
+        <PropertyRef Name="ConferenceID" />
+      </Principal>
+      <Dependent Role="ConferenceAttentands">
+        <PropertyRef Name="ConferenceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DeveloperConferenceAttentands">
+    <End Type="EntityModel.Developer" Role="Developer" Multiplicity="1" />
+    <End Type="EntityModel.ConferenceAttentands" Role="ConferenceAttentands" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Developer">
+        <PropertyRef Name="DeveloperID" />
+      </Principal>
+      <Dependent Role="ConferenceAttentands">
+        <PropertyRef Name="DeveloperID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

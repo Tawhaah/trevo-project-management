@@ -24,6 +24,8 @@
     <EntitySet Name="Milestones" EntityType="EntityModel.Store.Milestones" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="IssueAttachments" EntityType="EntityModel.Store.IssueAttachments" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="IssueAssignments" EntityType="EntityModel.Store.IssueAssignments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Conferences" EntityType="EntityModel.Store.Conferences" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ConferenceAttentandsSet" EntityType="EntityModel.Store.ConferenceAttentandsSet" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="ProjectTask" Association="EntityModel.Store.ProjectTask">
       <End Role="Project" EntitySet="Projects" />
       <End Role="Task" EntitySet="Tasks" />
@@ -111,6 +113,14 @@
     <AssociationSet Name="IssueCategoryIssue" Association="EntityModel.Store.IssueCategoryIssue">
       <End Role="IssueCategory" EntitySet="IssueCategories" />
       <End Role="Issue" EntitySet="Issues" />
+    </AssociationSet>
+    <AssociationSet Name="ConferenceConferenceAttentands" Association="EntityModel.Store.ConferenceConferenceAttentands">
+      <End Role="Conference" EntitySet="Conferences" />
+      <End Role="ConferenceAttentands" EntitySet="ConferenceAttentandsSet" />
+    </AssociationSet>
+    <AssociationSet Name="DeveloperConferenceAttentands" Association="EntityModel.Store.DeveloperConferenceAttentands">
+      <End Role="Developer" EntitySet="Developers" />
+      <End Role="ConferenceAttentands" EntitySet="ConferenceAttentandsSet" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Developers">
@@ -295,6 +305,30 @@
     </Key>
     <Property Name="IssueAssignmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IssueID" Type="int" Nullable="false" />
+    <Property Name="DeveloperID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Conferences">
+    <Key>
+      <PropertyRef Name="ConferenceID" />
+    </Key>
+    <Property Name="ConferenceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Country" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ContactPhone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Organizer" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Room" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Latitude" Type="int" Nullable="true" />
+    <Property Name="Longitude" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="ConferenceAttentandsSet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ConferenceID" Type="int" Nullable="false" />
     <Property Name="DeveloperID" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="ProjectTask">
@@ -561,6 +595,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ConferenceConferenceAttentands">
+    <End Role="Conference" Type="EntityModel.Store.Conferences" Multiplicity="1" />
+    <End Role="ConferenceAttentands" Type="EntityModel.Store.ConferenceAttentandsSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Conference">
+        <PropertyRef Name="ConferenceID" />
+      </Principal>
+      <Dependent Role="ConferenceAttentands">
+        <PropertyRef Name="ConferenceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DeveloperConferenceAttentands">
+    <End Role="Developer" Type="EntityModel.Store.Developers" Multiplicity="1" />
+    <End Role="ConferenceAttentands" Type="EntityModel.Store.ConferenceAttentandsSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Developer">
+        <PropertyRef Name="DeveloperID" />
+      </Principal>
+      <Dependent Role="ConferenceAttentands">
+        <PropertyRef Name="DeveloperID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -672,6 +730,16 @@
             <End Role="IssueCategory" EntitySet="IssueCategories" />
             <End Role="Issue" EntitySet="Issues" />
           </AssociationSet>
+          <EntitySet Name="Conferences" EntityType="EntityModel.Conference" />
+          <EntitySet Name="ConferenceAttentandsSet" EntityType="EntityModel.ConferenceAttentands" />
+          <AssociationSet Name="ConferenceConferenceAttentands" Association="EntityModel.ConferenceConferenceAttentands">
+            <End Role="Conference" EntitySet="Conferences" />
+            <End Role="ConferenceAttentands" EntitySet="ConferenceAttentandsSet" />
+          </AssociationSet>
+          <AssociationSet Name="DeveloperConferenceAttentands" Association="EntityModel.DeveloperConferenceAttentands">
+            <End Role="Developer" EntitySet="Developers" />
+            <End Role="ConferenceAttentands" EntitySet="ConferenceAttentandsSet" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Developer">
           <Key>
@@ -693,6 +761,7 @@
           <Property Type="String" Name="UserName" Nullable="false" />
           <NavigationProperty Name="Team" Relationship="EntityModel.TeamDeveloper" FromRole="Developer" ToRole="Team" />
           <Property Type="String" Name="TeamName" Nullable="true" />
+          <NavigationProperty Name="ConferenceAttentands" Relationship="EntityModel.DeveloperConferenceAttentands" FromRole="Developer" ToRole="ConferenceAttentands" />
         </EntityType>
         <EntityType Name="Team">
           <Key>
@@ -1165,6 +1234,57 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Conference">
+          <Key>
+            <PropertyRef Name="ConferenceID" />
+          </Key>
+          <Property Type="Int32" Name="ConferenceID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="String" Name="Address" Nullable="false" />
+          <Property Type="String" Name="Country" Nullable="false" />
+          <Property Type="String" Name="ContactPhone" Nullable="false" />
+          <Property Type="String" Name="Organizer" Nullable="false" />
+          <NavigationProperty Name="ConferenceAttentands" Relationship="EntityModel.ConferenceConferenceAttentands" FromRole="Conference" ToRole="ConferenceAttentands" />
+          <Property Type="String" Name="Room" Nullable="false" />
+          <Property Type="Int32" Name="Latitude" Nullable="true" />
+          <Property Type="Int32" Name="Longitude" Nullable="true" />
+        </EntityType>
+        <EntityType Name="ConferenceAttentands">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Conference" Relationship="EntityModel.ConferenceConferenceAttentands" FromRole="ConferenceAttentands" ToRole="Conference" />
+          <Property Type="Int32" Name="ConferenceID" Nullable="false" />
+          <NavigationProperty Name="Developer" Relationship="EntityModel.DeveloperConferenceAttentands" FromRole="ConferenceAttentands" ToRole="Developer" />
+          <Property Type="Int32" Name="DeveloperID" Nullable="false" />
+        </EntityType>
+        <Association Name="ConferenceConferenceAttentands">
+          <End Type="EntityModel.Conference" Role="Conference" Multiplicity="1" />
+          <End Type="EntityModel.ConferenceAttentands" Role="ConferenceAttentands" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Conference">
+              <PropertyRef Name="ConferenceID" />
+            </Principal>
+            <Dependent Role="ConferenceAttentands">
+              <PropertyRef Name="ConferenceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DeveloperConferenceAttentands">
+          <End Type="EntityModel.Developer" Role="Developer" Multiplicity="1" />
+          <End Type="EntityModel.ConferenceAttentands" Role="ConferenceAttentands" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Developer">
+              <PropertyRef Name="DeveloperID" />
+            </Principal>
+            <Dependent Role="ConferenceAttentands">
+              <PropertyRef Name="DeveloperID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1373,6 +1493,32 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Conferences">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.Conference)">
+        <MappingFragment StoreEntitySet="Conferences">
+          <ScalarProperty Name="ConferenceID" ColumnName="ConferenceID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+          <ScalarProperty Name="Organizer" ColumnName="Organizer" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConferenceAttentandsSet">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.ConferenceAttentands)">
+        <MappingFragment StoreEntitySet="ConferenceAttentandsSet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ConferenceID" ColumnName="ConferenceID" />
+          <ScalarProperty Name="DeveloperID" ColumnName="DeveloperID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -1405,7 +1551,7 @@
         <EntityTypeShape EntityType="EntityModel.Topic" Width="1.625" PointX="7.5" PointY="0.5" Height="1.7879850260416674" />
         <EntityTypeShape EntityType="EntityModel.Client" Width="1.75" PointX="5.375" PointY="0.5" Height="2.7494921874999996" />
         <EntityTypeShape EntityType="EntityModel.ProjectCategory" Width="2" PointX="5.375" PointY="9.625" Height="1.5956835937499996" />
-        <EntityTypeShape EntityType="EntityModel.Project" Width="2.25" PointX="0.875" PointY="4.5" Height="4.0956022135416656" />
+        <EntityTypeShape EntityType="EntityModel.Project" Width="2.25" PointX="0.875" PointY="4.625" Height="3.9033007812499996" />
         <EntityTypeShape EntityType="EntityModel.IssueCategory" Width="1.875" PointX="3.25" PointY="9.625" Height="1.4033821614583317" />
         <EntityTypeShape EntityType="EntityModel.Issue" Width="1.875" PointX="0.5" PointY="9.25" Height="3.9033007812499996" />
         <EntityTypeShape EntityType="EntityModel.ProjectAssignment" Width="1.75" PointX="8.625" PointY="8.625" Height="2.3648893229166674" />
@@ -1413,7 +1559,7 @@
         <EntityTypeShape EntityType="EntityModel.IssueAttachment" Width="2" PointX="0.5" PointY="13.75" Height="2.7494921874999996" />
         <EntityTypeShape EntityType="EntityModel.IssueAssignment" Width="2" PointX="8.25" PointY="11.25" Height="1.9802864583333335" />
         <AssociationConnector Association="EntityModel.ProjectTask">
-          <ConnectorPoint PointX="1.75" PointY="4.5" />
+          <ConnectorPoint PointX="1.75" PointY="4.625" />
           <ConnectorPoint PointX="1.75" PointY="4.2109993489583326" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.TaskTaskAssignment">
@@ -1422,8 +1568,8 @@
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.DeveloperMessage">
           <ConnectorPoint PointX="8.375" PointY="3" />
-          <ConnectorPoint PointX="8.375" PointY="2.625" />
-          <ConnectorPoint PointX="9.5" PointY="2.625" />
+          <ConnectorPoint PointX="8.375" PointY="2.6249999999999991" />
+          <ConnectorPoint PointX="9.5" PointY="2.6249999999999991" />
           <ConnectorPoint PointX="9.5" PointY="1.7785953776041668" />
           <ConnectorPoint PointX="9.875" PointY="1.7785953776041668" />
         </AssociationConnector>
@@ -1437,28 +1583,26 @@
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.DeveloperTaskAssignment">
           <ConnectorPoint PointX="7.5" PointY="4.4901432291666659" />
-          <ConnectorPoint PointX="6.825520833333333" PointY="4.490143229166665" />
-          <ConnectorPoint PointX="6.658854166666667" PointY="4.4901432291666659" />
+          <ConnectorPoint PointX="6.677083333333333" PointY="4.490143229166665" />
+          <ConnectorPoint PointX="6.510416666666667" PointY="4.4901432291666659" />
           <ConnectorPoint PointX="6" PointY="4.4901432291666659" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.ProjectNote">
-          <ConnectorPoint PointX="3.125" PointY="7.264150390625" />
-          <ConnectorPoint PointX="4" PointY="7.264150390625" />
+          <ConnectorPoint PointX="3.125" PointY="7.326650390625" />
+          <ConnectorPoint PointX="4" PointY="7.326650390625" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.ClientProject">
-          <ConnectorPoint PointX="6.7421875" PointY="3.2494921874999996" />
-          <ConnectorPoint PointX="6.7421875" PointY="5.8551734599108816" />
-          <ConnectorPoint PointX="6.485677083333333" PointY="5.8551734599108807" />
-          <ConnectorPoint PointX="6.319010416666667" PointY="5.8551734599108816" />
-          <ConnectorPoint PointX="3.125" PointY="5.8551734599108816" />
+          <ConnectorPoint PointX="6.59375" PointY="3.2494921874999996" />
+          <ConnectorPoint PointX="6.59375" PointY="5.8026432291666659" />
+          <ConnectorPoint PointX="3.125" PointY="5.8026432291666659" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.ProjectProjectAssignment">
-          <ConnectorPoint PointX="2.78125" PointY="8.40330078125" />
+          <ConnectorPoint PointX="2.78125" PointY="8.52830078125" />
           <ConnectorPoint PointX="2.78125" PointY="8.9660953776041659" />
           <ConnectorPoint PointX="2.9010441666666664" PointY="8.9660953776041659" />
           <ConnectorPoint PointX="3.0677108333333334" PointY="8.9660953776041659" />
-          <ConnectorPoint PointX="6.319010416666667" PointY="8.9660953776041659" />
-          <ConnectorPoint PointX="6.485677083333333" PointY="8.9660953776041659" />
+          <ConnectorPoint PointX="6.901041666666667" PointY="8.9660953776041659" />
+          <ConnectorPoint PointX="7.067708333333333" PointY="8.9660953776041659" />
           <ConnectorPoint PointX="7.760416666666667" PointY="8.9660953776041659" />
           <ConnectorPoint PointX="7.927083333333333" PointY="8.9660953776041659" />
           <ConnectorPoint PointX="8.3229166666666661" PointY="8.9660953776041659" />
@@ -1466,7 +1610,7 @@
           <ConnectorPoint PointX="8.625" PointY="8.9660953776041659" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.DeveloperProjectAssignment">
-          <ConnectorPoint PointX="8.9375" PointY="7.0956022135416656" />
+          <ConnectorPoint PointX="8.9375" PointY="7.2879036458333326" />
           <ConnectorPoint PointX="8.9375" PointY="8.625" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.IssueIssueAssignment">
@@ -1478,13 +1622,13 @@
           <ConnectorPoint PointX="8.25" PointY="12.076691080729166" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.DeveloperIssueAssignment">
-          <ConnectorPoint PointX="8.40625" PointY="7.0956022135416656" />
+          <ConnectorPoint PointX="8.40625" PointY="7.2879036458333326" />
           <ConnectorPoint PointX="8.40625" PointY="11.25" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.DeveloperIssueAttachment">
-          <ConnectorPoint PointX="7.84375" PointY="7.0956022135416656" />
-          <ConnectorPoint PointX="7.84375" PointY="16.0547900390625" />
-          <ConnectorPoint PointX="2.5" PointY="16.0547900390625" />
+          <ConnectorPoint PointX="7.84375" PointY="7.2879036458333326" />
+          <ConnectorPoint PointX="7.84375" PointY="15.6172900390625" />
+          <ConnectorPoint PointX="2.5" PointY="15.6172900390625" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.IssueIssueAttachment">
           <ConnectorPoint PointX="1.4375" PointY="13.15330078125" />
@@ -1497,38 +1641,48 @@
           <ConnectorPoint PointX="2.375" PointY="12.826650390625" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.ProjectMilestone" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.9843775" PointY="8.40330078125" />
+          <ConnectorPoint PointX="2.9843775" PointY="8.52830078125" />
           <ConnectorPoint PointX="2.9843775" PointY="13.451650390625" />
           <ConnectorPoint PointX="3.25" PointY="13.451650390625" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.ProjectCategoryProject">
-          <ConnectorPoint PointX="6.40234375" PointY="9.625" />
-          <ConnectorPoint PointX="6.40234375" PointY="5.667727459122113" />
-          <ConnectorPoint PointX="3.125" PointY="5.667727459122113" />
+          <ConnectorPoint PointX="6.984375" PointY="9.625" />
+          <ConnectorPoint PointX="6.984375" PointY="5.9638241145833266" />
+          <ConnectorPoint PointX="3.125" PointY="5.9638241145833266" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.ProjectIssue">
-          <ConnectorPoint PointX="1.625" PointY="8.5956022135416656" />
+          <ConnectorPoint PointX="1.625" PointY="8.52830078125" />
           <ConnectorPoint PointX="1.625" PointY="9.25" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.DeveloperNote">
-          <ConnectorPoint PointX="7.5" PointY="6.6103011067708328" />
-          <ConnectorPoint PointX="6.485677083333333" PointY="6.6103011067708319" />
-          <ConnectorPoint PointX="6.319010416666667" PointY="6.6103011067708328" />
-          <ConnectorPoint PointX="5.625" PointY="6.6103011067708328" />
+          <ConnectorPoint PointX="7.5" PointY="6.7064518229166659" />
+          <ConnectorPoint PointX="7.067708333333333" PointY="6.706451822916665" />
+          <ConnectorPoint PointX="6.901041666666667" PointY="6.7064518229166659" />
+          <ConnectorPoint PointX="5.625" PointY="6.7064518229166659" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.TaskCategoryTask">
           <ConnectorPoint PointX="3.25" PointY="1.2016910807291668" />
           <ConnectorPoint PointX="2.625" PointY="1.2016910807291668" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.TeamDeveloper">
-          <ConnectorPoint PointX="9.875" PointY="6.6728011067708328" />
-          <ConnectorPoint PointX="9.25" PointY="6.6728011067708328" />
+          <ConnectorPoint PointX="9.875" PointY="6.7689518229166659" />
+          <ConnectorPoint PointX="9.25" PointY="6.7689518229166659" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.IssueCategoryIssue">
           <ConnectorPoint PointX="3.25" PointY="10.326691080729166" />
           <ConnectorPoint PointX="3.0677108333333334" PointY="10.326691080729166" />
           <ConnectorPoint PointX="2.9010441666666664" PointY="10.326691080729166" />
           <ConnectorPoint PointX="2.375" PointY="10.326691080729166" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="EntityModel.Conference" Width="1.875" PointX="12" PointY="0.5" Height="3.3263964843749996" />
+        <EntityTypeShape EntityType="EntityModel.ConferenceAttentands" Width="2.375" PointX="12" PointY="4.625" Height="1.9802864583333326" />
+        <AssociationConnector Association="EntityModel.ConferenceConferenceAttentands">
+          <ConnectorPoint PointX="12.9375" PointY="3.8263964843749996" />
+          <ConnectorPoint PointX="12.9375" PointY="4.625" />
+        </AssociationConnector>
+        <AssociationConnector Association="EntityModel.DeveloperConferenceAttentands">
+          <ConnectorPoint PointX="9.25" PointY="5.9949446614583337" />
+          <ConnectorPoint PointX="12" PointY="5.9949446614583337" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

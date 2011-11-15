@@ -19,6 +19,8 @@
     <EntitySet Name="Milestones" EntityType="EntityModel.Store.Milestones" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="IssueAttachments" EntityType="EntityModel.Store.IssueAttachments" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="IssueAssignments" EntityType="EntityModel.Store.IssueAssignments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Conferences" EntityType="EntityModel.Store.Conferences" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ConferenceAttentandsSet" EntityType="EntityModel.Store.ConferenceAttentandsSet" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="ProjectTask" Association="EntityModel.Store.ProjectTask">
       <End Role="Project" EntitySet="Projects" />
       <End Role="Task" EntitySet="Tasks" />
@@ -106,6 +108,14 @@
     <AssociationSet Name="IssueCategoryIssue" Association="EntityModel.Store.IssueCategoryIssue">
       <End Role="IssueCategory" EntitySet="IssueCategories" />
       <End Role="Issue" EntitySet="Issues" />
+    </AssociationSet>
+    <AssociationSet Name="ConferenceConferenceAttentands" Association="EntityModel.Store.ConferenceConferenceAttentands">
+      <End Role="Conference" EntitySet="Conferences" />
+      <End Role="ConferenceAttentands" EntitySet="ConferenceAttentandsSet" />
+    </AssociationSet>
+    <AssociationSet Name="DeveloperConferenceAttentands" Association="EntityModel.Store.DeveloperConferenceAttentands">
+      <End Role="Developer" EntitySet="Developers" />
+      <End Role="ConferenceAttentands" EntitySet="ConferenceAttentandsSet" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Developers">
@@ -290,6 +300,30 @@
     </Key>
     <Property Name="IssueAssignmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IssueID" Type="int" Nullable="false" />
+    <Property Name="DeveloperID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Conferences">
+    <Key>
+      <PropertyRef Name="ConferenceID" />
+    </Key>
+    <Property Name="ConferenceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Country" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ContactPhone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Organizer" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Room" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Latitude" Type="int" Nullable="true" />
+    <Property Name="Longitude" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="ConferenceAttentandsSet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ConferenceID" Type="int" Nullable="false" />
     <Property Name="DeveloperID" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="ProjectTask">
@@ -553,6 +587,30 @@
       </Principal>
       <Dependent Role="Issue">
         <PropertyRef Name="IssueCategoryName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ConferenceConferenceAttentands">
+    <End Role="Conference" Type="EntityModel.Store.Conferences" Multiplicity="1" />
+    <End Role="ConferenceAttentands" Type="EntityModel.Store.ConferenceAttentandsSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Conference">
+        <PropertyRef Name="ConferenceID" />
+      </Principal>
+      <Dependent Role="ConferenceAttentands">
+        <PropertyRef Name="ConferenceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DeveloperConferenceAttentands">
+    <End Role="Developer" Type="EntityModel.Store.Developers" Multiplicity="1" />
+    <End Role="ConferenceAttentands" Type="EntityModel.Store.ConferenceAttentandsSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Developer">
+        <PropertyRef Name="DeveloperID" />
+      </Principal>
+      <Dependent Role="ConferenceAttentands">
+        <PropertyRef Name="DeveloperID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
