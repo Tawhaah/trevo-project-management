@@ -1,0 +1,26 @@
+﻿@model PrjctMngmt.Models.ConferenceAttendant
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Conference attendants</legend>
+
+    <div class="display-label">Conference</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Conference.Name)
+    </div>
+
+    <div class="display-label">Developer</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Developer.FirstName)
+        @Html.DisplayFor(model => model.Developer.LastName)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -40,8 +40,8 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("EntityModel", "TaskCategoryTask", "TaskCategory", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(PrjctMngmt.Models.TaskCategory), "Task", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PrjctMngmt.Models.Task), true)]
 [assembly: EdmRelationshipAttribute("EntityModel", "TeamDeveloper", "Team", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(PrjctMngmt.Models.Team), "Developer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PrjctMngmt.Models.Developer), true)]
 [assembly: EdmRelationshipAttribute("EntityModel", "IssueCategoryIssue", "IssueCategory", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(PrjctMngmt.Models.IssueCategory), "Issue", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PrjctMngmt.Models.Issue), true)]
-[assembly: EdmRelationshipAttribute("EntityModel", "ConferenceConferenceAttentands", "Conference", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PrjctMngmt.Models.Conference), "ConferenceAttentands", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PrjctMngmt.Models.ConferenceAttentands), true)]
-[assembly: EdmRelationshipAttribute("EntityModel", "DeveloperConferenceAttentands", "Developer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PrjctMngmt.Models.Developer), "ConferenceAttentands", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PrjctMngmt.Models.ConferenceAttentands), true)]
+[assembly: EdmRelationshipAttribute("EntityModel", "ConferenceConferenceAttendant", "Conference", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PrjctMngmt.Models.Conference), "ConferenceAttendant", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PrjctMngmt.Models.ConferenceAttendant), true)]
+[assembly: EdmRelationshipAttribute("EntityModel", "DeveloperConferenceAttendant", "Developer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(PrjctMngmt.Models.Developer), "ConferenceAttendant", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(PrjctMngmt.Models.ConferenceAttendant), true)]
 
 #endregion
 
@@ -400,18 +400,18 @@ namespace PrjctMngmt.Models
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<ConferenceAttentands> ConferenceAttentandsSet
+        public ObjectSet<ConferenceAttendant> ConferenceAttendants
         {
             get
             {
-                if ((_ConferenceAttentandsSet == null))
+                if ((_ConferenceAttendants == null))
                 {
-                    _ConferenceAttentandsSet = base.CreateObjectSet<ConferenceAttentands>("ConferenceAttentandsSet");
+                    _ConferenceAttendants = base.CreateObjectSet<ConferenceAttendant>("ConferenceAttendants");
                 }
-                return _ConferenceAttentandsSet;
+                return _ConferenceAttendants;
             }
         }
-        private ObjectSet<ConferenceAttentands> _ConferenceAttentandsSet;
+        private ObjectSet<ConferenceAttendant> _ConferenceAttendants;
 
         #endregion
         #region AddTo Methods
@@ -569,11 +569,11 @@ namespace PrjctMngmt.Models
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the ConferenceAttentandsSet EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the ConferenceAttendants EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToConferenceAttentandsSet(ConferenceAttentands conferenceAttentands)
+        public void AddToConferenceAttendants(ConferenceAttendant conferenceAttendant)
         {
-            base.AddObject("ConferenceAttentandsSet", conferenceAttentands);
+            base.AddObject("ConferenceAttendants", conferenceAttendant);
         }
 
         #endregion
@@ -1153,18 +1153,18 @@ namespace PrjctMngmt.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("EntityModel", "ConferenceConferenceAttentands", "ConferenceAttentands")]
-        public EntityCollection<ConferenceAttentands> ConferenceAttentands
+        [EdmRelationshipNavigationPropertyAttribute("EntityModel", "ConferenceConferenceAttendant", "ConferenceAttendant")]
+        public EntityCollection<ConferenceAttendant> ConferenceAttendant
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ConferenceAttentands>("EntityModel.ConferenceConferenceAttentands", "ConferenceAttentands");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ConferenceAttendant>("EntityModel.ConferenceConferenceAttendant", "ConferenceAttendant");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ConferenceAttentands>("EntityModel.ConferenceConferenceAttentands", "ConferenceAttentands", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ConferenceAttendant>("EntityModel.ConferenceConferenceAttendant", "ConferenceAttendant", value);
                 }
             }
         }
@@ -1175,26 +1175,26 @@ namespace PrjctMngmt.Models
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="EntityModel", Name="ConferenceAttentands")]
+    [EdmEntityTypeAttribute(NamespaceName="EntityModel", Name="ConferenceAttendant")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class ConferenceAttentands : EntityObject
+    public partial class ConferenceAttendant : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new ConferenceAttentands object.
+        /// Create a new ConferenceAttendant object.
         /// </summary>
         /// <param name="id">Initial value of the ID property.</param>
         /// <param name="conferenceID">Initial value of the ConferenceID property.</param>
         /// <param name="developerID">Initial value of the DeveloperID property.</param>
-        public static ConferenceAttentands CreateConferenceAttentands(global::System.Int32 id, global::System.Int32 conferenceID, global::System.Int32 developerID)
+        public static ConferenceAttendant CreateConferenceAttendant(global::System.Int32 id, global::System.Int32 conferenceID, global::System.Int32 developerID)
         {
-            ConferenceAttentands conferenceAttentands = new ConferenceAttentands();
-            conferenceAttentands.ID = id;
-            conferenceAttentands.ConferenceID = conferenceID;
-            conferenceAttentands.DeveloperID = developerID;
-            return conferenceAttentands;
+            ConferenceAttendant conferenceAttendant = new ConferenceAttendant();
+            conferenceAttendant.ID = id;
+            conferenceAttendant.ConferenceID = conferenceID;
+            conferenceAttendant.DeveloperID = developerID;
+            return conferenceAttendant;
         }
 
         #endregion
@@ -1285,16 +1285,16 @@ namespace PrjctMngmt.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("EntityModel", "ConferenceConferenceAttentands", "Conference")]
+        [EdmRelationshipNavigationPropertyAttribute("EntityModel", "ConferenceConferenceAttendant", "Conference")]
         public Conference Conference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Conference>("EntityModel.ConferenceConferenceAttentands", "Conference").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Conference>("EntityModel.ConferenceConferenceAttendant", "Conference").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Conference>("EntityModel.ConferenceConferenceAttentands", "Conference").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Conference>("EntityModel.ConferenceConferenceAttendant", "Conference").Value = value;
             }
         }
         /// <summary>
@@ -1306,13 +1306,13 @@ namespace PrjctMngmt.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Conference>("EntityModel.ConferenceConferenceAttentands", "Conference");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Conference>("EntityModel.ConferenceConferenceAttendant", "Conference");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Conference>("EntityModel.ConferenceConferenceAttentands", "Conference", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Conference>("EntityModel.ConferenceConferenceAttendant", "Conference", value);
                 }
             }
         }
@@ -1323,16 +1323,16 @@ namespace PrjctMngmt.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("EntityModel", "DeveloperConferenceAttentands", "Developer")]
+        [EdmRelationshipNavigationPropertyAttribute("EntityModel", "DeveloperConferenceAttendant", "Developer")]
         public Developer Developer
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Developer>("EntityModel.DeveloperConferenceAttentands", "Developer").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Developer>("EntityModel.DeveloperConferenceAttendant", "Developer").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Developer>("EntityModel.DeveloperConferenceAttentands", "Developer").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Developer>("EntityModel.DeveloperConferenceAttendant", "Developer").Value = value;
             }
         }
         /// <summary>
@@ -1344,13 +1344,13 @@ namespace PrjctMngmt.Models
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Developer>("EntityModel.DeveloperConferenceAttentands", "Developer");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Developer>("EntityModel.DeveloperConferenceAttendant", "Developer");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Developer>("EntityModel.DeveloperConferenceAttentands", "Developer", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Developer>("EntityModel.DeveloperConferenceAttendant", "Developer", value);
                 }
             }
         }
@@ -1785,18 +1785,18 @@ namespace PrjctMngmt.Models
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("EntityModel", "DeveloperConferenceAttentands", "ConferenceAttentands")]
-        public EntityCollection<ConferenceAttentands> ConferenceAttentands
+        [EdmRelationshipNavigationPropertyAttribute("EntityModel", "DeveloperConferenceAttendant", "ConferenceAttendant")]
+        public EntityCollection<ConferenceAttendant> ConferenceAttendant
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ConferenceAttentands>("EntityModel.DeveloperConferenceAttentands", "ConferenceAttentands");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ConferenceAttendant>("EntityModel.DeveloperConferenceAttendant", "ConferenceAttendant");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ConferenceAttentands>("EntityModel.DeveloperConferenceAttentands", "ConferenceAttentands", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ConferenceAttendant>("EntityModel.DeveloperConferenceAttendant", "ConferenceAttendant", value);
                 }
             }
         }

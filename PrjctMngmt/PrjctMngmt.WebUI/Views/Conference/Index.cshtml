@@ -65,6 +65,7 @@
             @Html.DisplayFor(modelItem => item.Room)
         </td>
         <td>
+            @Html.ActionLink("See attendants", "SeeAttendants", "ConferenceAttendant", new { id = item.ConferenceID }, null) |
             @Html.ActionLink("Edit", "Edit", new { id=item.ConferenceID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ConferenceID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ConferenceID })

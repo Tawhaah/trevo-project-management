@@ -220,9 +220,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ConferenceAttentandsSet">
-      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.ConferenceAttentands)">
-        <MappingFragment StoreEntitySet="ConferenceAttentandsSet">
+    <EntitySetMapping Name="ConferenceAttendants">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.ConferenceAttendant)">
+        <MappingFragment StoreEntitySet="ConferenceAttendants">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ConferenceID" ColumnName="ConferenceID" />
           <ScalarProperty Name="DeveloperID" ColumnName="DeveloperID" />

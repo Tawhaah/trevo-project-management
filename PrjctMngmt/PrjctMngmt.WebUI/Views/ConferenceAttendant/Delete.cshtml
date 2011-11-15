@@ -1,0 +1,28 @@
+﻿@model PrjctMngmt.Models.ConferenceAttendant
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>ConferenceAttendant</legend>
+
+    <div class="display-label">Conference</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Conference.Name)
+    </div>
+
+    <div class="display-label">Developer</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Developer.FirstName)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

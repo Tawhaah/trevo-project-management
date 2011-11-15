@@ -25,7 +25,7 @@
     <EntitySet Name="IssueAttachments" EntityType="EntityModel.Store.IssueAttachments" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="IssueAssignments" EntityType="EntityModel.Store.IssueAssignments" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Conferences" EntityType="EntityModel.Store.Conferences" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ConferenceAttentandsSet" EntityType="EntityModel.Store.ConferenceAttentandsSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ConferenceAttendants" EntityType="EntityModel.Store.ConferenceAttendants" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="ProjectTask" Association="EntityModel.Store.ProjectTask">
       <End Role="Project" EntitySet="Projects" />
       <End Role="Task" EntitySet="Tasks" />
@@ -114,13 +114,13 @@
       <End Role="IssueCategory" EntitySet="IssueCategories" />
       <End Role="Issue" EntitySet="Issues" />
     </AssociationSet>
-    <AssociationSet Name="ConferenceConferenceAttentands" Association="EntityModel.Store.ConferenceConferenceAttentands">
+    <AssociationSet Name="ConferenceConferenceAttendant" Association="EntityModel.Store.ConferenceConferenceAttendant">
       <End Role="Conference" EntitySet="Conferences" />
-      <End Role="ConferenceAttentands" EntitySet="ConferenceAttentandsSet" />
+      <End Role="ConferenceAttendant" EntitySet="ConferenceAttendants" />
     </AssociationSet>
-    <AssociationSet Name="DeveloperConferenceAttentands" Association="EntityModel.Store.DeveloperConferenceAttentands">
+    <AssociationSet Name="DeveloperConferenceAttendant" Association="EntityModel.Store.DeveloperConferenceAttendant">
       <End Role="Developer" EntitySet="Developers" />
-      <End Role="ConferenceAttentands" EntitySet="ConferenceAttentandsSet" />
+      <End Role="ConferenceAttendant" EntitySet="ConferenceAttendants" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Developers">
@@ -323,7 +323,7 @@
     <Property Name="Latitude" Type="int" Nullable="true" />
     <Property Name="Longitude" Type="int" Nullable="true" />
   </EntityType>
-  <EntityType Name="ConferenceAttentandsSet">
+  <EntityType Name="ConferenceAttendants">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
@@ -595,26 +595,26 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="ConferenceConferenceAttentands">
+  <Association Name="ConferenceConferenceAttendant">
     <End Role="Conference" Type="EntityModel.Store.Conferences" Multiplicity="1" />
-    <End Role="ConferenceAttentands" Type="EntityModel.Store.ConferenceAttentandsSet" Multiplicity="*" />
+    <End Role="ConferenceAttendant" Type="EntityModel.Store.ConferenceAttendants" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Conference">
         <PropertyRef Name="ConferenceID" />
       </Principal>
-      <Dependent Role="ConferenceAttentands">
+      <Dependent Role="ConferenceAttendant">
         <PropertyRef Name="ConferenceID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="DeveloperConferenceAttentands">
+  <Association Name="DeveloperConferenceAttendant">
     <End Role="Developer" Type="EntityModel.Store.Developers" Multiplicity="1" />
-    <End Role="ConferenceAttentands" Type="EntityModel.Store.ConferenceAttentandsSet" Multiplicity="*" />
+    <End Role="ConferenceAttendant" Type="EntityModel.Store.ConferenceAttendants" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Developer">
         <PropertyRef Name="DeveloperID" />
       </Principal>
-      <Dependent Role="ConferenceAttentands">
+      <Dependent Role="ConferenceAttendant">
         <PropertyRef Name="DeveloperID" />
       </Dependent>
     </ReferentialConstraint>
@@ -731,14 +731,14 @@
             <End Role="Issue" EntitySet="Issues" />
           </AssociationSet>
           <EntitySet Name="Conferences" EntityType="EntityModel.Conference" />
-          <EntitySet Name="ConferenceAttentandsSet" EntityType="EntityModel.ConferenceAttentands" />
-          <AssociationSet Name="ConferenceConferenceAttentands" Association="EntityModel.ConferenceConferenceAttentands">
+          <EntitySet Name="ConferenceAttendants" EntityType="EntityModel.ConferenceAttendant" />
+          <AssociationSet Name="ConferenceConferenceAttendant" Association="EntityModel.ConferenceConferenceAttendant">
             <End Role="Conference" EntitySet="Conferences" />
-            <End Role="ConferenceAttentands" EntitySet="ConferenceAttentandsSet" />
+            <End Role="ConferenceAttendant" EntitySet="ConferenceAttendants" />
           </AssociationSet>
-          <AssociationSet Name="DeveloperConferenceAttentands" Association="EntityModel.DeveloperConferenceAttentands">
+          <AssociationSet Name="DeveloperConferenceAttendant" Association="EntityModel.DeveloperConferenceAttendant">
             <End Role="Developer" EntitySet="Developers" />
-            <End Role="ConferenceAttentands" EntitySet="ConferenceAttentandsSet" />
+            <End Role="ConferenceAttendant" EntitySet="ConferenceAttendants" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Developer">
@@ -761,7 +761,7 @@
           <Property Type="String" Name="UserName" Nullable="false" />
           <NavigationProperty Name="Team" Relationship="EntityModel.TeamDeveloper" FromRole="Developer" ToRole="Team" />
           <Property Type="String" Name="TeamName" Nullable="true" />
-          <NavigationProperty Name="ConferenceAttentands" Relationship="EntityModel.DeveloperConferenceAttentands" FromRole="Developer" ToRole="ConferenceAttentands" />
+          <NavigationProperty Name="ConferenceAttendant" Relationship="EntityModel.DeveloperConferenceAttendant" FromRole="Developer" ToRole="ConferenceAttendant" />
         </EntityType>
         <EntityType Name="Team">
           <Key>
@@ -1246,41 +1246,41 @@
           <Property Type="String" Name="Country" Nullable="false" />
           <Property Type="String" Name="ContactPhone" Nullable="false" />
           <Property Type="String" Name="Organizer" Nullable="false" />
-          <NavigationProperty Name="ConferenceAttentands" Relationship="EntityModel.ConferenceConferenceAttentands" FromRole="Conference" ToRole="ConferenceAttentands" />
           <Property Type="String" Name="Room" Nullable="false" />
           <Property Type="Int32" Name="Latitude" Nullable="true" />
           <Property Type="Int32" Name="Longitude" Nullable="true" />
+          <NavigationProperty Name="ConferenceAttendant" Relationship="EntityModel.ConferenceConferenceAttendant" FromRole="Conference" ToRole="ConferenceAttendant" />
         </EntityType>
-        <EntityType Name="ConferenceAttentands">
+        <EntityType Name="ConferenceAttendant">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="Conference" Relationship="EntityModel.ConferenceConferenceAttentands" FromRole="ConferenceAttentands" ToRole="Conference" />
+          <NavigationProperty Name="Conference" Relationship="EntityModel.ConferenceConferenceAttendant" FromRole="ConferenceAttendant" ToRole="Conference" />
           <Property Type="Int32" Name="ConferenceID" Nullable="false" />
-          <NavigationProperty Name="Developer" Relationship="EntityModel.DeveloperConferenceAttentands" FromRole="ConferenceAttentands" ToRole="Developer" />
+          <NavigationProperty Name="Developer" Relationship="EntityModel.DeveloperConferenceAttendant" FromRole="ConferenceAttendant" ToRole="Developer" />
           <Property Type="Int32" Name="DeveloperID" Nullable="false" />
         </EntityType>
-        <Association Name="ConferenceConferenceAttentands">
+        <Association Name="ConferenceConferenceAttendant">
           <End Type="EntityModel.Conference" Role="Conference" Multiplicity="1" />
-          <End Type="EntityModel.ConferenceAttentands" Role="ConferenceAttentands" Multiplicity="*" />
+          <End Type="EntityModel.ConferenceAttendant" Role="ConferenceAttendant" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Conference">
               <PropertyRef Name="ConferenceID" />
             </Principal>
-            <Dependent Role="ConferenceAttentands">
+            <Dependent Role="ConferenceAttendant">
               <PropertyRef Name="ConferenceID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="DeveloperConferenceAttentands">
+        <Association Name="DeveloperConferenceAttendant">
           <End Type="EntityModel.Developer" Role="Developer" Multiplicity="1" />
-          <End Type="EntityModel.ConferenceAttentands" Role="ConferenceAttentands" Multiplicity="*" />
+          <End Type="EntityModel.ConferenceAttendant" Role="ConferenceAttendant" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Developer">
               <PropertyRef Name="DeveloperID" />
             </Principal>
-            <Dependent Role="ConferenceAttentands">
+            <Dependent Role="ConferenceAttendant">
               <PropertyRef Name="DeveloperID" />
             </Dependent>
           </ReferentialConstraint>
@@ -1510,9 +1510,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ConferenceAttentandsSet">
-      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.ConferenceAttentands)">
-        <MappingFragment StoreEntitySet="ConferenceAttentandsSet">
+    <EntitySetMapping Name="ConferenceAttendants">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityModel.ConferenceAttendant)">
+        <MappingFragment StoreEntitySet="ConferenceAttendants">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ConferenceID" ColumnName="ConferenceID" />
           <ScalarProperty Name="DeveloperID" ColumnName="DeveloperID" />
@@ -1675,12 +1675,12 @@
           <ConnectorPoint PointX="2.375" PointY="10.326691080729166" />
         </AssociationConnector>
         <EntityTypeShape EntityType="EntityModel.Conference" Width="1.875" PointX="12" PointY="0.5" Height="3.3263964843749996" />
-        <EntityTypeShape EntityType="EntityModel.ConferenceAttentands" Width="2.375" PointX="12" PointY="4.625" Height="1.9802864583333326" />
-        <AssociationConnector Association="EntityModel.ConferenceConferenceAttentands">
+        <EntityTypeShape EntityType="EntityModel.ConferenceAttendant" Width="2.375" PointX="12" PointY="4.625" Height="1.2110807291666665" />
+        <AssociationConnector Association="EntityModel.ConferenceConferenceAttendant">
           <ConnectorPoint PointX="12.9375" PointY="3.8263964843749996" />
           <ConnectorPoint PointX="12.9375" PointY="4.625" />
         </AssociationConnector>
-        <AssociationConnector Association="EntityModel.DeveloperConferenceAttentands">
+        <AssociationConnector Association="EntityModel.DeveloperConferenceAttendant">
           <ConnectorPoint PointX="9.25" PointY="5.9949446614583337" />
           <ConnectorPoint PointX="12" PointY="5.9949446614583337" />
         </AssociationConnector>

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 11/15/2011 00:49:37
+-- Date Created: 11/15/2011 02:40:06
 -- Generated from EDMX file: C:\Users\Pepe\Documents\Visual Studio 2010\Projects\trevo-project-management\PrjctMngmt\PrjctMngmt.Domain\Models\EntityModel.edmx
 -- --------------------------------------------------
 
@@ -83,12 +83,6 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_IssueCategoryIssue]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Issues] DROP CONSTRAINT [FK_IssueCategoryIssue];
 GO
-IF OBJECT_ID(N'[dbo].[FK_ConferenceConferenceAttentands]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ConferenceAttentandsSet] DROP CONSTRAINT [FK_ConferenceConferenceAttentands];
-GO
-IF OBJECT_ID(N'[dbo].[FK_DeveloperConferenceAttentands]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ConferenceAttentandsSet] DROP CONSTRAINT [FK_DeveloperConferenceAttentands];
-GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -151,8 +145,8 @@ GO
 IF OBJECT_ID(N'[dbo].[Conferences]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Conferences];
 GO
-IF OBJECT_ID(N'[dbo].[ConferenceAttentandsSet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[ConferenceAttentandsSet];
+IF OBJECT_ID(N'[dbo].[ConferenceAttendants]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ConferenceAttendants];
 GO
 
 -- --------------------------------------------------
@@ -359,8 +353,8 @@ CREATE TABLE [dbo].[Conferences] (
 );
 GO
 
--- Creating table 'ConferenceAttentandsSet'
-CREATE TABLE [dbo].[ConferenceAttentandsSet] (
+-- Creating table 'ConferenceAttendants'
+CREATE TABLE [dbo].[ConferenceAttendants] (
     [ID] int IDENTITY(1,1) NOT NULL,
     [ConferenceID] int  NOT NULL,
     [DeveloperID] int  NOT NULL
@@ -485,9 +479,9 @@ ADD CONSTRAINT [PK_Conferences]
     PRIMARY KEY CLUSTERED ([ConferenceID] ASC);
 GO
 
--- Creating primary key on [ID] in table 'ConferenceAttentandsSet'
-ALTER TABLE [dbo].[ConferenceAttentandsSet]
-ADD CONSTRAINT [PK_ConferenceAttentandsSet]
+-- Creating primary key on [ID] in table 'ConferenceAttendants'
+ALTER TABLE [dbo].[ConferenceAttendants]
+ADD CONSTRAINT [PK_ConferenceAttendants]
     PRIMARY KEY CLUSTERED ([ID] ASC);
 GO
 
@@ -803,31 +797,31 @@ ON [dbo].[Issues]
     ([IssueCategoryName]);
 GO
 
--- Creating foreign key on [ConferenceID] in table 'ConferenceAttentandsSet'
-ALTER TABLE [dbo].[ConferenceAttentandsSet]
-ADD CONSTRAINT [FK_ConferenceConferenceAttentands]
+-- Creating foreign key on [ConferenceID] in table 'ConferenceAttendants'
+ALTER TABLE [dbo].[ConferenceAttendants]
+ADD CONSTRAINT [FK_ConferenceConferenceAttendant]
     FOREIGN KEY ([ConferenceID])
     REFERENCES [dbo].[Conferences]
         ([ConferenceID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
--- Creating non-clustered index for FOREIGN KEY 'FK_ConferenceConferenceAttentands'
-CREATE INDEX [IX_FK_ConferenceConferenceAttentands]
-ON [dbo].[ConferenceAttentandsSet]
+-- Creating non-clustered index for FOREIGN KEY 'FK_ConferenceConferenceAttendant'
+CREATE INDEX [IX_FK_ConferenceConferenceAttendant]
+ON [dbo].[ConferenceAttendants]
     ([ConferenceID]);
 GO
 
--- Creating foreign key on [DeveloperID] in table 'ConferenceAttentandsSet'
-ALTER TABLE [dbo].[ConferenceAttentandsSet]
-ADD CONSTRAINT [FK_DeveloperConferenceAttentands]
+-- Creating foreign key on [DeveloperID] in table 'ConferenceAttendants'
+ALTER TABLE [dbo].[ConferenceAttendants]
+ADD CONSTRAINT [FK_DeveloperConferenceAttendant]
     FOREIGN KEY ([DeveloperID])
     REFERENCES [dbo].[Developers]
         ([DeveloperID])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
--- Creating non-clustered index for FOREIGN KEY 'FK_DeveloperConferenceAttentands'
-CREATE INDEX [IX_FK_DeveloperConferenceAttentands]
-ON [dbo].[ConferenceAttentandsSet]
+-- Creating non-clustered index for FOREIGN KEY 'FK_DeveloperConferenceAttendant'
+CREATE INDEX [IX_FK_DeveloperConferenceAttendant]
+ON [dbo].[ConferenceAttendants]
     ([DeveloperID]);
 GO
 

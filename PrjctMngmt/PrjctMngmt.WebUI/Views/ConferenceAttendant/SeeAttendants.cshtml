@@ -1,0 +1,34 @@
+﻿@model IEnumerable<PrjctMngmt.Models.ConferenceAttendant>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Conference
+        </th>
+        <th>
+            Developer
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Conference.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Developer.FirstName)
+            @Html.DisplayFor(modelItem => item.Developer.LastName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
