@@ -137,9 +137,10 @@ namespace PrjctMngmt.Controllers
                     issueAttcmt.MimeType = file.ContentType;
                     path = Path.Combine(basePath, issueAttcmt.Filename);
                     file.SaveAs(path);
+
+                    _dataModel.SaveChanges();
                 }
 
-                _dataModel.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
@@ -231,6 +232,24 @@ namespace PrjctMngmt.Controllers
             try
             {
                 return _dataModel.IssueAttachments.Single(i => i.IssueAttachmentID == id);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public ActionResult ShowIssueAttachments(int id)
+        {
+            return View(GetIssueAttachmentsByID(id));
+        }
+
+        public List<IssueAttachment> GetIssueAttachmentsByID(int id) 
+        {
+            try
+            {
+                IEnumerable<IssueAttachment> results = _dataModel.IssueAttachments.Where(i => i.IssueID == id);
+                return results.Cast<IssueAttachment>().ToList();
             }
             catch
             {

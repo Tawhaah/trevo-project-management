@@ -26,12 +26,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PrjctMngmt.Models;
+using System.IO;
 
 namespace PrjctMngmt.Controllers
 {
     public class IssueController : Controller
     {
-        private EntityModelContainer _dataModel = new EntityModelContainer(); 
+        private EntityModelContainer _dataModel = new EntityModelContainer();
+        private static string basePath = AppDomain.CurrentDomain.BaseDirectory + "Uploads\\IssueAttachments\\";
 
         //
         // GET: /Issue/
@@ -61,7 +63,7 @@ namespace PrjctMngmt.Controllers
         
         [HttpPost]
         public ActionResult Create(string Summary, string Priority, string Severity, string Status,
-            string Description, string IssueCategoryName, int? MilestoneID, int ProjectID)
+            string Description, string IssueCategoryName, int? MilestoneID, int ProjectID, HttpPostedFileBase file)
         {
             if (!ModelState.IsValid)
                 return View();
@@ -81,6 +83,20 @@ namespace PrjctMngmt.Controllers
                 _dataModel.AddToIssues(issue);
                 _dataModel.SaveChanges();
 
+                //Save file to server if user selected a file
+                if (file != null && file.ContentLength > 0)
+                {
+                    IssueAttachment issueAttchmnt = new IssueAttachment();
+                    issueAttchmnt.Filename = Path.GetFileName(file.FileName);
+                    issueAttchmnt.MimeType = file.ContentType;
+                    var path = Path.Combine(basePath, issueAttchmnt.Filename);
+                    file.SaveAs(path);
+                    issueAttchmnt.DeveloperID = 1; //TODO: Use logged in developer
+                    issueAttchmnt.EntryDate = DateTime.Now;
+                    issueAttchmnt.IssueID = issue.IssueID;
+                    _dataModel.AddToIssueAttachments(issueAttchmnt);
+                    _dataModel.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
             catch
@@ -110,7 +126,7 @@ namespace PrjctMngmt.Controllers
         // POST: /Issue/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, HttpPostedFileBase file, FormCollection collection)
         {
             if (!ModelState.IsValid)
                 return View();
@@ -119,6 +135,29 @@ namespace PrjctMngmt.Controllers
             {
                 UpdateModel(GetIssueByID(id));
                 _dataModel.SaveChanges();
+
+                //Save file to server if user selected a file
+                if (file != null && file.ContentLength > 0)
+                {
+                    //remove old file first
+                    IssueAttachment issueAttcmt = GetIssueAttachmentByIssueID(id);
+                    var path = "";
+                    if (issueAttcmt != null)
+                    {
+                        path = Path.Combine(basePath, issueAttcmt.Filename);
+                        System.IO.File.Delete(path);
+                    }
+                    //save new file
+                    issueAttcmt.Filename = Path.GetFileName(file.FileName);
+                    issueAttcmt.MimeType = file.ContentType;
+                    path = Path.Combine(basePath, issueAttcmt.Filename);
+                    file.SaveAs(path);
+
+                    issueAttcmt.EntryDate = DateTime.Now;
+                    issueAttcmt.DeveloperID = 1; //TODO: Use logged in developer
+
+                    _dataModel.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
             catch
@@ -204,6 +243,18 @@ namespace PrjctMngmt.Controllers
             try
             {
                 return _dataModel.Issues.Single(i => i.IssueID == id);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public IssueAttachment GetIssueAttachmentByIssueID(int id)
+        {
+            try
+            {
+                return _dataModel.IssueAttachments.Single(i => i.IssueID == id);
             }
             catch
             {

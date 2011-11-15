@@ -48,7 +48,7 @@
     });
 </script>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" })) {
     @Html.ValidationSummary(true)
     <fieldset>
         <legend>Issue</legend>
@@ -115,6 +115,13 @@
         <div class="editor-field Top">
             @Html.DropDownList("MilestoneID", (IEnumerable<SelectListItem>)ViewData["Milestones"], "")
             <img alt="Create milestone" class="addMilestone ButtonLink Top" src="../../Content/themes/base/images/plus-sign_small.png" />
+        </div>
+
+        <div class="editor-label">
+            File
+        </div>
+        <div class="editor-field">
+            <input type="file" name="File" />
         </div>
 
         <p>
