@@ -45,17 +45,6 @@ namespace PrjctMngmt.Controllers
             List<TeamDeveloperModel> viewModelList = new List<TeamDeveloperModel>();
             viewModelList.Add(model);
             return View(viewModelList);
-
-            /*
-            List<Developer> devs = _dataModel.Developers.ToList();
-            List<string> devNames = new List<string>();
-            foreach (Developer dev in devs)
-            {
-                devNames.Add(dev.FirstName+" "+dev.LastName);
-            }
-            ViewData["Developers"] = devNames;
-            return View(_dataModel.Teams.ToList());
-            */
         }
 
         //
