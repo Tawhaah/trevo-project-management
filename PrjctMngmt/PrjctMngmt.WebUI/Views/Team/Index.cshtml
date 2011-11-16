@@ -41,7 +41,6 @@
             hoverClass: "ui-state-highlight",
             drop: function (event, ui) {
                 unbindDeveloper(ui.draggable);
-                $.post("/Developer/ChangeTeam?devId=" + ui.draggable.attr("id") + "&teamName=", function () { });
             }
         });
 
@@ -66,6 +65,7 @@
 					.end()
 					.appendTo($developers)
 					.fadeIn();
+                $.post("/Developer/ChangeTeam?devId=" + $item.attr("id") + "&teamName=", function () { });
             });
         }
 
