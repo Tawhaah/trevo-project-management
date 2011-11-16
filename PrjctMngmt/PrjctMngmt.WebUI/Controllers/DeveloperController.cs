@@ -215,6 +215,26 @@ namespace PrjctMngmt.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult ChangeTeam(int devId, string teamName)
+        {
+            if (!ModelState.IsValid)
+                return View();
+
+            try
+            {
+                Developer dev = GetDeveloperByID(devId);
+                dev.TeamName = teamName;
+                _dataModel.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
         public Developer GetDeveloperByID(int id)
         {
             try

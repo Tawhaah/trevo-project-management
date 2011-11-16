@@ -41,6 +41,7 @@
             hoverClass: "ui-state-highlight",
             drop: function (event, ui) {
                 unbindDeveloper(ui.draggable);
+                $.post("/Developer/ChangeTeam?devId=" + ui.draggable.attr("id") + "&teamName=", function () { });
             }
         });
 
@@ -53,6 +54,7 @@
                     $item.append(removeMember);
                 }
                 $item.appendTo($dropped).fadeIn(function () { });
+                $.post("/Developer/ChangeTeam?devId=" + $item.attr("id") + "&teamName=" + $dropped.attr("id"), function () { });
             });
         }
 
@@ -227,7 +229,7 @@
         {
             foreach (var dev in item.developers)
             {
-                if (dev.TeamName == null)
+                if (dev.TeamName == null || dev.TeamName=="")
                 {
                     <li id="@dev.DeveloperID" class="ui-widget-content ui-corner-tr devLi">
                         @dev.FirstName @dev.LastName
