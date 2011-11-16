@@ -3,9 +3,11 @@
 <script type="text/javascript">
     $(function () {
         $(".datetimepicker").datetimepicker({
-            showSecond: true,
             timeFormat: 'hh:mm:ss',
             dateFormat: 'dd-mm-yy'
+        });
+        $(".timepicker").timepicker({
+            timeFormat: 'hh:mm:ss'
         });
     });
 </script>
@@ -27,8 +29,16 @@
             @Html.LabelFor(model => model.Date)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Date, new { @class = "datetimepicker" })
+            @Html.TextBoxFor(model => model.Date, new { @class = "datetimepicker" })
             @Html.ValidationMessageFor(model => model.Date)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Duration)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Duration, new { @class = "timepicker" })
+            @Html.ValidationMessageFor(model => model.Duration)
         </div>
 
         <div class="editor-label">

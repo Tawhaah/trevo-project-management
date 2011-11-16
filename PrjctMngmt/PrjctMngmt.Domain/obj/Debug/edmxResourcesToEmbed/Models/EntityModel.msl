@@ -217,6 +217,7 @@
           <ScalarProperty Name="Room" ColumnName="Room" />
           <ScalarProperty Name="Latitude" ColumnName="Latitude" />
           <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -859,7 +859,8 @@ namespace PrjctMngmt.Models
         /// <param name="contactPhone">Initial value of the ContactPhone property.</param>
         /// <param name="organizer">Initial value of the Organizer property.</param>
         /// <param name="room">Initial value of the Room property.</param>
-        public static Conference CreateConference(global::System.Int32 conferenceID, global::System.String name, global::System.DateTime date, global::System.String address, global::System.String country, global::System.String contactPhone, global::System.String organizer, global::System.String room)
+        /// <param name="duration">Initial value of the Duration property.</param>
+        public static Conference CreateConference(global::System.Int32 conferenceID, global::System.String name, global::System.DateTime date, global::System.String address, global::System.String country, global::System.String contactPhone, global::System.String organizer, global::System.String room, global::System.TimeSpan duration)
         {
             Conference conference = new Conference();
             conference.ConferenceID = conferenceID;
@@ -870,6 +871,7 @@ namespace PrjctMngmt.Models
             conference.ContactPhone = contactPhone;
             conference.Organizer = organizer;
             conference.Room = room;
+            conference.Duration = duration;
             return conference;
         }
 
@@ -1142,6 +1144,30 @@ namespace PrjctMngmt.Models
         private Nullable<global::System.Int32> _Longitude;
         partial void OnLongitudeChanging(Nullable<global::System.Int32> value);
         partial void OnLongitudeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.TimeSpan Duration
+        {
+            get
+            {
+                return _Duration;
+            }
+            set
+            {
+                OnDurationChanging(value);
+                ReportPropertyChanging("Duration");
+                _Duration = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Duration");
+                OnDurationChanged();
+            }
+        }
+        private global::System.TimeSpan _Duration;
+        partial void OnDurationChanging(global::System.TimeSpan value);
+        partial void OnDurationChanged();
 
         #endregion
     

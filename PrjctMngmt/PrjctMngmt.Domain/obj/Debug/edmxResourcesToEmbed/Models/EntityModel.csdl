@@ -627,6 +627,7 @@
     <Property Type="Int32" Name="Latitude" Nullable="true" />
     <Property Type="Int32" Name="Longitude" Nullable="true" />
     <NavigationProperty Name="ConferenceAttendant" Relationship="EntityModel.ConferenceConferenceAttendant" FromRole="Conference" ToRole="ConferenceAttendant" />
+    <Property Type="Time" Name="Duration" Nullable="false" />
   </EntityType>
   <EntityType Name="ConferenceAttendant">
     <Key>

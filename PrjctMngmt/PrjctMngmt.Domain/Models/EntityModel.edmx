@@ -322,6 +322,7 @@
     <Property Name="Room" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Latitude" Type="int" Nullable="true" />
     <Property Name="Longitude" Type="int" Nullable="true" />
+    <Property Name="Duration" Type="time" Nullable="false" />
   </EntityType>
   <EntityType Name="ConferenceAttendants">
     <Key>
@@ -1250,6 +1251,7 @@
           <Property Type="Int32" Name="Latitude" Nullable="true" />
           <Property Type="Int32" Name="Longitude" Nullable="true" />
           <NavigationProperty Name="ConferenceAttendant" Relationship="EntityModel.ConferenceConferenceAttendant" FromRole="Conference" ToRole="ConferenceAttendant" />
+          <Property Type="Time" Name="Duration" Nullable="false" />
         </EntityType>
         <EntityType Name="ConferenceAttendant">
           <Key>
@@ -1507,6 +1509,7 @@
           <ScalarProperty Name="Room" ColumnName="Room" />
           <ScalarProperty Name="Latitude" ColumnName="Latitude" />
           <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1674,10 +1677,10 @@
           <ConnectorPoint PointX="2.9010441666666664" PointY="10.326691080729166" />
           <ConnectorPoint PointX="2.375" PointY="10.326691080729166" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="EntityModel.Conference" Width="1.875" PointX="12" PointY="0.5" Height="3.3263964843749996" />
+        <EntityTypeShape EntityType="EntityModel.Conference" Width="1.875" PointX="12" PointY="0.5" Height="3.5186979166666665" />
         <EntityTypeShape EntityType="EntityModel.ConferenceAttendant" Width="2.375" PointX="12" PointY="4.625" Height="1.2110807291666665" />
         <AssociationConnector Association="EntityModel.ConferenceConferenceAttendant">
-          <ConnectorPoint PointX="12.9375" PointY="3.8263964843749996" />
+          <ConnectorPoint PointX="12.9375" PointY="4.0186979166666665" />
           <ConnectorPoint PointX="12.9375" PointY="4.625" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.DeveloperConferenceAttendant">
