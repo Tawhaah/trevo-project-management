@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PrjctMngmt.Models;
+using System.Web.Helpers;
 
 namespace PrjctMngmt.Controllers
 {
@@ -28,6 +29,27 @@ namespace PrjctMngmt.Controllers
             model.TotalDevelopers = GetAmountOfDevelopers();
 
             return View(model);
+        }
+
+        public void TaskPieChart()
+        {
+            new Chart(width: 300, height: 200)
+                .AddTitle("Tasks")
+                .AddSeries("Default", chartType: "Pie",
+                xValue: new[] { "Finished", "Unfinished" },
+                yValues: new[] { GetAmountOfFinishedTasks(), GetAmountOfUnfinishedTasks() })
+                .Write("png");
+        }
+
+
+        public void ProjectPieChart()
+        {
+            new Chart(width: 300, height: 200)
+                .AddTitle("Projects")
+                .AddSeries("Default", chartType: "Pie",
+                xValue: new[] { "Finished", "Unfinished" },
+                yValues: new[] { GetAmountOfFinishedProjects(), GetAmountOfUnfinishedProjects() })
+                .Write("png");
         }
 
         //

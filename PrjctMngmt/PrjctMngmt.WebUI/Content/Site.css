@@ -355,3 +355,16 @@ div#title {
     border-width: 0px;
     padding: 0px 20px 2px 0px;
 }
+
+/* Dashboard
+----------------------------------------------------------*/
+#task-pie-chart {
+    float: left;
+}
+
+.dashboard-entity {
+    width: 300px;
+    float: left;
+    margin-top: 20px;
+    margin-right: 10px;
+}

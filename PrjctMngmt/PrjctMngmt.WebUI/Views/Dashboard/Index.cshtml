@@ -1,49 +1,64 @@
 ﻿@model PrjctMngmt.Models.DashboardModel
-           
+
 <fieldset>
     <legend>Overview</legend>
-    <div class="display-label">
-        Total tasks:
-    </div>
-    <div class="display-field">
-        @Model.TotalTasks
-    </div>
-    <div class="display-label">
-        Finished tasks:
-    </div>
-    <div class="display-field">
-        @Model.FinishedTasks
-    </div>
-    <div class="display-label">
-        Unfinished tasks:
-    </div>
-    <div class="display-field">
-        @Model.UnfinishedTasks
-    </div>
-    <br />
-    <div class="display-label">
-        Total projects:
-    </div>
-    <div class="display-field">
-        @Model.TotalProjects
-    </div>
-    <div class="display-label">
-        Finished projects:
-    </div>
-    <div class="display-field">
-        @Model.FinishedProjects
-    </div>
-    <div class="display-label">
-        Unifinished projects:
-    </div>
-    <div class="display-field">
-        @Model.UnfinishedProjects
-    </div>
-    <br />
-    <div class="display-label">
-        Developers:
-    </div>
-    <div class="display-field">
-        @Model.TotalDevelopers
+    <fieldset class="dashboard-entity">
+        <legend>Tasks</legend>
+        <div class="display-label">
+            Total tasks:
+        </div>
+        <div class="display-field">
+            @Model.TotalTasks
+        </div>
+        <div class="display-label">
+            Finished tasks:
+        </div>
+        <div class="display-field">
+            @Model.FinishedTasks
+        </div>
+        <div class="display-label">
+            Unfinished tasks:
+        </div>
+        <div class="display-field">
+            @Model.UnfinishedTasks
+        </div>
+    </fieldset>
+    <fieldset class="dashboard-entity">
+        <legend>Projects</legend>
+        <div class="display-label">
+            Total projects:
+        </div>
+        <div class="display-field">
+            @Model.TotalProjects
+        </div>
+        <div class="display-label">
+            Finished projects:
+        </div>
+        <div class="display-field">
+            @Model.FinishedProjects
+        </div>
+        <div class="display-label">
+            Unifinished projects:
+        </div>
+        <div class="display-field">
+            @Model.UnfinishedProjects
+        </div>
+    </fieldset>
+    <fieldset class="dashboard-entity">
+        <legend>Developers</legend>
+        <div class="display-label">
+            Developers:
+        </div>
+        <div class="display-field">
+            @Model.TotalDevelopers
+        </div>
+    </fieldset>
+</fieldset>
+
+<fieldset>
+    <legend>Charts</legend>
+    <div id="task-pie-chart">
+        <img alt="Task pie chart" src='@Url.Action("TaskPieChart")' />
+        <img alt="Project pie chart" src='@Url.Action("ProjectPieChart")' />
     </div>
 </fieldset>
