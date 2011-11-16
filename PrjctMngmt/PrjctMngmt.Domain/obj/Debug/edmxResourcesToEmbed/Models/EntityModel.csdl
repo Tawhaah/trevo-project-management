@@ -219,8 +219,8 @@
     <Property Type="Int32" Name="ProjectID" Nullable="false" />
     <NavigationProperty Name="Developer" Relationship="EntityModel.DeveloperNote" FromRole="Note" ToRole="Developer" />
     <Property Type="Int32" Name="DeveloperID" Nullable="false" />
-    <Property Type="String" Name="LocX" Nullable="false" />
-    <Property Type="String" Name="LocY" Nullable="false" />
+    <Property Type="String" Name="LocX" Nullable="false" DefaultValue="'0%'" />
+    <Property Type="String" Name="LocY" Nullable="false" DefaultValue="'0%'" />
   </EntityType>
   <EntityType Name="Topic">
     <Key>

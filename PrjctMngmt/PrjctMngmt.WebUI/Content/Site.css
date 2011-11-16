@@ -5,8 +5,8 @@ to use a different color start by replacing all instances of
 ----------------------------------------------------------*/
 body 
 {
-    /*background: url("../../Content/themes/base/images/clover_bg.png");
-    background-repeat: repeat;*/
+    width: 100%;
+    height: 100%;
     background-color: #3b575d;
     font-size: .85em;
     font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
@@ -80,9 +80,11 @@ h5, h6 {
 /* you can specify a greater or lesser percentage for the 
 page width. Or, you can specify an exact pixel width. */
 .page {
-    width: 90%;
+    width: 70%;
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
+    overflow: hidden;
 }
 
 header, #header {
@@ -341,6 +343,35 @@ div#title {
 
 .tri-state {
     width: 6em;
+}
+
+/* Note
+----------------------------------------------------------*/
+.note {
+    width: 200px;
+    height: 286px;
+    font-size: 10px;
+    background-image: url("../../Content/themes/base/images/note.png");
+    background-color: transparent;
+    position: relative;
+    display: inline-block;
+}
+
+.note-content {
+    padding: 50px 15px 10px 15px;
+    overflow: hidden;
+    height: 200px;
+}
+
+.note-tab 
+{
+    height: 88%;
+    width: 97%;
+    overflow: hidden;
+}
+
+#tabs {
+    height: 670px;
 }
 
 /* Task

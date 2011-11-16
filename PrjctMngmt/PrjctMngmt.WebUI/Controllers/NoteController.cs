@@ -63,7 +63,7 @@ namespace PrjctMngmt.Controllers
         // POST: /Note/Create
 
         [HttpPost]
-        public ActionResult Create(String Data, string LocX, string LocY, int ProjectID, int DeveloperID)
+        public ActionResult Create(String Data, string LocX, string LocY, int ProjectID)
         {
             if (!ModelState.IsValid)
                 return View();
@@ -75,7 +75,7 @@ namespace PrjctMngmt.Controllers
                 note.LocX = LocX;
                 note.LocY = LocY;
                 note.ProjectID = ProjectID;
-                note.DeveloperID = DeveloperID;
+                note.DeveloperID = 1; //TODO: Use logged in developer
 
                 _dataModel.AddToNotes(note);
                 _dataModel.SaveChanges();

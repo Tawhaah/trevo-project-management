@@ -3,4 +3,40 @@
 }
 
 <h2>Create a note</h2>
-@Html.Partial("_EditCreatePartial")
+
+@model PrjctMngmt.Models.Note
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Note</legend>
+
+        <p>All fields required.</p>
+
+        <div class="editor-label">
+            Note
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Data)
+            @Html.ValidationMessageFor(model => model.Data)
+        </div>
+
+        <div class="editor-label">
+            Project
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ProjectID", (IEnumerable<SelectListItem>) ViewData["Projects"], "")
+        </div>
+        
+        <!-- Default location values for a new note. -->
+        @Html.Hidden("LocX", "0%")
+        @Html.Hidden("LocY", "0%")
+        <p>
+            <input type="submit" value="Submit" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

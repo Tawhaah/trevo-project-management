@@ -203,8 +203,8 @@
     <Property Name="Data" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ProjectID" Type="int" Nullable="false" />
     <Property Name="DeveloperID" Type="int" Nullable="false" />
-    <Property Name="LocX" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="LocY" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LocX" Type="nvarchar(max)" Nullable="false" DefaultValue="'0%'" />
+    <Property Name="LocY" Type="nvarchar(max)" Nullable="false" DefaultValue="'0%'" />
   </EntityType>
   <EntityType Name="Topics">
     <Key>
@@ -843,8 +843,8 @@
           <Property Type="Int32" Name="ProjectID" Nullable="false" />
           <NavigationProperty Name="Developer" Relationship="EntityModel.DeveloperNote" FromRole="Note" ToRole="Developer" />
           <Property Type="Int32" Name="DeveloperID" Nullable="false" />
-          <Property Type="String" Name="LocX" Nullable="false" />
-          <Property Type="String" Name="LocY" Nullable="false" />
+          <Property Type="String" Name="LocX" Nullable="false" DefaultValue="'0%'" />
+          <Property Type="String" Name="LocY" Nullable="false" DefaultValue="'0%'" />
         </EntityType>
         <EntityType Name="Topic">
           <Key>

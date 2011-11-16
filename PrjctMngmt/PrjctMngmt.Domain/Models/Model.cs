@@ -3519,17 +3519,13 @@ namespace PrjctMngmt.Models
         /// <param name="data">Initial value of the Data property.</param>
         /// <param name="projectID">Initial value of the ProjectID property.</param>
         /// <param name="developerID">Initial value of the DeveloperID property.</param>
-        /// <param name="locX">Initial value of the LocX property.</param>
-        /// <param name="locY">Initial value of the LocY property.</param>
-        public static Note CreateNote(global::System.Int32 noteID, global::System.String data, global::System.Int32 projectID, global::System.Int32 developerID, global::System.String locX, global::System.String locY)
+        public static Note CreateNote(global::System.Int32 noteID, global::System.String data, global::System.Int32 projectID, global::System.Int32 developerID)
         {
             Note note = new Note();
             note.NoteID = noteID;
             note.Data = data;
             note.ProjectID = projectID;
             note.DeveloperID = developerID;
-            note.LocX = locX;
-            note.LocY = locY;
             return note;
         }
 
@@ -3655,7 +3651,7 @@ namespace PrjctMngmt.Models
                 OnLocXChanged();
             }
         }
-        private global::System.String _LocX;
+        private global::System.String _LocX = "\'0%\'";
         partial void OnLocXChanging(global::System.String value);
         partial void OnLocXChanged();
     
@@ -3679,7 +3675,7 @@ namespace PrjctMngmt.Models
                 OnLocYChanged();
             }
         }
-        private global::System.String _LocY;
+        private global::System.String _LocY = "\'0%\'";
         partial void OnLocYChanging(global::System.String value);
         partial void OnLocYChanged();
 
