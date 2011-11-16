@@ -354,7 +354,8 @@ div#title {
     background-image: url("../../Content/themes/base/images/note.png");
     background-color: transparent;
     position: relative;
-    display: inline-block;
+    display: inline-table;
+    
 }
 
 .note-content {
@@ -366,7 +367,7 @@ div#title {
 .note-tab 
 {
     height: 88%;
-    width: 97%;
+    width: 96%;
     overflow: hidden;
 }
 

@@ -28,22 +28,21 @@
             },
             stop: function (event, ui) {
                 this.style.opacity = 1.0
+                dragging = false;
 
                 //calculate final location
                 //TODO: FIX
                 var width = $(".note-tab").width();
                 var height = $(".note-tab").height();
-                var left = 98 - (width - $(".note").position().left) / width * 100;
-                var top = 90 - (height - $(".note").position().top) / height * 100;
+                var left = 100 - (width - $(".note").position().left) / width * 100;
+                var top = 100 - (height - $(".note").position().top) / height * 100;
                 var LocX = left + "";
                 var LocY = top + "";
                 LocX = LocX.substr(0, 6) + "%";
                 LocY = LocY.substr(0, 6) + "%";
 
-                dragging = false;
-
                 //post back new location
-                $.post("/Note/UpdateLocation?id=" + $(this).attr("id") + "&LocX=" + LocX + "&LocY=" + LocY, function () { });
+                //$.post("/Note/UpdateLocation?id=" + $(this).attr("id") + "&LocX=" + LocX + "&LocY=" + LocY, function () { });
             }
         });
     });
