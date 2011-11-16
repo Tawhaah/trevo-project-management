@@ -62,7 +62,9 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Models\EntityModel.edmx.sql" />
+  </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Models\EntityModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -70,11 +72,7 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\EntityModel.edmx.sql" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.Config" />
-    <None Include="Models\EntityModel.edmx.sqlce" />
     <None Include="Models\Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model.cs</LastGenOutput>
