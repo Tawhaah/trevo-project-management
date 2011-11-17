@@ -225,7 +225,7 @@ namespace PrjctMngmt.Controllers
             SelectList projects = new SelectList(_dataModel.Projects.ToList(), "ProjectID", "Name");
             ViewData["Projects"] = projects;
 
-            String[] statusStrings = { "Fixed", "Duplicate", "Wont_fix", "Works_for_me", "Invalid" };
+            String[] statusStrings = { "New", "Started", "Fixed", "Done", "Duplicate", "WontFix", "Invalid" };
             List<SelectListItem> statusItems = new List<SelectListItem>();
             foreach (String s in statusStrings)
             {

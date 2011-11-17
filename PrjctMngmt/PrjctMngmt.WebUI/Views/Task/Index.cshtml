@@ -19,12 +19,8 @@
 <script type="text/javascript">
     $(function toggle() {
         //TODO: Create AJAX call to for checkbox item change / task status change
-        var id = $(this).attr("id");
-        $.post("/Task/ToggleTaskStatus/?id=" + this.attr("id"), function () { });
-        /*
-        $.post("/Task/ToggleTaskStatus/"+id,
-            function () {});
-            */
+        var id = $(this).closest('td').attr("id");
+        $.post("/Task/ToggleTaskStatus?id=" + id, function () { });
     });
 </script>
 
@@ -49,11 +45,11 @@
                         <td id="@item.TaskID" class="taskTd">
                             @if(item.Finished == 1)
                             {
-                                @Html.CheckBox("Status", true, new { onclick = "toggle();" })
+                                @Html.CheckBox("Status", true, new { onClick  = "toggle();" })
                             }
                             else
                             {
-                                @Html.CheckBox("Status", false, new { onclick = "toggle();" })
+                                @Html.CheckBox("Status", false, new { onClick = "toggle();" })
                             }
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>

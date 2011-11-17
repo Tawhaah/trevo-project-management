@@ -28,6 +28,10 @@ namespace PrjctMngmt.Controllers
 
             model.TotalDevelopers = GetAmountOfDevelopers();
 
+            model.ConfsDuringWeek = GetConferencesThisWeek();
+            model.ConfsNextWeek = GetConferencesNextWeek();
+            model.ConfsDuringMonth = GetConferencesThisMonth(); 
+
             return View(model);
         }
 
@@ -51,7 +55,17 @@ namespace PrjctMngmt.Controllers
                 yValues: new[] { GetAmountOfFinishedProjects(), GetAmountOfUnfinishedProjects() })
                 .Write("png");
         }
-        
+
+        public void IssuePieChart()
+        {
+            new Chart(width: 300, height: 200)
+                .AddTitle("Issues")
+                .AddSeries("Default", chartType: "Pie",
+                xValue: new[] { "Finished", "Unfinished" },
+                yValues: new[] { GetAmountOfFinishedIssues(), GetAmountOfUnfinishedIssues() })
+                .Write("png");
+        }
+
         public int GetAmountOfUnfinishedProjects()
         {
             int amount = db.Projects.ToArray().Length -
@@ -63,6 +77,23 @@ namespace PrjctMngmt.Controllers
         {
             var projects = db.Projects.Where(t => t.Status.Contains("Finished"));
             int amount = projects.ToArray().Length;
+            return amount;
+        }
+
+        public int GetAmountOfUnfinishedIssues()
+        {
+            int amount = db.Issues.ToArray().Length - GetAmountOfFinishedIssues();
+            return amount;
+        }
+
+        public int GetAmountOfFinishedIssues()
+        {
+            int amount = 
+                db.Issues.Where(i => i.Status.Contains("Fixed")).ToArray().Length
+                + db.Issues.Where(i => i.Status.Contains("Done")).ToArray().Length
+                + db.Issues.Where(i => i.Status.Contains("Duplicate")).ToArray().Length
+                + db.Issues.Where(i => i.Status.Contains("WontFix")).ToArray().Length
+                + db.Issues.Where(i => i.Status.Contains("Invalid")).ToArray().Length;
             return amount;
         }
 
@@ -111,6 +142,40 @@ namespace PrjctMngmt.Controllers
         public int GetAmountOfDevelopers()
         {
             return db.Developers.ToArray().Length;
+        }
+
+        public List<Conference> GetConferencesThisWeek()
+        {
+            var datenow = DateTime.Now;
+            var datenowPlusWeek = datenow.AddDays(7);
+            var confs = from c in db.Conferences
+                        where c.Date >= datenow && c.Date <= datenowPlusWeek
+                        select c;
+            List<Conference> confList = confs.ToList<Conference>();
+            return confList;
+        }
+
+        public List<Conference> GetConferencesNextWeek()
+        {
+            var datenow = DateTime.Now;
+            var datenowPlusWeek = datenow.AddDays(7);
+            var datenowPlusTwoWeeks = datenow.AddDays(14);
+            var confs = from c in db.Conferences
+                        where c.Date >= datenowPlusWeek && c.Date <= datenowPlusTwoWeeks
+                        select c;
+            List<Conference> confList = confs.ToList<Conference>();
+            return confList;
+        }
+
+        public List<Conference> GetConferencesThisMonth()
+        {
+            var datenow = DateTime.Now;
+            var datenowPlusMonth = datenow.AddMonths(1);
+            var confs = from c in db.Conferences
+                        where c.Date >= datenow && c.Date <= datenowPlusMonth
+                        select c;
+            List<Conference> confList = confs.ToList<Conference>();
+            return confList;
         }
     }
 }

@@ -57,7 +57,48 @@
 
 <fieldset>
     <legend>Reminders</legend>
-
+    <fieldset class="dashboard-entity">
+        <legend>Conferences - same week</legend>
+        @foreach (var conf in Model.ConfsDuringWeek)
+        {
+            var url = @Url.Action("Details", "Conference", new { id = "id" });
+            url = url.Replace("id", conf.ConferenceID.ToString());
+            
+            <a href="@url">@conf.Name</a>
+            <br />
+            @conf.Date
+            <br />
+            <br />
+        }
+    </fieldset>
+    <fieldset class="dashboard-entity">
+        <legend>Conferences - next week</legend>
+        @foreach (var conf in Model.ConfsNextWeek)
+        {
+            var url = @Url.Action("Details", "Conference", new { id = "id" });
+            url = url.Replace("id", conf.ConferenceID.ToString());
+            
+            <a href="@url">@conf.Name</a>
+            <br />
+            @conf.Date
+            <br />
+            <br />
+        }
+    </fieldset>
+    <fieldset class="dashboard-entity">
+        <legend>Conferences - same month</legend>
+        @foreach (var conf in Model.ConfsDuringMonth)
+        {
+            var url = @Url.Action("Details", "Conference", new { id = "id" });
+            url = url.Replace("id", conf.ConferenceID.ToString());
+            
+            <a href="@url">@conf.Name</a>
+            <br />
+            @conf.Date
+            <br />
+            <br />
+        }
+    </fieldset>
 </fieldset>
 
 <fieldset>
@@ -65,5 +106,6 @@
     <div id="task-pie-chart">
         <img alt="Task pie chart" src='@Url.Action("TaskPieChart")' />
         <img alt="Project pie chart" src='@Url.Action("ProjectPieChart")' />
+        <img alt="Issue pie chart" src='@Url.Action("IssuePieChart")' />
     </div>
 </fieldset>

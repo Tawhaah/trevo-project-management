@@ -19,5 +19,10 @@ namespace PrjctMngmt.Models
 
         //developer
         public int TotalDevelopers { get; set; }
+
+        //conferences
+        public List<Conference> ConfsDuringWeek { get; set; }
+        public List<Conference> ConfsNextWeek { get; set; }
+        public List<Conference> ConfsDuringMonth { get; set; }
     }
 }
