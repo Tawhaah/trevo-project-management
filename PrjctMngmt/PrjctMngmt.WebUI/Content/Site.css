@@ -359,9 +359,11 @@ div#title {
 }
 
 .note-content {
-    padding: 50px 15px 10px 15px;
+    margin: 50px 15px 0px 15px;
     overflow: hidden;
-    height: 200px;
+    height: 210px;
+    width: 170px;
+    position: absolute;
 }
 
 .note-tab 
@@ -373,6 +375,16 @@ div#title {
 
 #tabs {
     height: 670px;
+}
+
+.removeNote {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    position: relative;
+    right: -6px;
+    top: 20px;
+    
+    
 }
 
 /* Task
