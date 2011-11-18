@@ -20,6 +20,16 @@ namespace PrjctMngmt.Models
         //developer
         public int TotalDevelopers { get; set; }
 
+        //issue
+        public int TotalIssues { get; set; }
+        public int FinishedIssues { get; set; }
+        public int UnfinishedIssues { get; set; }
+
+        //milestones
+        public List<Milestone> MilestonesDuringWeek { get; set; }
+        public List<Milestone> MilestonesNextWeek { get; set; }
+        public List<Milestone> MilestonesDuringMonth { get; set; }
+
         //conferences
         public List<Conference> ConfsDuringWeek { get; set; }
         public List<Conference> ConfsNextWeek { get; set; }

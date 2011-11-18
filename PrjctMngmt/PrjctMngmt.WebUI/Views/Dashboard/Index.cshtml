@@ -2,6 +2,7 @@
 
 <fieldset>
     <legend>Overview</legend>
+    <!--
     <fieldset class="dashboard-entity">
         <legend>Tasks</legend>
         <div class="display-label">
@@ -45,18 +46,77 @@
         </div>
     </fieldset>
     <fieldset class="dashboard-entity">
-        <legend>Developers</legend>
+        <legend>Issues</legend>
         <div class="display-label">
-            Developers:
+            Total issues:
         </div>
         <div class="display-field">
-            @Model.TotalDevelopers
+            @Model.TotalIssues
         </div>
+        <div class="display-label">
+            Finished issues:
+        </div>
+        <div class="display-field">
+            @Model.FinishedIssues
+        </div>
+        <div class="display-label">
+            Unifinished issues:
+        </div>
+        <div class="display-field">
+            @Model.UnfinishedIssues
+        </div>
+    </fieldset>
+    -->
+</fieldset>
+
+<fieldset>
+    <legend>Upcoming Milestones</legend>
+    <fieldset class="dashboard-entity">
+        <legend>Milestones - same week</legend>
+        @foreach (var milestone in Model.MilestonesDuringWeek)
+        {
+            var url = @Url.Action("Details", "Milestone", new { id = "id" });
+            url = url.Replace("id", milestone.MilestoneID.ToString());
+            
+            <a href="@url">@milestone.Name (@milestone.Project.Name)</a>
+            <br />
+            @milestone.DueDate
+            <br />
+            <br />
+        }
+    </fieldset>
+    <fieldset class="dashboard-entity">
+        <legend>Milestones - next week</legend>
+        @foreach (var milestone in Model.MilestonesNextWeek)
+        {
+            var url = @Url.Action("Details", "Milestone", new { id = "id" });
+            url = url.Replace("id", milestone.MilestoneID.ToString());
+            
+            <a href="@url">@milestone.Name (@milestone.Project.Name)</a>
+            <br />
+            @milestone.DueDate
+            <br />
+            <br />
+        }
+    </fieldset>
+    <fieldset class="dashboard-entity">
+        <legend>Milestones - same month</legend>
+        @foreach (var milestone in Model.MilestonesDuringMonth)
+        {
+            var url = @Url.Action("Details", "Milestone", new { id = "id" });
+            url = url.Replace("id", milestone.MilestoneID.ToString());
+            
+            <a href="@url">@milestone.Name (@milestone.Project.Name)</a>
+            <br />
+            @milestone.DueDate
+            <br />
+            <br />
+        }
     </fieldset>
 </fieldset>
 
 <fieldset>
-    <legend>Reminders</legend>
+    <legend>Upcoming Conferences</legend>
     <fieldset class="dashboard-entity">
         <legend>Conferences - same week</legend>
         @foreach (var conf in Model.ConfsDuringWeek)

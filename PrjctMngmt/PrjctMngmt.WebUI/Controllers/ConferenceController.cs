@@ -18,7 +18,7 @@ namespace PrjctMngmt.Controllers
 
         public ViewResult Index()
         {
-            return View(db.Conferences.ToList());
+            return View(db.Conferences.ToList().OrderBy(c => c.Date));
         }
 
         //

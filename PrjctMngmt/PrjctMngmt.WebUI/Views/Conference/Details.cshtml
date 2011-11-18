@@ -56,5 +56,9 @@
 </fieldset>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.ConferenceID }) |
+    @Html.ActionLink("Delete", "Delete", new { id=Model.ConferenceID })
+    <br />
+    @Html.ActionLink("See attendants", "SeeAttendants", "ConferenceAttendant", new { id = Model.ConferenceID }, null)
+    <br /><br />
     @Html.ActionLink("Back to List", "Index")
 </p>

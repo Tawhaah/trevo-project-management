@@ -39,7 +39,9 @@ namespace PrjctMngmt.Controllers
 
         public ActionResult Index()
         {
-            return View(_dataModel.Developers.ToList());
+            List<Developer> developers = _dataModel.Developers.OrderBy(d => d.LastName)
+                                         .ThenBy(d => d.LastName).ToList();
+            return View(developers);
         }
 
         //

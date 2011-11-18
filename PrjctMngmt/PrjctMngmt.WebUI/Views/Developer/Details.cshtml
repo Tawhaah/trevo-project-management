@@ -39,5 +39,8 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.DeveloperID })
+    @Html.ActionLink("Edit", "Edit", new { id=Model.DeveloperID }) |
+    @Html.ActionLink("Delete", "Delete", new { id=Model.DeveloperID })
+    <br /><br />
+    @Html.ActionLink("Back to List", "Index")
 </p>

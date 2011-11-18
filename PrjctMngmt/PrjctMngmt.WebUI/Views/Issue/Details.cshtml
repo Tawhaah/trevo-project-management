@@ -49,5 +49,11 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.IssueID })
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IssueID }) |
+    @Html.ActionLink("Delete", "Delete", new { id = Model.IssueID })
+    <br />
+    @Html.ActionLink("See assignments", "ShowIssueAssignments", "IssueAssignment", new { id = Model.IssueID }, null) |
+    @Html.ActionLink("See attachments", "ShowIssueAttachments", "IssueAttachment", new { id = Model.IssueID }, null)
+    <br /><br />
+    @Html.ActionLink("Back to List", "Index")
 </p>

@@ -89,8 +89,9 @@
             @Html.ValidationMessageFor(model => model.Room)
         </div>
 
+        <!--
         <div class="editor-label">
-            @Html.LabelFor(model => model.Latitude)
+            @Html.HiddenFor(model => model.Latitude)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Latitude)
@@ -98,12 +99,13 @@
         </div>
 
          <div class="editor-label">
-            @Html.LabelFor(model => model.Longitude)
+            @Html.HiddenFor(model => model.Longitude)
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Longitude)
             @Html.ValidationMessageFor(model => model.Longitude)
         </div>
+        -->
 
         <p>
             <input type="submit" value="Create" />

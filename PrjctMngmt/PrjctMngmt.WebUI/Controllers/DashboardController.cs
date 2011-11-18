@@ -28,41 +28,55 @@ namespace PrjctMngmt.Controllers
 
             model.TotalDevelopers = GetAmountOfDevelopers();
 
+            model.TotalIssues = GetAmountOfTotalIssues();
+            model.FinishedIssues = GetAmountOfFinishedIssues();
+            model.UnfinishedIssues = GetAmountOfUnfinishedIssues();
+
             model.ConfsDuringWeek = GetConferencesThisWeek();
             model.ConfsNextWeek = GetConferencesNextWeek();
-            model.ConfsDuringMonth = GetConferencesThisMonth(); 
+            model.ConfsDuringMonth = GetConferencesThisMonth();
+
+            model.MilestonesDuringWeek = GetMilestonesThisWeek();
+            model.MilestonesNextWeek = GetMilestonesNextWeek();
+            model.MilestonesDuringMonth = GetMilestonesThisMonth();
 
             return View(model);
         }
 
         public void TaskPieChart()
         {
-            new Chart(width: 300, height: 200)
+            int finished = GetAmountOfFinishedTasks();
+            int unfinished = GetAmountOfUnfinishedTasks();
+            new Chart(width: 300, height: 200, theme: ChartTheme.Vanilla3D)
                 .AddTitle("Tasks")
                 .AddSeries("Default", chartType: "Pie",
-                xValue: new[] { "Finished", "Unfinished" },
-                yValues: new[] { GetAmountOfFinishedTasks(), GetAmountOfUnfinishedTasks() })
+                xValue: new[] { "Finished\n" + finished, "Unfinished\n" + unfinished },
+                yValues: new[] { finished, unfinished })
                 .Write("png");
         }
 
 
         public void ProjectPieChart()
         {
-            new Chart(width: 300, height: 200)
+            int finished = GetAmountOfFinishedProjects();
+            int unfinished = GetAmountOfUnfinishedProjects();
+            new Chart(width: 300, height: 200, theme: ChartTheme.Vanilla3D)
                 .AddTitle("Projects")
                 .AddSeries("Default", chartType: "Pie",
-                xValue: new[] { "Finished", "Unfinished" },
-                yValues: new[] { GetAmountOfFinishedProjects(), GetAmountOfUnfinishedProjects() })
+                xValue: new[] { "Finished\n" + finished, "Unfinished\n" + unfinished },
+                yValues: new[] { finished, unfinished })
                 .Write("png");
         }
 
         public void IssuePieChart()
         {
-            new Chart(width: 300, height: 200)
+            int finished = GetAmountOfFinishedIssues();
+            int unfinished = GetAmountOfUnfinishedIssues();
+            new Chart(width: 300, height: 200, theme: ChartTheme.Vanilla3D)
                 .AddTitle("Issues")
                 .AddSeries("Default", chartType: "Pie",
-                xValue: new[] { "Finished", "Unfinished" },
-                yValues: new[] { GetAmountOfFinishedIssues(), GetAmountOfUnfinishedIssues() })
+                xValue: new[] { "Finished\n" + finished, "Unfinished\n" + unfinished },
+                yValues: new[] { finished, unfinished })
                 .Write("png");
         }
 
@@ -77,6 +91,12 @@ namespace PrjctMngmt.Controllers
         {
             var projects = db.Projects.Where(t => t.Status.Contains("Finished"));
             int amount = projects.ToArray().Length;
+            return amount;
+        }
+
+        public int GetAmountOfTotalProjects()
+        {
+            int amount = db.Projects.ToArray().Length;
             return amount;
         }
 
@@ -97,9 +117,9 @@ namespace PrjctMngmt.Controllers
             return amount;
         }
 
-        public int GetAmountOfTotalProjects()
+        public int GetAmountOfTotalIssues()
         {
-            int amount = db.Projects.ToArray().Length;
+            int amount = db.Issues.ToArray().Length;
             return amount;
         }
 
@@ -144,12 +164,50 @@ namespace PrjctMngmt.Controllers
             return db.Developers.ToArray().Length;
         }
 
+        public List<Milestone> GetMilestonesThisWeek()
+        {
+            var datenow = DateTime.Now;
+            var datenowPlusWeek = datenow.AddDays(7);
+            var milestones = from m in db.Milestones
+                            where m.DueDate >= datenow && m.DueDate <= datenowPlusWeek
+                            orderby m.DueDate
+                            select m;
+            List<Milestone> mList = milestones.ToList<Milestone>();
+            return mList;
+        }
+
+        public List<Milestone> GetMilestonesNextWeek()
+        {
+            var datenow = DateTime.Now;
+            var datenowPlusWeek = datenow.AddDays(7);
+            var datenowPlusTwoWeeks = datenow.AddDays(14);
+            var milestones = from m in db.Milestones
+                            where m.DueDate >= datenowPlusWeek && m.DueDate <= datenowPlusTwoWeeks
+                            orderby m.DueDate
+                            select m;
+            List<Milestone> mList = milestones.ToList<Milestone>();
+            return mList;
+        }
+
+        public List<Milestone> GetMilestonesThisMonth()
+        {
+            var datenow = DateTime.Now;
+            var datenowPlusMonth = datenow.AddMonths(1);
+            var milestones = from m in db.Milestones
+                             where m.DueDate >= datenow && m.DueDate <= datenowPlusMonth
+                             orderby m.DueDate
+                             select m;
+            List<Milestone> mList = milestones.ToList<Milestone>();
+            return mList;
+        }
+
         public List<Conference> GetConferencesThisWeek()
         {
             var datenow = DateTime.Now;
             var datenowPlusWeek = datenow.AddDays(7);
             var confs = from c in db.Conferences
                         where c.Date >= datenow && c.Date <= datenowPlusWeek
+                        orderby c.Date
                         select c;
             List<Conference> confList = confs.ToList<Conference>();
             return confList;
@@ -162,6 +220,7 @@ namespace PrjctMngmt.Controllers
             var datenowPlusTwoWeeks = datenow.AddDays(14);
             var confs = from c in db.Conferences
                         where c.Date >= datenowPlusWeek && c.Date <= datenowPlusTwoWeeks
+                        orderby c.Date
                         select c;
             List<Conference> confList = confs.ToList<Conference>();
             return confList;
@@ -173,6 +232,7 @@ namespace PrjctMngmt.Controllers
             var datenowPlusMonth = datenow.AddMonths(1);
             var confs = from c in db.Conferences
                         where c.Date >= datenow && c.Date <= datenowPlusMonth
+                        orderby c.Date
                         select c;
             List<Conference> confList = confs.ToList<Conference>();
             return confList;

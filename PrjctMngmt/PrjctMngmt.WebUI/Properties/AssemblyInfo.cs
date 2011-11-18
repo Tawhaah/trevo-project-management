@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("PrjctMngmt")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("PrjctMngmt")]
 [assembly: AssemblyCopyright("Copyright © Petri Tuononen")]
 [assembly: AssemblyTrademark("")]

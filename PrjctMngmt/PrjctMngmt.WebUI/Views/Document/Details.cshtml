@@ -3,14 +3,14 @@
 <fieldset>
     <legend>Document</legend>
 
-    <div class="display-label">Filename</div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.FileName)
-    </div>
-
     <div class="display-label">Name</div>
     <div class="display-field">
         @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">Fileame</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FileName)
     </div>
 
     <div class="display-label">Entry date</div>
@@ -25,5 +25,8 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.DocumentID })
+    @Html.ActionLink("Edit", "Edit", new { id=Model.DocumentID }) |
+    @Html.ActionLink("Delete", "Delete", new { id=Model.DocumentID })
+    <br /><br />
+    @Html.ActionLink("Back to List", "Index")
 </p>
