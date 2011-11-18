@@ -119,8 +119,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\shared.css" />
     <Content Include="Content\themes\base\images\edit.png" />
+    <Content Include="Content\themes\base\images\floral_bg.jpg" />
     <Content Include="Content\themes\base\images\mag_glass.png" />
     <Content Include="Content\themes\base\images\note.png" />
     <Content Include="Content\themes\base\images\plus-sign_small.png" />

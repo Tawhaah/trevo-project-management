@@ -13,7 +13,9 @@ body
     margin: 0;
     padding: 0;
     color: #696969;
-}
+    
+    background-image: url("../../Content/themes/base/images/floral_bg.jpg");
+    background-repeat:no-repeat;    background-position:center center;    background-attachment:fixed;    -o-background-size: 100% 100%, auto;    -moz-background-size: 100% 100%, auto;    -webkit-background-size: 100% 100%, auto;    background-size: 100% 100%, auto;}
 
 a:link {
     color: #034af3;
@@ -168,7 +170,7 @@ ul#menu li a:hover {
 }
 
 ul#menu li a:active {
-    background-color: #000000;
+    background-color: transparent; /*#000000;*/
     text-decoration: none;
 }
 
@@ -499,6 +501,9 @@ div#title {
     padding-left: 5px;
 }
 
+.ButtonLink { cursor:pointer; }
+.Hidden { display:none; }
+.Top { vertical-align: top }
 
 
 
