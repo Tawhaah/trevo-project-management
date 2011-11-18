@@ -169,7 +169,10 @@ namespace PrjctMngmt.Controllers
 
                 //delete file from the server
                 FileInfo docFile = new FileInfo(basePath + doc.FileName);
-                docFile.Delete();
+                if (docFile.Exists)
+                {
+                    docFile.Delete();
+                }
 
                 return RedirectToAction("Index");
             }

@@ -40,6 +40,7 @@ namespace PrjctMngmt.Controllers
 
         public ActionResult Index()
         {
+            //.OrderBy (i => (i.Priority == "Critical") ? 1 : (i.Priority == "High") ? 2 : (i.Priority == "Normal") ? 3 : (i.Priority == "Low") ? 4 : (i.Priority == "Trivial") ? 5)
             return View(_dataModel.Issues.ToList());
         }
 
@@ -141,10 +142,9 @@ namespace PrjctMngmt.Controllers
                 {
                     //remove old file first
                     IssueAttachment issueAttcmt = GetIssueAttachmentByIssueID(id);
-                    var path = "";
-                    if (issueAttcmt != null)
+                    var path = Path.Combine(basePath, issueAttcmt.Filename);
+                    if (issueAttcmt != null && System.IO.File.Exists(path))
                     {
-                        path = Path.Combine(basePath, issueAttcmt.Filename);
                         System.IO.File.Delete(path);
                     }
                     //save new file
@@ -236,6 +236,20 @@ namespace PrjctMngmt.Controllers
                 });
             }
             ViewData["Status"] = statusItems;
+
+            String[] priorityStrings = { "Trivial", "Low", "Normal", "High", "Critical" };
+            List<SelectListItem> priorityItems = new List<SelectListItem>();
+            //int i = 1;
+            foreach (String p in priorityStrings)
+            {
+                priorityItems.Add(new SelectListItem
+                {
+                    Text = p,
+                    Value = p/*i.ToString()*/
+                });
+                //i--;
+            }
+            ViewData["Priority"] = priorityItems;
         }
 
         public Issue GetIssueByID(int id)

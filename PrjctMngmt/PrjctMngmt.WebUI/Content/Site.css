@@ -411,3 +411,95 @@ div#title {
     margin-top: 20px;
     margin-right: 10px;
 }
+
+/* Team
+----------------------------------------------------------*/
+.developers.custom-state-active 
+{ 
+    background: #eee; 
+}
+
+.developers li 
+{
+    float: left; 
+    padding: 0.4em 0 0.4em 0.4em; 
+    margin: 0 0.4em 0.4em 0; 
+    text-align: center; 
+}
+
+.developers li a 
+{ 
+    float: right;
+}
+
+.teams
+{
+    float: left; 
+    width: 15%;
+    min-height: 5em; 
+    padding: 1%;
+    margin: 1%;
+} 
+* html .teams
+{ 
+    height: 5em;
+} /* IE6 */
+
+.teams .developers h5
+{ 
+    display: none;
+}
+
+.teamTitle 
+{
+    color: Black;
+    font-weight: bold;
+    font-size: small;
+    padding: 5px 0px 5px 5px;
+}
+
+.devLi 
+{
+    list-style-type: none;
+}
+
+.recycleIcon
+{   
+    width: 16px;
+    height: 16px;
+    float: right;
+    background-image: url("../../Content/themes/base/images/recycle.png");
+    background-repeat: no-repeat;
+}
+
+#confirmTeamdelete #confirmDevDelete
+{
+    float: left;
+    margin: 0 7px 20px 0;
+}
+
+/* Shared
+----------------------------------------------------------*/
+.removeIcon
+{
+    float: right;
+    padding-right: 5px;
+}
+    
+.detailIcon
+{
+    float: right;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.editIcon
+{
+    float: right;
+    padding-left: 5px;
+}
+
+
+
+
+
