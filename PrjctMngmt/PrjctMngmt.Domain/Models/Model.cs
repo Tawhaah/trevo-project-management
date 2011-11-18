@@ -3434,6 +3434,30 @@ namespace PrjctMngmt.Models
         private Nullable<global::System.Int32> _ProjectID;
         partial void OnProjectIDChanging(Nullable<global::System.Int32> value);
         partial void OnProjectIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Description
+        {
+            get
+            {
+                return _Description;
+            }
+            set
+            {
+                OnDescriptionChanging(value);
+                ReportPropertyChanging("Description");
+                _Description = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Description");
+                OnDescriptionChanged();
+            }
+        }
+        private global::System.String _Description;
+        partial void OnDescriptionChanging(global::System.String value);
+        partial void OnDescriptionChanged();
 
         #endregion
     
@@ -3982,6 +4006,30 @@ namespace PrjctMngmt.Models
         private Nullable<global::System.Int32> _ProjectCategoryID;
         partial void OnProjectCategoryIDChanging(Nullable<global::System.Int32> value);
         partial void OnProjectCategoryIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> DueDate
+        {
+            get
+            {
+                return _DueDate;
+            }
+            set
+            {
+                OnDueDateChanging(value);
+                ReportPropertyChanging("DueDate");
+                _DueDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("DueDate");
+                OnDueDateChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _DueDate;
+        partial void OnDueDateChanging(Nullable<global::System.DateTime> value);
+        partial void OnDueDateChanged();
 
         #endregion
     

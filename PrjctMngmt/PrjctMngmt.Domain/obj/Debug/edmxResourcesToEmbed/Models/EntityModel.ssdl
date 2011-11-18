@@ -241,6 +241,7 @@
     <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
     <Property Name="ClientID" Type="int" Nullable="true" />
     <Property Name="ProjectCategoryID" Type="int" Nullable="true" />
+    <Property Name="DueDate" Type="datetime" Nullable="true" />
   </EntityType>
   <EntityType Name="IssueCategories">
     <Key>
@@ -281,6 +282,7 @@
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="DueDate" Type="datetime" Nullable="true" />
     <Property Name="ProjectID" Type="int" Nullable="true" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="IssueAttachments">
     <Key>

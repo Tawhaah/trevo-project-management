@@ -61,12 +61,11 @@ namespace PrjctMngmt.Controllers
         //
         // GET: /Milestone/Create
 
-        [OutputCache(Duration = 0)]
         public ActionResult Create()
         {
             ViewData["Projects"] = new SelectList(_dataModel.Projects.ToList(), "ProjectID", "Name");
-            return PartialView(new Milestone());
-        } 
+            return View(new Milestone());
+        }
 
         //
         // POST: /Milestone/Create
@@ -82,14 +81,46 @@ namespace PrjctMngmt.Controllers
                 _dataModel.AddToMilestones(newMilestone);
                 _dataModel.SaveChanges();
 
+                return RedirectToAction("Index", "Project");
+            }
+            catch
+            {
+                return RedirectToAction("Index", "Project");
+            }
+        }
+
+        //
+        // GET: /Milestone/CreateDialog
+
+        [OutputCache(Duration = 0)]
+        public ActionResult CreateDialog()
+        {
+            ViewData["Projects"] = new SelectList(_dataModel.Projects.ToList(), "ProjectID", "Name");
+            return PartialView(new Milestone());
+        }
+
+        //
+        // POST: /Milestone/CreateDialog
+
+        [HttpPost]
+        public ActionResult CreateDialog([Bind(Exclude = "MilestoneID")]Milestone newMilestone)
+        {
+            if (!ModelState.IsValid)
+                return View();
+
+            try
+            {
+                _dataModel.AddToMilestones(newMilestone);
+                _dataModel.SaveChanges();
+
                 return RedirectToAction("Create", "Issue");
             }
             catch
             {
-                return RedirectToAction("Create", "Issue");
+                return View();
             }
         }
-        
+
         //
         // GET: /Milestone/Edit/5
  

@@ -8,6 +8,11 @@
         @Html.DisplayFor(model => model.Name)
     </div>
 
+        <div class="display-label">Description</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
     <div class="display-label">Due date</div>
     <div class="display-field">
         @Html.DisplayFor(model => model.DueDate)
@@ -19,5 +24,8 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.MilestoneID })
+    @Html.ActionLink("Edit", "Edit", new { id=Model.MilestoneID }) |
+    @Html.ActionLink("Delete", "Delete", new { id=Model.MilestoneID })
+    <br /><br />
+    @Html.ActionLink("Back to List", "Index")
 </p>

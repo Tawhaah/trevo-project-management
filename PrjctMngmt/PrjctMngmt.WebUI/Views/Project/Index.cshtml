@@ -31,13 +31,16 @@
 <h2>Projects</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add new project", "Create")
+    <br />
+    @Html.ActionLink("Add new milestone", "Create", "Milestone")
 </p>
 <table>
     <tr>
         <th>
             Name
         </th>
+        <!--
         <th>
             Start date
         </th>
@@ -45,8 +48,13 @@
             End date
         </th>
         <th>
+            Due date
+        </th>
+        -->
+        <th>
             Status
         </th>
+        <!--
         <th>
             Description
         </th>
@@ -56,14 +64,18 @@
         <th>
             Category
         </th>
+        -->
+        <!--
         <th></th>
+        -->
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.ActionLink(item.Name, "Details", new { id = item.ProjectID })
         </td>
+        <!--
         <td>
             @Html.DisplayFor(modelItem => item.StartDate)
         </td>
@@ -71,8 +83,13 @@
             @Html.DisplayFor(modelItem => item.EndDate)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.DueDate)
+        </td>
+        -->
+        <td>
             @Html.DisplayFor(modelItem => item.Status)
         </td>
+        <!--
         <td>
             @Html.DisplayFor(modelItem => item.Description)
         </td>
@@ -82,6 +99,8 @@
         <td>
             @Html.DisplayFor(modelItem => item.ProjectCategory.Name)
         </td>
+        -->
+        <!--
         <td>
             @Html.ActionLink("See assignments", "ShowProjectAssignments", "ProjectAssignment", new { id = item.ProjectID }, null) |
             <button class="addMilestone">Create milestone</button> |
@@ -90,6 +109,7 @@
             @Html.ActionLink("Details", "Details", new { id=item.ProjectID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ProjectID })
         </td>
+        -->
     </tr>
 }
 

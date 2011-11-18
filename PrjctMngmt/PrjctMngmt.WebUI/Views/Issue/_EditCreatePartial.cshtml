@@ -30,7 +30,7 @@
             autoOpen: false, width: 400, modal: true,
             buttons: {
                 "Save": function () {
-                    $.post("/Milestone/Create",
+                    $.post("/Milestone/CreateDialog",
                         $("#MilestoneForm").serialize(),
                         function () {
                             $("#milestone").dialog("close");
@@ -43,7 +43,7 @@
         $(".addMilestone").click(function () {
             $("#milestone").html("")
                 .dialog("option", "title", "Create milestone")
-                .load("/Milestone/Create", function () { $("#milestone").dialog("open"); });
+                .load("/Milestone/CreateDialog", function () { $("#milestone").dialog("open"); });
         });
     });
 </script>

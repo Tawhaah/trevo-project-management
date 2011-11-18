@@ -246,6 +246,7 @@
     <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
     <Property Name="ClientID" Type="int" Nullable="true" />
     <Property Name="ProjectCategoryID" Type="int" Nullable="true" />
+    <Property Name="DueDate" Type="datetime" Nullable="true" />
   </EntityType>
   <EntityType Name="IssueCategories">
     <Key>
@@ -286,6 +287,7 @@
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="DueDate" Type="datetime" Nullable="true" />
     <Property Name="ProjectID" Type="int" Nullable="true" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="IssueAttachments">
     <Key>
@@ -896,6 +898,7 @@
           <NavigationProperty Name="ProjectCategory" Relationship="EntityModel.ProjectCategoryProject" FromRole="Project" ToRole="ProjectCategory" />
           <Property Type="Int32" Name="ProjectCategoryID" Nullable="true" />
           <NavigationProperty Name="Issue" Relationship="EntityModel.ProjectIssue" FromRole="Project" ToRole="Issue" />
+          <Property Type="DateTime" Name="DueDate" Nullable="true" />
         </EntityType>
         <EntityType Name="IssueCategory">
           <Key>
@@ -946,6 +949,7 @@
           <NavigationProperty Name="Issue" Relationship="EntityModel.MilestoneIssue" FromRole="Milestone" ToRole="Issue" />
           <NavigationProperty Name="Project" Relationship="EntityModel.ProjectMilestone" FromRole="Milestone" ToRole="Project" />
           <Property Type="Int32" Name="ProjectID" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" />
         </EntityType>
         <EntityType Name="IssueAttachment">
           <Key>
@@ -1426,6 +1430,7 @@
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="ClientID" ColumnName="ClientID" />
           <ScalarProperty Name="ProjectCategoryID" ColumnName="ProjectCategoryID" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1470,6 +1475,7 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="DueDate" ColumnName="DueDate" />
           <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1554,11 +1560,11 @@
         <EntityTypeShape EntityType="EntityModel.Topic" Width="1.625" PointX="7.5" PointY="0.5" Height="1.7879850260416674" />
         <EntityTypeShape EntityType="EntityModel.Client" Width="1.75" PointX="5.375" PointY="0.5" Height="2.7494921874999996" />
         <EntityTypeShape EntityType="EntityModel.ProjectCategory" Width="2" PointX="5.375" PointY="9.625" Height="1.5956835937499996" />
-        <EntityTypeShape EntityType="EntityModel.Project" Width="2.25" PointX="0.5" PointY="4.625" Height="3.9033007812499996" />
+        <EntityTypeShape EntityType="EntityModel.Project" Width="2.25" PointX="0.5" PointY="4.625" Height="4.0956022135416656" />
         <EntityTypeShape EntityType="EntityModel.IssueCategory" Width="1.875" PointX="3.25" PointY="9.625" Height="1.4033821614583317" />
         <EntityTypeShape EntityType="EntityModel.Issue" Width="1.875" PointX="0.5" PointY="9.25" Height="3.9033007812499996" />
         <EntityTypeShape EntityType="EntityModel.ProjectAssignment" Width="1.75" PointX="8.625" PointY="8.625" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="EntityModel.Milestone" Width="1.75" PointX="3.25" PointY="12.5" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="EntityModel.Milestone" Width="1.75" PointX="3.25" PointY="12.5" Height="2.3648893229166674" IsExpanded="true" />
         <EntityTypeShape EntityType="EntityModel.IssueAttachment" Width="2" PointX="0.5" PointY="13.75" Height="2.7494921874999996" />
         <EntityTypeShape EntityType="EntityModel.IssueAssignment" Width="2" PointX="8.25" PointY="11.25" Height="1.9802864583333335" />
         <AssociationConnector Association="EntityModel.ProjectTask">
@@ -1586,31 +1592,33 @@
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.DeveloperTaskAssignment">
           <ConnectorPoint PointX="7.5" PointY="4.4901432291666659" />
-          <ConnectorPoint PointX="6.333333333333333" PointY="4.490143229166665" />
-          <ConnectorPoint PointX="6.166666666666667" PointY="4.4901432291666659" />
+          <ConnectorPoint PointX="6.177083333333333" PointY="4.490143229166665" />
+          <ConnectorPoint PointX="6.010416666666667" PointY="4.4901432291666659" />
           <ConnectorPoint PointX="5.25" PointY="4.4901432291666659" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.ProjectNote">
-          <ConnectorPoint PointX="2.75" PointY="7.326650390625" />
-          <ConnectorPoint PointX="3.25" PointY="7.326650390625" />
+          <ConnectorPoint PointX="2.75" PointY="7.4035953776041667" />
+          <ConnectorPoint PointX="3.25" PointY="7.4035953776041667" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.ClientProject">
-          <ConnectorPoint PointX="6.25" PointY="3.2494921874999996" />
-          <ConnectorPoint PointX="6.25" PointY="5.8026432291666659" />
-          <ConnectorPoint PointX="2.75" PointY="5.8026432291666659" />
+          <ConnectorPoint PointX="6.09375" PointY="3.2494921874999996" />
+          <ConnectorPoint PointX="6.09375" PointY="5.7069569256429356" />
+          <ConnectorPoint PointX="2.75" PointY="5.7069569256429356" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.ProjectProjectAssignment">
-          <ConnectorPoint PointX="2.59375" PointY="8.52830078125" />
-          <ConnectorPoint PointX="2.59375" PointY="8.9660953776041659" />
-          <ConnectorPoint PointX="2.6197941666666664" PointY="8.9660953776041659" />
-          <ConnectorPoint PointX="2.7864608333333334" PointY="8.9660953776041659" />
-          <ConnectorPoint PointX="6.729166666666667" PointY="8.9660953776041659" />
-          <ConnectorPoint PointX="6.895833333333333" PointY="8.9660953776041659" />
-          <ConnectorPoint PointX="7.760416666666667" PointY="8.9660953776041659" />
-          <ConnectorPoint PointX="7.927083333333333" PointY="8.9660953776041659" />
-          <ConnectorPoint PointX="8.3229166666666661" PointY="8.9660953776041659" />
-          <ConnectorPoint PointX="8.4895833333333339" PointY="8.9660953776041659" />
-          <ConnectorPoint PointX="8.625" PointY="8.9660953776041659" />
+          <ConnectorPoint PointX="2.07031375" PointY="8.7206022135416656" />
+          <ConnectorPoint PointX="2.07031375" PointY="9" />
+          <ConnectorPoint PointX="2.5729166666666665" PointY="9" />
+          <ConnectorPoint PointX="2.7395833333333335" PointY="9" />
+          <ConnectorPoint PointX="6.651041666666667" PointY="9" />
+          <ConnectorPoint PointX="6.817708333333333" PointY="9" />
+          <ConnectorPoint PointX="7.760416666666667" PointY="9" />
+          <ConnectorPoint PointX="7.927083333333333" PointY="9" />
+          <ConnectorPoint PointX="8.25" PointY="9" />
+          <ConnectorPoint PointX="8.25" PointY="9.8074446614583337" />
+          <ConnectorPoint PointX="8.3229166666666661" PointY="9.8074446614583337" />
+          <ConnectorPoint PointX="8.4895833333333339" PointY="9.8074446614583337" />
+          <ConnectorPoint PointX="8.625" PointY="9.8074446614583337" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.DeveloperProjectAssignment">
           <ConnectorPoint PointX="8.9375" PointY="7.2879036458333326" />
@@ -1618,8 +1626,8 @@
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.IssueIssueAssignment">
           <ConnectorPoint PointX="2.375" PointY="11.587301867724605" />
-          <ConnectorPoint PointX="2.6197941666666664" PointY="11.587301867724605" />
-          <ConnectorPoint PointX="2.7864608333333334" PointY="11.587301867724605" />
+          <ConnectorPoint PointX="2.5729166666666665" PointY="11.587301867724605" />
+          <ConnectorPoint PointX="2.7395833333333335" PointY="11.587301867724605" />
           <ConnectorPoint PointX="7.760416666666667" PointY="11.587301867724605" />
           <ConnectorPoint PointX="7.927083333333333" PointY="11.587301867724605" />
           <ConnectorPoint PointX="8.25" PointY="11.587301867724605" />
@@ -1630,8 +1638,8 @@
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.DeveloperIssueAttachment">
           <ConnectorPoint PointX="7.84375" PointY="7.2879036458333326" />
-          <ConnectorPoint PointX="7.84375" PointY="15.6172900390625" />
-          <ConnectorPoint PointX="2.5" PointY="15.6172900390625" />
+          <ConnectorPoint PointX="7.84375" PointY="15.713440755208334" />
+          <ConnectorPoint PointX="2.5" PointY="15.713440755208334" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.IssueIssueAttachment">
           <ConnectorPoint PointX="1.4375" PointY="13.15330078125" />
@@ -1639,28 +1647,28 @@
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.MilestoneIssue">
           <ConnectorPoint PointX="3.25" PointY="12.826650390625" />
-          <ConnectorPoint PointX="2.7864608333333334" PointY="12.826650390625" />
-          <ConnectorPoint PointX="2.6197941666666664" PointY="12.826650390625" />
+          <ConnectorPoint PointX="2.7395833333333335" PointY="12.826650390625" />
+          <ConnectorPoint PointX="2.5729166666666665" PointY="12.826650390625" />
           <ConnectorPoint PointX="2.375" PointY="12.826650390625" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.ProjectMilestone" ManuallyRouted="false">
-          <ConnectorPoint PointX="2.7031275" PointY="8.52830078125" />
-          <ConnectorPoint PointX="2.7031275" PointY="13.451650390625" />
+          <ConnectorPoint PointX="2.65625" PointY="8.7206022135416656" />
+          <ConnectorPoint PointX="2.65625" PointY="13.451650390625" />
           <ConnectorPoint PointX="3.25" PointY="13.451650390625" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.ProjectCategoryProject">
-          <ConnectorPoint PointX="6.8125" PointY="9.625" />
-          <ConnectorPoint PointX="6.8125" PointY="5.9638241145833266" />
-          <ConnectorPoint PointX="2.75" PointY="5.9638241145833266" />
+          <ConnectorPoint PointX="6.734375" PointY="9.625" />
+          <ConnectorPoint PointX="6.734375" PointY="5.915980962821461" />
+          <ConnectorPoint PointX="2.75" PointY="5.915980962821461" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.ProjectIssue">
-          <ConnectorPoint PointX="1.4375" PointY="8.52830078125" />
-          <ConnectorPoint PointX="1.4375" PointY="9.25" />
+          <ConnectorPoint PointX="1.222656875" PointY="8.7206022135416656" />
+          <ConnectorPoint PointX="1.222656875" PointY="9.25" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.DeveloperNote">
           <ConnectorPoint PointX="7.5" PointY="6.7064518229166659" />
-          <ConnectorPoint PointX="6.895833333333333" PointY="6.706451822916665" />
-          <ConnectorPoint PointX="6.729166666666667" PointY="6.7064518229166659" />
+          <ConnectorPoint PointX="6.817708333333333" PointY="6.706451822916665" />
+          <ConnectorPoint PointX="6.651041666666667" PointY="6.7064518229166659" />
           <ConnectorPoint PointX="4.875" PointY="6.7064518229166659" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.TaskCategoryTask">
@@ -1673,8 +1681,8 @@
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.IssueCategoryIssue">
           <ConnectorPoint PointX="3.25" PointY="10.326691080729166" />
-          <ConnectorPoint PointX="2.7864608333333334" PointY="10.326691080729166" />
-          <ConnectorPoint PointX="2.6197941666666664" PointY="10.326691080729166" />
+          <ConnectorPoint PointX="2.7395833333333335" PointY="10.326691080729166" />
+          <ConnectorPoint PointX="2.5729166666666665" PointY="10.326691080729166" />
           <ConnectorPoint PointX="2.375" PointY="10.326691080729166" />
         </AssociationConnector>
         <EntityTypeShape EntityType="EntityModel.Conference" Width="1.875" PointX="12" PointY="0.5" Height="3.5186979166666665" />

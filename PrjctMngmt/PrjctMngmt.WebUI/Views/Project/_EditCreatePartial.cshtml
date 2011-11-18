@@ -89,6 +89,14 @@
         </div>
 
         <div class="editor-label">
+            Due date
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.DueDate, new { @class = "datetimepicker" })
+            @Html.ValidationMessageFor(model => model.DueDate)
+        </div>
+
+        <div class="editor-label">
             @Html.LabelFor(model => model.Status)
         </div>
         <div class="editor-field">

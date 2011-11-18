@@ -33,11 +33,17 @@
         @Html.DisplayFor(model => model.Client.Name)
     </div>
 
-    <div class="display-label">Project category</div>
+    <div class="display-label">Category</div>
     <div class="display-field">
         @Html.DisplayFor(model => model.ProjectCategory.Name)
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.ProjectID })
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProjectID }) |
+    @Html.ActionLink("Delete", "Delete", new { id = Model.ProjectID })
+    <br />
+    @Html.ActionLink("See assignments", "ShowProjectAssignments", "ProjectAssignment", new { id = Model.ProjectID }, null) |
+    @Html.ActionLink("See milestones", "ShowProjectMilestones", "Milestone", new { id = Model.ProjectID }, null)
+    <br /><br />
+    @Html.ActionLink("Back to List", "Index")
 </p>

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 11/17/2011 21:20:54
+-- Date Created: 11/18/2011 15:51:26
 -- Generated from EDMX file: C:\Users\Pepe\Documents\Visual Studio 2010\Projects\trevo-project-management\PrjctMngmt\PrjctMngmt.Domain\Models\EntityModel.edmx
 -- --------------------------------------------------
 
@@ -279,7 +279,8 @@ CREATE TABLE [dbo].[Projects] (
     [Status] nvarchar(max)  NULL,
     [Description] nvarchar(max)  NULL,
     [ClientID] int  NULL,
-    [ProjectCategoryID] int  NULL
+    [ProjectCategoryID] int  NULL,
+    [DueDate] datetime  NULL
 );
 GO
 
@@ -319,7 +320,8 @@ CREATE TABLE [dbo].[Milestones] (
     [MilestoneID] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
     [DueDate] datetime  NULL,
-    [ProjectID] int  NULL
+    [ProjectID] int  NULL,
+    [Description] nvarchar(max)  NULL
 );
 GO
 

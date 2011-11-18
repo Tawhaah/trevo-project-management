@@ -272,6 +272,7 @@
     <NavigationProperty Name="ProjectCategory" Relationship="EntityModel.ProjectCategoryProject" FromRole="Project" ToRole="ProjectCategory" />
     <Property Type="Int32" Name="ProjectCategoryID" Nullable="true" />
     <NavigationProperty Name="Issue" Relationship="EntityModel.ProjectIssue" FromRole="Project" ToRole="Issue" />
+    <Property Type="DateTime" Name="DueDate" Nullable="true" />
   </EntityType>
   <EntityType Name="IssueCategory">
     <Key>
@@ -322,6 +323,7 @@
     <NavigationProperty Name="Issue" Relationship="EntityModel.MilestoneIssue" FromRole="Milestone" ToRole="Issue" />
     <NavigationProperty Name="Project" Relationship="EntityModel.ProjectMilestone" FromRole="Milestone" ToRole="Project" />
     <Property Type="Int32" Name="ProjectID" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" />
   </EntityType>
   <EntityType Name="IssueAttachment">
     <Key>

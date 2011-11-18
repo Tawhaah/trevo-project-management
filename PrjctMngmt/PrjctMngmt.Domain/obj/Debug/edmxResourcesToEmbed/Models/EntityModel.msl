@@ -134,6 +134,7 @@
           <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="ClientID" ColumnName="ClientID" />
           <ScalarProperty Name="ProjectCategoryID" ColumnName="ProjectCategoryID" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -178,6 +179,7 @@
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="DueDate" ColumnName="DueDate" />
           <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
