@@ -29,11 +29,13 @@
     <fieldset>
         <legend>Developer</legend>
 
+        <p>* indicates a required field.</p>
+
         <div class="editor-label">
             First name
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.FirstName)
+            @Html.EditorFor(model => model.FirstName) *
             @Html.ValidationMessageFor(model => model.FirstName)
         </div>
 
@@ -41,7 +43,7 @@
             Last name
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.LastName)
+            @Html.EditorFor(model => model.LastName) *
             @Html.ValidationMessageFor(model => model.LastName)
         </div>
 
