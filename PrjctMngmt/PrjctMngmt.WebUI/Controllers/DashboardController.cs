@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using PrjctMngmt.Models;
 using System.Web.Helpers;
+using PrjctMngmt.Helpers;
 
 namespace PrjctMngmt.Controllers
 {
@@ -47,7 +48,7 @@ namespace PrjctMngmt.Controllers
         {
             int finished = GetAmountOfFinishedTasks();
             int unfinished = GetAmountOfUnfinishedTasks();
-            new Chart(width: 300, height: 200, theme: ChartTheme.Vanilla3D)
+            new Chart(width: 300, height: 200, theme: CustomChartThemes.PieTheme)
                 .AddTitle("Tasks")
                 .AddSeries("Default", chartType: "Pie",
                 xValue: new[] { "Finished\n" + finished, "Unfinished\n" + unfinished },
@@ -60,7 +61,7 @@ namespace PrjctMngmt.Controllers
         {
             int finished = GetAmountOfFinishedProjects();
             int unfinished = GetAmountOfUnfinishedProjects();
-            new Chart(width: 300, height: 200, theme: ChartTheme.Vanilla3D)
+            new Chart(width: 300, height: 200, theme: CustomChartThemes.PieTheme)
                 .AddTitle("Projects")
                 .AddSeries("Default", chartType: "Pie",
                 xValue: new[] { "Finished\n" + finished, "Unfinished\n" + unfinished },
@@ -72,7 +73,7 @@ namespace PrjctMngmt.Controllers
         {
             int finished = GetAmountOfFinishedIssues();
             int unfinished = GetAmountOfUnfinishedIssues();
-            new Chart(width: 300, height: 200, theme: ChartTheme.Vanilla3D)
+            new Chart(width: 300, height: 200, theme: CustomChartThemes.PieTheme)
                 .AddTitle("Issues")
                 .AddSeries("Default", chartType: "Pie",
                 xValue: new[] { "Finished\n" + finished, "Unfinished\n" + unfinished },
