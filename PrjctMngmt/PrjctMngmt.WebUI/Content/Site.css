@@ -137,6 +137,7 @@ ul#menu {
     position: relative;
     margin: 0;
     text-align: right;
+    font-size: 1.2em;    
 }
 
 ul#menu li {
@@ -157,7 +158,8 @@ ul#menu li a {
     font-weight: bold;
     text-decoration: none;
     line-height: 2.8em;
-    background-color: #1d3137;
+    background-color: /*transparent;*/ /*#1d3137;*/ #e1e1e1;
+    background-color:rgba(158,188,144,0.5);
     color: #ffffff;
     border-radius: 4px 4px 0 0;
     -webkit-border-radius: 4px 4px 0 0;
@@ -165,7 +167,7 @@ ul#menu li a {
 }
 
 ul#menu li a:hover {
-    background-color: #3c8da4;
+    background-color: /*transparent;*/ /*#3c8da4;*/ /*#1d3137;*/ #427c47;
     text-decoration: none;
 }
 
