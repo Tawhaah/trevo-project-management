@@ -38,7 +38,7 @@ namespace PrjctMngmt.Controllers
 
         public ActionResult Index()
         {
-            ViewData["Topics"] = _dataModel.Topics.OrderBy(m => m.TopicID).ToList();
+            ViewData["Topics"] = _dataModel.Topics.OrderBy(t => t.Name).ToList();
             var messages = _dataModel.Messages.OrderBy(m => m.TopicID).ThenByDescending(m => m.EditDate);
             return View(messages);
         }

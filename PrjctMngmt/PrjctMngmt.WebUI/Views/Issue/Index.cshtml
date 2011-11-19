@@ -13,83 +13,93 @@
     <br />
     @Html.ActionLink("Assign issue", "Create", "IssueAssignment")
 </p>
-<table>
-    <tr>
-        <th>
-            Subject
-        </th>
-        <th>
-            Priority
-        </th>
-        <!--
-        <th>
-            Severity
-        </th>
-        <th>
-            Status
-        </th>
-        <th>
-            Description
-        </th>
-        <th>
-            Entry date
-        </th>
-        <th>
-            Category
-        </th>
-        <th>
-            Milestone
-        </th>
-        -->
-        <th>
-            Project
-        </th>
-        <!--
-        <th></th>
-        -->
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.ActionLink(item.Subject, "Details", new { id = item.IssueID })
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Priority)
-        </td>
-        <!--
-        <td>
-            @Html.DisplayFor(modelItem => item.Severity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EntryDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IssueCategoryName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Milestone.Name)
-        </td>
-        -->
-        <td>
-            @Html.DisplayFor(modelItem => item.Project.Name)
-        </td>
-        <!--
-        <td>
-            @Html.ActionLink("See assignments", "ShowIssueAssignments", "IssueAssignment", new { id = item.IssueID }, null) |
-            @Html.ActionLink("See attachments", "ShowIssueAttachments", "IssueAttachment", new { id = item.IssueID }, null) |
-            @Html.ActionLink("Edit", "Edit", new { id=item.IssueID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IssueID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IssueID })
-        </td>
-        -->
-    </tr>
+@foreach (var proj in (List<PrjctMngmt.Models.Project>)ViewData["Projects"])
+{
+    <fieldset>
+        <legend>@proj.Name</legend>
+        <br />
+        <table>
+            <tr>
+                <th>
+                    Subject
+                </th>
+                <th>
+                    Priority
+                </th>
+                <!--
+                <th>
+                    Severity
+                </th>
+                <th>
+                 Status
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Entry date
+                </th>
+                <th>
+                    Category
+                </th>
+                <th>
+                    Milestone
+                </th>
+                <th>
+                    Project
+                </th>
+
+                <th></th>
+                -->
+            </tr>
+            @foreach (var item in Model)
+            {
+                if (item.ProjectID == proj.ProjectID)
+                {
+                        
+                <tr>
+                    <td>
+                        @Html.ActionLink(item.Subject, "Details", new { id = item.IssueID })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Priority)
+                    </td>
+                    <!--
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Severity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EntryDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IssueCategoryName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Milestone.Name)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Project.Name)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("See assignments", "ShowIssueAssignments", "IssueAssignment", new { id = item.IssueID }, null) |
+                        @Html.ActionLink("See attachments", "ShowIssueAttachments", "IssueAttachment", new { id = item.IssueID }, null) |
+                        @Html.ActionLink("Edit", "Edit", new { id = item.IssueID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.IssueID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.IssueID })
+                    </td>
+                    -->
+                </tr>
+                }
+            }
+        </table>
+    </fieldset>
 }
-
-</table>

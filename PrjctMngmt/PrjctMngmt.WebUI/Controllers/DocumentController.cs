@@ -41,7 +41,7 @@ namespace PrjctMngmt.Controllers
 
         public ActionResult Index()
         {
-            return View(_dataModel.Documents.ToList());
+            return View(_dataModel.Documents.OrderBy(d => d.Name).ToList());
         }
 
         //

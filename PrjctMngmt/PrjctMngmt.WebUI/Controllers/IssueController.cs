@@ -40,8 +40,9 @@ namespace PrjctMngmt.Controllers
 
         public ActionResult Index()
         {
+            ViewData["Projects"] = _dataModel.Projects.OrderBy(p => p.Name).ToList();
             //.OrderBy (i => (i.Priority == "Critical") ? 1 : (i.Priority == "High") ? 2 : (i.Priority == "Normal") ? 3 : (i.Priority == "Low") ? 4 : (i.Priority == "Trivial") ? 5)
-            return View(_dataModel.Issues.ToList());
+            return View(_dataModel.Issues.OrderBy(i => i.ProjectID).ToList());
         }
 
         //
