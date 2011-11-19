@@ -33,6 +33,7 @@ namespace PrjctMngmt.Controllers
 {
     public class AccountController : Controller
     {
+        private EntityModelContainer db = new EntityModelContainer(); 
 
         //
         // GET: /Account/LogOn
@@ -60,7 +61,7 @@ namespace PrjctMngmt.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Dashboard");
                     }
                 }
                 else
@@ -95,18 +96,28 @@ namespace PrjctMngmt.Controllers
         // POST: /Account/Register
 
         [HttpPost]
-        public ActionResult Register(RegisterModel model)
+        public ActionResult Register(RegisterDeveloperModel model)
         {
             if (ModelState.IsValid)
             {
                 // Attempt to register the user
                 MembershipCreateStatus createStatus;
-                Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
+                Membership.CreateUser(model.register.UserName, model.register.Password, model.register.Email, null, null, true, null, out createStatus);
 
                 if (createStatus == MembershipCreateStatus.Success)
                 {
-                    FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
-                    return RedirectToAction("Index", "Home");
+                    Developer dev = new Developer();
+                    dev.FirstName = model.developer.FirstName;
+                    dev.LastName = model.developer.LastName;
+                    dev.Email = model.register.Email;
+                    dev.PhoneNumber = model.developer.PhoneNumber;
+                    dev.Position = model.developer.Position;
+                    dev.UserName = model.register.UserName;
+                    db.AddToDevelopers(dev);
+                    db.SaveChanges();
+
+                    FormsAuthentication.SetAuthCookie(model.register.UserName, false /* createPersistentCookie */);
+                    return RedirectToAction("Index", "Dashboard");
                 }
                 else
                 {

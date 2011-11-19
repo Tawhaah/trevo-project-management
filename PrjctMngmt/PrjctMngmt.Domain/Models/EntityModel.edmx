@@ -611,7 +611,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="DeveloperConferenceAttendant">
-    <End Role="Developer" Type="EntityModel.Store.Developers" Multiplicity="1" />
+    <End Role="Developer" Type="EntityModel.Store.Developers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="ConferenceAttendant" Type="EntityModel.Store.ConferenceAttendants" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Developer">
@@ -1265,7 +1267,7 @@
           <NavigationProperty Name="Conference" Relationship="EntityModel.ConferenceConferenceAttendant" FromRole="ConferenceAttendant" ToRole="Conference" />
           <Property Type="Int32" Name="ConferenceID" Nullable="false" />
           <NavigationProperty Name="Developer" Relationship="EntityModel.DeveloperConferenceAttendant" FromRole="ConferenceAttendant" ToRole="Developer" />
-          <Property Type="Int32" Name="DeveloperID" Nullable="false" />
+          <Property Type="Int32" Name="DeveloperID" Nullable="false" ConcurrencyMode="None" />
         </EntityType>
         <Association Name="ConferenceConferenceAttendant">
           <End Type="EntityModel.Conference" Role="Conference" Multiplicity="1" />
@@ -1280,7 +1282,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="DeveloperConferenceAttendant">
-          <End Type="EntityModel.Developer" Role="Developer" Multiplicity="1" />
+          <End Type="EntityModel.Developer" Role="Developer" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
           <End Type="EntityModel.ConferenceAttendant" Role="ConferenceAttendant" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Developer">

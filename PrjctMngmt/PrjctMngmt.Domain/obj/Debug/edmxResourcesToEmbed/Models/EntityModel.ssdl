@@ -606,7 +606,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="DeveloperConferenceAttendant">
-    <End Role="Developer" Type="EntityModel.Store.Developers" Multiplicity="1" />
+    <End Role="Developer" Type="EntityModel.Store.Developers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="ConferenceAttendant" Type="EntityModel.Store.ConferenceAttendants" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Developer">

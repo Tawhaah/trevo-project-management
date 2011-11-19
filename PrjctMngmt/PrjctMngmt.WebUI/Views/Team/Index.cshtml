@@ -137,11 +137,13 @@
                 Cancel: function () { $(this).dialog("close"); }
             }
         });
+        /*
         $(".addTeam").click(function () {
             $("#teamDialog").html("")
                 .dialog("option", "title", "Create team")
                 .load("/Team/Create", function () { $("#teamDialog").dialog("open"); });
         });
+        */
         $(".teamDetails").click(function () {
             var name = $(this).parent().attr("id");
             $("#teamDialog").html("")
@@ -234,11 +236,10 @@
                 }
             }
         }
-        <img alt="Create developer" class="addDeveloper ButtonLink" src="../../Content/themes/base/images/plus-sign_small.png" />
+        <!-- hack --><img alt="Create developer" src="../../Content/themes/base/images/transparent_dot.png" height="30px"/>
     </ul>
     <br />
-    <b>Teams</b>
-    <br />
+    <div style="float:left;"><b>Teams</b></div>
     @foreach (var item in Model)
     {
         foreach (var team in item.teams)
@@ -264,7 +265,7 @@
             </div>
         }
     }
-    <img alt="Create team" class="addTeam ButtonLink" src="../../Content/themes/base/images/plus-sign_small.png" />
+    <img alt="Create team" class="addTeam ButtonLink" style="float:right;" src="../../Content/themes/base/images/plus-sign_small.png" />
 </div>
 <div id="devDialog"></div>
 <div id="teamDialog"></div>
