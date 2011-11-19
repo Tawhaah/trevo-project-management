@@ -38,7 +38,8 @@ namespace PrjctMngmt.Controllers
 
         public ActionResult Index()
         {
-            var messages = _dataModel.Messages.OrderBy(m => m.TopicID);
+            ViewData["Topics"] = _dataModel.Topics.OrderBy(m => m.TopicID).ToList();
+            var messages = _dataModel.Messages.OrderBy(m => m.TopicID).ThenByDescending(m => m.EditDate);
             return View(messages);
         }
 
@@ -66,6 +67,7 @@ namespace PrjctMngmt.Controllers
                 Message msg = new Message();
                 msg.Data = Data;
                 msg.EntryDate = DateTime.Now;
+                msg.EditDate = DateTime.Now;
                 msg.DeveloperID = Convert.ToInt32(Session["DeveloperID"]);
                 msg.TopicID = TopicID;
                 _dataModel.AddToMessages(msg);

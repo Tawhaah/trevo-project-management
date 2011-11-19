@@ -979,7 +979,8 @@
         </EntityType>
         <Association Name="ProjectTask">
           <End Type="EntityModel.Project" Role="Project" Multiplicity="1" />
-          <End Type="EntityModel.Task" Role="Task" Multiplicity="*" />
+          <End Type="EntityModel.Task" Role="Task" Multiplicity="*" >
+          </End>
           <ReferentialConstraint>
             <Principal Role="Project">
               <PropertyRef Name="ProjectID" />
@@ -1134,7 +1135,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="IssueIssueAttachment">
-          <End Type="EntityModel.Issue" Role="Issue" Multiplicity="1" />
+          <End Type="EntityModel.Issue" Role="Issue" Multiplicity="1" >
+          </End>
           <End Type="EntityModel.IssueAttachment" Role="IssueAttachment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Issue">
@@ -1159,7 +1161,8 @@
         </Association>
         <Association Name="ProjectMilestone">
           <End Type="EntityModel.Project" Role="Project" Multiplicity="0..1" />
-          <End Type="EntityModel.Milestone" Role="Milestone" Multiplicity="*" />
+          <End Type="EntityModel.Milestone" Role="Milestone" Multiplicity="*" >
+          </End>
           <ReferentialConstraint>
             <Principal Role="Project">
               <PropertyRef Name="ProjectID" />
@@ -1182,7 +1185,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="ProjectIssue">
-          <End Type="EntityModel.Project" Role="Project" Multiplicity="1" />
+          <End Type="EntityModel.Project" Role="Project" Multiplicity="1" >
+          </End>
           <End Type="EntityModel.Issue" Role="Issue" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Project">
@@ -1283,7 +1287,6 @@
         </Association>
         <Association Name="DeveloperConferenceAttendant">
           <End Type="EntityModel.Developer" Role="Developer" Multiplicity="1" >
-            <OnDelete Action="Cascade" />
           </End>
           <End Type="EntityModel.ConferenceAttendant" Role="ConferenceAttendant" Multiplicity="*" />
           <ReferentialConstraint>

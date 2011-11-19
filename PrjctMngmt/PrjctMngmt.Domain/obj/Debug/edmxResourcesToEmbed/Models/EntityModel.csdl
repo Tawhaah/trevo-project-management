@@ -654,9 +654,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="DeveloperConferenceAttendant">
-    <End Type="EntityModel.Developer" Role="Developer" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
+    <End Type="EntityModel.Developer" Role="Developer" Multiplicity="1" />
     <End Type="EntityModel.ConferenceAttendant" Role="ConferenceAttendant" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Developer">
