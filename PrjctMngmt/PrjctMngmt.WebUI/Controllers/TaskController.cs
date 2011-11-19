@@ -38,8 +38,8 @@ namespace PrjctMngmt.Controllers
 
         public ActionResult Index()
         {
-            ViewData["Projects"] = _dataModel.Projects.ToList();
-            return View(_dataModel.Tasks.ToList());
+            ViewData["Projects"] = _dataModel.Projects.OrderBy(p => p.Name).ToList();
+            return View(_dataModel.Tasks.OrderBy(t => t.Name).ToList());
         }
 
         //
@@ -70,6 +70,7 @@ namespace PrjctMngmt.Controllers
 
             try
             {
+                newTask.EntryDate = DateTime.Now;
                 _dataModel.AddToTasks(newTask);
                 _dataModel.SaveChanges();
                 

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 11/19/2011 18:03:17
+-- Date Created: 11/19/2011 23:40:28
 -- Generated from EDMX file: C:\Users\Pepe\Documents\Visual Studio 2010\Projects\trevo-project-management\PrjctMngmt\PrjctMngmt.Domain\Models\EntityModel.edmx
 -- --------------------------------------------------
 
@@ -191,7 +191,8 @@ CREATE TABLE [dbo].[Tasks] (
     [Description] nvarchar(max)  NULL,
     [ProjectID] int  NOT NULL,
     [TaskCategoryName] nvarchar(max)  NULL,
-    [Finished] tinyint  NOT NULL
+    [Finished] tinyint  NOT NULL,
+    [EntryDate] datetime  NULL
 );
 GO
 
@@ -826,7 +827,7 @@ ADD CONSTRAINT [FK_DeveloperConferenceAttendant]
     FOREIGN KEY ([DeveloperID])
     REFERENCES [dbo].[Developers]
         ([DeveloperID])
-    ON DELETE CASCADE ON UPDATE NO ACTION;
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_DeveloperConferenceAttendant'
 CREATE INDEX [IX_FK_DeveloperConferenceAttendant]

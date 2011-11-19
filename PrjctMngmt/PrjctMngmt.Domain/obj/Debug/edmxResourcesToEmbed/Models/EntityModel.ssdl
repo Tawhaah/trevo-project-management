@@ -153,6 +153,7 @@
     <Property Name="ProjectID" Type="int" Nullable="false" />
     <Property Name="TaskCategoryName" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Finished" Type="tinyint" Nullable="false" DefaultValue="0" />
+    <Property Name="EntryDate" Type="datetime" Nullable="true" />
   </EntityType>
   <EntityType Name="TaskCategories">
     <Key>
@@ -606,9 +607,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="DeveloperConferenceAttendant">
-    <End Role="Developer" Type="EntityModel.Store.Developers" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
+    <End Role="Developer" Type="EntityModel.Store.Developers" Multiplicity="1" />
     <End Role="ConferenceAttendant" Type="EntityModel.Store.ConferenceAttendants" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Developer">

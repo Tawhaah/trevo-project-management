@@ -39,8 +39,9 @@ namespace PrjctMngmt.Controllers
         public ActionResult Index()
         {
             var model = new TeamDeveloperModel();
-            model.teams = _dataModel.Teams.ToList();
-            model.developers = _dataModel.Developers.ToList();
+            model.teams = _dataModel.Teams.OrderBy(t => t.TeamName).ToList();
+            model.developers = _dataModel.Developers.OrderBy(d => d.LastName)
+                                         .ThenBy(d => d.LastName).ToList();
 
             List<TeamDeveloperModel> viewModelList = new List<TeamDeveloperModel>();
             viewModelList.Add(model);

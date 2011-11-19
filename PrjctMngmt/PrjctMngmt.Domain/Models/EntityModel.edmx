@@ -158,6 +158,7 @@
     <Property Name="ProjectID" Type="int" Nullable="false" />
     <Property Name="TaskCategoryName" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Finished" Type="tinyint" Nullable="false" DefaultValue="0" />
+    <Property Name="EntryDate" Type="datetime" Nullable="true" />
   </EntityType>
   <EntityType Name="TaskCategories">
     <Key>
@@ -611,9 +612,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="DeveloperConferenceAttendant">
-    <End Role="Developer" Type="EntityModel.Store.Developers" Multiplicity="1">
-      <OnDelete Action="Cascade" />
-    </End>
+    <End Role="Developer" Type="EntityModel.Store.Developers" Multiplicity="1" />
     <End Role="ConferenceAttendant" Type="EntityModel.Store.ConferenceAttendants" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Developer">
@@ -794,6 +793,7 @@
           <NavigationProperty Name="TaskCategory" Relationship="EntityModel.TaskCategoryTask" FromRole="Task" ToRole="TaskCategory" />
           <Property Type="String" Name="TaskCategoryName" Nullable="true" />
           <Property Type="Byte" Name="Finished" Nullable="false" DefaultValue="0" />
+          <Property Type="DateTime" Name="EntryDate" Nullable="true" />
         </EntityType>
         <EntityType Name="TaskCategory">
           <Key>
@@ -1340,6 +1340,7 @@
           <ScalarProperty Name="ProjectID" ColumnName="ProjectID" />
           <ScalarProperty Name="TaskCategoryName" ColumnName="TaskCategoryName" />
           <ScalarProperty Name="Finished" ColumnName="Finished" />
+          <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1558,7 +1559,7 @@
       <Diagram Name="EntityModel" ZoomLevel="73" DisplayType="true" >
         <EntityTypeShape EntityType="EntityModel.Developer" Width="1.75" PointX="7.5" PointY="3" Height="3.9033007812499996" />
         <EntityTypeShape EntityType="EntityModel.Team" Width="1.625" PointX="9.875" PointY="6.25" Height="1.5956835937499996" />
-        <EntityTypeShape EntityType="EntityModel.Task" Width="2.125" PointX="0.5" PointY="0.5" Height="3.7109993489583326" />
+        <EntityTypeShape EntityType="EntityModel.Task" Width="2.125" PointX="0.5" PointY="0.5" Height="3.9033007812499996" />
         <EntityTypeShape EntityType="EntityModel.TaskCategory" Width="1.75" PointX="3.25" PointY="0.5" Height="1.4033821614583335" />
         <EntityTypeShape EntityType="EntityModel.Message" Width="1.75" PointX="9.875" PointY="0.5" Height="2.5571907552083331" />
         <EntityTypeShape EntityType="EntityModel.Document" Width="1.75" PointX="9.875" PointY="3.375" Height="2.3648893229166665" />
@@ -1576,11 +1577,11 @@
         <EntityTypeShape EntityType="EntityModel.IssueAssignment" Width="2" PointX="8.25" PointY="11.25" Height="1.9802864583333335" />
         <AssociationConnector Association="EntityModel.ProjectTask">
           <ConnectorPoint PointX="1.5625" PointY="4.625" />
-          <ConnectorPoint PointX="1.5625" PointY="4.2109993489583326" />
+          <ConnectorPoint PointX="1.5625" PointY="4.40330078125" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.TaskTaskAssignment">
-          <ConnectorPoint PointX="2.625" PointY="3.8554996744791663" />
-          <ConnectorPoint PointX="3.25" PointY="3.8554996744791663" />
+          <ConnectorPoint PointX="2.625" PointY="3.951650390625" />
+          <ConnectorPoint PointX="3.25" PointY="3.951650390625" />
         </AssociationConnector>
         <AssociationConnector Association="EntityModel.DeveloperMessage">
           <ConnectorPoint PointX="8.375" PointY="3" />

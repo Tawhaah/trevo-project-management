@@ -67,13 +67,14 @@ namespace PrjctMngmt.Controllers
         // POST: /Developer/Create
 
         [HttpPost]
-        public ActionResult Create(string FirstName, string LastName, string Email, string PhoneNumber, string Position, string TeamName)
+        public ActionResult Create([Bind(Exclude = "DeveloperID")]Developer newDev /*string FirstName, string LastName, string Email, string PhoneNumber, string Position, string TeamName*/)
         {
             if (!ModelState.IsValid)
                 return View();
 
             try
             {
+                /*
                 Developer dev = new Developer();
                 dev.FirstName = FirstName;
                 dev.LastName = LastName;
@@ -81,8 +82,11 @@ namespace PrjctMngmt.Controllers
                 dev.PhoneNumber = PhoneNumber;
                 dev.Position = Position;
                 dev.TeamName = TeamName;
-                dev.UserName = Membership.GetUser().UserName;
-                _dataModel.AddToDevelopers(dev);
+                 */
+
+                newDev.UserName = Membership.GetUser().UserName;
+
+                _dataModel.AddToDevelopers(newDev);
                 _dataModel.SaveChanges();
 
                 return RedirectToAction("Index");
@@ -106,7 +110,7 @@ namespace PrjctMngmt.Controllers
 
         //
         // POST: /Developer/CreateDialog
-
+        /*
         [HttpPost]
         public ActionResult CreateDialog(string FirstName, string LastName, string Email, string PhoneNumber, string Position, string TeamName)
         {
@@ -133,6 +137,7 @@ namespace PrjctMngmt.Controllers
                 return View();
             }
         }
+        */
 
         //
         // GET: /Developer/Edit/5

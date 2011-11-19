@@ -38,7 +38,7 @@ namespace PrjctMngmt.Controllers
 
         public ActionResult Index()
         {
-            ViewData["Projects"] = _dataModel.Projects.ToList();
+            ViewData["Projects"] = _dataModel.Projects.OrderBy(p => p.Name).ToList();
             return View(_dataModel.Notes.ToList());
         }
 
