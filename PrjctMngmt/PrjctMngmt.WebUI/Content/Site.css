@@ -15,7 +15,14 @@ body
     color: #696969;
     
     background-image: url("../../Content/themes/base/images/floral_bg.jpg");
-    background-repeat:no-repeat;    background-position:center center;    background-attachment:fixed;    -o-background-size: 100% 100%, auto;    -moz-background-size: 100% 100%, auto;    -webkit-background-size: 100% 100%, auto;    background-size: 100% 100%, auto;}
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-attachment:fixed;
+    -o-background-size: 100% 100%, auto;
+    -moz-background-size: 100% 100%, auto;
+    -webkit-background-size: 100% 100%, auto;
+    background-size: 100% 100%, auto;
+}
 
 a:link {
     color: #034af3;
@@ -109,15 +116,16 @@ header h1, #header h1 {
 
 #main {
     padding: 30px 30px 15px 30px;
-    background-color: #fff;
+    background-color: #f5f5f5; /*#fff;*/
     border-radius: 4px 0 0 0;
     -webkit-border-radius: 4px 0 0 0;
     -moz-border-radius: 4px 0 0 0;
 }
 
 footer, 
-#footer {
-    background-color: #fff;
+#footer 
+{
+    background-color: #f5f5f5;
     color: #999;
     padding: 10px 0;
     text-align: center;
@@ -132,7 +140,7 @@ footer,
 /* TAB MENU   
 ----------------------------------------------------------*/
 ul#menu {
-    border-bottom: 1px #5C87B2 solid;
+    /*border-bottom: 1px #5C87B2 solid;*/
     padding: 0 0 2px;
     position: relative;
     margin: 0;
@@ -268,7 +276,14 @@ div#title {
     display: block;
     text-align: right;
     color: white;
-    background-color: #19292c;
+    background-color:rgba(27,57,29,0.6);
+    -webkit-border-bottom-right-radius: 0px;
+    -webkit-border-bottom-left-radius: 100px;
+    -moz-border-radius-bottomright: 0px;
+    -moz-border-radius-bottomleft: 100px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 100px;
+    /*background-color: #1b391d;*/
 }
 
 #logindisplay a:link {
