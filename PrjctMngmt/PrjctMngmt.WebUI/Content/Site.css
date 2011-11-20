@@ -343,6 +343,11 @@ div#title {
     clear: right;
 }
 
+.description-field {
+    width: 80%;
+    height: 50%;
+}
+
 .editor-label {
     margin: 1em 0 0 0;
     font-weight: bold;

@@ -61,9 +61,9 @@ namespace PrjctMngmt.Controllers
             PopulateDropDownLists();
 
             return View();
-        } 
-        
-        [HttpPost]
+        }
+
+        [HttpPost, ValidateInput(false)]
         public ActionResult Create(string Subject, string Priority, string Severity, string Status,
             string Description, string IssueCategoryName, int? MilestoneID, int ProjectID, HttpPostedFileBase file)
         {
@@ -127,7 +127,7 @@ namespace PrjctMngmt.Controllers
         //
         // POST: /Issue/Edit/5
 
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult Edit(int id, HttpPostedFileBase file, FormCollection collection)
         {
             if (!ModelState.IsValid)

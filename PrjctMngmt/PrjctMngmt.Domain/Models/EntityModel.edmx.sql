@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 11/19/2011 23:40:28
+-- Date Created: 11/21/2011 00:07:36
 -- Generated from EDMX file: C:\Users\Pepe\Documents\Visual Studio 2010\Projects\trevo-project-management\PrjctMngmt\PrjctMngmt.Domain\Models\EntityModel.edmx
 -- --------------------------------------------------
 

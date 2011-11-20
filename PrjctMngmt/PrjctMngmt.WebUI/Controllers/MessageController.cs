@@ -56,7 +56,7 @@ namespace PrjctMngmt.Controllers
         //
         // POST: /Message/Create
 
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult Create(string Data, int TopicID)
         {
             if (!ModelState.IsValid)
@@ -108,7 +108,7 @@ namespace PrjctMngmt.Controllers
         //
         // POST: /Message/Edit/5
 
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult Edit(int id, string Data, int TopicID)
         {
             if (!ModelState.IsValid)

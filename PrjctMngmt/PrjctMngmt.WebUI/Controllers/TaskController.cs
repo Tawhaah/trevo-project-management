@@ -62,7 +62,7 @@ namespace PrjctMngmt.Controllers
         //
         // POST: /Task/Create
 
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult Create([Bind(Exclude = "TaskID")]Task newTask)
         {
             if (!ModelState.IsValid)

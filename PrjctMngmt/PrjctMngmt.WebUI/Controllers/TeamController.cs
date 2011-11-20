@@ -68,7 +68,6 @@ namespace PrjctMngmt.Controllers
         //
         // POST: /Team/Create
 
-        [HttpPost]
         public ActionResult Create([Bind(Exclude = "TeamID")]Team newTeam)
         {
             if (!ModelState.IsValid)

@@ -61,7 +61,7 @@ namespace PrjctMngmt.Controllers
         //
         // POST: /Project/Create
 
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult Create([Bind(Exclude = "ProjectID")]Project newProj)
         {
             if (!ModelState.IsValid)

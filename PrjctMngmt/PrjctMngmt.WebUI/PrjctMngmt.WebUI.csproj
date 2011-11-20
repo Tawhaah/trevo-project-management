@@ -120,6 +120,39 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\markitup\jquery.markitup.js" />
+    <Content Include="Content\markitup\sets\default\images\bold.png" />
+    <Content Include="Content\markitup\sets\default\images\clean.png" />
+    <Content Include="Content\markitup\sets\default\images\image.png" />
+    <Content Include="Content\markitup\sets\default\images\italic.png" />
+    <Content Include="Content\markitup\sets\default\images\link.png" />
+    <Content Include="Content\markitup\sets\default\images\list-bullet.png" />
+    <Content Include="Content\markitup\sets\default\images\list-numeric.png" />
+    <Content Include="Content\markitup\sets\default\images\picture.png" />
+    <Content Include="Content\markitup\sets\default\images\preview.png" />
+    <Content Include="Content\markitup\sets\default\images\stroke.png" />
+    <Content Include="Content\markitup\sets\default\set.js" />
+    <Content Include="Content\markitup\sets\default\style.css" />
+    <Content Include="Content\markitup\skins\markitup\images\bg-container.png" />
+    <Content Include="Content\markitup\skins\markitup\images\bg-editor-bbcode.png" />
+    <Content Include="Content\markitup\skins\markitup\images\bg-editor-dotclear.png" />
+    <Content Include="Content\markitup\skins\markitup\images\bg-editor-html.png" />
+    <Content Include="Content\markitup\skins\markitup\images\bg-editor-json.png" />
+    <Content Include="Content\markitup\skins\markitup\images\bg-editor-markdown.png" />
+    <Content Include="Content\markitup\skins\markitup\images\bg-editor-textile.png" />
+    <Content Include="Content\markitup\skins\markitup\images\bg-editor-wiki.png" />
+    <Content Include="Content\markitup\skins\markitup\images\bg-editor-xml.png" />
+    <Content Include="Content\markitup\skins\markitup\images\bg-editor.png" />
+    <Content Include="Content\markitup\skins\markitup\images\handle.png" />
+    <Content Include="Content\markitup\skins\markitup\images\menu.png" />
+    <Content Include="Content\markitup\skins\markitup\images\submenu.png" />
+    <Content Include="Content\markitup\skins\markitup\style.css" />
+    <Content Include="Content\markitup\skins\simple\images\handle.png" />
+    <Content Include="Content\markitup\skins\simple\images\menu.png" />
+    <Content Include="Content\markitup\skins\simple\images\submenu.png" />
+    <Content Include="Content\markitup\skins\simple\style.css" />
+    <Content Include="Content\markitup\templates\preview.css" />
+    <Content Include="Content\markitup\templates\preview.html" />
     <Content Include="Content\themes\base\images\edit.png" />
     <Content Include="Content\themes\base\images\floral_bg.jpg" />
     <Content Include="Content\themes\base\images\mag_glass.png" />

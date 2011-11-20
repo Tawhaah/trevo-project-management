@@ -41,7 +41,7 @@ namespace PrjctMngmt.Controllers
         //
         // POST: /Conference/Create
 
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult Create(Conference conference)
         {
             if (ModelState.IsValid)

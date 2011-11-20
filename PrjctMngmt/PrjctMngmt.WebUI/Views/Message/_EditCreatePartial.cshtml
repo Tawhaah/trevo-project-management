@@ -24,6 +24,12 @@
     });
 </script>
 
+<script type="text/javascript" >
+    $(document).ready(function () {
+        $("#editor").markItUp(mySettings);
+    });
+</script>
+
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
     <fieldset>
@@ -35,7 +41,7 @@
             Message
         </div>
         <div class="editor-field">
-            @Html.TextAreaFor(model => model.Data, new { @cols = 60, @rows = 10 })
+            @Html.TextAreaFor(model => model.Data, new { @cols = 60, @rows = 10, @id = "editor" })
             @Html.ValidationMessageFor(model => model.Data)
         </div>
 
