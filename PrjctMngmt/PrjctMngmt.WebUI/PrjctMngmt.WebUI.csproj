@@ -402,9 +402,6 @@
     <Content Include="Views\ConferenceAttendant\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\ConferenceAttendant\Details.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\ConferenceAttendant\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>

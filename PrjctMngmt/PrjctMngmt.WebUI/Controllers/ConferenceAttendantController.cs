@@ -23,15 +23,6 @@ namespace PrjctMngmt.Controllers
         }
 
         //
-        // GET: /ConferenceAttendants/Details/5
-
-        public ViewResult Details(int id)
-        {
-            ConferenceAttendant ConferenceAttendant = db.ConferenceAttendants.Single(c => c.ID == id);
-            return View(ConferenceAttendant);
-        }
-
-        //
         // GET: /ConferenceAttendants/Create
 
         public ActionResult Create()
@@ -51,7 +42,7 @@ namespace PrjctMngmt.Controllers
             {
                 db.ConferenceAttendants.AddObject(ConferenceAttendant);
                 db.SaveChanges();
-                return RedirectToAction("Index");  
+                return RedirectToAction("Index", "Conference");  
             }
 
             ViewBag.ConferenceID = new SelectList(db.Conferences, "ConferenceID", "Name", ConferenceAttendant.ConferenceID);
@@ -81,7 +72,7 @@ namespace PrjctMngmt.Controllers
                 db.ConferenceAttendants.Attach(ConferenceAttendant);
                 db.ObjectStateManager.ChangeObjectState(ConferenceAttendant, EntityState.Modified);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Conference");
             }
             //ViewBag.ConferenceID = new SelectList(db.Conferences, "ConferenceID", "Name", ConferenceAttendant.ConferenceID);
             //ViewBag.DeveloperID = new SelectList(db.Developers, "DeveloperID", "FirstName", ConferenceAttendant.DeveloperID);
@@ -106,7 +97,7 @@ namespace PrjctMngmt.Controllers
             ConferenceAttendant ConferenceAttendant = db.ConferenceAttendants.Single(c => c.ID == id);
             db.ConferenceAttendants.DeleteObject(ConferenceAttendant);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Conference");
         }
 
         public ActionResult SeeAttendants(int id)
