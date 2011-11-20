@@ -75,7 +75,7 @@ namespace PrjctMngmt.Controllers
                 note.LocX = LocX;
                 note.LocY = LocY;
                 note.ProjectID = ProjectID;
-                note.DeveloperID = 1; //TODO: Use logged in developer
+                note.DeveloperID = _dataModel.Developers.Single(d => d.UserName == User.Identity.Name).DeveloperID;
 
                 _dataModel.AddToNotes(note);
                 _dataModel.SaveChanges();

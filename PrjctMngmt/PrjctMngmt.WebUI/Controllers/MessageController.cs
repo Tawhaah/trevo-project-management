@@ -68,7 +68,7 @@ namespace PrjctMngmt.Controllers
                 msg.Data = Data;
                 msg.EntryDate = DateTime.Now;
                 msg.EditDate = DateTime.Now;
-                msg.DeveloperID = Convert.ToInt32(Session["DeveloperID"]);
+                msg.DeveloperID = _dataModel.Developers.Single(d => d.UserName == User.Identity.Name).DeveloperID;
                 msg.TopicID = TopicID;
                 _dataModel.AddToMessages(msg);
                 _dataModel.SaveChanges();

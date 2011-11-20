@@ -93,7 +93,7 @@ namespace PrjctMngmt.Controllers
                     issueAttchmnt.MimeType = file.ContentType;
                     var path = Path.Combine(basePath, issueAttchmnt.Filename);
                     file.SaveAs(path);
-                    issueAttchmnt.DeveloperID = 1; //TODO: Use logged in developer
+                    issueAttchmnt.DeveloperID = _dataModel.Developers.Single(d => d.UserName == User.Identity.Name).DeveloperID;
                     issueAttchmnt.EntryDate = DateTime.Now;
                     issueAttchmnt.IssueID = issue.IssueID;
                     _dataModel.AddToIssueAttachments(issueAttchmnt);
@@ -155,7 +155,7 @@ namespace PrjctMngmt.Controllers
                     file.SaveAs(path);
 
                     issueAttcmt.EntryDate = DateTime.Now;
-                    issueAttcmt.DeveloperID = 1; //TODO: Use logged in developer
+                    issueAttcmt.DeveloperID = _dataModel.Developers.Single(d => d.UserName == User.Identity.Name).DeveloperID;
 
                     _dataModel.SaveChanges();
                 }

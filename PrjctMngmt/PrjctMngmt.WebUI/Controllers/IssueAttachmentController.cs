@@ -81,7 +81,7 @@ namespace PrjctMngmt.Controllers
                     file.SaveAs(path);
                 }
 
-                newIssueAttachment.DeveloperID = 1; //TODO: Change to dynamic
+                newIssueAttachment.DeveloperID = _dataModel.Developers.Single(d => d.UserName == User.Identity.Name).DeveloperID;
                 newIssueAttachment.EntryDate = DateTime.Now;
                 _dataModel.AddToIssueAttachments(newIssueAttachment);
                 _dataModel.SaveChanges();

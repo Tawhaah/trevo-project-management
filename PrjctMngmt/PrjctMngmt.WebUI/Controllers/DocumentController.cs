@@ -80,7 +80,7 @@ namespace PrjctMngmt.Controllers
                     file.SaveAs(path);
                 }
 
-                newDoc.DeveloperID = 1; //TODO: Change to dynamic
+                newDoc.DeveloperID = _dataModel.Developers.Single(d => d.UserName == User.Identity.Name).DeveloperID;
                 newDoc.Name = newDoc.Name;
                 newDoc.EntryDate = DateTime.Now;
                 _dataModel.AddToDocuments(newDoc);

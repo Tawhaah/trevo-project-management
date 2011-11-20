@@ -44,10 +44,7 @@ namespace PrjctMngmt.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index", "Conference");  
             }
-
-            ViewBag.ConferenceID = new SelectList(db.Conferences, "ConferenceID", "Name", ConferenceAttendant.ConferenceID);
-            ViewBag.DeveloperID = new SelectList(db.Developers, "DeveloperID", "FirstName", ConferenceAttendant.DeveloperID);
-            return View(ConferenceAttendant);
+            return View();
         }
         
         //
@@ -74,9 +71,7 @@ namespace PrjctMngmt.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index", "Conference");
             }
-            //ViewBag.ConferenceID = new SelectList(db.Conferences, "ConferenceID", "Name", ConferenceAttendant.ConferenceID);
-            //ViewBag.DeveloperID = new SelectList(db.Developers, "DeveloperID", "FirstName", ConferenceAttendant.DeveloperID);
-            return View(ConferenceAttendant);
+            return View();
         }
 
         //
