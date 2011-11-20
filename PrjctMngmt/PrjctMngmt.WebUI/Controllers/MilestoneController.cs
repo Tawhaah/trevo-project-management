@@ -70,7 +70,7 @@ namespace PrjctMngmt.Controllers
         //
         // POST: /Milestone/Create
 
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult Create([Bind(Exclude = "MilestoneID")]Milestone newMilestone)
         {
             if (!ModelState.IsValid)
@@ -102,7 +102,7 @@ namespace PrjctMngmt.Controllers
         //
         // POST: /Milestone/CreateDialog
 
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult CreateDialog([Bind(Exclude = "MilestoneID")]Milestone newMilestone)
         {
             if (!ModelState.IsValid)
@@ -140,7 +140,7 @@ namespace PrjctMngmt.Controllers
         //
         // POST: /Milestone/Edit/5
 
-        [HttpPost]
+        [HttpPost, ValidateInput(false)]
         public ActionResult Edit(int id, FormCollection collection)
         {
             if (!ModelState.IsValid)
