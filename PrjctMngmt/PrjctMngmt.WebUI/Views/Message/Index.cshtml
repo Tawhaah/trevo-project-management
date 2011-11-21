@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Messages";
+    var odd = false;
 }
 
 <h2>Messages</h2>
@@ -15,49 +16,57 @@
     <fieldset>
         <legend>@topic.Name</legend>
         <br />
-        <table>
-            <tr>
-                <th>
-                    Message
-                </th>
-                <th>
-                    Entry date
-                </th>
-                <th>
-                    Edit date
-                </th>
-                <th>
-                    Developer
-                </th>
-                <th>
-                </th>
-            </tr>
-            @foreach (var item in Model)
-            {
-                if (item.TopicID == topic.TopicID)
+        <div class="datagrid">
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Message
+                        </th>
+                        <th>
+                            Entry date
+                        </th>
+                        <th>
+                            Edit date
+                        </th>
+                        <th>
+                            Developer
+                        </th>
+                        <th>
+                        </th>
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
                 {
-                <tr>
-                    <td>
-                        @Html.DisplayTextFor(modelItem => item.Data)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.EntryDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.EditDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Developer.FirstName)
-                        @Html.DisplayFor(modelItem => item.Developer.LastName)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.MessageID }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.MessageID }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.MessageID })
-                    </td>
-                </tr>
+                    if (item.TopicID == topic.TopicID)
+                    {
+                    <tbody>
+                        <tr class="@(odd ? "alt" : "")">
+                            <td>
+                                @Html.DisplayTextFor(modelItem => item.Data)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EntryDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EditDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Developer.FirstName)
+                                @Html.DisplayFor(modelItem => item.Developer.LastName)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.MessageID }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.MessageID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.MessageID })
+                            </td>
+                        </tr>
+                        @{ odd = !odd; }
+                    </tbody>
                 }
             }
-        </table>
+            </table>
+            @{ odd = false; }
+        </div>
     </fieldset>
 }

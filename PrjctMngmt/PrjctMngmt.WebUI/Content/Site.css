@@ -230,7 +230,7 @@ input[type="submit"] {
 
 /* TABLE
 ----------------------------------------------------------*/
-
+/*
 table {
     border: solid 1px #e8eef4;
     border-collapse: collapse;
@@ -246,6 +246,58 @@ table th {
     text-align: left;
     background-color: #e8eef4;
     border: solid 1px #e8eef4;
+}
+*/
+
+.datagrid 
+{
+    font: normal 12px/150% Arial, Helvetica, sans-serif;
+    background: #fff; 
+    overflow: hidden; 
+    border: 1px solid #DBDBDB; 
+    -webkit-border-radius: 13px; 
+    -moz-border-radius: 13px; 
+    border-radius: 13px;
+    display:inline-block;
+}
+.datagrid table 
+{
+    border-collapse: collapse; 
+    text-align: left; 
+    
+} 
+.datagrid table td, .datagrid table th 
+{ 
+    padding: 4px 10px; 
+}
+.datagrid table thead th 
+{
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #BBE6A5), color-stop(1, #36A126) );
+    background:-moz-linear-gradient( center top, #BBE6A5 5%, #36A126 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#BBE6A5', endColorstr='#36A126');
+    background-color:#BBE6A5;
+    color:#FFFFFF; 
+    font-size: 15px; 
+    font-weight: bold;
+} 
+.datagrid table thead th:first-child 
+{ 
+    border: none; 
+}
+.datagrid table tbody td 
+{ 
+    color: #000000; 
+    font-size: 12px;
+    font-weight: normal; 
+}
+.datagrid table tbody .alt td 
+{ 
+    background: #E1F4D2; 
+    color: #000000; 
+}
+.datagrid table tbody td:first-child 
+{
+     border: none; 
 }
 
 /* MISC  
@@ -504,6 +556,21 @@ div#title {
 
 /* Shared
 ----------------------------------------------------------*/
+.ButtonLink 
+{
+    cursor:pointer;
+}
+
+.Hidden 
+{ 
+    display:none; 
+}
+
+.Top 
+{ 
+    vertical-align: top; 
+}
+
 .removeIcon
 {
     float: right;
@@ -522,11 +589,6 @@ div#title {
     float: right;
     padding-left: 5px;
 }
-
-.ButtonLink { cursor:pointer; }
-.Hidden { display:none; }
-.Top { vertical-align: top }
-
 
 
 

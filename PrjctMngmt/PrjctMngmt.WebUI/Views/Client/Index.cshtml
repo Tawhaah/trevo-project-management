@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Clients";
+    var odd = false;
 }
 
 <h2>Clients</h2>
@@ -9,67 +10,74 @@
 <p>
     @Html.ActionLink("Add new client", "Create")
 </p>
-<table>
-    <tr>
-        <th>
-            Name
-        </th>
-        <!--
-        <th>
-            Representative
-        </th>
-        <th>
-            Address
-        </th>
-        <th>
-            City
-        </th>
-        <th>
-            Country
-        </th>
-        <th>
-            Phone number
-        </th>
-        <th>
-            Email
-        </th>
-        <th></th>
-        -->
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.ActionLink(item.Name, "Details", new { id = item.ClientID })
-        </td>
-        <!--
-        <td>
-            @Html.DisplayFor(modelItem => item.Representative)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.City)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Country)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        -->
-        <!--
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ClientID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ClientID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ClientID })
-        </td>
-        -->
-    </tr>
-}
-
-</table>
+<div class="datagrid">
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <!--
+                <th>
+                    Representative
+                </th>
+                <th>
+                    Address
+                </th>
+                <th>
+                    City
+                </th>
+                <th>
+                    Country
+                </th>
+                <th>
+                    Phone number
+                </th>
+                <th>
+                    Email
+                </th>
+                <th></th>
+                -->
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tbody>
+                <tr class="@(odd ? "alt" : "")">
+                    <td>
+                        @Html.ActionLink(item.Name, "Details", new { id = item.ClientID })
+                    </td>
+                    <!--
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Representative)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Country)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    -->
+                                <!--
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ClientID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.ClientID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ClientID })
+                    </td>
+                    -->
+                </tr>
+                @{ odd = !odd; }
+            </tbody>
+        }
+    </table>
+</div>

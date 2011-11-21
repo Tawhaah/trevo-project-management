@@ -2,61 +2,68 @@
 
 @{
     ViewBag.Title = "Developers";
+    var odd = false;
 }
 
 <h2>Developers</h2>
 
-<table>
-    <tr>
-        <th>
-            Name
-        </th>
-        <!--
-        <th>
-            Email
-        </th>
-        <th>
-            Phone number
-        </th>
-        <th>
-            Position
-        </th>
-        -->
-        <th>
-            Team
-        </th>
-        <!--
-        <th></th>
-        -->
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-        @Html.ActionLink(item.FirstName +" "+ item.LastName, "Details", new { id = item.DeveloperID })
-        </td>
-        <!--
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Position)
-        </td>
-        -->
-        <td>
-            @Html.DisplayFor(modelItem => item.TeamName)
-        </td>
-        <!--
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DeveloperID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DeveloperID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DeveloperID })
-        </td>
-        -->
-    </tr>
-}
-
-</table>
+<div class="datagrid">
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <!--
+                <th>
+                    Email
+                </th>
+                <th>
+                    Phone number
+                </th>
+                <th>
+                    Position
+                </th>
+                -->
+                <th>
+                    Team
+                </th>
+                <!--
+                <th></th>
+                -->
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tbody>
+                <tr class="@(odd ? "alt" : "")">
+                    <td>
+                        @Html.ActionLink(item.FirstName + " " + item.LastName, "Details", new { id = item.DeveloperID })
+                    </td>
+                    <!--
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Position)
+                    </td>
+                    -->
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TeamName)
+                    </td>
+                    <!--
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.DeveloperID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.DeveloperID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.DeveloperID })
+                    </td>
+                    -->
+                </tr>
+                @{ odd = !odd; }
+            </tbody>
+        }
+    </table>
+</div>

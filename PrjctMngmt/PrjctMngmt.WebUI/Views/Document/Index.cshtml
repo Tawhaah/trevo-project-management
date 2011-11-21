@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Documents";
+    var odd = false;
 }
 
 <h2>Documents</h2>
@@ -9,56 +10,63 @@
 <p>
     @Html.ActionLink("Add new document", "Create")
 </p>
-<table>
-    <tr>
-        <th>
-            Name
-        </th>
-        <th>
-            Filename
-        </th>
-        <th>
-            Document
-        </th>
-        <!--
-        <th>
-            Entry date
-        </th>
-        <th>
-            Developer
-        </th>
-        <th></th>
-        -->
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.ActionLink(item.Name, "Details", new { id = item.DocumentID })
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FileName)
-        </td>
-        <td>
-            <a href="@Url.Action("GetFile", "Document", new { id = item.DocumentID})">Open</a>
-        </td>
-        <!--
-        <td>
-            @Html.DisplayFor(modelItem => item.EntryDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Developer.FirstName)
-            @Html.DisplayFor(modelItem => item.Developer.LastName)
-        </td>
-        -->
-        <!--
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DocumentID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DocumentID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DocumentID })
-        </td>
-        -->
-    </tr>
-}
-
-</table>
+<div class="datagrid">
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Filename
+                </th>
+                <th>
+                    Document
+                </th>
+                <!--
+                <th>
+                    Entry date
+                </th>
+                <th>
+                    Developer
+                </th>
+                <th></th>
+                -->
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tbody>
+                <tr class="@(odd ? "alt" : "")">
+                    <td>
+                        @Html.ActionLink(item.Name, "Details", new { id = item.DocumentID })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FileName)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("GetFile", "Document", new { id = item.DocumentID })">Open</a>
+                    </td>
+                    <!--
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EntryDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Developer.FirstName)
+                        @Html.DisplayFor(modelItem => item.Developer.LastName)
+                    </td>
+                    -->
+                    <!--
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.DocumentID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.DocumentID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.DocumentID })
+                    </td>
+                    -->
+                </tr>
+                @{ odd = !odd; }
+            </tbody>
+        }
+    </table>
+</div>
