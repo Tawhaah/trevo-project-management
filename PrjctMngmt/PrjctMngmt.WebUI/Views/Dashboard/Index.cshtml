@@ -71,94 +71,114 @@
 
 <fieldset>
     <legend>Upcoming Milestones</legend>
-    <fieldset class="dashboard-entity">
-        <legend>Milestones - same week</legend>
-        @foreach (var milestone in Model.MilestonesDuringWeek)
-        {
-            var url = @Url.Action("Details", "Milestone", new { id = "id" });
-            url = url.Replace("id", milestone.MilestoneID.ToString());
+    @if (Model.MilestonesDuringWeek.Count() > 0 && Model.MilestonesNextWeek.Count() > 0 
+        && Model.MilestonesDuringMonth.Count() > 0)
+    {
+        <fieldset class="dashboard-entity">
+            <legend>Milestones - same week</legend>
+            @foreach (var milestone in Model.MilestonesDuringWeek)
+            {
+                var url = @Url.Action("Details", "Milestone", new { id = "id" });
+                url = url.Replace("id", milestone.MilestoneID.ToString());
             
-            <a href="@url">@milestone.Name (@milestone.Project.Name)</a>
-            <br />
-            @milestone.DueDate
-            <br />
-            <br />
-        }
-    </fieldset>
-    <fieldset class="dashboard-entity">
-        <legend>Milestones - next week</legend>
-        @foreach (var milestone in Model.MilestonesNextWeek)
-        {
-            var url = @Url.Action("Details", "Milestone", new { id = "id" });
-            url = url.Replace("id", milestone.MilestoneID.ToString());
+                <a href="@url">@milestone.Name (@milestone.Project.Name)</a>
+                <br />
+                @milestone.DueDate
+                <br />
+                <br />
+            }
+        </fieldset>
+        <fieldset class="dashboard-entity">
+            <legend>Milestones - next week</legend>
+            @foreach (var milestone in Model.MilestonesNextWeek)
+            {
+                var url = @Url.Action("Details", "Milestone", new { id = "id" });
+                url = url.Replace("id", milestone.MilestoneID.ToString());
             
-            <a href="@url">@milestone.Name (@milestone.Project.Name)</a>
-            <br />
-            @milestone.DueDate
-            <br />
-            <br />
-        }
-    </fieldset>
-    <fieldset class="dashboard-entity">
-        <legend>Milestones - same month</legend>
-        @foreach (var milestone in Model.MilestonesDuringMonth)
-        {
-            var url = @Url.Action("Details", "Milestone", new { id = "id" });
-            url = url.Replace("id", milestone.MilestoneID.ToString());
+                <a href="@url">@milestone.Name (@milestone.Project.Name)</a>
+                <br />
+                @milestone.DueDate
+                <br />
+                <br />
+            }
+        </fieldset>
+        <fieldset class="dashboard-entity">
+            <legend>Milestones - same month</legend>
+            @foreach (var milestone in Model.MilestonesDuringMonth)
+            {
+                var url = @Url.Action("Details", "Milestone", new { id = "id" });
+                url = url.Replace("id", milestone.MilestoneID.ToString());
             
-            <a href="@url">@milestone.Name (@milestone.Project.Name)</a>
-            <br />
-            @milestone.DueDate
-            <br />
-            <br />
-        }
-    </fieldset>
+                <a href="@url">@milestone.Name (@milestone.Project.Name)</a>
+                <br />
+                @milestone.DueDate
+                <br />
+                <br />
+            }
+        </fieldset>
+    }
+    else
+    {
+        <p>
+            No upcoming milestones this month.
+        </p>
+    }
 </fieldset>
 
 <fieldset>
     <legend>Upcoming Conferences</legend>
-    <fieldset class="dashboard-entity">
-        <legend>Conferences - same week</legend>
-        @foreach (var conf in Model.ConfsDuringWeek)
-        {
-            var url = @Url.Action("Details", "Conference", new { id = "id" });
-            url = url.Replace("id", conf.ConferenceID.ToString());
+    @if (Model.ConfsDuringWeek.Count() > 0 && Model.ConfsNextWeek.Count() > 0 
+        && Model.ConfsDuringMonth.Count() > 0)
+    {
+        <fieldset class="dashboard-entity">
+            <legend>Conferences - same week</legend>
+            @foreach (var conf in Model.ConfsDuringWeek)
+            {
+                var url = @Url.Action("Details", "Conference", new { id = "id" });
+                url = url.Replace("id", conf.ConferenceID.ToString());
             
-            <a href="@url">@conf.Name</a>
-            <br />
-            @conf.Date
-            <br />
-            <br />
-        }
-    </fieldset>
-    <fieldset class="dashboard-entity">
-        <legend>Conferences - next week</legend>
-        @foreach (var conf in Model.ConfsNextWeek)
-        {
-            var url = @Url.Action("Details", "Conference", new { id = "id" });
-            url = url.Replace("id", conf.ConferenceID.ToString());
+                <a href="@url">@conf.Name</a>
+                <br />
+                @conf.Date
+                <br />
+                <br />
+            }
+        </fieldset>
+        <fieldset class="dashboard-entity">
+            <legend>Conferences - next week</legend>
+            @foreach (var conf in Model.ConfsNextWeek)
+            {
+                var url = @Url.Action("Details", "Conference", new { id = "id" });
+                url = url.Replace("id", conf.ConferenceID.ToString());
             
-            <a href="@url">@conf.Name</a>
-            <br />
-            @conf.Date
-            <br />
-            <br />
-        }
-    </fieldset>
-    <fieldset class="dashboard-entity">
-        <legend>Conferences - same month</legend>
-        @foreach (var conf in Model.ConfsDuringMonth)
-        {
-            var url = @Url.Action("Details", "Conference", new { id = "id" });
-            url = url.Replace("id", conf.ConferenceID.ToString());
+                <a href="@url">@conf.Name</a>
+                <br />
+                @conf.Date
+                <br />
+                <br />
+            }
+        </fieldset>
+        <fieldset class="dashboard-entity">
+            <legend>Conferences - same month</legend>
+            @foreach (var conf in Model.ConfsDuringMonth)
+            {
+                var url = @Url.Action("Details", "Conference", new { id = "id" });
+                url = url.Replace("id", conf.ConferenceID.ToString());
             
-            <a href="@url">@conf.Name</a>
-            <br />
-            @conf.Date
-            <br />
-            <br />
-        }
-    </fieldset>
+                <a href="@url">@conf.Name</a>
+                <br />
+                @conf.Date
+                <br />
+                <br />
+            }
+        </fieldset> 
+    }
+    else
+    {
+        <p>
+            No upcoming conferences this month.
+        </p>   
+    }
 </fieldset>
 
 <fieldset>

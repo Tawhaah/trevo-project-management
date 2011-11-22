@@ -13,86 +13,95 @@
     @Html.ActionLink("Add conference attendant", "Create", "ConferenceAttendant")
 </p>
 
-<div class="datagrid">
-    <table>
-        <thead>
-            <tr>
-                <th>
-                    Name
-                </th>
-                <th>
-                    Date
-                </th>
-                <th>
-                    Duration
-                </th>
-                <!--
-                <th>
-                    Description
-                </th>
-                <th>
-                    Address
-                </th>
-                <th>
-                    Country
-                </th>
-                <th>
-                    Contact phone
-                </th>
-                <th>
-                    Organizer
-                </th>
-                <th>
-                    Room
-                </th>
-                -->
-                <th>
-                </th>
-            </tr>
-        </thead>
-        @foreach (var item in Model)
-        {
-            <tbody>
-                <tr class="@(odd ? "alt" : "")">
-                    <td>
-                        @Html.ActionLink(item.Name, "Details", new { id = item.ConferenceID })
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Date)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Duration)
-                    </td>
+@if (Model.Count() > 0)
+{
+    <div class="datagrid">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Date
+                    </th>
+                    <th>
+                        Duration
+                    </th>
                     <!--
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Address)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Country)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ContactPhone)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Organizer)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Room)
-                    </td>
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                        Address
+                    </th>
+                    <th>
+                        Country
+                    </th>
+                    <th>
+                        Contact phone
+                    </th>
+                    <th>
+                        Organizer
+                    </th>
+                    <th>
+                        Room
+                    </th>
                     -->
-                    <td>
-                        @Html.ActionLink("See attendants", "SeeAttendants", "ConferenceAttendant", new { id = item.ConferenceID }, null)
-                        <!--|-->
-                        <!--@Html.ActionLink("Details", "Details", new { id = item.ConferenceID }) |-->
-                        <!--@Html.ActionLink("Edit", "Edit", new { id = item.ConferenceID }) |-->
-                        <!--@Html.ActionLink("Delete", "Delete", new { id = item.ConferenceID })-->
-                    </td>
+                    <th>
+                    </th>
                 </tr>
-                @{ odd = !odd; }
-            </tbody>
-        }
-    </table>
-</div>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tbody>
+                    <tr class="@(odd ? "alt" : "")">
+                        <td>
+                            @Html.ActionLink(item.Name, "Details", new { id = item.ConferenceID })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Duration)
+                        </td>
+                        <!--
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Address)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Country)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ContactPhone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Organizer)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Room)
+                        </td>
+                        -->
+                        <td>
+                            @Html.ActionLink("See attendants", "SeeAttendants", "ConferenceAttendant", new { id = item.ConferenceID }, null)
+                            <!--|-->
+                            <!--@Html.ActionLink("Details", "Details", new { id = item.ConferenceID }) |-->
+                            <!--@Html.ActionLink("Edit", "Edit", new { id = item.ConferenceID }) |-->
+                            <!--@Html.ActionLink("Delete", "Delete", new { id = item.ConferenceID })-->
+                        </td>
+                    </tr>
+                    @{ odd = !odd; }
+                </tbody>
+            }
+        </table>
+    </div>
+}
+else
+{
+    <p>
+        Conferences not found.
+    </p>
+}

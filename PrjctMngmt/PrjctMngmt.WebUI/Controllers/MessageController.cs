@@ -67,7 +67,6 @@ namespace PrjctMngmt.Controllers
                 Message msg = new Message();
                 msg.Data = Data;
                 msg.EntryDate = DateTime.Now;
-                msg.EditDate = DateTime.Now;
                 msg.DeveloperID = _dataModel.Developers.Single(d => d.UserName == User.Identity.Name).DeveloperID;
                 msg.TopicID = TopicID;
                 _dataModel.AddToMessages(msg);

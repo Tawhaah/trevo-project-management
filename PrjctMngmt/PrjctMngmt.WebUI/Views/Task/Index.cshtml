@@ -12,7 +12,7 @@
 
 <script type="text/javascript">
     $(function () {
-        $("#tabs").tabs();
+        $("#tabs-tasks").tabs();
     });
 </script>
 
@@ -24,7 +24,7 @@
     });
 </script>
 
-<div id="tabs">
+<div id="tabs-tasks">
 	<ul>
         @foreach (var proj in (List<PrjctMngmt.Models.Project>)ViewData["Projects"])
         {
@@ -45,11 +45,11 @@
                         <td id="@item.TaskID" class="taskTd">
                             @if(item.Finished == 1)
                             {
-                                @Html.CheckBox("Status", true, new { onClick  = "toggle();" })
+                                @Html.CheckBox("Status", true, new { onClick  = "toggle()" })
                             }
                             else
                             {
-                                @Html.CheckBox("Status", false, new { onClick = "toggle();" })
+                                @Html.CheckBox("Status", false, new { onClick = "toggle()" })
                             }
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>

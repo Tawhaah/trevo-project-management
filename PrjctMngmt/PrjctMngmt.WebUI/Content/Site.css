@@ -475,6 +475,11 @@ div#title {
     padding: 0px 20px 2px 0px;
 }
 
+#tabs-tasks
+{
+    min-height: 250px;
+}
+
 /* Dashboard
 ----------------------------------------------------------*/
 #task-pie-chart {

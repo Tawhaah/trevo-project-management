@@ -11,62 +11,82 @@
     @Html.ActionLink("Add new message", "Create")
 </p>
 
-@foreach (var topic in (List<PrjctMngmt.Models.Topic>)ViewData["Topics"])
+@if (Model.Count() > 0)
 {
-    <fieldset>
-        <legend>@topic.Name</legend>
-        <br />
-        <div class="datagrid">
-            <table>
-                <thead>
-                    <tr>
-                        <th>
-                            Message
-                        </th>
-                        <th>
-                            Entry date
-                        </th>
-                        <th>
-                            Edit date
-                        </th>
-                        <th>
-                            Developer
-                        </th>
-                        <th>
-                        </th>
-                    </tr>
-                </thead>
-                @foreach (var item in Model)
-                {
-                    if (item.TopicID == topic.TopicID)
-                    {
-                    <tbody>
-                        <tr class="@(odd ? "alt" : "")">
-                            <td>
-                                @Html.DisplayTextFor(modelItem => item.Data)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.EntryDate)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.EditDate)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Developer.FirstName)
-                                @Html.DisplayFor(modelItem => item.Developer.LastName)
-                            </td>
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.MessageID }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.MessageID }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.MessageID })
-                            </td>
-                        </tr>
-                        @{ odd = !odd; }
-                    </tbody>
-                }
+    foreach (var topic in (List<PrjctMngmt.Models.Topic>)ViewData["Topics"])
+    {
+        var messagesExists = false;
+        foreach (var item in Model)
+        {
+            if (item.TopicID == topic.TopicID)
+            {
+                messagesExists = true;
             }
-            </table>
-            @{ odd = false; }
-        </div>
-    </fieldset>
+        }
+        if (messagesExists)
+        {
+            <fieldset>
+                <legend>@topic.Name</legend>
+                <br />
+                <div class="datagrid">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>
+                                    Message
+                                </th>
+                                <th>
+                                    Entry date
+                                </th>
+                                <th>
+                                    Edit date
+                                </th>
+                                <th>
+                                    Developer
+                                </th>
+                                <th>
+                                </th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in Model)
+                        {
+                            if (item.TopicID == topic.TopicID)
+                            {
+                            <tbody>
+                                <tr class="@(odd ? "alt" : "")">
+                                    <td>
+                                        @Html.DisplayTextFor(modelItem => item.Data)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EntryDate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.EditDate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Developer.FirstName)
+                                        @Html.DisplayFor(modelItem => item.Developer.LastName)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.MessageID }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.MessageID }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.MessageID })
+                                    </td>
+                                </tr>
+                                @{ odd = !odd; }
+                            </tbody>
+                            }
+                        }
+                    </table>
+                    @{ odd = false; }
+                </div>
+            </fieldset>
+        }
+    }
+}
+else
+{
+    <p>
+        No messages found.
+    </p>
 }
