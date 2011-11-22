@@ -41,7 +41,7 @@ namespace PrjctMngmt.Controllers
 
         public ActionResult Index()
         {
-            return View(_dataModel.IssueAttachments.ToList());
+            return View(_dataModel.IssueAttachments.OrderBy(i => i.Filename).ToList());
         }
 
         //
@@ -224,7 +224,7 @@ namespace PrjctMngmt.Controllers
 
         public void PopulateDropDownLists()
         {
-            ViewData["Issues"] = new SelectList(_dataModel.Issues.ToList(), "IssueID", "Subject");
+            ViewData["Issues"] = new SelectList(_dataModel.Issues.OrderBy(i => i.Subject), "IssueID", "Subject");
         }
 
         public IssueAttachment GetIssueAttachmentByID(int id)
@@ -248,7 +248,7 @@ namespace PrjctMngmt.Controllers
         {
             try
             {
-                IEnumerable<IssueAttachment> results = _dataModel.IssueAttachments.Where(i => i.IssueID == id);
+                IEnumerable<IssueAttachment> results = _dataModel.IssueAttachments.Where(i => i.IssueID == id).OrderBy(i => i.Filename);
                 return results.Cast<IssueAttachment>().ToList();
             }
             catch

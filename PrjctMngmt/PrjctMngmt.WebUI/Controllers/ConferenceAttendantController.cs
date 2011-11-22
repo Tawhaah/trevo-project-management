@@ -27,8 +27,8 @@ namespace PrjctMngmt.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.ConferenceID = new SelectList(db.Conferences, "ConferenceID", "Name");
-            ViewBag.DeveloperID = new SelectList(db.Developers, "DeveloperID", "FirstName");
+            ViewBag.ConferenceID = new SelectList(db.Conferences.OrderBy(d => d.Name), "ConferenceID", "Name");
+            ViewBag.DeveloperID = new SelectList(db.Developers.Select(d => new { d.DeveloperID, DeveloperName = d.FirstName + " " + d.LastName }).OrderBy(d => d.DeveloperName), "DeveloperID", "DeveloperName");
             return View();
         } 
 
@@ -53,8 +53,10 @@ namespace PrjctMngmt.Controllers
         public ActionResult Edit(int id)
         {
             ConferenceAttendant ConferenceAttendant = db.ConferenceAttendants.Single(c => c.ID == id);
-            ViewBag.ConferenceID = new SelectList(db.Conferences, "ConferenceID", "Name", ConferenceAttendant.ConferenceID);
-            ViewBag.DeveloperID = new SelectList(db.Developers, "DeveloperID", "FirstName", ConferenceAttendant.DeveloperID);
+            ViewBag.Conferences = new SelectList(db.Conferences.OrderBy(d => d.Name), "ConferenceID", "Name");
+            ViewBag.Developers = new SelectList(db.Developers.Select(d => new { d.DeveloperID, DeveloperName = d.FirstName + " " + d.LastName }).OrderBy(d => d.DeveloperName), "DeveloperID", "DeveloperName");
+            ViewBag.ConferenceName = ConferenceAttendant.Conference.Name;
+            ViewBag.DeveloperName = ConferenceAttendant.Developer.FirstName + " " + ConferenceAttendant.Developer.LastName;
             return View(ConferenceAttendant);
         }
 

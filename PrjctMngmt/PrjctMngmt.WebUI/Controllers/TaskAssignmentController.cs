@@ -173,8 +173,8 @@ namespace PrjctMngmt.Controllers
 
         public void PopulateDropDownLists()
         {
-            ViewData["Tasks"] = new SelectList(_dataModel.Tasks.ToList(), "TaskID", "Name");
-            var devQuery = _dataModel.Developers.Select(d => new { d.DeveloperID, DeveloperName = d.FirstName + " " + d.LastName });
+            ViewData["Tasks"] = new SelectList(_dataModel.Tasks.OrderBy(t => t.Name), "TaskID", "Name");
+            var devQuery = _dataModel.Developers.Select(d => new { d.DeveloperID, DeveloperName = d.FirstName + " " + d.LastName }).OrderBy(d => d.DeveloperName);
             ViewData["Developers"] = new SelectList(devQuery.AsEnumerable(), "DeveloperID", "DeveloperName");
         }
 

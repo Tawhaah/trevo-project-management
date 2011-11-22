@@ -10,60 +10,67 @@
     @Html.ActionLink("Add new issue attachment", "Create")
 </p>
 
-
-<table>
-    <tr>
-        <th>
-            Filename
-        </th>
-        <th>
-            Attachment
-        </th>
-        <th>
-            Entry date
-        </th>
-        <th>
-            Description
-        </th>
-        <th>
-            Developer
-        </th>
-        <th>
-            Issue
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Filename)
-        </td>
-        <td>
-            <a href="@Url.Action("GetFile", "IssueAttachment", new { id = item.IssueAttachmentID})">Open</a>
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EntryDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Developer.FirstName)
-            @Html.DisplayFor(modelItem => item.Developer.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Issue.Subject)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IssueAttachmentID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IssueAttachmentID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IssueAttachmentID })
-        </td>
-    </tr>
+@if (Model.Count() > 0)
+{
+    <table>
+        <tr>
+            <th>
+                Filename
+            </th>
+            <th>
+                Attachment
+            </th>
+            <th>
+                Entry date
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                Developer
+            </th>
+            <th>
+                Issue
+            </th>
+            <th></th>
+        </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Filename)
+            </td>
+            <td>
+                <a href="@Url.Action("GetFile", "IssueAttachment", new { id = item.IssueAttachmentID })">Open</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EntryDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Developer.FirstName)
+                @Html.DisplayFor(modelItem => item.Developer.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Issue.Subject)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IssueAttachmentID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IssueAttachmentID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IssueAttachmentID })
+            </td>
+        </tr>
+    }
+    </table>
 }
-
-</table>
+else
+{
+    <p>
+        Issue attachments not found.
+    </p>
+}
 
 <div>
     <br />

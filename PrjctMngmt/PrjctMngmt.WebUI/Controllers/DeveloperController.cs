@@ -57,7 +57,7 @@ namespace PrjctMngmt.Controllers
 
         public ActionResult Create()
         {
-            SelectList teams = new SelectList(_dataModel.Teams.ToList(), "TeamName", "TeamName");
+            SelectList teams = new SelectList(_dataModel.Teams, "TeamName", "TeamName");
             ViewData["Teams"] = teams;
 
             return View();
@@ -103,7 +103,7 @@ namespace PrjctMngmt.Controllers
         [OutputCache(Duration = 0)]
         public ActionResult CreateDialog()
         {
-            SelectList teams = new SelectList(_dataModel.Teams.ToList(), "TeamName", "TeamName");
+            SelectList teams = new SelectList(_dataModel.Teams, "TeamName", "TeamName");
             ViewData["Teams"] = teams;
             return PartialView(new Developer());
         }
@@ -144,7 +144,7 @@ namespace PrjctMngmt.Controllers
  
         public ActionResult Edit(int id)
         {
-            SelectList teams = new SelectList(_dataModel.Teams.ToList(), "TeamName", "TeamName");
+            SelectList teams = new SelectList(_dataModel.Teams.OrderBy(t => t.TeamName), "TeamName", "TeamName");
             ViewData["Teams"] = teams;
 
             try

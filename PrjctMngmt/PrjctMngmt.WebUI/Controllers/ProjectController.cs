@@ -163,13 +163,13 @@ namespace PrjctMngmt.Controllers
 
         public void PopulateDropDownLists()
         {
-            SelectList clients = new SelectList(_dataModel.Clients.ToList(), "ClientID", "Name");
+            SelectList clients = new SelectList(_dataModel.Clients.OrderBy(c => c.Name), "ClientID", "Name");
             ViewData["Clients"] = clients;
 
-            SelectList projCatgrs = new SelectList(_dataModel.ProjectCategories.ToList(), "ProjectCategoryID", "Name");
+            SelectList projCatgrs = new SelectList(_dataModel.ProjectCategories.OrderBy(p => p.Name), "ProjectCategoryID", "Name");
             ViewData["ProjectCategories"] = projCatgrs;
 
-            String[] statusStrings = { "Started", "Finished", "Under review", "Approved", "Testing" };
+            String[] statusStrings = { "Started", "Under review", "Finished"};
             List<SelectListItem> statusItems = new List<SelectListItem>();
             foreach (String s in statusStrings)
             {

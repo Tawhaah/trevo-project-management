@@ -39,7 +39,7 @@ namespace PrjctMngmt.Controllers
         public ActionResult Index()
         {
             ViewData["Topics"] = _dataModel.Topics.OrderBy(t => t.Name).ToList();
-            var messages = _dataModel.Messages.OrderBy(m => m.TopicID).ThenByDescending(m => m.EditDate);
+            var messages = _dataModel.Messages.OrderByDescending(m => m.EntryDate).ThenByDescending(m => m.EditDate);
             return View(messages);
         }
 
@@ -48,7 +48,7 @@ namespace PrjctMngmt.Controllers
 
         public ActionResult Create()
         {
-            ViewData["Topics"] = new SelectList(_dataModel.Topics, "TopicID", "Name");
+            ViewData["Topics"] = new SelectList(_dataModel.Topics.OrderBy(t => t.Name), "TopicID", "Name");
 
             return View();
         }
@@ -93,7 +93,7 @@ namespace PrjctMngmt.Controllers
  
         public ActionResult Edit(int id)
         {
-            ViewData["Topics"] = new SelectList(_dataModel.Topics.ToList(), "TopicID", "Name");
+            ViewData["Topics"] = new SelectList(_dataModel.Topics.OrderBy(t => t.Name), "TopicID", "Name");
             try
             {
                 return View(GetMessageByID(id));

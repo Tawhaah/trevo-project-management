@@ -165,10 +165,10 @@ namespace PrjctMngmt.Controllers
 
         public void PopulateDropDownLists()
         {
-            ViewData["Projects"] = new SelectList(_dataModel.Projects.ToList(), "ProjectID", "Name");
-            ViewData["TaskCategories"] = new SelectList(_dataModel.TaskCategories.ToList(), "Name", "Name");
+            ViewData["Projects"] = new SelectList(_dataModel.Projects.OrderBy(p => p.Name), "ProjectID", "Name");
+            ViewData["TaskCategories"] = new SelectList(_dataModel.TaskCategories.OrderBy(t => t.Name), "Name", "Name");
 
-            String[] statusStrings = { "Started", "Done", "Under review" };
+            String[] statusStrings = { "Started", "Under review", "Done" };
             List<SelectListItem> statusItems = new List<SelectListItem>();
             foreach (String s in statusStrings)
             {

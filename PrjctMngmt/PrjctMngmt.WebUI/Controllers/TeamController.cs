@@ -186,7 +186,7 @@ namespace PrjctMngmt.Controllers
         {            
             var developers = _dataModel.Developers
                 .Where(d => d.TeamName.Contains(TeamName))
-                .Select(d => new { label = d.FirstName + " " + d.LastName });
+                .Select(d => new { devName = d.FirstName + " " + d.LastName }).OrderBy(d => d.devName);
 
             return Json(developers, JsonRequestBehavior.AllowGet);
         }

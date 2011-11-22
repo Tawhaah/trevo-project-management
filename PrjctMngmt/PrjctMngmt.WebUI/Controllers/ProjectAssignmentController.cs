@@ -38,7 +38,6 @@ namespace PrjctMngmt.Controllers
 
         public ActionResult Index()
         {
-            PopulateDropDownLists();
             return View(_dataModel.ProjectAssignments.ToList());
         }
 
@@ -173,8 +172,8 @@ namespace PrjctMngmt.Controllers
 
         public void PopulateDropDownLists()
         {
-            ViewData["Projects"] = new SelectList(_dataModel.Projects.ToList(), "ProjectID", "Name");
-            var devQuery = _dataModel.Developers.Select(d => new { d.DeveloperID, DeveloperName = d.FirstName + " " + d.LastName });
+            ViewData["Projects"] = new SelectList(_dataModel.Projects.OrderBy(p => p.Name), "ProjectID", "Name");
+            var devQuery = _dataModel.Developers.Select(d => new { d.DeveloperID, DeveloperName = d.FirstName + " " + d.LastName }).OrderBy(d => d.DeveloperName);
             ViewData["Developers"] = new SelectList(devQuery.AsEnumerable(), "DeveloperID", "DeveloperName");
         }
 

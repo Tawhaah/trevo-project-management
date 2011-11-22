@@ -38,7 +38,7 @@ namespace PrjctMngmt.Controllers
 
         public ActionResult Index()
         {
-            return View(_dataModel.Milestones.ToList());
+            return View(_dataModel.Milestones.OrderBy(m => m.Name).ToList());
         }
 
         //
@@ -63,7 +63,7 @@ namespace PrjctMngmt.Controllers
 
         public ActionResult Create()
         {
-            ViewData["Projects"] = new SelectList(_dataModel.Projects.ToList(), "ProjectID", "Name");
+            ViewData["Projects"] = new SelectList(_dataModel.Projects.OrderBy(p => p.Name), "ProjectID", "Name");
             return View(new Milestone());
         }
 
@@ -95,7 +95,7 @@ namespace PrjctMngmt.Controllers
         [OutputCache(Duration = 0)]
         public ActionResult CreateDialog()
         {
-            ViewData["Projects"] = new SelectList(_dataModel.Projects.ToList(), "ProjectID", "Name");
+            ViewData["Projects"] = new SelectList(_dataModel.Projects.OrderBy(p => p.Name), "ProjectID", "Name");
             return PartialView(new Milestone());
         }
 
@@ -126,7 +126,7 @@ namespace PrjctMngmt.Controllers
  
         public ActionResult Edit(int id)
         {
-            ViewData["Projects"] = new SelectList(_dataModel.Projects.ToList(), "ProjectID", "Name");
+            ViewData["Projects"] = new SelectList(_dataModel.Projects.OrderBy(p => p.Name), "ProjectID", "Name");
             try
             {
                 return View(GetMilestoneByID(id));
@@ -218,7 +218,7 @@ namespace PrjctMngmt.Controllers
         {
             try
             {
-                IEnumerable<Milestone> results = _dataModel.Milestones.Where(p => p.ProjectID == id);
+                IEnumerable<Milestone> results = _dataModel.Milestones.Where(p => p.ProjectID == id).OrderBy(m => m.Name);
                 return results.Cast<Milestone>().ToList();
             }
             catch

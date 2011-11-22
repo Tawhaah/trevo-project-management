@@ -55,7 +55,7 @@ namespace PrjctMngmt.Controllers
 
         public ActionResult Create()
         {
-            ViewData["Projects"] = new SelectList(_dataModel.Projects.ToList(), "ProjectID", "Name");
+            ViewData["Projects"] = new SelectList(_dataModel.Projects.OrderBy(p => p.Name), "ProjectID", "Name");
             return View();
         } 
 
@@ -93,7 +93,7 @@ namespace PrjctMngmt.Controllers
  
         public ActionResult Edit(int id)
         {
-            ViewData["Projects"] = new SelectList(_dataModel.Projects.ToList(), "ProjectID", "Name");
+            ViewData["Projects"] = new SelectList(_dataModel.Projects.OrderBy(p => p.Name), "ProjectID", "Name");
             try
             {
                 return View(GetNoteByID(id));
