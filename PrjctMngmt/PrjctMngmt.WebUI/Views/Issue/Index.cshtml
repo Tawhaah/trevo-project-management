@@ -17,6 +17,18 @@
 
 @foreach (var proj in (List<PrjctMngmt.Models.Project>)ViewData["Projects"])
 {
+    var issuesExists = false; 
+    foreach (var item in Model)
+    {
+        if (item.ProjectID == proj.ProjectID)
+        {
+            issuesExists = true;
+        }
+    }
+    if (issuesExists)
+    {
+
+    
     <fieldset>
         <legend>@proj.Name</legend>
         <br />
@@ -104,10 +116,11 @@
                         </tr>
                         @{ odd = !odd; }
                     </tbody>
+                    }
                 }
-            }
             </table>
             @{ odd = false; }
         </div>
     </fieldset>
+    }
 }

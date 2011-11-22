@@ -258,7 +258,7 @@ table th {
     -webkit-border-radius: 13px; 
     -moz-border-radius: 13px; 
     border-radius: 13px;
-    display:inline-block;
+    display: inline-block;
 }
 .datagrid table 
 {
