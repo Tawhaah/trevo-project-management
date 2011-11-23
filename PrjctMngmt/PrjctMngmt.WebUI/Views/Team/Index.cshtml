@@ -107,11 +107,6 @@
                 Cancel: function () { $(this).dialog("close"); }
             }
         });
-        $(".addDeveloper").click(function () {
-            $("#devDialog").html("")
-                .dialog("option", "title", "Create developer")
-                .load("/Developer/CreateDialog", function () { $("#devDialog").dialog("open"); });
-        });
         $(".devDetails").click(function () {
             var id = $(this).parent().attr("id");
             $("#devDialog").html("")
@@ -140,7 +135,7 @@
         $(".addTeam").click(function () {
             $("#teamDialog").html("")
                 .dialog("option", "title", "Create team")
-                .load("/Team/Create", function () { $("#dialog").dialog("open"); });
+                .load("/Team/Create", function () { $("#teamDialog").dialog("open"); });
         });
         $(".teamDetails").click(function () {
             var name = $(this).parent().attr("id");
@@ -236,7 +231,4 @@
 <div id="teamDialog"></div>
 <div id="confirmTeamDelete" title="Confirmation">
 	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Are you sure you want to delete this team?</p>
-</div>
-<div id="confirmDevDelete" title="Confirmation">
-	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Are you sure you want to delete this developer?</p>
 </div>
