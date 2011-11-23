@@ -241,6 +241,7 @@ namespace PrjctMngmt.Controllers
 
         public ActionResult ShowIssueAttachments(int id)
         {
+            ViewBag.IssueName = _dataModel.Issues.Single(i => i.IssueID == id).Subject;
             return View(GetIssueAttachmentsByID(id));
         }
 

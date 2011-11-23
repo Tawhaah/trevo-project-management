@@ -99,6 +99,7 @@ namespace PrjctMngmt.Controllers
 
         public ActionResult SeeAttendants(int id)
         {
+            ViewBag.ConferenceName = db.Conferences.Single(c => c.ConferenceID == id).Name;
             return View(GetConferenceAttendantsByConference(id));
         }
 

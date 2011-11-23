@@ -1,51 +1,5 @@
-﻿@model IEnumerable<PrjctMngmt.Models.Milestone>
-
-@{
-    ViewBag.Title = "Milestones";
-}
-
-<h2>Milestones</h2>
-
+﻿<h2>Milestones</h2>
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Add new milestone", "Create")
 </p>
-<table>
-    <tr>
-        <th>
-            Name
-        </th>
-        <th>
-            Description
-        </th>
-        <th>
-            Due date
-        </th>
-        <th>
-            Project
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DueDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Project.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MilestoneID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MilestoneID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MilestoneID })
-        </td>
-    </tr>
-}
-
-</table>
+@Html.Partial("_Index")

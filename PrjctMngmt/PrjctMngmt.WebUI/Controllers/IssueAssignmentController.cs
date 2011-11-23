@@ -46,6 +46,7 @@ namespace PrjctMngmt.Controllers
 
         public ActionResult ShowIssueAssignments(int id)
         {
+            ViewBag.IssueName = _dataModel.Issues.Single(i => i.IssueID == id).Subject;
             //get issue assignments that belong to issue id
             return View(GetIssueAssignmentsByIssue(id));
         }

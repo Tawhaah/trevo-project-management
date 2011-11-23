@@ -1,6 +1,5 @@
-﻿@Html.Partial("Index")
-
-<div>
-    <br />
-    @Html.ActionLink("Back to projects", "Index", "Project")
-</div>
+﻿<p>
+    @Html.ActionLink("Add new project assignment", "Create")
+</p>
+<p>Assigned developers for <b>@ViewBag.ProjectName</b></p>
+@Html.Partial("_Index")

@@ -1,6 +1,5 @@
-﻿@Html.Partial("Index")
-
-<div>
-    <br />
-    @Html.ActionLink("Back to tasks", "Index", "Task")
-</div>
+﻿<p>
+    @Html.ActionLink("Add new task assignment", "Create")
+</p>
+<p>Assigned developers for <b>@ViewBag.TaskName</b></p>
+@Html.Partial("_Index")

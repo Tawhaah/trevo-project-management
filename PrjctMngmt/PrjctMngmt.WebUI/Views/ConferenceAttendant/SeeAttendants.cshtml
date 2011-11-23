@@ -1,38 +1,48 @@
 ﻿@model IEnumerable<PrjctMngmt.Models.ConferenceAttendant>
 
+@{
+    ViewBag.Title = "Conference attendants";
+    var odd = false;
+}
+
 <p>
     @Html.ActionLink("Add new attendant", "Create")
 </p>
-<table>
-    <tr>
-        <th>
-            Conference
-        </th>
-        <th>
-            Developer
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Conference.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Developer.FirstName)
-            @Html.DisplayFor(modelItem => item.Developer.LastName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
+<p>
+    Attendants for <b>@ViewBag.ConferenceName</b>
+</p>
+
+@if (Model.Count() > 0)
+{
+    <div class="datagrid">
+        <table>
+            @foreach (var item in Model)
+            {
+                <tbody>
+                    <tr class="@(odd ? "alt" : "")">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Developer.FirstName)
+                            @Html.DisplayFor(modelItem => item.Developer.LastName)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                        </td>
+                    </tr>
+                    @{ odd = !odd; }
+                </tbody>
+            }
+        </table>
+    </div>
 }
-
-</table>
-
-<br />
+else
+{
+    <p>
+        Conference attendants not found.
+    </p>
+}
 <div>
-    @Html.ActionLink("Back to List", "Index", "Conference")
+    <br />
+    @Html.ActionLink("Back to confenrences", "Index", "Conference")
 </div>

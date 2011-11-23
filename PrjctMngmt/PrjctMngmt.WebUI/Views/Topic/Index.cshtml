@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Topics";
+    var odd = false;
 }
 
 <h2>Topics</h2>
@@ -9,31 +10,53 @@
 <p>
     @Html.ActionLink("Add new topic", "Create")
 </p>
-<table>
-    <tr>
-        <th>
-            Name
-        </th>
-        <th>
-            Description
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TopicID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TopicID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TopicID })
-        </td>
-    </tr>
+@if (Model.Count() > 0)
+{
+    <div class="datagrid">
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                    </th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tbody>
+                    <tr class="@(odd ? "alt" : "")">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.TopicID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.TopicID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.TopicID })
+                        </td>
+                    </tr>
+                    @{ odd = !odd; }
+                </tbody>
+            }
+        </table>
+        @{ odd = false; }
+    </div>
 }
-
-</table>
+else
+{
+    <p>
+        No topics found.
+    </p>
+}
+<div>
+    <br />
+    @Html.ActionLink("Back to messages", "Index", "Message")
+</div>

@@ -46,6 +46,7 @@ namespace PrjctMngmt.Controllers
 
         public ActionResult ShowProjectMilestones(int id)
         {
+            ViewBag.ProjectName = _dataModel.Projects.Single(p => p.ProjectID == id).Name;
             //get milestones that belong to project
             return View(GetMilestonesByProject(id));
         }

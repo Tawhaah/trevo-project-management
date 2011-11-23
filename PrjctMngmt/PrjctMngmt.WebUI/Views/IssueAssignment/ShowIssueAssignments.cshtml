@@ -1,1 +1,56 @@
-﻿@Html.Partial("Index")
+﻿@model IEnumerable<PrjctMngmt.Models.IssueAssignment>
+
+@{
+    ViewBag.Title = "Issue assignments";
+    var odd = false;
+}
+
+<h2>Issue assignments</h2>
+
+<p>
+    @Html.ActionLink("Add new issue assignment", "Create")
+</p>
+
+<p>
+    Assigned developers for <b>@ViewBag.IssueName</b>
+</p>
+
+@if (Model.Count() > 0)
+{
+    <div class="datagrid">
+        <table>
+            @foreach (var item in Model)
+            {
+                <tbody>
+                    <tr class="@(odd ? "alt" : "")">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Issue.Subject)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Developer.FirstName)
+                            @Html.DisplayFor(modelItem => item.Developer.LastName)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.IssueAssignmentID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.IssueAssignmentID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.IssueAssignmentID })
+                        </td>
+                    </tr>
+                    @{ odd = !odd; }
+                </tbody>
+            }
+        </table>
+        @{ odd = false; }
+    </div>
+}
+else
+{
+    <p>
+        Issue assignments not found.
+    </p>
+}
+
+<div>
+    <br />
+    @Html.ActionLink("Back to issues", "Index", "Issue")
+</div>

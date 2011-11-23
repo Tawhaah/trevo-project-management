@@ -8,6 +8,8 @@
 
 <p>
     @Html.ActionLink("Add new task", "Create")
+    <br />
+    @Html.ActionLink("Add task assignment", "Create", "TaskAssignment")
 </p>
 
 <script type="text/javascript">
@@ -58,9 +60,6 @@
                             <a href="/Task/Delete?id=@item.TaskID"><img alt="Remove" title="Remove" class="removeTask ButtonLink removeIcon" src="../../Content/themes/base/images/remove-icon.png" /></a>
                             <a href="/Task/Details?id=@item.TaskID"><img alt="Details" title="Details" class="taskDetails ButtonLink detailIcon" src="../../Content/themes/base/images/mag_glass.png" /></a>
                             <a href="/Task/Edit?id=@item.TaskID"><img alt="Edit" title="Edit" class="editTask ButtonLink editIcon" src="../../Content/themes/base/images/edit.png" /></a>
-                            @*@Html.ActionLink("Edit", "Edit", new { id = item.TaskID }) |*@
-                            @*@Html.ActionLink("Details", "Details", new { id = item.TaskID }) |*@
-                            @*@Html.ActionLink("Delete", "Delete", new { id = item.TaskID })*@
                         </td>
                     </tr>
                     }

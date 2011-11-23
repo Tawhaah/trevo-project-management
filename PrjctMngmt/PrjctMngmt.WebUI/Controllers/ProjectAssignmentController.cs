@@ -46,6 +46,7 @@ namespace PrjctMngmt.Controllers
 
         public ActionResult ShowProjectAssignments(int id)
         {
+            ViewBag.ProjectName = _dataModel.Projects.Single(p => p.ProjectID == id).Name;
             //get project assignments that belong to project id
             return View(GetProjectAssignmentsByProject(id));
         }

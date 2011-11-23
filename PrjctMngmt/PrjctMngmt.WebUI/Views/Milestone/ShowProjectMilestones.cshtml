@@ -1,5 +1,8 @@
-﻿@Html.Partial("Index")
-
+﻿<p>
+    @Html.ActionLink("Add new milestone", "Create")
+</p>
+<p>Milestones for <b>@ViewBag.ProjectName</b></p>
+@Html.Partial("_Index")
 <div>
     <br />
     @Html.ActionLink("Back to projects", "Index", "Project")

@@ -47,6 +47,7 @@ namespace PrjctMngmt.Controllers
 
         public ActionResult ShowTaskAssignments(int id)
         {
+            ViewBag.TaskName = _dataModel.Tasks.Single(t => t.TaskID == id).Name;
             //get task assignments that belong to task id
             return View(GetTaskAssignmentsByTask(id));
         }
