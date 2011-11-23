@@ -55,7 +55,7 @@
                             <tbody>
                                 <tr class="@(odd ? "alt" : "")">
                                     <td>
-                                        @Html.DisplayTextFor(modelItem => item.Data)
+                                        <a href='@Url.Action("Details", new { id = item.MessageID })'>@Html.DisplayTextFor(modelItem => item.Data)</a>
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.EntryDate)
