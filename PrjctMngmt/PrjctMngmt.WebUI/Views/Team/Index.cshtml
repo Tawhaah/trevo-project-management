@@ -190,7 +190,6 @@
                 {
                     <li id="@dev.DeveloperID" class="ui-widget-content ui-corner-tr devLi">
                         @dev.FirstName @dev.LastName
-                        @*<img alt="Remove" title="Remove" class="removeDev ButtonLink removeIcon" src="../../Content/themes/base/images/remove-icon.png" />*@
                         <img alt="Details" title="Details" class="devDetails ButtonLink detailIcon" src="../../Content/themes/base/images/mag_glass.png" />
                     </li>
                 }
@@ -199,7 +198,8 @@
         <!-- placement hack --><img alt="." src="../../Content/themes/base/images/transparent_dot.png" height="30px"/>
     </ul>
     <br />
-    <div style="float:left;"><b>Teams</b></div>
+    <b>Teams</b>
+    <br />
     @foreach (var item in Model)
     {
         foreach (var team in item.teams)
@@ -216,7 +216,6 @@
                     {
                         <li id="@dev.DeveloperID" class="ui-widget-content ui-corner-tr devLi">
                             @dev.FirstName @dev.LastName
-                            <img alt="Remove" title="Remove" class="removeDev ButtonLink removeIcon" src="../../Content/themes/base/images/remove-icon.png" />
                             <img alt="Details" title="Details" class="devDetails ButtonLink detailIcon" src="../../Content/themes/base/images/mag_glass.png" />
                             <a href='link/to/unbind/script/when/js/is/off' title='Unbind developer' class='devRecycle ButtonLink recycleIcon'></a>
                         </li>
@@ -225,7 +224,7 @@
             </div>
         }
     }
-    <img alt="Create team" class="addTeam ButtonLink" style="float:right;" src="../../Content/themes/base/images/plus-sign_small.png" />
+    <img alt="Create team" class="addTeam ButtonLink" style="float:left;" src="../../Content/themes/base/images/plus-sign_small.png" />
 </div>
 <div id="devDialog"></div>
 <div id="teamDialog"></div>
