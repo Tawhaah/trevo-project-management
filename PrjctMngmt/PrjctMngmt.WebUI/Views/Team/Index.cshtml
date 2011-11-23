@@ -137,6 +137,11 @@
                 Cancel: function () { $(this).dialog("close"); }
             }
         });
+        $(".addTeam").click(function () {
+            $("#teamDialog").html("")
+                .dialog("option", "title", "Create team")
+                .load("/Team/Create", function () { $("#dialog").dialog("open"); });
+        });
         $(".teamDetails").click(function () {
             var name = $(this).parent().attr("id");
             $("#teamDialog").html("")
@@ -186,7 +191,7 @@
             modal: true,
             autoOpen: false
         });
-
+        /*
         $(".removeDev").click(function (e) {
             e.preventDefault();
             var id = $(this).parent().attr("id");
@@ -209,6 +214,7 @@
 
             $("#confirmDevDelete").dialog("open");
         });
+        */
     });
 </script>
 
@@ -223,13 +229,13 @@
                 {
                     <li id="@dev.DeveloperID" class="ui-widget-content ui-corner-tr devLi">
                         @dev.FirstName @dev.LastName
-                        <img alt="Remove" title="Remove" class="removeDev ButtonLink removeIcon" src="../../Content/themes/base/images/remove-icon.png" />
+                        @*<img alt="Remove" title="Remove" class="removeDev ButtonLink removeIcon" src="../../Content/themes/base/images/remove-icon.png" />*@
                         <img alt="Details" title="Details" class="devDetails ButtonLink detailIcon" src="../../Content/themes/base/images/mag_glass.png" />
                     </li>
                 }
             }
         }
-        <!-- hack --><img alt="Create developer" src="../../Content/themes/base/images/transparent_dot.png" height="30px"/>
+        <!-- placement hack --><img alt="." src="../../Content/themes/base/images/transparent_dot.png" height="30px"/>
     </ul>
     <br />
     <div style="float:left;"><b>Teams</b></div>
