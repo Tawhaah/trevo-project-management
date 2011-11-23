@@ -133,7 +133,7 @@ namespace PrjctMngmt.Controllers
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Project");
             }
         }
 
@@ -150,11 +150,11 @@ namespace PrjctMngmt.Controllers
             {
                 UpdateModel(GetMilestoneByID(id));
                 _dataModel.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Project");
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Project");
             }
         }
 
@@ -168,13 +168,13 @@ namespace PrjctMngmt.Controllers
                 Milestone milestone = GetMilestoneByID(id);
 
                 if (milestone == null)
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Project");
                 else
                     return View(milestone);
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Project");
             }
         }
 
@@ -189,16 +189,16 @@ namespace PrjctMngmt.Controllers
                 Milestone milestone = GetMilestoneByID(id);
 
                 if (milestone == null)
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Project");
 
                 _dataModel.DeleteObject(milestone);
                 _dataModel.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Project");
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Project");
             }
         }
 

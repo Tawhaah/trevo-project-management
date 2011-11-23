@@ -99,7 +99,7 @@ namespace PrjctMngmt.Controllers
 
         //
         // GET: /Developer/CreateDialog
-
+        /*
         [OutputCache(Duration = 0)]
         public ActionResult CreateDialog()
         {
@@ -107,6 +107,7 @@ namespace PrjctMngmt.Controllers
             ViewData["Teams"] = teams;
             return PartialView(new Developer());
         }
+        */
 
         //
         // POST: /Developer/CreateDialog

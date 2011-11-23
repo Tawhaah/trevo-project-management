@@ -82,11 +82,11 @@ namespace PrjctMngmt.Controllers
                 _dataModel.AddToTaskAssignments(newTaskAssignment);
                 _dataModel.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Task");
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Task");
             }
         }
         
@@ -102,7 +102,7 @@ namespace PrjctMngmt.Controllers
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Task");
             }
         }
 
@@ -119,11 +119,11 @@ namespace PrjctMngmt.Controllers
             {
                 UpdateModel(GetTaskAssignmentByID(id));
                 _dataModel.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Task");
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Task");
             }
         }
 
@@ -137,13 +137,13 @@ namespace PrjctMngmt.Controllers
                 TaskAssignment taskAsgmnt = GetTaskAssignmentByID(id);
 
                 if (taskAsgmnt == null)
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Task");
                 else
                     return View(taskAsgmnt);
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Task");
             }
         }
 
@@ -158,16 +158,16 @@ namespace PrjctMngmt.Controllers
                 TaskAssignment taskAsgnmt = GetTaskAssignmentByID(id);
 
                 if (taskAsgnmt == null)
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Task");
 
                 _dataModel.DeleteObject(taskAsgnmt);
                 _dataModel.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Task");
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Task");
             }
         }
 

@@ -72,11 +72,11 @@ namespace PrjctMngmt.Controllers
                 _dataModel.AddToTaskCategories(newTaskCategory);
                 _dataModel.SaveChanges();
 
-                return RedirectToAction("Create", "Task");
+                return RedirectToAction("Index", "Task");
             }
             catch
             {
-                return RedirectToAction("Create", "Task");
+                return RedirectToAction("Index", "Task");
             }
         }
         
@@ -91,7 +91,7 @@ namespace PrjctMngmt.Controllers
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Task");
             }
         }
 
@@ -108,11 +108,11 @@ namespace PrjctMngmt.Controllers
             {
                 UpdateModel(GetTaskCategoryByName(TaskCategoryName));
                 _dataModel.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Task");
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Task");
             }
         }
 
@@ -126,13 +126,13 @@ namespace PrjctMngmt.Controllers
                 TaskCategory taskCat = GetTaskCategoryByName(TaskCategoryName);
 
                 if (taskCat == null)
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Task");
                 else
                     return View(taskCat);
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Task");
             }
         }
 
@@ -147,12 +147,12 @@ namespace PrjctMngmt.Controllers
                 TaskCategory taskcat = GetTaskCategoryByName(TaskCategoryName);
 
                 if (taskcat == null)
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Task");
 
                 _dataModel.DeleteObject(taskcat);
                 _dataModel.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Task");
             }
             catch
             {

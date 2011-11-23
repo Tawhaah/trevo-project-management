@@ -72,11 +72,11 @@ namespace PrjctMngmt.Controllers
                 _dataModel.AddToTopics(newTopic);
                 _dataModel.SaveChanges();
 
-                return RedirectToAction("Create", "Message");
+                return RedirectToAction("Index", "Message");
             }
             catch
             {
-                return RedirectToAction("Create", "Message");
+                return RedirectToAction("Index", "Message");
             }
         }
         
@@ -91,7 +91,7 @@ namespace PrjctMngmt.Controllers
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Message");
             }
         }
 
@@ -108,11 +108,11 @@ namespace PrjctMngmt.Controllers
             {
                 UpdateModel(GetTopicByID(id));
                 _dataModel.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Message");
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Message");
             }
         }
 
@@ -126,13 +126,13 @@ namespace PrjctMngmt.Controllers
                 Topic topic = GetTopicByID(id);
 
                 if (topic == null)
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Message");
                 else
                     return View(topic);
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Message");
             }
         }
 
@@ -147,16 +147,16 @@ namespace PrjctMngmt.Controllers
                 Topic topic = GetTopicByID(id);
 
                 if (topic == null)
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Message");
 
                 _dataModel.DeleteObject(topic);
                 _dataModel.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Message");
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Message");
             }
         }
 

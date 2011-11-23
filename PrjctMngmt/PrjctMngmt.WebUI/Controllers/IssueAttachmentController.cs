@@ -86,11 +86,11 @@ namespace PrjctMngmt.Controllers
                 _dataModel.AddToIssueAttachments(newIssueAttachment);
                 _dataModel.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Issue");
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Issue");
             }
         }
         
@@ -106,7 +106,7 @@ namespace PrjctMngmt.Controllers
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Issue");
             }
         }
 
@@ -141,11 +141,11 @@ namespace PrjctMngmt.Controllers
                     _dataModel.SaveChanges();
                 }
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Issue");
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Issue");
             }
         }
 
@@ -159,13 +159,13 @@ namespace PrjctMngmt.Controllers
                 IssueAttachment issueAttcmt = GetIssueAttachmentByID(id);
 
                 if (issueAttcmt == null)
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Issue");
                 else
                     return View(issueAttcmt);
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Issue");
             }
         }
 
@@ -180,7 +180,7 @@ namespace PrjctMngmt.Controllers
                 IssueAttachment issueAtchmnt = GetIssueAttachmentByID(id);
 
                 if (issueAtchmnt == null)
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Issue");
                 else
                 {
                     //delete file from the server
@@ -192,11 +192,11 @@ namespace PrjctMngmt.Controllers
                     _dataModel.SaveChanges();
                 }
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Issue");
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Issue");
             }
         }
 

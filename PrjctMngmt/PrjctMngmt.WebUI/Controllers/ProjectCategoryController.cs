@@ -72,11 +72,11 @@ namespace PrjctMngmt.Controllers
                 _dataModel.AddToProjectCategories(newProjCategory);
                 _dataModel.SaveChanges();
 
-                return RedirectToAction("Create", "Project");
+                return RedirectToAction("Index", "Project");
             }
             catch
             {
-                return RedirectToAction("Create", "Project");
+                return RedirectToAction("Index", "Project");
             }
         }
         
@@ -91,7 +91,7 @@ namespace PrjctMngmt.Controllers
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Project");
             }
         }
 
@@ -108,11 +108,11 @@ namespace PrjctMngmt.Controllers
             {
                 UpdateModel(GetProjectCategoryByID(id));
                 _dataModel.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Project");
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Project");
             }
         }
 
@@ -126,13 +126,13 @@ namespace PrjctMngmt.Controllers
                 ProjectCategory projCat = GetProjectCategoryByID(id);
 
                 if (projCat == null)
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Project");
                 else
                     return View(projCat);
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Project");
             }
         }
 
@@ -147,16 +147,16 @@ namespace PrjctMngmt.Controllers
                 ProjectCategory projCat = GetProjectCategoryByID(id);
 
                 if (projCat == null)
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Project");
 
                 _dataModel.DeleteObject(projCat);
                 _dataModel.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Project");
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Project");
             }
         }
 

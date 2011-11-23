@@ -74,11 +74,11 @@ namespace PrjctMngmt.Controllers
                 _dataModel.AddToIssueCategories(issueCat);
                 _dataModel.SaveChanges();
 
-                return RedirectToAction("Create", "Issue");
+                return RedirectToAction("Index", "Issue");
             }
             catch
             {
-                return RedirectToAction("Create", "Issue");
+                return RedirectToAction("Index", "Issue");
             }
         }
         
@@ -93,7 +93,7 @@ namespace PrjctMngmt.Controllers
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Issue");
             }
         }
 
@@ -110,11 +110,11 @@ namespace PrjctMngmt.Controllers
             {
                 UpdateModel(GetIssueCategoryByName(IssueCategoryName));
                 _dataModel.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Issue");
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Issue");
             }
         }
 
@@ -128,13 +128,13 @@ namespace PrjctMngmt.Controllers
                 IssueCategory issueCat = GetIssueCategoryByName(IssueCategoryName);
 
                 if (issueCat == null)
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Issue");
                 else
                     return View(issueCat);
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Issue");
             }
         }
 
@@ -149,16 +149,16 @@ namespace PrjctMngmt.Controllers
                 IssueCategory issueCat = GetIssueCategoryByName(IssueCategoryName);
 
                 if (issueCat == null)
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "Issue");
 
                 _dataModel.DeleteObject(issueCat);
                 _dataModel.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Issue");
             }
             catch
             {
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Issue");
             }
         }
 
