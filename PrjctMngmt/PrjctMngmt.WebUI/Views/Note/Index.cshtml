@@ -87,13 +87,13 @@
 	<ul>
         @foreach (var proj in (List<PrjctMngmt.Models.Project>)ViewData["Projects"])
         {
-		    <li><a href="#@proj.Name">@proj.Name</a></li>
+		    <li><a href="#@proj.ProjectID">@proj.Name</a></li>
         }
 	</ul>
     @foreach (var proj in (List<PrjctMngmt.Models.Project>)ViewData["Projects"])
     {
         <div id="note-tab">
-            <div id="@proj.Name">
+            <div id="@proj.ProjectID">
                 <!-- List project's notes here -->
                 @foreach (var item in Model)
                 {
