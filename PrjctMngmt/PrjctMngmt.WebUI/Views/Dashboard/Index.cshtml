@@ -71,8 +71,8 @@
 
 <fieldset>
     <legend>Upcoming Milestones</legend>
-    @if (Model.MilestonesDuringWeek.Count() > 0 && Model.MilestonesNextWeek.Count() > 0 
-        && Model.MilestonesDuringMonth.Count() > 0)
+    @if (Model.MilestonesDuringWeek.Count() > 0 || Model.MilestonesNextWeek.Count() > 0 
+        || Model.MilestonesDuringMonth.Count() > 0)
     {
         <fieldset class="dashboard-entity">
             <legend>Milestones - same week</legend>
@@ -127,8 +127,8 @@
 
 <fieldset>
     <legend>Upcoming Conferences</legend>
-    @if (Model.ConfsDuringWeek.Count() > 0 && Model.ConfsNextWeek.Count() > 0 
-        && Model.ConfsDuringMonth.Count() > 0)
+    @if (Model.ConfsDuringWeek.Count() > 0 || Model.ConfsNextWeek.Count() > 0 
+        || Model.ConfsDuringMonth.Count() > 0)
     {
         <fieldset class="dashboard-entity">
             <legend>Conferences - same week</legend>
