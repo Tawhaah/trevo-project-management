@@ -39,7 +39,15 @@ namespace PrjctMngmt.Controllers
         public ActionResult Index()
         {
             ViewData["Topics"] = _dataModel.Topics.OrderBy(t => t.Name).ToList();
-            var messages = _dataModel.Messages.OrderByDescending(m => m.EntryDate).ThenByDescending(m => m.EditDate);
+            List<Message> messages = _dataModel.Messages.OrderByDescending(m => m.EntryDate).ThenByDescending(m => m.EditDate).ToList();
+            foreach(var msg in messages)
+            {
+                //cut over 70 characher long messages
+                if (msg.Data.Length > 70)
+                {
+                    msg.Data = msg.Data.Substring(0, 70) + " ...";
+                }
+            }
             return View(messages);
         }
 
