@@ -168,6 +168,14 @@ namespace PrjctMngmt.Controllers
             }
         }
 
+        //
+        // GET: /Message/Show/5
+
+        public ActionResult Show(int id)
+        {
+            return View(GetMessageByID(id));
+        }
+
         public Message GetMessageByID(int id)
         {
             try

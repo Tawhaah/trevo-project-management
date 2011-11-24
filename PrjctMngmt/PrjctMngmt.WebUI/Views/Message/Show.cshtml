@@ -1,0 +1,22 @@
+﻿@model PrjctMngmt.Models.Message
+
+@{
+    ViewBag.Title = "Message";
+}
+<div class="msg">
+    <div class="msg-header">
+        <div class="msg-title">
+            @Html.DisplayFor(model => model.Topic.Name)
+        </div>
+        <div class="msg-date">
+            Posted: @Html.DisplayFor(model => model.EntryDate)
+            <br />
+            Edited: @Html.DisplayFor(model => model.EditDate)
+        </div>
+    </div>
+    <div class="msg-content">
+        <p>
+            @Html.DisplayTextFor(model => model.Data)
+        </p>
+    </div>
+</div>
