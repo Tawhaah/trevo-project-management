@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="PrjctMngmt.App_Start.NinjectMVC3">
+    <Position X="8.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAACAAAQACAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\NinjectMVC3.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Controllers.AccountController">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAQgAAAAAAAAAAAAAABAAAEAAAAAAQAIAA=</HashCode>
+      <FileName>Controllers\AccountController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Controllers.ClientController">
+    <Position X="5.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAABAIAAAAAAAQAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\ClientController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Controllers.ConferenceAttendantController">
+    <Position X="10.25" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAADEQAACAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\ConferenceAttendantController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Controllers.ConferenceController">
+    <Position X="18.25" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACARAACAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\ConferenceController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Controllers.DashboardController">
+    <Position X="20.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>ICABAAAAAAQQQAIAAAIAACCAAIABAgBAABEAgAQMAAA=</HashCode>
+      <FileName>Controllers\DashboardController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Controllers.DeveloperController">
+    <Position X="8.25" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAQAAAABAAAAAAAAAAAAAAEAAEACAAEAAAAAABA=</HashCode>
+      <FileName>Controllers\DeveloperController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Controllers.DocumentController">
+    <Position X="13.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAABAAAAAAAAAAIAAAEAAEACAAEEAAQAAAA=</HashCode>
+      <FileName>Controllers\DocumentController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Controllers.HomeController">
+    <Position X="18.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Controllers.IssueAssignmentController">
+    <Position X="3.25" Y="2.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAIAABACBEAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\IssueAssignmentController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Controllers.IssueAttachmentController">
+    <Position X="5.75" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAABAAAMAAAAACAAAAEAAEACAAEEAAQAAAA=</HashCode>
+      <FileName>Controllers\IssueAttachmentController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Controllers.IssueCategoryController">
+    <Position X="10.75" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAABAAAAAAAAAAAAAQEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\IssueCategoryController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Controllers.IssueController">
+    <Position X="13.5" Y="3.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAABAAAEAAAAAAAAAAEAAEACAAEAQAQAAAg=</HashCode>
+      <FileName>Controllers\IssueController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Controllers.MessageController">
+    <Position X="0.75" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAgEAAAAABAAAAAAAAAAAAAAEEAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\MessageController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Controllers.MilestoneController">
+    <Position X="3.25" Y="5.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAABgAAAAAAAARAAAAEAAEACAAEAAAAAACA=</HashCode>
+      <FileName>Controllers\MilestoneController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Controllers.NoteController">
+    <Position X="8.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAABAgAAAAAAAAAAAAEAAEACAAEAAAAACAA=</HashCode>
+      <FileName>Controllers\NoteController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Controllers.ProjectAssignmentController">
+    <Position X="20.5" Y="8" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAIAgAABAAAEAAAAAAAAAgEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\ProjectAssignmentController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Controllers.ProjectCategoryController">
+    <Position X="0.75" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAABAAAAAAAAAAAgAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\ProjectCategoryController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Controllers.ProjectController">
+    <Position X="3.25" Y="9.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAABAAAEAAAAAAAAAAUAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\ProjectController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Controllers.TaskAssignmentController">
+    <Position X="13.5" Y="7.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAgABCAAEAAAAAAAAAAEAAEACAAEAAAAQAAA=</HashCode>
+      <FileName>Controllers\TaskAssignmentController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Controllers.TaskCategoryController">
+    <Position X="16" Y="7" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAABAAAAAABAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\TaskCategoryController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Controllers.TaskController">
+    <Position X="5.75" Y="7.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAABAAAEAAIAACAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\TaskController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Controllers.TeamController">
+    <Position X="8.25" Y="9.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>EAAAgAAABAABAAAAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\TeamController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Controllers.TopicController">
+    <Position X="10.75" Y="9.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAIAAAABAAAAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\TopicController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.MvcApplication">
+    <Position X="18.25" Y="5.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAIQAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Helpers.CustomChartThemes">
+    <Position X="18.5" Y="9" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\CustomChartThemes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.HtmlHelpers.HtmlHelperExtensions">
+    <Position X="20.25" Y="6.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAEAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Helpers\HtmlHelperExtensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.CustomModelBinders.DecimalModelBinder" BaseTypeListCollapsed="true">
+    <Position X="13.75" Y="10.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ModelBinders\DecimalModelBinder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PrjctMngmt.Models.ChangePasswordModel">
+    <Position X="3.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAEAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\AccountModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Models.LogOnModel">
+    <Position X="18.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAQAAAAAgAAA=</HashCode>
+      <FileName>Models\AccountModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Models.RegisterModel">
+    <Position X="16.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAACAQAAAAAAIAA=</HashCode>
+      <FileName>Models\AccountModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Models.DashboardModel">
+    <Position X="16" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAACACAAQAAECAAAyAAAAAQAICAACAgCAAEAAAA=</HashCode>
+      <FileName>Models\DashboardModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Models.RegisterDeveloperModel">
+    <Position X="5.75" Y="10.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\RegisterDeveloperModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Models.TeamDeveloperModel">
+    <Position X="0.75" Y="9.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\TeamDeveloperModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrjctMngmt.Properties.Resources">
+    <Position X="10.75" Y="6.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

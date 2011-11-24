@@ -1,5 +1,9 @@
 ﻿@model PrjctMngmt.Models.Team
 
+@{
+    ViewBag.Title = "Team details";
+}
+
 <fieldset>
     <legend>Team</legend>
     <div class="display-label">Name</div>
@@ -13,5 +17,8 @@
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.TeamName })
+    @Html.ActionLink("Edit", "Edit", "Team", new { TeamName=Model.TeamName })
 </p>
+<div>
+    @Html.ActionLink("Back to teams", "Index")
+</div>

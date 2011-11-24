@@ -51,9 +51,9 @@ namespace PrjctMngmt.Controllers
         //
         // GET: /Team/Details/string
 
-        public ActionResult Details(string name)
+        public ActionResult Details(string TeamName)
         {
-            return View(GetTeamByName(name));
+            return View(GetTeamByName(TeamName));
         }
 
         //

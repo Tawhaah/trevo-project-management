@@ -107,11 +107,17 @@
                 Cancel: function () { $(this).dialog("close"); }
             }
         });
+        //TODO: Fix developer details dialog
+        //        $(".devDetails").click(function () {
+        //            var id = $(this).parent().attr("id");
+        //            $("#devDialog").html("")
+        //                .dialog("option", "title", "Developer details")
+        //                .load("/Developer/Details/"/* TODO: FIX*/, function () { $("#devDialog").dialog("open"); });
+        //        });
+
         $(".devDetails").click(function () {
             var id = $(this).parent().attr("id");
-            $("#devDialog").html("")
-                .dialog("option", "title", "Developer details")
-                .load("/Developer/Details/"/* TODO: FIX*/, function () { $("#devDialog").dialog("open"); });
+            window.open("/Developer/Details/" + id);
         });
     });
 </script>
@@ -132,17 +138,18 @@
                 Cancel: function () { $(this).dialog("close"); }
             }
         });
-        $(".addTeam").click(function () {
+        $("#addTeam").click(function () {
             $("#teamDialog").html("")
                 .dialog("option", "title", "Create team")
                 .load("/Team/Create", function () { $("#teamDialog").dialog("open"); });
         });
-        $(".teamDetails").click(function () {
-            var name = $(this).parent().attr("id");
-            $("#teamDialog").html("")
-                .dialog("option", "title", "Team details")
-                .load("/Team/Details/"/*TODO: FIX*/, function () { $("#teamDialog").dialog("open"); });
-        });
+        //TODO: Fix team details dialog
+//        $(".teamDetails").click(function () {
+//            var name = $(this).parent().attr("id");
+//            $("#teamDialog").html("")
+//                .dialog("option", "title", "Team details")
+//                .load("/Team/Details?name="/*TODO: FIX*/, function () { $("#teamDialog").dialog("open"); });
+//        });
     });
 </script>
 
@@ -208,7 +215,9 @@
                 <div class="teamTitle ui-widget-header">
                     @team.TeamName
                     <img alt="Remove" title="Remove" class="removeTeam ButtonLink removeIcon" src="../../Content/themes/base/images/remove-icon.png" />
-                    <img alt="Details" title="Details" class="teamDetails ButtonLink detailIcon" src="../../Content/themes/base/images/mag_glass.png" />
+                    <a href='@Url.Action("Details", "Team", new { TeamName = team.TeamName })'>
+                        <img alt="Details" title="Details" class="teamDetails ButtonLink detailIcon" src="../../Content/themes/base/images/mag_glass.png" />
+                    </a>
                 </div>
                 @foreach (var dev in item.developers)
                 {
@@ -216,7 +225,9 @@
                     {
                         <li id="@dev.DeveloperID" class="ui-widget-content ui-corner-tr devLi">
                             @dev.FirstName @dev.LastName
-                            <img alt="Details" title="Details" class="devDetails ButtonLink detailIcon" src="../../Content/themes/base/images/mag_glass.png" />
+                            <a href='@Url.Action("Details", "Developer", new { id = dev.DeveloperID })'>
+                                <img alt="Details" title="Details" class="devDetails ButtonLink detailIcon" src="../../Content/themes/base/images/mag_glass.png" />
+                            </a>
                             <a href='link/to/unbind/script/when/js/is/off' title='Unbind developer' class='devRecycle ButtonLink recycleIcon'></a>
                         </li>
                     }
@@ -224,7 +235,7 @@
             </div>
         }
     }
-    <img alt="Create team" class="addTeam ButtonLink" style="float:left;" src="../../Content/themes/base/images/plus-sign_small.png" />
+    <img alt="Create team" id="addTeam" class="ButtonLink" style="float:left;" src="../../Content/themes/base/images/plus-sign_small.png" />
 </div>
 <div id="devDialog"></div>
 <div id="teamDialog"></div>
