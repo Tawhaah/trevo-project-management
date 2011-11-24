@@ -21,7 +21,7 @@
 <script type="text/javascript">
     $(function toggle() {
         //TODO: Create AJAX call to for checkbox item change / task status change
-        var id = $(this).closest('td').attr("id");
+        var id = $(this).closest('td').attr("id")
         $.post("/Task/ToggleTaskStatus?id=" + id, function () { });
     });
 </script>
@@ -56,7 +56,6 @@
                             @Html.DisplayFor(modelItem => item.Name)
                         </td>
                         <td class="taskTd">
-                            @Html.ActionLink("See assignments", "ShowTaskAssignments", "TaskAssignment", new { id = item.TaskID }, null) |
                             <a href="/Task/Delete?id=@item.TaskID"><img alt="Remove" title="Remove" class="removeTask ButtonLink removeIcon" src="../../Content/themes/base/images/remove-icon.png" /></a>
                             <a href="/Task/Details?id=@item.TaskID"><img alt="Details" title="Details" class="taskDetails ButtonLink detailIcon" src="../../Content/themes/base/images/mag_glass.png" /></a>
                             <a href="/Task/Edit?id=@item.TaskID"><img alt="Edit" title="Edit" class="editTask ButtonLink editIcon" src="../../Content/themes/base/images/edit.png" /></a>
