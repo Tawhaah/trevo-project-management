@@ -33,12 +33,12 @@
         @foreach (var proj in (List<PrjctMngmt.Models.Project>)ViewData["Projects"])
         {
             <!-- Project tabs -->
-		    <li><a href="#@proj.Name">@proj.Name</a></li>
+		    <li><a href="#@proj.ProjectID">@proj.Name</a></li>
         }
 	</ul>
     @foreach (var proj in (List<PrjctMngmt.Models.Project>)ViewData["Projects"])
     {
-	    <div id="@proj.Name">
+	    <div id="@proj.ProjectID">
             <!-- List project's tasks here -->
             <table class="taskTable">
                 @foreach (var item in Model)
