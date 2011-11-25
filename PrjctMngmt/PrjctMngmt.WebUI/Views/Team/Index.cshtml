@@ -197,15 +197,20 @@
                 {
                     <li id="@dev.DeveloperID" class="ui-widget-content ui-corner-tr devLi">
                         @dev.FirstName @dev.LastName
-                        <img alt="Details" title="Details" class="devDetails ButtonLink detailIcon" src="../../Content/themes/base/images/mag_glass.png" />
+                        <img alt="Details" title="Details" class="devDetails ButtonLink detailIcon"
+                            src="../../Content/themes/base/images/mag_glass.png" />
                     </li>
                 }
             }
         }
-        <!-- placement hack --><img alt="." src="../../Content/themes/base/images/transparent_dot.png" height="30px"/>
+        <!-- placement hack --><img alt="." src="../../Content/themes/base/images/transparent_dot.png"
+            height="30px"/>
     </ul>
     <br />
     <b>Teams</b>
+    <br /><br />
+    <img alt="Create team" id="addTeam" class="ButtonLink" style="float:left;"
+        src="../../Content/themes/base/images/plus-sign_small.png" />
     <br />
     @foreach (var item in Model)
     {
@@ -214,9 +219,11 @@
             <div id="@team.TeamName" class="teams">
                 <div class="teamTitle ui-widget-header">
                     @team.TeamName
-                    <img alt="Remove" title="Remove" class="removeTeam ButtonLink removeIcon" src="../../Content/themes/base/images/remove-icon.png" />
+                    <img alt="Remove" title="Remove" class="removeTeam ButtonLink removeIcon"
+                        src="../../Content/themes/base/images/remove-icon.png" />
                     <a href='@Url.Action("Details", "Team", new { TeamName = team.TeamName })'>
-                        <img alt="Details" title="Details" class="teamDetails ButtonLink detailIcon" src="../../Content/themes/base/images/mag_glass.png" />
+                        <img alt="Details" title="Details" class="teamDetails ButtonLink detailIcon"
+                            src="../../Content/themes/base/images/mag_glass.png" />
                     </a>
                 </div>
                 @foreach (var dev in item.developers)
@@ -226,19 +233,23 @@
                         <li id="@dev.DeveloperID" class="ui-widget-content ui-corner-tr devLi">
                             @dev.FirstName @dev.LastName
                             <a href='@Url.Action("Details", "Developer", new { id = dev.DeveloperID })'>
-                                <img alt="Details" title="Details" class="devDetails ButtonLink detailIcon" src="../../Content/themes/base/images/mag_glass.png" />
+                                <img alt="Details" title="Details" class="devDetails ButtonLink detailIcon"
+                                    src="../../Content/themes/base/images/mag_glass.png" />
                             </a>
-                            <a href='link/to/unbind/script/when/js/is/off' title='Unbind developer' class='devRecycle ButtonLink recycleIcon'></a>
+                            <a href='link/to/unbind/script/when/js/is/off' title='Unbind developer'
+                                class='devRecycle ButtonLink recycleIcon'></a>
                         </li>
                     }
                 }
             </div>
         }
     }
-    <img alt="Create team" id="addTeam" class="ButtonLink" style="float:left;" src="../../Content/themes/base/images/plus-sign_small.png" />
 </div>
 <div id="devDialog"></div>
 <div id="teamDialog"></div>
 <div id="confirmTeamDelete" title="Confirmation">
-	<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Are you sure you want to delete this team?</p>
+	<p>
+        <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+        Are you sure you want to delete this team?
+    </p>
 </div>

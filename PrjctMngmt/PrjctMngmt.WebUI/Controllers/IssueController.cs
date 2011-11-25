@@ -128,7 +128,7 @@ namespace PrjctMngmt.Controllers
         // POST: /Issue/Edit/5
 
         [HttpPost, ValidateInput(false)]
-        public ActionResult Edit(int id, HttpPostedFileBase file, FormCollection collection)
+        public ActionResult Edit(int id, FormCollection collection, HttpPostedFileBase file)
         {
             if (!ModelState.IsValid)
                 return View();
