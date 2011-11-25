@@ -9,6 +9,7 @@ using PrjctMngmt.Helpers;
 
 namespace PrjctMngmt.Controllers
 {
+    [Authorize]
     public class DashboardController : Controller
     {
         private EntityModelContainer db = new EntityModelContainer();

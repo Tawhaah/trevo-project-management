@@ -8,7 +8,8 @@ using System.Web.Mvc;
 using PrjctMngmt.Models;
 
 namespace PrjctMngmt.Controllers
-{ 
+{
+    [Authorize]
     public class ConferenceAttendantController : Controller
     {
         private EntityModelContainer db = new EntityModelContainer();

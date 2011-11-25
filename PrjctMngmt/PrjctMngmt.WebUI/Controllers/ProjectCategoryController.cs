@@ -29,6 +29,7 @@ using PrjctMngmt.Models;
 
 namespace PrjctMngmt.Controllers
 {
+    [Authorize]
     public class ProjectCategoryController : Controller
     {
         private EntityModelContainer _dataModel = new EntityModelContainer(); 

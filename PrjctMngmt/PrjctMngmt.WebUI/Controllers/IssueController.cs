@@ -30,6 +30,7 @@ using System.IO;
 
 namespace PrjctMngmt.Controllers
 {
+    [Authorize]
     public class IssueController : Controller
     {
         private EntityModelContainer _dataModel = new EntityModelContainer();

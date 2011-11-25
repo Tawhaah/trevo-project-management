@@ -30,6 +30,7 @@ using System.Web.Security;
 
 namespace PrjctMngmt.Controllers
 {
+    [Authorize]
     public class DeveloperController : Controller
     {
         private EntityModelContainer _dataModel = new EntityModelContainer(); 

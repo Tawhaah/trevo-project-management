@@ -30,6 +30,7 @@ using System.Web.Configuration;
 
 namespace PrjctMngmt.Controllers
 {
+    [Authorize]
     public class TaskAssignmentController : Controller
     {
         private EntityModelContainer _dataModel = new EntityModelContainer(); 
