@@ -160,8 +160,18 @@ namespace PrjctMngmt.Controllers
                     return RedirectToAction("Index");
 
                 _dataModel.DeleteObject(team);
-                _dataModel.SaveChanges();
+                
+                //get developers belonging to that team
+                List<Developer> devs = _dataModel.Developers
+                    .Where(d => d.TeamName.Contains(TeamName)).ToList();
 
+                foreach (Developer dev in devs)
+                {
+                    //unbind developer from the team
+                    dev.TeamName = "";
+                }
+
+                _dataModel.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
