@@ -5,8 +5,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrjctMngmt.WebUI", "PrjctMn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrjctMngmt.Domain", "PrjctMngmt.Domain\PrjctMngmt.Domain.csproj", "{1AB4C58E-B89B-48F7-A4AA-F559216B400D}"
 EndProject
-Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "ModelingProject", "ModelingProject\ModelingProject.modelproj", "{7BA7E3DE-503D-4AD0-8CBF-9148176C7469}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,10 +19,6 @@ Global
 		{1AB4C58E-B89B-48F7-A4AA-F559216B400D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AB4C58E-B89B-48F7-A4AA-F559216B400D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AB4C58E-B89B-48F7-A4AA-F559216B400D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7BA7E3DE-503D-4AD0-8CBF-9148176C7469}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7BA7E3DE-503D-4AD0-8CBF-9148176C7469}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7BA7E3DE-503D-4AD0-8CBF-9148176C7469}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7BA7E3DE-503D-4AD0-8CBF-9148176C7469}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
